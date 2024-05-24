@@ -25,12 +25,17 @@ npm run watch
 ```
 df -hi
 ```
+9. global css file ```app.css```
+10. sample or generic file ```sample_body.blade.php```
 
 ## Local Setup (Development)
 1. install xampp (Required PHP version -> 8.1) [Download Link](https://downloadsapachefriends.global.ssl.fastly.net/7.4.30/xampp-windows-x64-7.4.30-1-VC15-installer.exe?from_af=true)
 2. download node 16.18.0
 2. Go to .env file and change the DB connection
-3. Create a database <b>usmansaleem234_lyskills_new</b>
+3. Create a database
+```
+harbourislandcommonage_com
+```
 4. You need to follow of either mentioned path
     1. One
         1. run
@@ -144,7 +149,7 @@ nano /opt/cpanel/ea-php80/root/etc/php.ini
 3. Verify apache/nginx version
 4. Verify mysql connection
 5. Create FTP access
-6. Local setup laravel
+6. Local setup Laravel
 7. Change .htaccess/php.ini/user.ini configuration in the main folder of laravel
 8. Setup PHP configuration from PHP INI editor on the server
 9. Setup Git & Github repo
