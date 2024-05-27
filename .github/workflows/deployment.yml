@@ -26,4 +26,5 @@ jobs:
         username: ${{secrets.SSH_USERNAME}}
         host: ${{secrets.IP_SERVER}}
         password: ${{ secrets.SSH_PASSWORD }}
-        script: 'cd ~/public_html/website_7171ee6c && chmod u+x ./server_deploy.sh && ./server_deploy.sh'
+        use_insecure_cipher: true
+        script: 'pwd && cd ~/public_html/website_7171ee6c && pwd && chmod u+x ./server_deploy.sh && ./server_deploy.sh'
