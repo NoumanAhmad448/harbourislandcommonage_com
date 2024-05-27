@@ -34,7 +34,7 @@ df -hi
 2. Go to .env file and change the DB connection
 3. Create a database
 ```
-harbourislandcommonage_com
+thesunr8_harbourislandcommonage_com
 ```
 4. You need to follow of either mentioned path
     1. One
@@ -155,5 +155,5 @@ nano /opt/cpanel/ea-php80/root/etc/php.ini
 9. Setup Git & Github repo
 10. Update ```script``` in
 ```
-ftp_live_deployment.lyskills.yml
+deployment.yml
 ```
