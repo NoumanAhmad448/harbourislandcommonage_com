@@ -2,7 +2,7 @@
 php artisan down || true
 
 # Install/update composer dependecies
-composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev --no-cache
+#composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev --no-cache
 
 # Clear caches
 php artisan cache:clear
