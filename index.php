@@ -16,7 +16,11 @@ define('LARAVEL_START', microtime(true));
 |
 */
 
-if (file_exists($maintenance = __DIR__.'/../storage/framework/maintenance.php')) {
+$is_root = "";
+// if you move this file in public folder uncomment the below line
+// $is_root = "../";
+
+if (file_exists($maintenance = __DIR__.'/'.$is_root.'storage/framework/maintenance.php')) {
     require $maintenance;
 }
 
@@ -31,7 +35,7 @@ if (file_exists($maintenance = __DIR__.'/../storage/framework/maintenance.php'))
 |
 */
 
-require __DIR__.'/../vendor/autoload.php';
+require __DIR__.'/'.$is_root.'vendor/autoload.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -44,7 +48,7 @@ require __DIR__.'/../vendor/autoload.php';
 |
 */
 
-$app = require_once __DIR__.'/../bootstrap/app.php';
+$app = require_once __DIR__.'/'.$is_root.'bootstrap/app.php';
 
 $kernel = $app->make(Kernel::class);
 
