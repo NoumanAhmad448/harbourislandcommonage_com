@@ -93,16 +93,24 @@ nano /etc/my.cnf
 
 mysql -h 203.161.43.113 -P 3306 -u usmansaleem234_lyskills_root5 -p
 ```
-Laravel cache clear
+Laravel cache clear routes
 ```
-cd /home/usmansaleem234/public_html &&
+cd ~/public_html/website_7171ee6c &&
 php artisan config:clear
 ```
 ```
-cd /home/usmansaleem234/public_html &&
+cd ~/public_html/website_7171ee6c &&
 php artisan config:cache
 ```
 
+```
+cd ~/public_html/website_7171ee6c &&
+php artisan route:list
+```
+storage logs
+```
+cd ~/public_html/website_7171ee6c/storage/logs/
+```
 
 
 ### Change s3 bucket
@@ -111,6 +119,24 @@ POV: To find the URL, upload something in bucket and open it in new tab
 
 How to fix 'The file failed to upload.' error using any validation for image upload - Laravel 5.7 
 1. Login to WHM > search ``` PHP INI editor``` > Choose php81 > update the setting according to cpanel ``` INI editor```
+
+
+### SSH access
+Read the public key from ```git bash```
+```
+cat ~/.ssh/id_rsa.pub
+```
+Create a ```config``` file in ```.ssh``` folder and add the following lines
+```
+Host 162.241.216.239
+   HostName 162.241.216.239
+   PreferredAuthentications publickey
+   IdentityFile ~/.ssh/id_rsa.pub
+```
+ssh access command
+```
+ssh thesunr8@162.241.216.239
+```
 
 ### apache server
 1. apache status
@@ -137,7 +163,6 @@ php --ini
 
 ```
 nano /opt/cpanel/ea-php80/root/etc/php.ini
-
 ```
 
 
@@ -145,7 +170,7 @@ nano /opt/cpanel/ea-php80/root/etc/php.ini
 ## Fresh Laravel Project
 ```Back Up on the server```
 1. Fetch SSH connections
-2. Verify PHP version, composer version && node JS
+2. Verify PHP version, composer version && node JS (can be skipped for shared hosting)
 3. Verify apache/nginx version
 4. Verify mysql connection
 5. Create FTP access
@@ -157,3 +182,17 @@ nano /opt/cpanel/ea-php80/root/etc/php.ini
 ```
 deployment.yml
 ```
+
+
+## Plan
+1. create a property table on the home page
+2. show all the information on the home page
+3. list the property data on the home page
+4. create an admin panel
+5. let admin login
+6. Admin can approve/reject the land
+7. on approve send an email with the password
+8. on reject allow the agent to add any comment and let the commonager to login and update the information
+9. commonager can login & check the land information
+10. Update his profile information
+11. Create Blog information from Admin Panel

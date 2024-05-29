@@ -11,9 +11,17 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .js('resources/js/common_functions.js', 'public/js')
-    .js('resources/js/main.js', 'public/js')
-    .postCss('resources/css/app.css', 'public/css', [
+$public_folder = "";
+// $public_folder = "public/";
+$js_folder = "js";
+$css_folder = "css";
+
+$js_path = $public_folder+$js_folder;
+$css_path = $public_folder+$css_folder;
+
+mix.js('resources/js/app.js', $js_path)
+    .js('resources/js/common_functions.js', $js_path)
+    .js('resources/js/main.js', $js_path)
+    .postCss('resources/css/app.css', $css_path, [
         //
     ]);
