@@ -30,5 +30,5 @@ return [
     "phone_num" => "1-242-805-5687",
     "address" => "North Eleuthera Regatta Association (NERA)",
     "link" => "no-underline hover:underline text-blue-900",
-    "im_wel" => $public_folder.$images_folder."wel",
+    "im_wel" => $public_folder.$images_folder."wel.jpg",
 ];
