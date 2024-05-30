@@ -54,7 +54,7 @@
     @if(config("setting.en_footer"))
     <div class="md:flex pb-12 text-center md:text-left" id="footer">
         <div class="lg:w-1/4 pr-6 flex justify-center items-center
-                md:block">
+                md:block grid place-items-center">
             <img class="rounded" width="100" src="{{url(config('setting.im_welcome'))}}" alt="{{ __("messages.welcome") }}">
             <p class="text-sm mt-7">{{ __("messages.wel_title") }}</p>
         </div>

@@ -123,7 +123,7 @@
     @endif
 
     @if(config("setting.en_im_event"))
-    <div class="container pt-14">
+    <div class="container pt-14 sm:mt-10">
         <div class="md:flex md:justify-between md:items-center">
             <div class="flex-1 mr-10 text-lg leading-normal">
                 <h2 class="flex flex-col justify-center items-center mb-4 text-4xl font-extrabold leading-none
@@ -132,14 +132,14 @@
                 </h2>
                 <p>{{ __("messages.event_desc") }}</p>
             </div>
-            <div class="flex ml-10 mt-5 mt-md-0 lg:justify-between lg:items-center md:flex-1">
-                <img class="rounded" src="{{url(config('setting.im_event'))}}" alt="{{ __("messages.event") }}">
+            <div class="flex md:ml-10 mt-5 mt-md-0 lg:justify-between lg:items-center md:flex-1">
+                <img class="rounded w-full" src="{{url(config('setting.im_event'))}}" alt="{{ __("messages.event") }}">
             </div>
         </div>
     </div>
     @endif
     @if(config("setting.en_im_sponsorship"))
-        <div class="container pt-14">
+        <div class="container pt-14 sm:mt-10">
             <div class="md:flex md:justify-between md:items-center">
                 <div class="flex-1">
                     <img class="rounded" src="{{url(config('setting.im_sponsorship'))}}" alt="{{ __("messages.Sponsorship") }}">
