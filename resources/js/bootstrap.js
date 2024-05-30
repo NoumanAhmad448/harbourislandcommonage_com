@@ -26,3 +26,12 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+import Alpine from 'alpinejs';
+import swal from 'sweetalert';
+
+// import jQuery from './jquery-3.6.0.slim.min';  //deleted later, and installed with NPM
+window.Alpine = Alpine;
+Alpine.start();
+
+window.$ = window.jQuery = require('jquery'); //jquery added here after appling npm install --save jquery

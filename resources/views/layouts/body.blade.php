@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Cache;
         @include("lib.custom_lib")
         @yield('page-css')
     </head>
-    <body style="min-height: 100vh !important" class="d-flex flex-column">
+    <body>
 
      @if(!(Cache::store('file')->get('isLoaderLoaded')))
      {!!
@@ -37,11 +37,13 @@ use Illuminate\Support\Facades\Cache;
         </div>
     @endif
         <!-- main Content -->
-        <main>
-            @yield('content')
-        </main>
-
-
+        <div class="font-sans text-gray-900 bg-gray-100 antialiased min-h-screen">
+            @include('components.header')
+            <main>
+                @yield('content')
+            </main>
+            @include('components.footer')
+        </div>
         @yield('script')
     </body>
 </html>
