@@ -3,26 +3,31 @@
 @endsection
 @section('content')
     @include('session_msg')
-    <div class="relative z-10 pt-48 pb-52 bg-cover bg-center"
-     style="background-image: url({{url(config('setting.im_wel'))}})">
-        <div class="absolute h-full w-full bg-black opacity-70 top-0 left-0 z-10"></div>
-        <div class="container relative z-20 text-white text-center text-2xl">
-            <h2 class="font-bold text-5xl mb-8 langBN">
-                {{ __("messages.wel_title") }}
-            </h2>
-            <p class="text-2xl mt-8 langBN">
-                {{ __("messages.wel_desc") }}
-            </p>
-        </div>
-    </div>
-
-    <div class="-mt-10">
-        <div class="container">
-            <div class="rounded-lg bg-white p-4 relative z-20 shadow-lg home-search" id="typewriter">
-                {{ __("messages.about_us") }}
+    @if(config("setting.en_wel"))
+        <div class="relative z-10 pt-48 pb-52 bg-cover bg-center"
+        style="background-image: url({{url(config('setting.im_wel'))}})">
+            <div class="absolute h-full w-full bg-black opacity-70 top-0 left-0 z-10"></div>
+            <div class="container relative z-20 text-white text-center text-2xl">
+                <h2 class="font-bold text-5xl mb-8 langBN">
+                    {{ __("messages.wel_title") }}
+                </h2>
+                <p class="text-2xl mt-8 langBN">
+                    {{ __("messages.wel_desc") }}
+                </p>
             </div>
         </div>
-    </div>
+    @endif
+
+    @if(config("setting.en_typewriter"))
+        <div class="-mt-10">
+            <div class="container">
+                <div class="rounded-lg bg-white p-4 relative z-20 shadow-lg home-search" id="typewriter">
+                    {{ __("messages.about_us") }}
+                </div>
+            </div>
+        </div>
+    @endif
+
 
     {{-- <div class="py-20 text-center">
         <div class="container">
@@ -81,37 +86,43 @@
     </div> --}}
 
 
+    @if(config("setting.en_mo_info_con"))
+        <div class="container text-center pt-14">
+            <h2 class="section-heading">{{ __('messages.mo_info') }}</h2>
+            @if(config("setting.en_im_glass"))
+                <div class="relative mt-10 mb-14 bg-cover rounded-xl py-24 bg-center"
+                    style="background-image: url({{url(config('setting.im_glass'))}}">
+                    <div class="absolute w-full h-full rounded-xl opacity-50 bg-black left-0 top-0"></div>
+                    <div class="relative z-20">
+                        <h2 class="text-white mb-4 text-4xl font-extrabold leading-none tracking-tight md:text-5xl lg:text-6xl dark:text-white">
+                            {{ __("messages.get_in") }}
+                        </h2>
+                        <p class="text-white text-xl flex flex-col justify-center items-center">
+                            {{-- <span
+                                class="border-2 border-white w-12 h-12 text-center pt-1 pl-1 leading-10 text-2xl hover:border-yellow-500 duration-200 rounded-full mb-2"><i
+                                class="fa fa-play"></i>
+                            </span> --}}
+                            {{ __("messages.getting_invol") }}
+                        </a>
+                    </div>
+                </div>
+            @endif
 
-    <div class="container text-center pt-14">
-        <h2 class="section-heading">{{ __('messages.mo_info') }}</h2>
-        <div class="relative mt-10 mb-14 bg-cover rounded-xl py-24 bg-center" style="background-image: url(https://picsum.photos/1200/800)">
-            <div class="absolute w-full h-full rounded-xl opacity-50 bg-black left-0 top-0"></div>
-            <div class="relative z-20">
-                <h2 class="text-white mb-4 text-4xl font-extrabold leading-none tracking-tight md:text-5xl lg:text-6xl dark:text-white">
-                     {{ __("messages.get_in") }}
-                </h2>
-                <p class="text-white text-xl flex flex-col justify-center items-center">
-                    {{-- <span
-                        class="border-2 border-white w-12 h-12 text-center pt-1 pl-1 leading-10 text-2xl hover:border-yellow-500 duration-200 rounded-full mb-2"><i
-                        class="fa fa-play"></i>
-                    </span> --}}
-                    {{ __("messages.getting_invol") }}
-                </a>
-            </div>
+            @if(config("setting.en_newsupdates"))
+                <div class="text-xl">
+                    <h2 class="flex flex-col justify-center items-center mb-4 text-4xl font-extrabold leading-none
+                                tracking-tight md:text-5xl lg:text-6xl dark:text-white">
+                        {{ __("messages.NewsUpdates") }}
+                    </h2>
+                    <p>
+                        {{ __("messages.News & Updates") }}
+                    </p>
+                </div>
+            @endif
         </div>
+    @endif
 
-        <div class="text-xl">
-            <h2 class="flex flex-col justify-center items-center mb-4 text-4xl font-extrabold leading-none
-                         tracking-tight md:text-5xl lg:text-6xl dark:text-white">
-                {{ __("messages.NewsUpdates") }}
-           </h2>
-            <p>
-                {{ __("messages.News & Updates") }}
-            </p>
-        </div>
-    </div>
-
-
+    @if(config("setting.en_im_event"))
     <div class="container pt-14">
         <div class="flex justify-between items-center">
             <div class="flex-1 mr-10 text-lg leading-normal">
@@ -122,24 +133,27 @@
                 <p>{{ __("messages.event_desc") }}</p>
             </div>
             <div class="flex-1 ml-10">
-                <img class="rounded" src="https://picsum.photos/1200/800" alt="">
+                <img class="rounded" src="{{url(config('setting.im_event'))}}" alt="{{ __("messages.event") }}">
             </div>
         </div>
     </div>
-    <div class="container pt-14">
-        <div class="flex justify-between items-center">
-            <div class="flex-1">
-                <img class="rounded" src="https://picsum.photos/1200/800" alt="">
-            </div>
-            <div class="flex-1 ml-10 text-lg leading-normal justify-center items-center">
-                <h2 class="flex flex-col justify-center items-center mb-4 text-4xl font-extrabold leading-none
-                         tracking-tight md:text-5xl lg:text-6xl dark:text-white">
-                        {{ __("messages.Sponsorship") }}
-                </h2>
-                <p>{{ __("messages.Sponsorship_desc") }}</p>
+    @endif
+    @if(config("setting.en_im_sponsorship"))
+        <div class="container pt-14">
+            <div class="flex justify-between items-center">
+                <div class="flex-1">
+                    <img class="rounded" src="{{url(config('setting.im_sponsorship'))}}" alt="{{ __("messages.Sponsorship") }}">
+                </div>
+                <div class="flex-1 ml-10 text-lg leading-normal justify-center items-center">
+                    <h2 class="flex flex-col justify-center items-center mb-4 text-4xl font-extrabold leading-none
+                            tracking-tight md:text-5xl lg:text-6xl dark:text-white">
+                            {{ __("messages.Sponsorship") }}
+                    </h2>
+                    <p>{{ __("messages.Sponsorship_desc") }}</p>
+                </div>
             </div>
         </div>
-    </div>
+    @endif
     {{-- <div class="container pt-14">
         <div class="flex justify-center items-center">
             <a href="" class="btn">Start searching with filters</a>

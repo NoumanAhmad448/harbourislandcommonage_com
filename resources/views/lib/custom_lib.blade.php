@@ -28,6 +28,7 @@
         debug = '{{ config('app.debug') ? 1 : 0 }}';
         debug = debug == "1" ? true : false;
         let err_msg = '{{ __('messages.err_msg') }}';
+        let en_typewriter = {{ config("setting.en_typewriter") }};
     </script>
 
     {{-- add global js file here --}}

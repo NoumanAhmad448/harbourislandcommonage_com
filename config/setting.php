@@ -10,6 +10,7 @@ $public_folder = "public/";
 $images_folder = "images/";
 
 if(config("app.env") == 'production'){
+    $images_folder = $public_folder.$images_folder;
     $js_folder = $public_folder.$js_folder;
     $css_folder = $public_folder.$css_folder;
 }
@@ -25,10 +26,25 @@ return [
     "error" => "error",
     "dash_lines" => "-----------------------",
     "err_500" => 500,
-    "favicon" => $public_folder.$images_folder."favicon.ico",
+    "favicon" => $images_folder."favicon.ico",
     "email" => "harbourislandcommonage@gmail.com",
     "phone_num" => "1-242-805-5687",
     "address" => "North Eleuthera Regatta Association (NERA)",
     "link" => "no-underline hover:underline text-blue-900",
-    "im_wel" => $public_folder.$images_folder."wel.jpg",
+    "im_wel" => $images_folder."wel.jpg",
+    "im_glass" => $images_folder."glass.jpeg",
+    "im_event" => $images_folder."event.jpg",
+    "im_sponsorship" => $images_folder."sponsorship.jpg",
+    "im_welcome" => $images_folder."welcome.jpg",
+    "en_wel" => true,
+    "en_typewriter" => true,
+    "en_mo_info_con" => true,
+    "en_im_glass" => true,
+    "en_newsupdates" => true,
+    "en_im_event" => true,
+    "en_im_sponsorship" => true,
+    "en_footer" => true,
+    "en_contact" => true,
+    "en_articleadvices" => true,
+    "en_articleadvices_con" => true,
 ];

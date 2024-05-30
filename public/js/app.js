@@ -5648,7 +5648,7 @@ jQuery(window).scroll(function () {
 // });
 $(function () {
   var typewriter = "typewriter";
-  if ($("#".concat(typewriter)).length > 0) {
+  if ($("#".concat(typewriter)).length > 0 && en_typewriter) {
     var words = [document.getElementById(typewriter).textContent];
     var i = 0;
     var j = 0;
@@ -5678,6 +5678,9 @@ $(function () {
     type();
   } else {
     var msg = "element with ".concat(typewriter, " id not found");
+    if (!en_typewriter) {
+      console.log("en_typewriter disabled");
+    }
     if (debug) {
       console.log(msg);
     } else {
@@ -5685,7 +5688,6 @@ $(function () {
     }
   }
 });
-//
 
 /***/ }),
 

@@ -89,7 +89,7 @@ jQuery(window).scroll(function () {        //for navbar
 // });
 $(function () {
     const typewriter = "typewriter"
-    if ($(`#${typewriter}`).length > 0) {
+    if ($(`#${typewriter}`).length > 0 && en_typewriter) {
         const words = [document.getElementById(typewriter).textContent];
         let i = 0;
         let j = 0;
@@ -121,6 +121,9 @@ $(function () {
         type();
     }else{
         const msg = `element with ${typewriter} id not found`
+        if(!en_typewriter){
+            console.log(`en_typewriter disabled`)
+        }
         if(debug){
             console.log(msg)
         }else{
@@ -128,4 +131,3 @@ $(function () {
         }
     }
 })
-// 

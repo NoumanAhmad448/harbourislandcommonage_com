@@ -1,18 +1,3 @@
-# <IfModule mime_module>
-#   AddHandler application/x-httpd-ea-php74 .php .php7 .phtml
-# </IfModule>
-
-
-
-# DirectoryIndex index.php
-
-# RewriteEngine On
-# # RewriteBase /
-# # RewriteRule ^$ public/index.php [L]
-# # RewriteRule ^((?!public/).*)$ public/$1 [L,NC]
-# RewriteCond %{HTTPS} off
-# RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
-
 <IfModule mod_rewrite.c>
     <IfModule mod_negotiation.c>
         Options -MultiViews
@@ -32,6 +17,20 @@
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+    # Disable Directory listing
+    Options -Indexes
+
+    # block files which needs to be hidden, specify .example extension of the file
+    <Files ~ "\.(env|json|config.js|md|gitignore|gitattributes|lock|mix.js)$">
+        Order allow,deny
+        Deny from all
+    </Files>
+
+    # in here specify full file name sperator '|'
+    <Files ~ "(artisan)$">
+        Order allow,deny
+        Deny from all
+    </Files>
 </IfModule>
 
 

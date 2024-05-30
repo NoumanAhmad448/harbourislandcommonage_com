@@ -1,4 +1,8 @@
+@if(config("setting.en_articleadvices_con"))
+
 <div class="container">
+    @if(config("setting.en_articleadvices"))
+
     <div class="pt-20">
         <h2 class="section-title text-4xl text-center pb-8 langBN">{{ __('Article & Advices') }}</h2>
         <div class="flex -mx-4">
@@ -34,6 +38,7 @@
             </div>
         </div>
     </div>
+    @endif
 
     {{-- <div class="pt-20 text-lg border-b-2 border-gray-300 pb-16 mb-20">
         <h2 class="section-title text-4xl text-center pb-8 langBN">{{ __('Additional services') }}</h2>
@@ -52,6 +57,7 @@
             </div>
         </div>
     </div> --}}
+    @if(config("setting.en_contact"))
     <div class="py-20 text-lg border-b-2 border-gray-300 pb-16 mb-20 flex flex-col justify-center items-center
                 text-center">
         <h2 class="mb-4 text-4xl font-extrabold leading-none
@@ -62,9 +68,12 @@
             {{ __("messages.contact_desc") }}
         </p>
     </div>
+    @endif
+
+    @if(config("setting.en_footer"))
     <div class="flex pb-12" id="footer">
         <div class="w-1/4 pr-6">
-            <img class="rounded" width="100" src="https://picsum.photos/1200/800" alt="">
+            <img class="rounded" width="100" src="{{url(config('setting.im_welcome'))}}" alt="{{ __("messages.welcome") }}">
             <p class="text-sm mt-7">{{ __("messages.wel_title") }}</p>
         </div>
 
@@ -105,7 +114,8 @@
             <div class="text-sm mt-2 {{config("setting.link")}}"><a href='mailto:{{ config("setting.email")}}'>{{ config("setting.email")}}</a></div>
         </div>
     </div>
-
+    @endif
 
 </div>
-{{-- <img class="w-full" src="https://picsum.photos/1200/800" alt=""> --}}
+@endif
+{{-- <img class="w-full" src="{{url(config('setting.im_sponsorship'))}}" alt=""> --}}
