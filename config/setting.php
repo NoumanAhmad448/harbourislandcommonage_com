@@ -9,6 +9,11 @@ $layout_folder = "layouts";
 $public_folder = "public/";
 $images_folder = "images/";
 
+if(config("app.env") == 'production'){
+    $js_folder = $public_folder.$js_folder;
+    $css_folder = $public_folder.$css_folder;
+}
+
 return [
     "body" => $layout_folder.".body",
     "default_desc" => "Default Description",

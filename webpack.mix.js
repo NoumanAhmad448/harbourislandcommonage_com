@@ -17,8 +17,7 @@ const mix = require('laravel-mix');
 });
 
 
-$public_folder = "";
-// $public_folder = "public/";
+$public_folder = "public/";
 $js_folder = "js";
 $css_folder = "css";
 
