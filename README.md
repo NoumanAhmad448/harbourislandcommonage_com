@@ -99,7 +99,13 @@ cd ~/public_html/website_7171ee6c &&
 php artisan config:clear
 ```
 ```
+php artisan config:clear
+```
 cd ~/public_html/website_7171ee6c &&
+php artisan config:cache
+```
+
+```
 php artisan config:cache
 ```
 

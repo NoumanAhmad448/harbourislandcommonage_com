@@ -1,3 +1,5 @@
+require('./bootstrap');
+
 $(".option").click(function(){
     $('.next').attr('disabled',false);
 })
@@ -5,6 +7,9 @@ $(".option").click(function(){
 $(function(){
     $('.loading-section').fadeOut().removeClass("loader")
     $('#loading').fadeOut()
+    // hide loader
+    $('#loading', '.loading-section').fadeOut();
+    $('.loading-section').removeClass('loader').fadeOut();
 
     $(".show-dropdown, .categories_menu").mouseenter(function(){
         $(".categories_menu").show()
@@ -14,4 +19,3 @@ $(function(){
        $(".categories_menu").hide()
      });
 })
-
