@@ -15,12 +15,7 @@ npm run watch
 3. show loader on user request ```profile.js``` and search for ```hide loader``` & ```show loader```
 4. server logs ```server_logs``` function in ```helper.php```
 5. server configuration ```php_config``` function in ```helper.php```
-6. whm password
-```
-```
-7. DB password
-```
-```
+6. css/js/images folders are meant to be in the root/main folder with sample file names only for local
 8. Checkout storage on server
 ```
 df -hi
