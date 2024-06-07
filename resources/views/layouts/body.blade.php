@@ -11,9 +11,9 @@ use Illuminate\Support\Facades\Cache;
     </head>
     <body>
 
-     @if(!(Cache::store('file')->get('isLoaderLoaded')))
+     @if(config("setting.isLoaderLoaded") && !(Cache::store('file')->get('isLoaderLoaded')))
      {!!
-       '<section class="d-flex justify-content-center align-items-center loading-section">
+       '<section class="d-flex justify-content-center align-items-center loading-section d-none">
             <div id="loading" class="spinner-border text-info text-center" style="width: 90px; height: 90px"
                  role="status">
                 <span class="sr-only">Loading...</span>

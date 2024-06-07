@@ -28,6 +28,12 @@
         </div>
     @endif
 
+    @if(config("setting.en_land_display"))
+    <button class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 border border-gray-400
+        rounded shadow">
+        <a href="{{route("land_create")}}">Land</a>
+    </button>
+    @endif
 
     {{-- <div class="py-20 text-center">
         <div class="container">
@@ -97,11 +103,7 @@
                         <h2 class="text-white mb-4 text-4xl font-extrabold leading-none tracking-tight md:text-5xl lg:text-6xl dark:text-white">
                             {{ __("messages.get_in") }}
                         </h2>
-                        <p class="text-white text-xl flex flex-col justify-center items-center">
-                            {{-- <span
-                                class="border-2 border-white w-12 h-12 text-center pt-1 pl-1 leading-10 text-2xl hover:border-yellow-500 duration-200 rounded-full mb-2"><i
-                                class="fa fa-play"></i>
-                            </span> --}}
+                        <p class="px-2 text-white text-xl flex flex-col justify-center items-center">
                             {{ __("messages.getting_invol") }}
                         </a>
                     </div>
@@ -124,21 +126,26 @@
 
     @if(config("setting.en_im_event"))
     <div class="container pt-14 sm:mt-10">
-        <div class="md:flex md:justify-between md:items-center">
-            <div class="flex-1 mr-10 text-lg leading-normal">
-                <h2 class="flex flex-col justify-center items-center mb-4 text-4xl font-extrabold leading-none
-                         tracking-tight md:text-5xl lg:text-6xl dark:text-white">
-                        {{ __("messages.event") }}
-                </h2>
-                <p>{{ __("messages.event_desc") }}</p>
+        <h2 class="pb-3 flex flex-col justify-center items-center mb-4 text-4xl font-extrabold leading-none
+                 tracking-tight md:text-5xl lg:text-6xl dark:text-white">
+                {{ __("messages.event") }}
+        </h2>
+        @if($data && $data['features'])
+            <div class="md:flex md:flex-wrap md:justify-between md:items-center">
+                @if(count($data['features']) > 0)
+                    @foreach($data['features'] as $feature)
+                        <div class="pt-4 max-w-sm rounded overflow-hidden shadow-lg">
+                            <img class="w-full" src="{{$feature["img"]}}" alt="{{$feature["alt"]}}">
+                            <div class="px-6 py-4">
+                            <div class="font-bold text-xl mb-2">{{$feature["title"]}}</div>
+                            <p class="text-gray-700 text-base">{{$feature["title_desc"]}}
+                            </p>
+                            </div>
+                        </div>
+                    @endforeach
+                @endif
             </div>
-            <div class="flex md:ml-10 mt-5 mt-md-0 lg:justify-between lg:items-center md:flex-1
-            hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300
-            transition ease-in-out delay-150 animate-pulse
-            " data-twe-animation-start="onScroll">
-                <img class="rounded w-full" src="{{url(config('setting.im_event'))}}" alt="{{ __("messages.event") }}">
-            </div>
-        </div>
+        @endif
     </div>
     @endif
     @if(config("setting.en_im_sponsorship"))
@@ -159,13 +166,6 @@
             </div>
         </div>
     @endif
-    {{-- <div class="container pt-14">
-        <div class="flex justify-center items-center">
-            <a href="" class="btn">Start searching with filters</a>
-            <p class="mx-10">or</p>
-            <a href="" class="btn-outline">Start searching on the map</a>
-        </div>
-    </div> --}}
 @endsection
 @section('script')
 @endsection

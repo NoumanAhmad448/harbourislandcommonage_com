@@ -23,10 +23,18 @@ $css_folder = "css";
 
 $js_path = $public_folder+$js_folder;
 $css_path = $public_folder+$css_folder;
+$land_folder = "land/";
+$resource_js = `resources/${$js_folder}/`;
+$resource_css = `resources/${$css_folder}/`;
 
-mix.js('resources/js/app.js', $js_path)
-    .js('resources/js/common_functions.js', $js_path)
-    .js('resources/js/main.js', $js_path)
-    .postCss('resources/css/app.css', $css_path, [
+mix.js(`${$resource_js}app.js`, $js_path)
+    .js(`${$resource_js}common_functions.js`, $js_path)
+    .js(`${$resource_js}main.js`, $js_path)
+    .js(`${$resource_js}${$land_folder}land_create.js`, $js_path+$land_folder)
+    .postCss(`${$resource_css}app.css`, $css_path, [
         //
-    ]);
+    ])
+    .postCss(`${$resource_css}${$land_folder}land_create.css`, $css_path+$land_folder, [
+        //
+    ])
+    ;

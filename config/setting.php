@@ -8,6 +8,7 @@ $js_folder = "js";
 $layout_folder = "layouts";
 $public_folder = "public/";
 $images_folder = "images/";
+$land_folder = "land.";
 
 if(config("app.env") == 'production'){
     $images_folder = $public_folder.$images_folder;
@@ -36,15 +37,24 @@ return [
     "im_event" => $images_folder."event.jpg",
     "im_sponsorship" => $images_folder."sponsorship.jpg",
     "im_welcome" => $images_folder."welcome.jpg",
+    "im_log" => $images_folder."logo.png",
+    "im_log_desc" => "",
     "en_wel" => true,
     "en_typewriter" => true,
     "en_mo_info_con" => true,
     "en_im_glass" => true,
     "en_newsupdates" => true,
     "en_im_event" => true,
-    "en_im_sponsorship" => true,
+    "en_im_sponsorship" => false,
+    "en_works" => true,
     "en_footer" => true,
     "en_contact" => true,
     "en_articleadvices" => true,
     "en_articleadvices_con" => true,
+    "land_create" => $land_folder."land_create",
+    "en_land_display" => true,
+    "land_create_css" => $land_folder."land_create.css",
+    "land_create_js" => $land_folder."land_create.js",
+    "svg_toggle" => '',
+    "isLoaderLoaded" => false,
 ];
