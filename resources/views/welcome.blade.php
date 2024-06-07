@@ -138,7 +138,7 @@
                             <img class="w-full" src="{{$feature["img"]}}" alt="{{$feature["alt"]}}">
                             <div class="px-6 py-4">
                             <div class="font-bold text-xl mb-2">{{$feature["title"]}}</div>
-                            <p class="text-gray-700 text-base">{{$feature["title_desc"]}}
+                            <p class="text-gray-700 text-base">{!! $feature["title_desc"] !!}
                             </p>
                             </div>
                         </div>
