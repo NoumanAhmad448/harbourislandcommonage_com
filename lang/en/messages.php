@@ -23,7 +23,7 @@ return [
     "contact_desc" => "Have questions or want to learn more about the North Eleuthera Regatta? Get in touch with our team and we'll be happy to assist you.
         Join us at the North Eleuthera Regatta and experience the magic of Bahamian sailing culture firsthand. Let the adventure begin!",
     "features1" => "Digital Record Keeping",
-    "features1_desc" => "Say goodbye to cumbersome paperwork. Registered commoners can now maintain their property and account records digitally, making it easier to manage and update information.",
+    "features1_desc" => "Say goodbye to cumbersome paperwork. Registered commoners can now maintain their property and account records digitally, making it easier to manage and update <br/> information.",
     "features2" => "Executive Board Dashboard",
     "features2_desc" => "The executive board gains a comprehensive view of all lands available and the occupancy status of each parcel. This allows for better decision-making and efficient allocation of resources",
     "features3" => "Secure Access",
