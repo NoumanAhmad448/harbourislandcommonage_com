@@ -22,6 +22,8 @@ df -hi
 ```
 9. global css file ```app.css```
 10. sample or generic file ```sample_body.blade.php```
+11. use sample view|css|js file to create fresh new view|css|js and update everything accordingly.Copy css|js
+files in the root folder of laravel. Don't forget to update ```webpack.mix.js```
 
 ## Local Setup (Development)
 1. install xampp (Required PHP version -> 8.1) [Download Link](https://downloadsapachefriends.global.ssl.fastly.net/7.4.30/xampp-windows-x64-7.4.30-1-VC15-installer.exe?from_af=true)
@@ -113,6 +115,10 @@ storage logs
 ```
 cd ~/public_html/website_7171ee6c/storage/logs/
 ```
+make/create controller
+```
+php artisan make:controller
+```
 
 
 ### Change s3 bucket
@@ -188,7 +194,15 @@ deployment.yml
 
 ## Plan
 1. create a property table on the home page
-2. show all the information on the home page
+[title,description,location, size,city,country]
+1. create a user
+2. check for user details
+2. add property details
+3. property images
+4. property extra files
+5. add Google captcha
+6. send email to the user provided address
+
 3. list the property data on the home page
 4. create an admin panel
 5. let admin login
