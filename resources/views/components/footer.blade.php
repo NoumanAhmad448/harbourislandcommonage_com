@@ -46,7 +46,7 @@
             {{ __("messages.contact") }}
        </h2>
         <p>
-            {{ __("messages.contact_desc") }}
+            {{ __("messages.getting_invol") }}
         </p>
     </div>
     @endif
