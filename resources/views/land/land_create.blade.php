@@ -4,7 +4,10 @@
 @endsection
 @section('content')
     @include('session_msg')
-    @include('components.forms.register_user')
+    <form id="land_reg">
+        @csrf
+        @include('components.register_land')
+    </form>
 @endsection
 @section('script')
 <script src="{{ url(config('setting.land_create_js')) }}"></script>
