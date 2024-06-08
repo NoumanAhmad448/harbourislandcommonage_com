@@ -34,4 +34,13 @@ return [
     "features5_desc" => "Stay informed about the rules and regulations governing land use and commonage management. All relevant statutes and guidelines are accessible within the platform, ensuring compliance and accountability",
     "features6" => "Communication Hub",
     "features6_desc" => "Connect with fellow commoners and the executive board through our built-in communication features. Stay updated on important announcements, meetings, and community initiatives",
+    "reg_form_title" => "Register Your Land With Us",
+    "PersonalDetails" => "Personal Details",
+    "PersonalDetails_desc" => "Please fill out all the fields.",
+    "FirstName" => "First Name",
+    "LastName" => "Last Name",
+    "EmailAddress" => "Email Address",
+    "EmailAddressSample" => "email@domain.com",
+    "SubmitButton" => "Submit",
+    "create_land_btn" => "Register Land",
 ];
