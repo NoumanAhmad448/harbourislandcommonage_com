@@ -57,4 +57,6 @@ return [
     "land_create_js" => $land_folder."land_create.js",
     "svg_toggle" => '',
     "isLoaderLoaded" => false,
+    "h2_css" => "pb-3 flex flex-col justify-center items-center mb-4 text-4xl font-extrabold leading-none
+        tracking-tight md:text-5xl lg:text-6xl dark:text-white",
 ];
