@@ -54,7 +54,7 @@ window.popup_message = function(d){
 }
 
 // Function to toggle the dropdown state
-window.toggleDropdown = function(toggleEl, state) {
+window.toggleDropdown = function(toggleEl, state=false) {
     if(debug){
         console.log(`before`)
         console.log(state)

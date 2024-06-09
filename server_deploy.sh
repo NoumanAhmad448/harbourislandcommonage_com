@@ -2,7 +2,7 @@
 php artisan down || true
 
 #Install/update composer dependecies
-composer update
+# composer update
 
 # Install/update composer dependecies
 #composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev --no-cache
@@ -12,6 +12,9 @@ php artisan cache:clear
 
 # Run database migrations
 php artisan migrate --force
+
+# Run seeder
+php artisan db:seed
 
 #generate artisan key
 php artisan key:generate
