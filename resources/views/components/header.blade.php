@@ -12,10 +12,8 @@
                     href="{{route('index')}}">{{ __('Home') }}</a></li>
             <li><a class="inline-block p-4 text-white {{ request('type') == '3' ? 'bg-gray-50' : '' }}"
                     href="">{{ __('Land') }}</a></li>
-            <li><a class="inline-block p-4 text-white {{ request('type') == '2' ? 'bg-gray-50' : '' }}"
-                    href="">{{ __('Villa') }}</a></li>
             <li><a class="inline-block p-4 text-white {{ request('type') == '1' ? 'bg-gray-50' : '' }}"
-                    href="">{{ __('Apartment') }}</a></li>
+                    href="">{{ __('messages.Residential') }}</a></li>
             <li><a class="inline-block p-4 text-white {{ request()->is('*page/about-us*') ? 'bg-gray-50' : '' }}"
                     href="#footer">
                     {{ __('messages.contact') }}</a></li>

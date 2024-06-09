@@ -52,5 +52,6 @@ return [
     "land_title" => 'Land Title',
     "land_des" => 'Land Registeration Description',
     "location_desc" => 'Location/Address',
+    "Residential" => 'Residential',
 
 ];
