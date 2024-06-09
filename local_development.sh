@@ -1,11 +1,5 @@
-# Turn on maintenance mode
-php artisan down || true
-
-#Install/update composer dependecies
-# composer update
-
 # Install/update composer dependecies
-#composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev --no-cache
+composer install
 
 # Clear caches
 php artisan cache:clear
@@ -14,13 +8,13 @@ php artisan cache:clear
 php artisan migrate --force
 
 # Run seeder
-# yes | php artisan db:seed
+yes | php artisan db:seed
 
 #generate artisan key
-yes | php artisan key:generate
+# yes | php artisan key:generate
 
 # change folder permission
-yes | chmod -R 777 storage bootstrap/cache
+# yes | chmod -R 777 storage bootstrap/cache
 
 # Clear and cache routes
 php artisan route:cache
@@ -32,10 +26,10 @@ php artisan config:cache
 php artisan view:cache
 
 # Install node modules
-#npm install
+npm install
 
 # Build assets using Laravel Mix
-#npm run prod
+npm run watch
 
 # Turn off maintenance mode
-php artisan up
+# php artisan up

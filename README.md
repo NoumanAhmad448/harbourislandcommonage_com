@@ -26,14 +26,15 @@ df -hi
 files in the root folder of laravel. Don't forget to update ```webpack.mix.js```
 
 ## Local Setup (Development)
-1. install xampp (Required PHP version -> 8.1) [Download Link](https://downloadsapachefriends.global.ssl.fastly.net/7.4.30/xampp-windows-x64-7.4.30-1-VC15-installer.exe?from_af=true)
+1. install xampp (Required PHP version -> 8.2|8.0|8.1) [Download Link](https://www.apachefriends.org/)
 2. download node 16.18.0
 2. Go to .env file and change the DB connection
 3. Create a database
 ```
 thesunr8_harbourislandcommonage_com
 ```
-4. You need to follow of either mentioned path
+4. [Visit this file](/database/seeders/DatabaseSeeder.php) and uncomment everything inside ```run``` method
+5. You need to follow of either mentioned path
     1. One
         1. run
            1. usmansaleem234_lyskills_new.sql
@@ -41,10 +42,8 @@ thesunr8_harbourislandcommonage_com
         file locally. These files are avaiable in the source code, path /
         3. Add primary key manually in every table or create a alter query and try changing table name and primary key column
     2. Second
-        1. php artisan migrate
-        2. Get dump from someone else and upload
-5. composer install
-6. npm install
+        1. run [this file](/local_development.sh)
+6. Get dump from someone else and upload
 7. php artisan serve --port=8081
 
 ## Troubleshooting

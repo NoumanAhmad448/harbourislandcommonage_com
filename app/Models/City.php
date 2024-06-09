@@ -46,4 +46,8 @@ class City extends Model
     {
         return $this->belongsTo(State::class);
     }
+    // public function getCity(Builder $query)
+    // {
+    //     return $query->where("country_id", config("setting.bahmas_country_code"));
+    // }
 }

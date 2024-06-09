@@ -70,4 +70,6 @@ return [
     "size" => 'size',
     "city" => 'city',
     "country" => 'country',
+    "bahmas_country_code" => 17,
+    "en_country" => false,
 ];
