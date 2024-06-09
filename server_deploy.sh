@@ -1,6 +1,9 @@
 # Turn on maintenance mode
 php artisan down || true
 
+#Install/update composer dependecies
+composer update
+
 # Install/update composer dependecies
 #composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev --no-cache
 

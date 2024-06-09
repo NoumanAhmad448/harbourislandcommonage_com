@@ -52,3 +52,48 @@ window.popup_message = function(d){
         show_message(text=d)
     }
 }
+
+// Function to toggle the dropdown state
+window.toggleDropdown = function(toggleEl, state) {
+    if(debug){
+        console.log(`before`)
+        console.log(state)
+        console.log(toggleEl)
+        console.log(dash_lines)
+    }
+    state = !state;
+    if(debug){
+        console.log(`after`)
+        console.log(state)
+    }
+    toggleEl.toggleClass('hidden')
+    if(debug){
+        console.log(toggleEl)
+        console.log(dash_lines)
+    }
+}
+
+window.searchDropDown = function(searchInput,
+        dropdownMenu
+) {
+    let searchTerm = searchInput.val().toLowerCase();
+    let items = dropdownMenu.children('p');
+    console.log(items)
+    if(items.length > 0){
+        items.each((_,item) => {
+            if(debug){
+                console.log(item)
+            }
+            const text = $(item).text().toLowerCase();
+            if (text.includes(searchTerm)) {
+                item.style.display = 'block';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    }else{
+        if(debug){
+            console.log(`items length ${items.length}`)
+        }
+    }
+}

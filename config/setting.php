@@ -61,4 +61,13 @@ return [
     "h2_css" => "pb-3 flex flex-col justify-center items-center mb-4 text-4xl font-extrabold leading-none
         tracking-tight md:text-5xl lg:text-6xl dark:text-white",
     "red_star" => '<span class="red_cross">*</span>',
+    "title" => 'title',
+    "land_title" => 'Land Title',
+    "description" => 'description',
+    "land_des" => 'Land Registeration Description',
+    "location" => 'location',
+    "location_desc" => 'Location/Address',
+    "size" => 'size',
+    "city" => 'city',
+    "country" => 'country',
 ];
