@@ -48,7 +48,7 @@ return [
     "land_registeration" => "Land Registeration",
     "country_desc" => 'Choose Country',
     "size_desc" => 'Size/Area',
-    "city_desc" => 'City',
+    "city_desc" => 'Choose City',
     "land_title" => 'Land Title',
     "land_des" => 'Land Registeration Description',
     "location_desc" => 'Location/Address',
