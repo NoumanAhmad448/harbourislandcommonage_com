@@ -14,13 +14,13 @@ php artisan cache:clear
 php artisan migrate --force
 
 # Run seeder
-php artisan db:seed
+yes | php artisan db:seed
 
 #generate artisan key
-php artisan key:generate
+yes | php artisan key:generate
 
 # change folder permission
-chmod -R 777 storage bootstrap/cache
+yes | chmod -R 777 storage bootstrap/cache
 
 # Clear and cache routes
 php artisan route:cache
