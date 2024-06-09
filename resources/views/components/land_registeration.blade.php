@@ -26,10 +26,12 @@
             @include('components.forms.col', ['input' => 'components.forms.dropdown',
             "col" => 3 , "prop" => ["id" => config("setting.city"), "label" => __("messages.city_desc"),
             ]])
-            @include('components.forms.col', ['input' => 'components.forms.dropdown',
-            "col" => 2 , "prop" => ["col" => 2,"id" => config("setting.country"),
-            "label" => __("messages.country_desc"),
-            ]])
+            @if(config("setting.en_country"))
+                @include('components.forms.col', ['input' => 'components.forms.dropdown',
+                "col" => 2 , "prop" => ["col" => 2,"id" => config("setting.country"),
+                "label" => __("messages.country_desc"),
+                ]])
+            @endif
         </div>
     </div>
 </div>
