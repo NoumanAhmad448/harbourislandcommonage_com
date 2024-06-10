@@ -53,5 +53,9 @@ return [
     "land_des" => 'Land Registeration Description',
     "location_desc" => 'Location/Address',
     "Residential" => 'Residential',
+    "file_upload_desc" => 'Upload File(s)',
+    "file_upload_msg" => 'PNG, JPG only',
+    "file_upload_title" => '<span class="font-semibold">Click to upload</span>
+            or drag and drop',
 
 ];

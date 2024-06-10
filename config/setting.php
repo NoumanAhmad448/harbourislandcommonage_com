@@ -72,4 +72,7 @@ return [
     "country" => 'country',
     "bahmas_country_code" => 17,
     "en_country" => false,
+    "app_name" => "harbourislandcommonage.com",
+    "en_land_reg_file" => true,
+    "land_reg_file_upload" => "file_upload",
 ];
