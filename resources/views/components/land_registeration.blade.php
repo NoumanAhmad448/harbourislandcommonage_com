@@ -32,6 +32,12 @@
                 "label" => __("messages.country_desc"),
                 ]])
             @endif
+            @if(config("setting.en_land_reg_file"))
+                @include('components.forms.col', ['input' => 'components.forms.file',
+                 "prop" => ["col" => 2,"id" => config("setting.land_reg_file_upload"),
+                 "include_star" => false, "label" => __("messages.file_upload_desc"),
+                ]])
+            @endif
         </div>
     </div>
 </div>

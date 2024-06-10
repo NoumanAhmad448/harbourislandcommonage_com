@@ -97,3 +97,16 @@ window.searchDropDown = function(searchInput,
         }
     }
 }
+
+window.showImage = function(input,show_images_el="show_images") {
+    if (input.files && input.files.length > 0){
+        const reader = new FileReader();
+        for (let img of input.files){
+            reader.onload = function (e) {
+                $(`.${show_images_el}`)
+                    .append(`<img src=${reader.result} width="150" class="pr-4"/>`)
+            }
+            reader.readAsDataURL(img);
+        }
+    }
+}

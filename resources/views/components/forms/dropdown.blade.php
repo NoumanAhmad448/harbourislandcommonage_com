@@ -57,12 +57,8 @@ if(!$data){
             @endforeach
         @endif
     </div>
-    <script>
-        const {{$id}}loader = $('#{{$id}}loader');
-        if({{$id}}loader){
-            {{$id}}loader.toggleClass("hidden");
-        }
-    </script>
+    @include(config("files.components").".loader_script", ["prop" => ['id' => $id]])
+
 </div>
 
 <script>
