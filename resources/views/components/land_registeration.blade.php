@@ -11,32 +11,37 @@
 
     <div class="lg:col-span-2">
         <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
-            @include('components.forms.col', ['input' => 'components.forms.field',
+            @include(config("files.components").'.forms.col', ['input' => config("files.components").'.forms.field',
             "prop" => ["id" => config("setting.title"), "label" => __("messages.land_title"),
             ]])
-            @include('components.forms.col', ['input' => 'components.forms.field',
+            @include(config("files.components").'.forms.col', ['input' => config("files.components").'.forms.field',
             "prop" => ["id" => config("setting.description"), "label" => __("messages.land_des"),
             ]])
-            @include('components.forms.col', ['input' => 'components.forms.field',
+            @include(config("files.components").'.forms.col', ['input' => config("files.components").'.forms.field',
             "prop" => ["id" => config("setting.location"), "label" => __("messages.location_desc"),
             ]])
-            @include('components.forms.col', ['input' => 'components.forms.field',
+            @include(config("files.components").'.forms.col', ['input' => config("files.components").'.forms.field',
             "prop" => ["id" => config("setting.size"), "label" => __("messages.size_desc"),
             ]])
-            @include('components.forms.col', ['input' => 'components.forms.dropdown',
+            @include(config("files.components").'.forms.col', ['input' => config("files.components").'.forms.dropdown',
             "col" => 3 , "prop" => ["id" => config("setting.city"), "label" => __("messages.city_desc"),
             ]])
             @if(config("setting.en_country"))
-                @include('components.forms.col', ['input' => 'components.forms.dropdown',
+                @include(config("files.components").'.forms.col', ['input' => config("files.components").'.forms.dropdown',
                 "col" => 2 , "prop" => ["col" => 2,"id" => config("setting.country"),
                 "label" => __("messages.country_desc"),
                 ]])
             @endif
             @if(config("setting.en_land_reg_file"))
-                @include('components.forms.col', ['input' => 'components.forms.file',
+                @include(config("files.components").'.forms.col', ['input' => config("files.components").'.forms.file',
                  "prop" => ["col" => 2,"id" => config("setting.land_reg_file_upload"),
                  "include_star" => false, "label" => __("messages.file_upload_desc"),
+                 "is_multiple" => true,
                 ]])
+            @endif
+            @if(config("setting.en_gc"))
+                @include(config("files.components").'.forms.col', ['input' => config("files.components").'.forms.captcha',
+                 ])
             @endif
         </div>
     </div>

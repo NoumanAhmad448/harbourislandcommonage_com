@@ -1,6 +1,6 @@
 @php
     $text = !empty($text) ? $text : __('messages.create_land_btn');
-    $id = $id ?? "password";
+    $id = $id ?? config("form.password");
     $include_star = $include_star ?? true;
 
 @endphp

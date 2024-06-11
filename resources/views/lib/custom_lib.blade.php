@@ -28,8 +28,13 @@
         let debug = '{{ config('app.debug') ? 1 : 0 }}';
         debug = debug == "1" ? true : false;
         let err_msg = '{{ __('messages.err_msg') }}';
+        let file_upload_ft = '{{ __('messages.file_upload_ft') }}';
         let en_typewriter = {{ config("setting.en_typewriter") }};
         let dash_lines = "{{ config("setting.dash_lines") }}";
+        let fuas = "{{ config("setting.fuas") }}";
+        let fuasm = "{{ __("messages.fuasm") }}";
+        let img_val_rules =  {!! config("form.img_val_rules_json") !!};
+
     </script>
 
     {{-- add global js file here --}}

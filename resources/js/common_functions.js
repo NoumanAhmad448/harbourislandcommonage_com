@@ -27,10 +27,15 @@ window.popup_message = function(d){
         show_message(text=d[0])
     }
     else if (typeof d === "object"){
-        show_message(text=err_msg)
-    }
-    else if(typeof d === "json"){
-        var d = JSON.parse(d.responseText).errors;
+        try {
+            var dd = JSON.parse(d.responseText);
+            if(dd && dd.error){
+                d = dd.error
+            }
+        } catch (e) {
+            show_message(text=err_msg)
+            return console.error(e);
+        }
 
         if(typeof d == "string"){
               show_message(text=d)
@@ -38,17 +43,21 @@ window.popup_message = function(d){
             show_message(text=d[0])
         }
         else if(typeof d == "object"){
-            if(d["course_img"]){
-                if(Array.isArray(d["course_img"])){
-                    show_message(text= d["course_img"][0])
+            let msg = "";
+            for (const key in d) {
+                if(Array.isArray(d[key])){
+                    msg += `${key} ${d[key][0]}\n`
                 }
                 else if(typeof d == "string"){
-                    show_message(text=d["course_img"])
+                    msg += `${key} ${d[key]}\n`
                 }
             }
+            show_message(msg)
+        }else{
+            show_message(text=err_msg)
         }
-
-    }else if(typeof d === "string"){
+    }
+    else if(typeof d === "string"){
         show_message(text=d)
     }
 }
@@ -98,15 +107,36 @@ window.searchDropDown = function(searchInput,
     }
 }
 
-window.showImage = function(input,show_images_el="show_images") {
-    if (input.files && input.files.length > 0){
-        const reader = new FileReader();
-        for (let img of input.files){
+window.showImage = function(input,show_images_el="show_images",validImageTypes=false) {
+    let files = input.files
+    if (files && files.length > 0){
+        $(`.${show_images_el}`).text("")
+        if(!validImageTypes){
+            var validImageTypes = img_val_rules ;
+        }
+        for (let file of files){
+            const reader = new FileReader();
+            var fileType = file["type"];
+
+            if ($.inArray(fileType, validImageTypes) < 0) {
+                popup_message(file_upload_ft)
+                $(`.${show_images_el}`).text("")
+              } else if (file['size'] / 1024 / 1024 == fuas) {
+                popup_message(fuasm)
+                $(`.${show_images_el}`).text("")
+              }
+            else{
+            reader.fileName = file.name
             reader.onload = function (e) {
                 $(`.${show_images_el}`)
-                    .append(`<img src=${reader.result} width="150" class="pr-4"/>`)
+                    .append(`<img
+                    id='${file.lastModified}img'
+                    src=${reader.result} width="150" height="150" class="pr-4 rounded-lg
+                    transition-all duration-300 cursor-pointer
+                    h-auto max-w-lg
+                    "/>`)
             }
-            reader.readAsDataURL(img);
+            reader.readAsDataURL(file)}
         }
     }
 }
