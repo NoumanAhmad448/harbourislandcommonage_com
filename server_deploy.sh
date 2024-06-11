@@ -5,11 +5,11 @@ php artisan down || true
 # composer update
 
 # Install/update composer dependecies
-#composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev --no-cache
+#/opt/cpanel/composer/bin/composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev --no-cache
 
 # Install Specific package
-/opt/cpanel/composer/bin/composer require anhskohbo/no-captcha
-/opt/cpanel/composer/bin/composer require laravel/fortify
+# /opt/cpanel/composer/bin/composer require anhskohbo/no-captcha
+
 
 # Clear caches
 php artisan cache:clear
