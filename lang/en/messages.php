@@ -1,5 +1,6 @@
 <?php
 
+$fuas = config('setting.fuas');
 return [
     "err_msg" => "Something went wrong",
     "welcome" => "welcome",
@@ -54,8 +55,10 @@ return [
     "location_desc" => 'Location/Address',
     "Residential" => 'Residential',
     "file_upload_desc" => 'Upload File(s)',
-    "file_upload_msg" => 'PNG, JPG only',
+    "file_upload_msg" => 'PNG, JPG,jpeg only',
     "file_upload_title" => '<span class="font-semibold">Click to upload</span>
             or drag and drop',
+    "file_upload_ft" => 'Please upload an image of allowed format',
+    "fuasm" => "Image size must be less than {$fuas}MB",
 
 ];

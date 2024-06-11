@@ -11,6 +11,7 @@ $data = $prop["data"] ?? "";
 // by default pick the column name from the table
 $message = $prop["message"] ?? __("messages.file_upload_msg");
 $input_title = $prop["input_title"] ?? __("messages.file_upload_title");
+$is_multiple = $prop["is_multiple"] ?? false;
 
 @endphp
 <section id="{{$id}}loader">
@@ -30,9 +31,11 @@ $input_title = $prop["input_title"] ?? __("messages.file_upload_title");
             </p>
             <p class="text-xs text-gray-500 dark:text-gray-400">{!! $message !!}</p>
         </div>
-        <input id="{{$id}}" type="file" class="hidden" onchange="showImage(this)" />
+        <input name="{{$id}}" id="{{$id}}" type="file" class="hidden" onchange="showImage(this, 'image{{$id}}')"
+        @if($is_multiple) multiple @endif
+        />
     </label>
 </div>
 @include(config("files.components").".loader_script", ["prop" => ['id' => $id]])
-<section class="show_images flex items-center justify-center mt-5">
+<section class="image{{$id}} flex items-center justify-center mt-5">
 </section>

@@ -2,7 +2,10 @@
 
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
-
+use Illuminate\Http\Exceptions\HttpResponseException;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+use App\Rules\IsScriptAttack;
+use App\Rules\NameRules;
 
 if (!function_exists('check_input')){
      function check_input($u_input ){
@@ -100,4 +103,19 @@ if (!function_exists('server_logs')){
             return response()->json([config("setting.error"), __("messages.err_msg"),$response_status]);
         }
    }
+}
+if (!function_exists('failValidation')){
+    function failValidation($validator): void {
+        try{
+            $errors = $validator->errors();
+        }catch(AccessDeniedHttpException $e){
+            $errors =  config("setting.ad");
+            if(config("app.debug")){
+                dump($validator->errors());
+            }
+        }
+        throw new HttpResponseException(response()->json([config("setting.error") => $errors],
+                    config("setting.err_422"),
+        ));
+    }
 }

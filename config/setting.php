@@ -8,7 +8,7 @@ $js_folder = "js";
 $layout_folder = "layouts";
 $public_folder = "public/";
 $images_folder = "images/";
-$land_folder = "land.";
+$land_folder = "land/";
 
 if(config("app.env") == 'production'){
     $images_folder = $public_folder.$images_folder;
@@ -27,6 +27,7 @@ return [
     "error" => "error",
     "dash_lines" => "-----------------------",
     "err_500" => 500,
+    "err_422" => 422,
     "favicon" => $images_folder."favicon.ico",
     "email" => "harbourislandcommonage@gmail.com",
     "phone_num" => "1-242-805-5687",
@@ -54,8 +55,8 @@ return [
     "land_create" => $land_folder."land_create",
     "en_land_display" => true,
     "en_reg_form" => true,
-    "land_create_css" => $land_folder."land_create.css",
-    "land_create_js" => $land_folder."land_create.js",
+    "land_create_css" => "{$css_folder}/{$land_folder}land_create.css",
+    "land_create_js" => "{$js_folder}/{$land_folder}land_create.js",
     "svg_toggle" => '',
     "isLoaderLoaded" => false,
     "h2_css" => "pb-3 flex flex-col justify-center items-center mb-4 text-4xl font-extrabold leading-none
@@ -75,4 +76,7 @@ return [
     "app_name" => "harbourislandcommonage.com",
     "en_land_reg_file" => true,
     "land_reg_file_upload" => "file_upload",
+    "fuas" => 100,
+    "en_gc" => true,
+    "ad" => "token is missing in the header",
 ];

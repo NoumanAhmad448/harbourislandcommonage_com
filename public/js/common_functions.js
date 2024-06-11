@@ -33877,21 +33877,31 @@ window.popup_message = function (d) {
   if (Array.isArray(d)) {
     show_message(text = d[0]);
   } else if (_typeof(d) === "object") {
-    show_message(text = err_msg);
-  } else if (typeof d === "json") {
-    var d = JSON.parse(d.responseText).errors;
+    try {
+      var dd = JSON.parse(d.responseText);
+      if (dd && dd.error) {
+        d = dd.error;
+      }
+    } catch (e) {
+      show_message(text = err_msg);
+      return console.error(e);
+    }
     if (typeof d == "string") {
       show_message(text = d);
     } else if (Array.isArray(d) && d.length > 1) {
       show_message(text = d[0]);
     } else if (_typeof(d) == "object") {
-      if (d["course_img"]) {
-        if (Array.isArray(d["course_img"])) {
-          show_message(text = d["course_img"][0]);
+      var msg = "";
+      for (var key in d) {
+        if (Array.isArray(d[key])) {
+          msg += "".concat(key, " ").concat(d[key][0], "\n");
         } else if (typeof d == "string") {
-          show_message(text = d["course_img"]);
+          msg += "".concat(key, " ").concat(d[key], "\n");
         }
       }
+      show_message(msg);
+    } else {
+      show_message(text = err_msg);
     }
   } else if (typeof d === "string") {
     show_message(text = d);
@@ -33942,24 +33952,46 @@ window.searchDropDown = function (searchInput, dropdownMenu) {
 };
 window.showImage = function (input) {
   var show_images_el = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "show_images";
-  if (input.files && input.files.length > 0) {
-    var reader = new FileReader();
-    var _iterator = _createForOfIteratorHelper(input.files),
-      _step;
-    try {
-      for (_iterator.s(); !(_step = _iterator.n()).done;) {
-        var img = _step.value;
-        reader.onload = function (e) {
-          $(".".concat(show_images_el)).append("<img src=".concat(reader.result, " width=\"150\" class=\"pr-4\"/>"));
-        };
-        reader.readAsDataURL(img);
+  var validImageTypes = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+  return function (validImageTypes) {
+    var files = input.files;
+    if (files && files.length > 0) {
+      $(".".concat(show_images_el)).text("");
+      if (!validImageTypes) {
+        var validImageTypes = img_val_rules;
       }
-    } catch (err) {
-      _iterator.e(err);
-    } finally {
-      _iterator.f();
+      var _iterator = _createForOfIteratorHelper(files),
+        _step;
+      try {
+        var _loop = function _loop() {
+            var file = _step.value;
+            var reader = new FileReader();
+            fileType = file["type"];
+            if ($.inArray(fileType, validImageTypes) < 0) {
+              popup_message(file_upload_ft);
+              $(".".concat(show_images_el)).text("");
+            } else if (file['size'] / 1024 / 1024 == fuas) {
+              popup_message(fuasm);
+              $(".".concat(show_images_el)).text("");
+            } else {
+              reader.fileName = file.name;
+              reader.onload = function (e) {
+                $(".".concat(show_images_el)).append("<img\n                    id='".concat(file.lastModified, "img'\n                    src=").concat(reader.result, " width=\"150\" height=\"150\" class=\"pr-4 rounded-lg\n                    transition-all duration-300 cursor-pointer\n                    h-auto max-w-lg\n                    \"/>"));
+              };
+              reader.readAsDataURL(file);
+            }
+          },
+          fileType;
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          _loop();
+        }
+      } catch (err) {
+        _iterator.e(err);
+      } finally {
+        _iterator.f();
+      }
     }
-  }
+  }(validImageTypes);
 };
 })();
 
