@@ -50,6 +50,9 @@ class LandCreate extends FormRequest
         if(!Auth::user()){
             $messages = $this->nameRules->userValidationMsg();
         }
+        $messages = array_merge($messages,$this->nameRules->landRegValMsg(),
+            $this->nameRules->captchaValidation()
+        );
         return $messages;
     }
 

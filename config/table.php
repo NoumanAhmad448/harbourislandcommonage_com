@@ -18,6 +18,7 @@ return [
     'is_active' => 'is_active',
     'user' => 'user',
     'link' => 'link',
+    "user_id" => "user_id",
 ];
 
 ?>

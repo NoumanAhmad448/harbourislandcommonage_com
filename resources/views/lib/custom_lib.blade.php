@@ -34,6 +34,9 @@
         let fuas = "{{ config("setting.fuas") }}";
         let fuasm = "{{ __("messages.fuasm") }}";
         let img_val_rules =  {!! config("form.img_val_rules_json") !!};
+        let api_message =  "{{ config('setting.message') }}";
+        let api_is_success =  "{{ config('setting.is_success') }}";
+        let default_timeout =  "{{ config('setting.default_timeout') }}";
 
     </script>
 

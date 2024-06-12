@@ -35,11 +35,27 @@ class CreateNewUser implements CreatesNewUsers
     }
 
     public function createUser(array $input): User{
-        $data = $input;
-        if(!$input[config("form.name")] && $input[config("form.first_name")]){
-            $data[config("form.name")] = $input[config("form.first_name")]." ".$input[config("form.lastname")];
+        $data = [];
+
+        logs($input);
+        if(!is_key_exists(config("form.name"),$input)){
+            if(is_key_exists(config("form.first_name"),$input) &&
+                $input[config("form.first_name")]){
+                $data[config("form.name")] = $input[config("form.first_name")]." ";
+
+            if(is_key_exists(config("form.lastname"),$input) &&
+                $input[config("form.lastname")]){
+                $data[config("form.name")] .= $input[config("form.lastname")];
+            }
+            if(!$data[config("form.name")]){
+                $data[config("form.name")] = config("setting.suname");
+            }
+        }
+        }else{
+            $data[config("form.name")] = $input[config("form.name")];
         }
         $data[config("form.password")] = Hash::make($input[config("form.password")]);
+        $data[config("form.email")] = $input[config("form.email")];
         return User::create($data);
     }
 }

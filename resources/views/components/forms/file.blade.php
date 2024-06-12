@@ -31,7 +31,7 @@ $is_multiple = $prop["is_multiple"] ?? false;
             </p>
             <p class="text-xs text-gray-500 dark:text-gray-400">{!! $message !!}</p>
         </div>
-        <input name="{{$id}}" id="{{$id}}" type="file" class="hidden" onchange="showImage(this, 'image{{$id}}')"
+        <input name="{{$id}}@if($is_multiple)[]@endif" id="{{$id}}" type="file" class="hidden" onchange="showImage(this, 'image{{$id}}')"
         @if($is_multiple) multiple @endif
         />
     </label>
