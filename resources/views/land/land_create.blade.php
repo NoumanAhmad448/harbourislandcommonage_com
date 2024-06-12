@@ -3,10 +3,9 @@
 <link rel="stylesheet" href="{{ url(config('setting.land_create_css')) }}">
 @endsection
 @section('content')
-    @include('session_msg')
     <form id="land_reg" enctype="multipart/form-data">
-        @csrf
-        @include('components.register_land')
+        @include(config("files.components").'.csrf')
+        @include(config("files.components").'.register_land')
     </form>
 @endsection
 @section('script')

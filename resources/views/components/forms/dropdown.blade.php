@@ -34,10 +34,10 @@ if(!$data){
         @if ($include_star)
             {!! config('setting.red_star') !!}
         @endif
-        @include("components.bottom_arrow")
+        @include(config("files.components").".bottom_arrow")
     </button>
     <section id="{{$id}}loader">
-        @include("components.loader")
+        @include(config("files.components").".loader")
     </section>
     <div id="{{$id}}dropdown" autocomplete="off"
         class="@If($data) max-h-52 @endif z-50 hidden overflow-y-scroll md:col-span-{{$col}} @if($move_btn_right) {{ 'text-right' }} @endif absolute right-0 mt-2 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 p-1 space-y-1">
