@@ -28,7 +28,7 @@ class NameRules
     {
         return ['required','captcha'];
     }
-    public function passRules()
+    public function passRules($verifyReq=false)
     {
         return $this->passwordRules();
     }
@@ -46,7 +46,7 @@ class NameRules
             config("form.first_name") => self::nameRules(),
             config("form.lastname") => self::nameRules(),
             config("form.email") => self::emailRules(),
-            config("form.c_password") => $this->passRules(),
+            config("form.c_password") => $this->passRules($verifyReq=true),
             config("form.password") => $this->passRules(),
         ];
     }

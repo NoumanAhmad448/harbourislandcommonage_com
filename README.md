@@ -112,6 +112,12 @@ php artisan config:cache
 cd ~/public_html/website_7171ee6c &&
 php artisan route:list
 ```
+create model with migrations
+```
+php artisan make:model name --migration
+```
+
+
 storage logs
 ```
 cd ~/public_html/website_7171ee6c/storage/logs/

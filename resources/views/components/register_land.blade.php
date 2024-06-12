@@ -4,12 +4,14 @@
             <section class="mt-20">
                 <h1 class="pb-5 font-semibold text-xl text-gray-600">{{ __('messages.reg_form_title') }}</h1>
                 <div class="bg-white rounded shadow-lg p-4 px-4 md:p-8 mb-6">
-                    @include(config("files.components").".register_user")
-                    <hr/>
+                    @if(!auth()->user())
+                        @include(config("files.components").".register_user")
+                        <hr/>
+                    @endif
                     @include(config("files.components").".land_registeration")
-                    <hr/>
+
                     @include(config("files.components").".forms.col", ["input" => config("files.components").".forms.submit",
-                    "move_btn_right" => true])
+                    "move_btn_right" => true, "id" => "submit"])
                 </div>
             </section>
         </div>

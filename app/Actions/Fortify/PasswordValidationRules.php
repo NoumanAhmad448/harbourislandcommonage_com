@@ -11,8 +11,12 @@ trait PasswordValidationRules
      *
      * @return array<int, \Illuminate\Contracts\Validation\Rule|array|string>
      */
-    protected function passwordRules(): array
+    protected function passwordRules($verifyReq=false): array
     {
-        return ['required', 'string', Password::default(), 'confirmed'];
+        $rules = ['required', 'string', Password::default()];
+        if($verifyReq){
+            array_push($rules, 'confirmed');
+        }
+        return $rules;
     }
 }

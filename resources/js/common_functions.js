@@ -44,12 +44,14 @@ window.popup_message = function(d){
         }
         else if(typeof d == "object"){
             let msg = "";
-            for (const key in d) {
+            let counter = 0
+            for (const key in d){
+                counter+=1
                 if(Array.isArray(d[key])){
-                    msg += `${key} ${d[key][0]}\n`
+                    msg += `${counter}- ${d[key][0]}\n`
                 }
                 else if(typeof d == "string"){
-                    msg += `${key} ${d[key]}\n`
+                    msg += `${counter}- ${d[key]}\n`
                 }
             }
             show_message(msg)

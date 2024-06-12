@@ -130,7 +130,6 @@ return [
     'url' => 'The :attribute must be a valid URL.',
     'uuid' => 'The :attribute must be a valid UUID.',
     'not_allowed' => 'Such type of data is not allowed',
-    'required' => 'is required',
 
     /*
     |--------------------------------------------------------------------------
