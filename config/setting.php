@@ -24,8 +24,10 @@ return [
     "common_functions" => $js_folder."/common_functions.js",
     "welcome" => "welcome",
     "is_success" => "is_success",
+    "message" => "message",
     "error" => "error",
     "dash_lines" => "-----------------------",
+    "status_200" => 200,
     "err_500" => 500,
     "err_422" => 422,
     "favicon" => $images_folder."favicon.ico",
@@ -79,4 +81,9 @@ return [
     "fuas" => 100,
     "en_gc" => true,
     "ad" => "token is missing in the header",
+    "suname" => "Sample UserName",
+    "landreg_folder" => "land_register",
+    "landreg_multiple" => true,
+    "default_timeout" => 5000,
+
 ];

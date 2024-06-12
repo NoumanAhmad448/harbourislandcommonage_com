@@ -31,6 +31,8 @@ window.popup_message = function(d){
             var dd = JSON.parse(d.responseText);
             if(dd && dd.error){
                 d = dd.error
+            }else if(dd.api_is_success){
+                d = dd.api_message
             }
         } catch (e) {
             show_message(text=err_msg)

@@ -36,7 +36,7 @@
                 @include(config("files.components").'.forms.col', ['input' => config("files.components").'.forms.file',
                  "prop" => ["col" => 2,"id" => config("setting.land_reg_file_upload"),
                  "include_star" => false, "label" => __("messages.file_upload_desc"),
-                 "is_multiple" => true,
+                 "is_multiple" => config("setting.landreg_multiple"),
                 ]])
             @endif
             @if(config("setting.en_gc"))

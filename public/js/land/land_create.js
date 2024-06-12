@@ -23,7 +23,10 @@ $("#land_reg").submit(function (e) {
     success: function success(d) {
       submit.prop("disabled", "");
       $("#loading-screen").toggleClass("hidden");
-      console.log(d);
+      popup_message(d);
+      setTimeout(function () {
+        location.reload();
+      }, default_timeout);
     },
     error: function error(d) {
       submit.prop("disabled", "");

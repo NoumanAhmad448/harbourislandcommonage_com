@@ -60,5 +60,6 @@ return [
             or drag and drop',
     "file_upload_ft" => 'Please upload an image of allowed format',
     "fuasm" => "Image size must be less than {$fuas}MB",
+    "land_reg_msg" => "Thanks for registering land with us. We'll get back to you ASAP!",
 
 ];

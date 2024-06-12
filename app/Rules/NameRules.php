@@ -32,13 +32,19 @@ class NameRules
     {
         return $this->passwordRules();
     }
-    public function fileRules()
+    public function fileRules($is_required=false)
     {
         $allowed_fuas = config("setting.fuas");
         $allowed_fuas = (int)$allowed_fuas*1000;
         $img_val_rules_str = config("form.img_val_rules_str");
-
-        return "required|file|max:{$allowed_fuas}|mimetypes:{$img_val_rules_str}";
+        $rules = "";
+        if($is_required){
+            $rules .= "required |";
+        }else{
+            $rules .= "nullable|";
+        }
+        $rules .= "file|max:{$allowed_fuas}|mimetypes:{$img_val_rules_str}";
+        return $rules;
     }
 
     public function userValidationRules(): Array {
@@ -59,7 +65,11 @@ class NameRules
             config("setting.city") => $this->nameRules(),
         ];
         if(config("setting.en_land_reg_file")){
-            $rules[config("setting.land_reg_file_upload").".*"] = $this->fileRules();
+            $rule = config("setting.land_reg_file_upload");
+            if(config("setting.landreg_multiple")){
+                $rule .= ".*";
+            }
+            $rules[$rule] = $this->fileRules();
         }
         if(config("setting.en_country")){
             $rules[config("setting.country")] = self::nameRules();
@@ -77,6 +87,13 @@ class NameRules
             config("form.email").'.required' => config("validation.required"),
             config("form.c_password").'.required' => config("validation.required"),
             config("form.password").'.required' => config("validation.required"),
+        ];
+    }
+
+    public function captchaValidation(): Array {
+        return [
+            config("form.g-recaptcha-response").'.required' => config("validation.required"),
+            config("form.g-recaptcha-response").'.captcha' => config("validation.required"),
         ];
     }
     public function landRegValMsg(): Array {
