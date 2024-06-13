@@ -40,7 +40,8 @@ class LandCreateController extends Controller
                 $landFileObj->insertRecords($uploaded_records);
             }
             if(config("setting.send_land_email")){
-                Mail::mailer(config("mail.default"))->to("nouman933ahmad@outlook.com")->queue(new LandCreateEmail($user->name,
+                // mailer(config("mail.default"))->
+                Mail::to($user->email)->queue(new LandCreateEmail($user->name,
                 $user->email, $createLand,
                 __("messages.land_reg_mail_sub")));
             }

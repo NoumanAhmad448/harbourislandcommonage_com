@@ -34,7 +34,7 @@ return [
     */
 
     'mailers' => [
-        'smtp' => [
+        'no_reply' => [
             'transport' => 'smtp',
             'encryption' => env('MAIL_ENCRYPTION', 'tls'),
             'port' => env('MAIL_PORT', 587),

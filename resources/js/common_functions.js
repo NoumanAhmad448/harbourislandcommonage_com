@@ -29,14 +29,36 @@ window.popup_message = function(d){
     else if (typeof d === "object"){
         try {
             var dd = JSON.parse(d.responseText);
-            if(dd && dd.error){
-                d = dd.error
-            }else if(dd.api_is_success){
-                d = dd.api_message
+            if(debug){
+                console.log(dd)
             }
+            console.log(api_is_success in dd)
+            console.log(dd && "error" in dd)
+            if(dd && "error" in dd){
+                d = dd.error
+            }
+            else if(api_is_success in dd){
+                if(debug){
+                    console.log(dd)
+                }
+                d = dd[api_message]
+            }else{
+                show_message(text=err_msg)
+            }
+
         } catch (e) {
-            show_message(text=err_msg)
-            return console.error(e);
+            if(debug){
+                console.log(api_is_success in d)
+            }
+            if(api_is_success in d){
+                console.log(d)
+                if(debug){
+                    console.log(d)
+                }
+                d = d[api_message]
+                console.log(d)
+                show_message(text=d)
+            }
         }
 
         if(typeof d == "string"){
