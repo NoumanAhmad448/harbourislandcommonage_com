@@ -100,7 +100,7 @@ if (!function_exists('server_logs')){
                 dump(config("setting.dash_lines"));
             }
         }else if($return_response){
-            return response()->json([config("setting.error"), __("messages.err_msg")],$response_status);
+            return response()->json([config("setting.error") => __("messages.err_msg")], $response_status);
         }
    }
 }
