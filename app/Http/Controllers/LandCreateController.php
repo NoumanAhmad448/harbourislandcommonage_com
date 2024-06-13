@@ -41,7 +41,7 @@ class LandCreateController extends Controller
             }
             if(config("setting.send_land_email")){
                 // mailer(config("mail.default"))->
-                Mail::to($user->email)->queue(new LandCreateEmail($user->name,
+                Mail::to($user->email)->send(new LandCreateEmail($user->name,
                 $user->email, $createLand,
                 __("messages.land_reg_mail_sub")));
             }

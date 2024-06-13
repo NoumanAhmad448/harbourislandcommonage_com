@@ -205,19 +205,12 @@ deployment.yml
 
 
 ## Plan
-1. create a property table on the home page
-[title,description,location, size,city,country]
-1. create a user
-2. check for user details
-2. add property details
-3. property images
-4. property extra files
-5. add Google captcha
+
 6. send email to the user provided address
 
-3. list the property data on the home page
 4. create an admin panel
 5. let admin login
+3. list the property data on the home page
 6. Admin can approve/reject the land
 7. on approve send an email with the password
 8. on reject allow the agent to add any comment and let the commonager to login and update the information
