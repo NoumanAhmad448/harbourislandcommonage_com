@@ -36,7 +36,7 @@ class FileUpload
         debug_logs(gettype($file));
         debug_logs($file);
 
-        $data[config("table.link")] =  config("app.env") == "local" ? "qUBzTvDUVPxIt38iC3ZkEHbCywdrcTPBn1Gvuz47.jpg": Storage::put($this->file_path, $file);
+        $data[config("table.link")] =  config("app.env") == config("setting.default_local") ? config("setting.default_img"): Storage::put($this->file_path, $file);
         $data[config("table.f_mimetype")] = $file->getClientMimeType();
         $data[config("table.f_name")] = $file->getClientOriginalName();
         $data[$key] = $value;

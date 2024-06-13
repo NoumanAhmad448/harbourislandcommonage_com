@@ -153,3 +153,10 @@ if (!function_exists('isArray')){
        return is_array($array);
     }
 }
+
+if (!function_exists('fromMailer')){
+    function fromMailer($mailer): string {
+        $from =  config("mail.mailers.{$mailer}.from");
+        return $from;
+    }
+}
