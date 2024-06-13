@@ -36,12 +36,23 @@ return [
     'mailers' => [
         'smtp' => [
             'transport' => 'smtp',
-            'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
-            'port' => env('MAIL_PORT', 587),
             'encryption' => env('MAIL_ENCRYPTION', 'tls'),
+            'port' => env('MAIL_PORT', 587),
+            'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
             'username' => env('MAIL_USERNAME'),
             'password' => env('MAIL_PASSWORD'),
             'timeout' => null,
+            "from" => env('MAIL_FROM_ADDRESS'),
+        ],
+        'admin' => [
+            'transport' => 'smtp',
+            'encryption' => env('MAIL_ENCRYPTION', 'tls'),
+            'port' => env('MAIL_PORT', 587),
+            'host' => env('MAIL_ADMIN_HOST', 'smtp.mailgun.org'),
+            'username' => env('MAIL_ADMIN_USERNAME'),
+            'password' => env('MAIL_ADMIN_PASSWORD'),
+            'timeout' => null,
+            "from" => env('MAIL_ADMIN_FROM_ADDRESS'),
         ],
 
         'ses' => [

@@ -8,14 +8,19 @@ use App\Rules\NameRules;
 use App\Actions\Fortify\CreateNewUser;
 use App\Models\CreateLand;
 use App\Helpers\FileUpload;
+use App\Mail\LandCreateEmail;
 use App\Models\LandFile;
 use App\Models\User;
+use Illuminate\Support\Facades\Mail;
 
 class LandCreateController extends Controller
 {
     private $createNewUser;
+    private $email;
     public function __construct() {
         $this->createNewUser = new CreateNewUser;
+        $this->email = config("form.email");
+
     }
     public function landSave(LandCreate $request)
     {
@@ -34,6 +39,12 @@ class LandCreateController extends Controller
                 );
                 $landFileObj->insertRecords($uploaded_records);
             }
+            if(config("setting.send_land_email")){
+                Mail::mailer(config("mail.default"))->to("nouman933ahmad@outlook.com")->queue(new LandCreateEmail($user->name,
+                $user->email, $createLand,
+                __("messages.land_reg_mail_sub")));
+            }
+
             return response()->json([config("setting.is_success") => true,
                 config("setting.message") => __("messages.land_reg_msg")],config("setting.status_200"));
 

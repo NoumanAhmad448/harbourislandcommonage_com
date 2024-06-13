@@ -70,6 +70,11 @@ mysql connection
 ```
 mysql -h 127.0.0.1 -P 3306 -u usmansaleem234_lyskills_root5 -p
 ```
+clear user table for local development
+```
+DELETE from users;
+```
+
 mysql configuration
 ```
 systemctl status mysql

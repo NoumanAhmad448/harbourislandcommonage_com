@@ -82,27 +82,27 @@ class NameRules
 
     public function userValidationMsg(): Array {
         return [
-            config("form.first_name").'.required' => config("validation.required"),
-            config("form.lastname").'.required' => config("validation.required"),
-            config("form.email").'.required' => config("validation.required"),
-            config("form.c_password").'.required' => config("validation.required"),
-            config("form.password").'.required' => config("validation.required"),
+            config("form.first_name").'.required' => __("validation.required"),
+            config("form.lastname").'.required' => __("validation.required"),
+            config("form.email").'.required' => __("validation.required"),
+            config("form.c_password").'.required' => __("validation.required"),
+            config("form.password").'.required' => __("validation.required"),
         ];
     }
 
     public function captchaValidation(): Array {
         return [
-            config("form.g-recaptcha-response").'.required' => config("validation.required"),
-            config("form.g-recaptcha-response").'.captcha' => config("validation.required"),
+            config("form.g-recaptcha-response").'.required' => __("validation.required"),
+            config("form.g-recaptcha-response").'.captcha' => __("validation.required"),
         ];
     }
     public function landRegValMsg(): Array {
         return [
-            config("setting.title").'.required' => config("validation.required"),
-            config("setting.description").'.required' => config("validation.required"),
-            config("setting.location").'.required' => config("validation.required"),
-            config("setting.size").'.required' => config("validation.required"),
-            config("setting.city").'.required' => config("validation.required"),
+            config("setting.title").'.required' => __("validation.required"),
+            config("setting.description").'.required' => __("validation.required"),
+            config("setting.location").'.required' => __("validation.required"),
+            config("setting.size").'.required' => __("validation.required"),
+            config("setting.city").'.required' => __("validation.required"),
         ];
     }
 }

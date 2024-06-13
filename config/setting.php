@@ -85,5 +85,8 @@ return [
     "landreg_folder" => "land_register",
     "landreg_multiple" => true,
     "default_timeout" => 5000,
+    "default_local" => "local",
+    "default_img" => "qUBzTvDUVPxIt38iC3ZkEHbCywdrcTPBn1Gvuz47.jpg",
+    "send_land_email" => true,
 
 ];
