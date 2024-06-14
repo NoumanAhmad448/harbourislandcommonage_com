@@ -61,6 +61,12 @@ return [
     "file_upload_ft" => 'Please upload an image of allowed format',
     "fuasm" => "Image size must be less than {$fuas}MB",
     "land_reg_msg" => "Thanks for registering land with us. We'll get back to you ASAP!",
+    "logged_in" => "You are logged in!",
     "land_reg_mail_sub" => "Thank you! for registering land with ".config("app.name"),
-
+    "sign_up_msg" => "Don't have any account?",
+    "sign_up" => "Sign Up",
+    "sfh" => "Start from here",
+    "ap" => "Admin Panel",
+    "login" => "Login",
+    "login_failed" => "The provided credentials do not satisfy the system. Please try again!",
 ];
