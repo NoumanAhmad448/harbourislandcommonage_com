@@ -2,5 +2,6 @@
 
 return [
     "components" => "components",
+    "partials" => "partials",
 ];
 ?>

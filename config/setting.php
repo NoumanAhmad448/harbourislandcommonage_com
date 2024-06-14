@@ -9,6 +9,7 @@ $layout_folder = "layouts";
 $public_folder = "public/";
 $images_folder = "images/";
 $land_folder = "land/";
+$admin_folder = "admin/";
 
 if(config("app.env") == 'production'){
     $images_folder = $public_folder.$images_folder;
@@ -59,6 +60,7 @@ return [
     "en_reg_form" => true,
     "land_create_css" => "{$css_folder}/{$land_folder}land_create.css",
     "land_create_js" => "{$js_folder}/{$land_folder}land_create.js",
+    "admin_login_js" => "{$js_folder}/{$admin_folder}admin_login.js",
     "svg_toggle" => '',
     "isLoaderLoaded" => false,
     "h2_css" => "pb-3 flex flex-col justify-center items-center mb-4 text-4xl font-extrabold leading-none
@@ -88,4 +90,7 @@ return [
     "default_local" => "local",
     "default_img" => "qUBzTvDUVPxIt38iC3ZkEHbCywdrcTPBn1Gvuz47.jpg",
     "send_land_email" => false,
+    "admin_login" => "admin_login",
+    "admin_chart" => "admin_chart",
+    "admin_body" => $layout_folder.".admin_body",
 ];

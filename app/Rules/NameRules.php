@@ -19,9 +19,13 @@ class NameRules
         return ['required', 'string',new IsScriptAttack];
     }
 
-    public static function emailRules()
+    public static function emailRules($should_unique=True)
     {
-        return ['required','string', 'email', new IsScriptAttack, Rule::unique(User::class)];
+        $rules = ['required','string', 'email', new IsScriptAttack];
+        if($should_unique){
+            array_push($rules, Rule::unique(User::class));
+        }
+        return $rules;
     }
 
     public static function gCaptchaRules()
