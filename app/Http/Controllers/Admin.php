@@ -31,6 +31,9 @@ class Admin extends Controller{
             if($user && ($user->is_super_admin || $user->is_admin)){
                 return redirect()->route("admin_chart");
             }
+            else if($user){
+                return redirect()->route("index");
+            }
             return view(config("setting.admin_login"));
         }
         catch (\Exception $d) {
