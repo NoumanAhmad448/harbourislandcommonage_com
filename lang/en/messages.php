@@ -68,5 +68,10 @@ return [
     "sfh" => "Start from here",
     "ap" => "Admin Panel",
     "login" => "Login",
+    "logout" => "Log Out",
     "login_failed" => "The provided credentials do not satisfy the system. Please try again!",
+    "admin" => "Admin",
+    "mprofile" => "My Profile",
+    "mcontact" => "My Contacts",
+    "settings" => "Settings",
 ];

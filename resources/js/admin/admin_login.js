@@ -19,9 +19,7 @@ $("#admin_login").submit(function (e) {
         submit.prop("disabled","")
         $("#loading-screen").toggleClass("hidden")
         popup_message(d)
-        setTimeout(function () {
-          location.reload()
-        }, default_timeout);
+        changeURL(`${admin_panel}`)
       },
       error: function error(d) {
         submit.prop("disabled","")

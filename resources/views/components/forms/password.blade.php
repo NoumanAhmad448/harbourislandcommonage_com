@@ -2,6 +2,7 @@
     $text = !empty($text) ? $text : __('messages.create_land_btn');
     $id = $id ?? config('form.password');
     $include_star = $include_star ?? true;
+    $is_form = $is_form ?? true;
 
 @endphp
 @if ($is_form)

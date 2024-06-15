@@ -44,8 +44,11 @@ if (!function_exists('removeSpace')){
 }
 
 if (!function_exists('isAdmin')){
-     function isAdmin(){
-        return Auth::user()->is_admin ?? abort(403);
+     function isAdmin($action=true){
+        if($action){
+            $action = abort(403);
+        }
+        return Auth::user()->is_admin | Auth::user()->is_super_admin ?? $action;
     }
 }
 

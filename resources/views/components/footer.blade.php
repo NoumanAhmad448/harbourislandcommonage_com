@@ -100,4 +100,3 @@
 
 </div>
 @endif
-{{-- <img class="w-full" src="{{url(config('setting.im_sponsorship'))}}" alt=""> --}}

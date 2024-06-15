@@ -37,6 +37,7 @@
         let api_message =  "{{ config('setting.message') }}";
         let api_is_success =  "{{ config('setting.is_success') }}";
         let default_timeout =  "{{ config('setting.default_timeout') }}";
+        let domain_name =  "{{ config('app.url') }}";
 
     </script>
 
