@@ -33,7 +33,7 @@ class VerifyUser
         return Hash::check($data[config("form.password")], $user->password);
     }
 
-    public function logout(Request $request){
+    public function logout($request){
         Auth::logout();
 
         $request->session()->invalidate();

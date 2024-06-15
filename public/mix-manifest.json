@@ -4,6 +4,7 @@
     "/js/main.js": "/js/main.js",
     "/js/land/land_create.js": "/js/land/land_create.js",
     "/js/admin/admin_login.js": "/js/admin/admin_login.js",
+    "/js/login.js": "/js/login.js",
     "/css/app.css": "/css/app.css",
     "/css/land/land_create.css": "/css/land/land_create.css"
 }

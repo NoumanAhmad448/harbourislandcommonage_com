@@ -2,11 +2,11 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Contracts\Validation\Validator;
+use Laravel\Fortify\Http\Requests\LoginRequest as FortifyLoginRequest;
 use App\Rules\NameRules;
+use Illuminate\Contracts\Validation\Validator;
 
-class AdminLogin extends FormRequest
+class Login extends FortifyLoginRequest
 {
     private $nameRules;
 
@@ -70,4 +70,5 @@ class AdminLogin extends FormRequest
     {
         return __("attributes");
     }
+
 }

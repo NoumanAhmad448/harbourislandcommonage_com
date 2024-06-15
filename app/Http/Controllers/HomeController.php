@@ -8,9 +8,11 @@ use App\Actions\Fortify\VerifyUser;
 class HomeController extends Controller
 {
     private $verifyUser;
+    private $user;
 
     public function __construct() {
         $this->verifyUser = new VerifyUser;
+        $this->user = auth()->user();
     }
 
     public function index(){
@@ -42,7 +44,21 @@ class HomeController extends Controller
     public function logout(Request $request){
         try {
             $this->verifyUser->logout($request);
-            return redirect()->route("index", [],config("setting.err_301"));
+            return redirect()->route("index");
+        }
+        catch (\Exception $d) {
+            return server_logs($e = [true, $d], $request = [true, $request], $config = true);
+        }
+    }
+    public function login(Request $request){
+        try {
+            if($this->user){
+                if(isAdmin(false)){
+                    return redirect()->route("admin_login", [],config("setting.err_301"));
+                }
+                return redirect()->route("index", [],config("setting.err_301"));
+            }
+            return view('login');
         }
         catch (\Exception $d) {
             return server_logs($e = [true, $d], $request = [true, $request], $config = true);

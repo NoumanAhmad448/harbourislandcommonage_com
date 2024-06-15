@@ -67,6 +67,7 @@ return [
     "sign_up" => "Sign Up",
     "sfh" => "Start from here",
     "ap" => "Admin Panel",
+    "lp" => "Login Panel",
     "login" => "Login",
     "logout" => "Log Out",
     "login_failed" => "The provided credentials do not satisfy the system. Please try again!",

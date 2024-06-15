@@ -27,5 +27,11 @@
     <div class="min-w-max text-3xl flex justify-end">
         @include(config("files.components").'.user_profile',["prop" => [ "logout_url" => route('logout')]])
     </div>
+    @if(!auth()->user())
+        <div class="hidden w-full md:block md:w-auto">
+            <a href="{{route('login')}}">{{__("messages.login")}}</a>
+        </div>
+    @endif
+
     @include("svg.toggle")
 </nav>
