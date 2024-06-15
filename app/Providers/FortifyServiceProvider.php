@@ -12,15 +12,24 @@ use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Laravel\Fortify\Fortify;
+use App\Http\Requests\Login;
+use Laravel\Fortify\Contracts\LoginResponse;
 
 class FortifyServiceProvider extends ServiceProvider
 {
+
     /**
      * Register any application services.
      */
     public function register(): void
     {
-        //
+        $this->app->instance(LoginResponse::class, new class implements LoginResponse {
+            public function toResponse($request)
+            {
+                return response()->json([config("setting.is_success") => true,
+                    config("setting.message") => __("messages.logged_in")],config("setting.status_200"));
+            }
+        });
     }
 
     /**
@@ -39,8 +48,12 @@ class FortifyServiceProvider extends ServiceProvider
             return Limit::perMinute(5)->by($throttleKey);
         });
 
+        // form validation for login
+        $this->app->bind('Laravel\Fortify\Http\Requests\LoginRequest', Login::class);
+
         RateLimiter::for('two-factor', function (Request $request) {
             return Limit::perMinute(5)->by($request->session()->get('login.id'));
         });
+
     }
 }

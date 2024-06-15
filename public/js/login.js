@@ -1,9 +1,9 @@
 /******/ (() => { // webpackBootstrap
 var __webpack_exports__ = {};
-/*!******************************************!*\
-  !*** ./resources/js/land/land_create.js ***!
-  \******************************************/
-$("#land_reg").submit(function (e) {
+/*!*******************************!*\
+  !*** ./resources/js/login.js ***!
+  \*******************************/
+$("#login").submit(function (e) {
   e.preventDefault();
   var data = new FormData($(this).get(0));
   if (debug) {
@@ -15,7 +15,7 @@ $("#land_reg").submit(function (e) {
   submit.prop("disabled", "disabled");
   // disable submit btn and show loader
   $.ajax({
-    url: land_save,
+    url: login_form,
     type: 'post',
     contentType: false,
     processData: false,
@@ -24,9 +24,7 @@ $("#land_reg").submit(function (e) {
       submit.prop("disabled", "");
       $("#loading-screen").toggleClass("hidden");
       popup_message(d);
-      setTimeout(function () {
-        location.reload();
-      }, default_timeout);
+      changeURL("".concat(index));
     },
     error: function error(d) {
       submit.prop("disabled", "");

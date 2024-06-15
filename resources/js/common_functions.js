@@ -10,12 +10,16 @@ window.show_popup = function (message) {
 }
 
 window.show_message = function(text="your message",title="Info",icon="info",button="ok"){
-    swal({
-      title: title,
-      text: text,
-      icon: icon,
-      button: button,
-    })
+    if(text){
+        swal({
+        title: title,
+        text: text,
+        icon: icon,
+        button: button,
+        })
+    }else{
+        console.log("no output is given")
+    }
 }
 
 window.popup_message = function(d){
@@ -34,10 +38,13 @@ window.popup_message = function(d){
             }
             if(debug){
                 console.log(api_is_success in dd)
-                console.log(dd && "error" in dd)
+                console.log(dd && "error" in dd || "errors" in dd)
             }
             if(dd && "error" in dd){
                 d = dd.error
+            }
+            else if("errors" in dd){
+                d = dd.errors
             }
             else if(api_is_success in dd){
                 if(debug){
@@ -59,6 +66,8 @@ window.popup_message = function(d){
                 d = d[api_message]
                 console.log(d)
                 show_message(text=d)
+            }else{
+                show_message(text=err_msg)
             }
         }
 

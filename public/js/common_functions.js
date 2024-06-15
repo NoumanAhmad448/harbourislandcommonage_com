@@ -33837,12 +33837,16 @@ window.show_message = function () {
   var title = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "Info";
   var icon = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "info";
   var button = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "ok";
-  swal({
-    title: title,
-    text: text,
-    icon: icon,
-    button: button
-  });
+  if (text) {
+    swal({
+      title: title,
+      text: text,
+      icon: icon,
+      button: button
+    });
+  } else {
+    console.log("no output is given");
+  }
 };
 window.popup_message = function (d) {
   if (debug) {
@@ -33859,10 +33863,12 @@ window.popup_message = function (d) {
       }
       if (debug) {
         console.log(api_is_success in dd);
-        console.log(dd && "error" in dd);
+        console.log(dd && "error" in dd || "errors" in dd);
       }
       if (dd && "error" in dd) {
         d = dd.error;
+      } else if ("errors" in dd) {
+        d = dd.errors;
       } else if (api_is_success in dd) {
         if (debug) {
           console.log(dd);
@@ -33883,6 +33889,8 @@ window.popup_message = function (d) {
         d = d[api_message];
         console.log(d);
         show_message(text = d);
+      } else {
+        show_message(text = err_msg);
       }
     }
     if (typeof d == "string") {

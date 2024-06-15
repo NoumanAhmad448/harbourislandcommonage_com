@@ -1,6 +1,7 @@
 @php
     $user = auth()->user();
-    $logout_url = $prop['logout_url'] ?? route('admin_logout');
+    $admin_logout = route('admin_logout');
+    $user_logout = route('logout');
 @endphp
 @if ($user)
     <!-- User Area -->
@@ -45,11 +46,14 @@
                     ],
                 ])
             </ul>
-            <a href="{{ $logout_url }}"
+            <form method="POST" action="@if(isAdmin(false)){{ $admin_logout }} @else {{ $user_logout }} @endif">
+                @include(config("files.components").'.csrf')
+            <button type="submit"
                 class="flex items-center gap-3.5 px-6 py-4 text-sm font-medium duration-300 ease-in-out hover:text-primary lg:text-base">
                 @include(config('files.svg') . 'logout')
                 {{__("messages.logout")}}
-            </a>
+            </button>
+            </form>
         </div>
         <!-- Dropdown End -->
     </div>
