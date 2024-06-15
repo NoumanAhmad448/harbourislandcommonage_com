@@ -31,6 +31,7 @@ Route::prefix($admin_path)->group(function (){
     Route::get('/login', [Admin::class, 'login'])->name('admin_login');
     Route::post('/logout', [Admin::class, 'logout'])->name('admin_logout');
     Route::post('/login', [Admin::class, 'adminLogin'])->name('admin_login_post');
+});
+Route::prefix($admin_path)->middleware(config("middlewares.admin"))->group(function (){
     Route::get('/chart', [Admin::class, 'chart'])->name('admin_chart');
-
 });

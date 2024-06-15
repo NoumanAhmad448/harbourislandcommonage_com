@@ -75,4 +75,5 @@ return [
     "mprofile" => "My Profile",
     "mcontact" => "My Contacts",
     "settings" => "Settings",
+    "reg_land" => "Register Land",
 ];
