@@ -31,6 +31,7 @@ return [
     "status_200" => 200,
     "err_500" => 500,
     "err_422" => 422,
+    "err_301" => 301,
     "favicon" => $images_folder."favicon.ico",
     "email" => "harbourislandcommonage@gmail.com",
     "phone_num" => "1-242-805-5687",

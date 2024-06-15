@@ -32,8 +32,10 @@ window.popup_message = function(d){
             if(debug){
                 console.log(dd)
             }
-            console.log(api_is_success in dd)
-            console.log(dd && "error" in dd)
+            if(debug){
+                console.log(api_is_success in dd)
+                console.log(dd && "error" in dd)
+            }
             if(dd && "error" in dd){
                 d = dd.error
             }
@@ -43,9 +45,8 @@ window.popup_message = function(d){
                 }
                 d = dd[api_message]
             }else{
-                show_message(text=err_msg)
+                d = dd
             }
-
         } catch (e) {
             if(debug){
                 console.log(api_is_success in d)
@@ -139,7 +140,7 @@ window.showImage = function(input,show_images_el="show_images",validImageTypes=f
         $(`.${show_images_el}`).text("")
         if(!validImageTypes){
             var validImageTypes = img_val_rules ;
-        }
+            }
         for (let file of files){
             const reader = new FileReader();
             var fileType = file["type"];
@@ -147,10 +148,10 @@ window.showImage = function(input,show_images_el="show_images",validImageTypes=f
             if ($.inArray(fileType, validImageTypes) < 0) {
                 popup_message(file_upload_ft)
                 $(`.${show_images_el}`).text("")
-              } else if (file['size'] / 1024 / 1024 == fuas) {
+                } else if (file['size'] / 1024 / 1024 == fuas) {
                 popup_message(fuasm)
                 $(`.${show_images_el}`).text("")
-              }
+                }
             else{
             reader.fileName = file.name
             reader.onload = function (e) {
@@ -161,8 +162,14 @@ window.showImage = function(input,show_images_el="show_images",validImageTypes=f
                     transition-all duration-300 cursor-pointer
                     h-auto max-w-lg
                     "/>`)
-            }
-            reader.readAsDataURL(file)}
-        }
+                    }
+                    reader.readAsDataURL(file)}
+                    }
     }
+    }
+window.changeURL = function(newUrl) {
+    if(debug){
+        console.log(newUrl)
+    }
+    document.location.href = newUrl;
 }

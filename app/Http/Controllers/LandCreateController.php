@@ -11,6 +11,7 @@ use App\Helpers\FileUpload;
 use App\Mail\LandCreateEmail;
 use App\Models\LandFile;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 
 class LandCreateController extends Controller
@@ -30,9 +31,13 @@ class LandCreateController extends Controller
         $fileUplaodObj = new FileUpload;
         try {
             $request->validated();
-            $user = $this->createNewUser->createUser($request->all());
+            if(!Auth::user()){
+                $user = $this->createNewUser->createUser($request->all());
+            }else{
+                $user = auth()->user();
+            }
 
-            $createLand = $createLandObj->insert($user,$request->all());
+            $createLand = $createLandObj->insert($user, $request->all());
             if(config("setting.en_land_reg_file") && $request->file(config("setting.land_reg_file_upload"))){
                 $uploaded_records = $fileUplaodObj->upload($request->file(config("setting.land_reg_file_upload")),
                     config("table.land_create").'_id', $createLand->id

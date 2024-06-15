@@ -208,10 +208,8 @@ deployment.yml
 
 6. send email to the user provided address
 
-4. create an admin panel
-5. let admin login
-3. list the property data on the home page
 6. Admin can approve/reject the land
+3. list the property data on the home page
 7. on approve send an email with the password
 8. on reject allow the agent to add any comment and let the commonager to login and update the information
 9. commonager can login & check the land information

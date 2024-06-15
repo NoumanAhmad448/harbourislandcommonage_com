@@ -25,16 +25,7 @@
 
 
     <div class="min-w-max text-3xl flex justify-end">
-        <!------ Currency Change Button ------->
-        {{-- <div class="mr-10 text-2xl currency">
-            <a class="inline-block text-xl rounded-full px-3 py-1 text-white" href=""
-                title="Change Currency to Doller">$</a>
-            <a class="inline-block text-xl rounded-full px-3 py-1 text-white" href=""
-                title="Change Currency to Lira">₺</a>
-            <a class="inline-block text-xl rounded-full px-3 py-1 text-white" href=""
-                title="Change Currency to Taka">৳</a>
-        </div> --}}
-        {{-- </a> --}}
+        @include(config("files.components").'.user_profile',["prop" => [ "logout_url" => route('logout')]])
     </div>
     @include("svg.toggle")
 </nav>

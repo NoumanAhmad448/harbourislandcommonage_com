@@ -12,6 +12,8 @@ Route::get('/test', function(){
     return "test";
 })->name('test-url');
 Route::get('/', [HomeController::class, 'index'])->name('index');
+Route::get('/logout', [HomeController::class, 'logout'])->name('logout');
+
 Route::prefix($land_path)->group(function () {
     $land_create_route = '/create';
     $land_update_route = '/{land}';
@@ -24,6 +26,7 @@ Route::prefix($land_path)->group(function () {
 });
 Route::prefix($admin_path)->group(function (){
     Route::get('/login', [Admin::class, 'login'])->name('admin_login');
+    Route::get('/logout', [Admin::class, 'logout'])->name('admin_logout');
     Route::post('/login', [Admin::class, 'adminLogin'])->name('admin_login_post');
     Route::get('/chart', [Admin::class, 'chart'])->name('admin_chart');
 

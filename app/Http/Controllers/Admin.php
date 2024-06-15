@@ -27,11 +27,28 @@ class Admin extends Controller{
     public function login(Request $request)
     {
         try {
+            $user = auth()->user();
+            if($user && ($user->is_super_admin || $user->is_admin)){
+                return redirect()->route("admin_chart");
+            }
             return view(config("setting.admin_login"));
         }
         catch (\Exception $d) {
             return server_logs($e = [true, $d], $request = [true, $request], $config = true);
         }
+    }
+    public function logout(Request $request) {
+        try {
+            if($this->verifyUser->logout($request)){
+                return redirect()->route("admin_login", [],config("setting.err_301"));
+            }else{
+                return redirect()->route("index", [],config("setting.err_301"));
+            }
+        }
+        catch (\Exception $d) {
+            return server_logs($e = [true, $d], $request = [true, $request], $config = true);
+        }
+
     }
     public function adminLogin(AdminLogin $request)
     {

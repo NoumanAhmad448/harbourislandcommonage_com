@@ -64,6 +64,7 @@
 @section('script')
 <script>
   let login_form = "{{route('admin_login_post')}}";
+  let admin_panel = "{{route('admin_chart')}}";
 </script>
 <script src="{{ url(config('setting.admin_login_js')) }}"></script>
 @endsection
