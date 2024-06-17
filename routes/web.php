@@ -34,4 +34,5 @@ Route::prefix($admin_path)->group(function (){
 });
 Route::prefix($admin_path)->middleware(config("middlewares.admin"))->group(function (){
     Route::get('/chart', [Admin::class, 'chart'])->name('admin_chart');
+    Route::get('/lands', [Admin::class, 'lands'])->name('admin_lands');
 });

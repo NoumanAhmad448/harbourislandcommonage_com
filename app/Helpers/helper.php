@@ -5,7 +5,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use App\Rules\IsScriptAttack;
-use App\Rules\NameRules;
+use Illuminate\Support\Str;
 
 if (!function_exists('check_input')){
      function check_input($u_input ){
@@ -161,5 +161,14 @@ if (!function_exists('fromMailer')){
     function fromMailer($mailer): string {
         $from =  config("mail.mailers.{$mailer}.from");
         return $from;
+    }
+}
+
+if (!function_exists('gen_str')){
+    function gen_str($uuid=false, $limit=8): string {
+        if($uuid)
+            return (string) Str::uuid();
+        else
+            return "d".substr(sha1(time()),0,$limit);
     }
 }

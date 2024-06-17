@@ -1,4 +1,5 @@
-<header class="sticky top-0 z-999 flex w-full bg-white drop-shadow-1 dark:bg-boxdark dark:drop-shadow-none">
+<header
+class="sticky top-0 z-999 flex w-full bg-white drop-shadow-1 dark:bg-boxdark dark:drop-shadow-none">
     <div class="flex flex-grow items-center justify-between px-4 py-4 shadow-2 md:px-6 2xl:px-11">
         <div class="flex items-center gap-2 sm:gap-4 lg:hidden">
             <!-- Hamburger Toggle BTN -->
@@ -28,12 +29,13 @@
                 </span>
             </button>
             <!-- Hamburger Toggle BTN -->
-            <a class="block flex-shrink-0 lg:hidden" href="index.html">
-                <img src="./images/logo/logo-icon.svg" alt="Logo" />
+            <a href="{{route('index')}}">
+              <img width="100" class="rounded-full" src="{{url(config('setting.im_log'))}}"
+                alt="{{config('app.name')}}" />
             </a>
         </div>
         <div class="hidden sm:block">
-            <form action="https://formbold.com/s/unique_form_id" method="POST">
+            <form action="" method="POST">
                 <div class="relative">
                     <button class="absolute left-0 top-1/2 -translate-y-1/2">
                         <svg class="fill-body hover:fill-primary dark:fill-bodydark dark:hover:fill-primary"
@@ -49,14 +51,14 @@
                     </button>
 
                     <input type="text" placeholder="Type to search..."
-                        class="w-full bg-transparent pl-9 pr-4 focus:outline-none xl:w-125" />
+                        class="hidden w-full bg-transparent pl-9 pr-4 focus:outline-none xl:w-125" />
                 </div>
             </form>
         </div>
 
         <div class="flex items-center gap-3 2xsm:gap-7">
             <ul class="flex items-center gap-2 2xsm:gap-4">
-                <li>
+                <li class="hidden">
                     <!-- Dark Mode Toggler -->
                     <label :class="darkMode ? 'bg-primary' : 'bg-stroke'"
                         class="relative m-0 block h-7.5 w-14 rounded-full">
@@ -89,7 +91,7 @@
                 </li>
 
                 <!-- Notification Menu Area -->
-                <li class="relative" x-data="{ dropdownOpen: false, notifying: true }" @click.outside="dropdownOpen = false">
+                <li class="relative hidden" x-data="{ dropdownOpen: false, notifying: true }" @click.outside="dropdownOpen = false">
                     <a class="relative flex h-8.5 w-8.5 items-center justify-center rounded-full border-[0.5px] border-stroke bg-gray hover:text-primary dark:border-strokedark dark:bg-meta-4 dark:text-white"
                         href="#" @click.prevent="dropdownOpen = ! dropdownOpen; notifying = false">
                         <span :class="!notifying && 'hidden'"
@@ -168,7 +170,7 @@
                 <!-- Notification Menu Area -->
 
                 <!-- Chat Notification Area -->
-                <li class="relative" x-data="{ dropdownOpen: false, notifying: true }" @click.outside="dropdownOpen = false">
+                <li class="relative hidden" x-data="{ dropdownOpen: false, notifying: true }" @click.outside="dropdownOpen = false">
                     <a class="relative flex h-8.5 w-8.5 items-center justify-center rounded-full border-[0.5px] border-stroke bg-gray hover:text-primary dark:border-strokedark dark:bg-meta-4 dark:text-white"
                         href="#" @click.prevent="dropdownOpen = ! dropdownOpen; notifying = false">
                         <span :class="!notifying && 'hidden'"

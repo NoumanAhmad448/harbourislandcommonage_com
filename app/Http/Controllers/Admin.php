@@ -80,4 +80,18 @@ class Admin extends Controller{
             return server_logs($e = [true, $d], $request = [true, $request], $config = true);
         }
     }
+    public function lands(Request $request)
+    {
+        try {
+            $lands = CreateLand::with("user", function($query){
+                return $query->where("is_user_admin",false)->
+                        where("is_admin",false);
+            })->first();
+            // dd($lands->city);
+            return view(config("setting.admin_lands"));
+        }
+        catch (\Exception $d) {
+            return server_logs($e = [true, $d], $request = [true, $request], $config = true);
+        }
+    }
 }

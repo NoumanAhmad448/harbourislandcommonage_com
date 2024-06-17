@@ -3,9 +3,11 @@
 @endsection
 @section('content')
     <!-- ===== Main Content Start ===== -->
-    <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
+    <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10"
+    x-init="selected = '{{__('messages.dashboard') }}';"
+    >
         <!-- Breadcrumb Start -->
-        <div class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <div class="hidden mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <h2 class="text-title-md2 font-bold text-black dark:text-white">
                 Chart
             </h2>
@@ -21,7 +23,7 @@
         </div>
         <!-- Breadcrumb End -->
 
-        <div class="grid grid-cols-12 gap-4 md:gap-6 2xl:gap-7.5">
+        <div class="hidden grid grid-cols-12 gap-4 md:gap-6 2xl:gap-7.5">
             <!-- ====== Chart Four Start -->
             <div class="col-span-12">
                 @include(config('files.partials').".chart-04")

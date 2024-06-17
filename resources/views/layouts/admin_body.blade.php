@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\Cache;
         @yield('page-css')
     </head>
     <body
-        x-data="{ page: 'signin', 'loaded': true, 'darkMode': true, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }"
+        x-data="{ page: 'signin', 'loaded': true, 'darkMode': true, 'stickyMenu': false,
+         'sidebarToggle': true, 'scrollTop': false }"
         x-init="
             darkMode = JSON.parse(localStorage.getItem('darkMode'));
             $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"

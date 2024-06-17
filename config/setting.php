@@ -35,7 +35,7 @@ return [
     "favicon" => $images_folder."favicon.ico",
     "email" => "harbourislandcommonage@gmail.com",
     "phone_num" => "1-242-805-5687",
-    "address" => "North Eleuthera Regatta Association (NERA)",
+    "address" => "Harbour Island commonage office, barracks Hill Dunmore Town North Eleuthera Bahamas",
     "link" => "no-underline hover:underline text-blue-900",
     "im_wel" => $images_folder."wel.jpg",
     "im_glass" => $images_folder."glass.jpeg",
@@ -94,5 +94,6 @@ return [
     "send_land_email" => false,
     "admin_login" => "admin_login",
     "admin_chart" => "admin_chart",
+    "admin_lands" => "admin_lands",
     "admin_body" => $layout_folder.".admin_body",
 ];

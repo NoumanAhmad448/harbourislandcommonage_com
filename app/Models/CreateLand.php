@@ -34,4 +34,13 @@ class CreateLand extends Model
         return CreateLand::create($data);
     }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+    public function city()
+    {
+        return $this->belongsTo(City::class);
+    }
+
 }

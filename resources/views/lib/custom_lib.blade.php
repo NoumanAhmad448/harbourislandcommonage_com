@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {{-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/> --}}
 
-    <link rel="shortcut icon" href="{{ asset(config('setting.favicon')) }}">
+    <link rel="shortcut icon" href="{{ url(config('setting.im_log')) }}">
     <title id="seo_title"> {{ config('setting.app_name') }} </title>
     <meta id="seo_desc" name="description" content="{{ config('setting.default_desc') }}">
     <meta property="og:title" content="{{ config('app.name') }}">
