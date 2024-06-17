@@ -76,4 +76,8 @@ return [
     "mcontact" => "My Contacts",
     "settings" => "Settings",
     "reg_land" => "Register Land",
+    "dashboard" => "Dashboard",
+    "summary" => "Summary",
+    "menu" => "MENU",
+    "lands" => "Lands",
 ];

@@ -13,7 +13,8 @@
             </span>
 
             <span class="h-12 w-12 rounded-full">
-                <img class="rounded-full object-contain hover:object-scale-down w-96" src="@include('modals.profile_logo')"
+                <img class="rounded-full object-contain hover:object-scale-down w-96"
+                    src="@include('modals.profile_logo')"
                     alt="{{ $user->name }}" />
             </span>
             @include(config('files.components') . '.angle_svg')
@@ -21,7 +22,8 @@
 
         <!-- Dropdown Start -->
         <div x-show="dropdownOpen"
-            class="absolute right-0 mt-4 flex w-62.5 flex-col rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
+            class="absolute right-0 mt-4 flex w-62.5 flex-col rounded-sm border border-stroke
+             bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
             <ul class="flex flex-col gap-5 border-b border-stroke px-6 py-7.5 dark:border-strokedark">
                 @include(config('files.components') . '.profile_list', [
                     'prop' => [
@@ -30,14 +32,15 @@
                         'text' => __('messages.mprofile'),
                     ],
                 ])
-                @include(config('files.components') . '.profile_list', [
-                    'prop' => [
-                        'link' => 'messages.html',
-                        'svg' => config('files.svg') . 'contact',
-                        'text' => __('messages.mcontact'),
-                    ],
-                ])
-
+                @if(isAdmin(false))
+                    @include(config('files.components') . '.profile_list', [
+                        'prop' => [
+                            'link' => route("admin_chart"),
+                            'svg' => config('files.svg') . 'dashboard',
+                            'text' => __('messages.dashboard'),
+                        ],
+                    ])
+                @endif
                 @include(config('files.components') . '.profile_list', [
                     'prop' => [
                         'link' => 'messages.html',
@@ -49,7 +52,8 @@
             <form method="POST" action="@if(isAdmin(false)){{ $admin_logout }} @else {{ $user_logout }} @endif">
                 @include(config("files.components").'.csrf')
             <button type="submit"
-                class="flex items-center gap-3.5 px-6 py-4 text-sm font-medium duration-300 ease-in-out hover:text-primary lg:text-base">
+                class="flex items-center gap-3.5 px-6 py-4 text-sm font-medium duration-300 ease-in-out
+                 hover:text-primary lg:text-base">
                 @include(config('files.svg') . 'logout')
                 {{__("messages.logout")}}
             </button>
