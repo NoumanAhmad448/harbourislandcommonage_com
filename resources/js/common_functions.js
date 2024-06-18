@@ -182,3 +182,18 @@ window.changeURL = function(newUrl) {
     }
     document.location.href = newUrl;
 }
+
+window.dataTable = function(table){
+    let config = {}
+    config['language'] = {
+            searchPlaceholder: "Search records"
+        }
+    config["pageLength"] = 25
+    config["order"] = [
+                        [0,"desc"]
+                    ]
+    if(debug){
+        console.log(config)
+    }
+    return $(`#${table}`).DataTable(config);
+}

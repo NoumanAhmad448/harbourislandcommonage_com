@@ -8,17 +8,20 @@ use App\Models\LandFile;
 use App\Helpers\FileUpload;
 use App\Models\CreateLand;
 use App\Actions\Fortify\VerifyUser;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class Admin extends Controller{
     private $createLandObj;
     private $landFileObj;
     private $fileUplaodObj;
+    private $user;
     private $verifyUser;
 
 
     public function __construct() {
         $this->createLandObj = new CreateLand();
+        $this->user = new User();
         $this->landFileObj = new LandFile;
         $this->fileUplaodObj = new FileUpload;
         $this->verifyUser = new VerifyUser;
@@ -83,12 +86,16 @@ class Admin extends Controller{
     public function lands(Request $request)
     {
         try {
-            $lands = CreateLand::with("user", function($query){
-                return $query->where("is_user_admin",false)->
-                        where("is_admin",false);
-            })->first();
-            // dd($lands->city);
-            return view(config("setting.admin_lands"));
+            $data = [];
+            $users = $this->user->getIds();
+
+            $lands = CreateLand::whereIn(config("table.user_id"), $users);
+            $lands = $lands->showQuery();
+            $lands = $lands->get();
+            $data['lands'] = $lands;
+            $data['title'] = __("messages.lands");
+
+            return view(config("setting.admin_lands"), compact("data"));
         }
         catch (\Exception $d) {
             return server_logs($e = [true, $d], $request = [true, $request], $config = true);

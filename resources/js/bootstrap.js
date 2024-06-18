@@ -10,6 +10,7 @@ import persist from '@alpinejs/persist'
 
 import swal from 'sweetalert';
 
+
 // import jQuery from './jquery-3.6.0.slim.min';  //deleted later, and installed with NPM
 window.Alpine = Alpine;
 Alpine.plugin(persist)
@@ -17,3 +18,7 @@ Alpine.plugin(persist)
 Alpine.start();
 
 window.$ = window.jQuery = require('jquery'); //jquery added here after appling npm install --save jquery
+
+import DataTable from 'datatables.net-dt';
+import 'datatables.net-buttons-dt';
+import 'datatables.net-responsive-dt';

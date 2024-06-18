@@ -23,6 +23,10 @@
     },
     "dependencies": {
         "@alpinejs/persist": "^3.14.0",
+        "datatables.net-autofill-dt": "^2.7.0",
+        "datatables.net-buttons-dt": "^3.0.2",
+        "datatables.net-dt": "^2.0.8",
+        "datatables.net-responsive-dt": "^3.0.2",
         "jquery": "^3.7.1",
         "slick-carousel": "^1.8.1",
         "sweetalert": "^2.1.2"
