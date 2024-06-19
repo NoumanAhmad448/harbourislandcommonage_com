@@ -202,3 +202,12 @@ if (!function_exists('is_normal_user')){
         return !isAdmin(false);
     }
 }
+if (!function_exists('file_path')){
+    function file_path($path,$disk=""){
+        if(empty($disk)){
+            $site_path = config("app.url");
+            $server_path = config("setting.storage");
+            return $site_path.$server_path.$path;
+        }
+    }
+}
