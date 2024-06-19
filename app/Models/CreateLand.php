@@ -43,6 +43,10 @@ class CreateLand extends CustomModel
     {
         return $this->hasMany(LandFile::class, config("table.land_create_id"));
     }
+    public function landComment()
+    {
+        return $this->hasMany(LandComments::class, config("table.land_create_id"));
+    }
 
     public function commonUser()
     {

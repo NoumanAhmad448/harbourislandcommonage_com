@@ -10,6 +10,8 @@ return [
     'f_mimetype' => 'f_mimetype',
     'is_admin_approved' => 'is_admin_approved',
     'created_at' => 'created_at',
+    'comment' => 'comment',
+    'created_by' => 'created_by',
     'updated_at' => 'updated_at',
     'city' => 'city',
     'size' => 'size',
@@ -25,6 +27,7 @@ return [
     "is_admin" => "is_admin",
     "primary_key" => "id",
     "lands" => "lands",
+    "land_comments" => "land_comments",
 ];
 
 ?>
