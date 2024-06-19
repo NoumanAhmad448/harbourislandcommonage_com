@@ -2,6 +2,7 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+/* @import url(https://cdn.datatables.net/2.0.8/css/dataTables.tailwindcss.css); */
 
 button{
     font-family: inherit; /* 1 */
@@ -192276,4 +192277,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .pt-50{
   padding-top: 15rem !important;
+}
+.bg-slate-900{
+  background-color: rgb(15 23 42) !important;
 }

@@ -26,6 +26,7 @@ df -hi
 files in the root folder of laravel. Don't forget to update ```webpack.mix.js```
 12. use ```popup_message``` function for popup
 13. use ```SampleRequest.php``` function for Request Validation
+14. use ```datatables.blade.php``` file to work with ```datatables``` e.g. ```admin_lands.blade.php```
 
 ## Local Setup (Development)
 1. install xampp (Required PHP version -> 8.2|8.0|8.1) [Download Link](https://www.apachefriends.org/)

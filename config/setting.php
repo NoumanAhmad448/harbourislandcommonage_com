@@ -22,6 +22,7 @@ return [
     "default_desc" => "Default Description",
     "app_css" => $css_folder."/app.css",
     "app_js" => $js_folder."/app.js",
+    "datatable_js" => $js_folder."/datatable.js",
     "common_functions" => $js_folder."/common_functions.js",
     "welcome" => "welcome",
     "is_success" => "is_success",

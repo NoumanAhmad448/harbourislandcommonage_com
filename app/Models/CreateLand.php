@@ -3,12 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 
-class CreateLand extends Model
+class CreateLand extends CustomModel
 {
-    use HasFactory;
+    use HasFactory, CustomModelTrait;
     protected $table = "land_create";
     protected $guarded = [];
 
@@ -38,9 +37,23 @@ class CreateLand extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function commonUser()
+    {
+        return $this->belongsTo(User::class, "user_id")
+            ->whereNull("users.".config("table.is_super_admin"))
+            ->whereNull("users.".config("table.is_admin"));
+    }
+
     public function city()
     {
         return $this->belongsTo(City::class);
+    }
+
+    public function normalUserRel(){
+        return ["users" => function($query){
+            $query->where("users.".config("table.is_super_admin"),false);
+        }];
     }
 
 }

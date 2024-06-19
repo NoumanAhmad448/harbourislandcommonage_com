@@ -21,10 +21,13 @@
         </a>
 
         <!-- Dropdown Start -->
-        <div x-show="dropdownOpen"
-            class="absolute right-0 mt-4 flex w-62.5 flex-col rounded-sm border border-stroke
-             bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
-            <ul class="flex flex-col gap-5 border-b border-stroke px-6 py-7.5 dark:border-strokedark">
+        <div x-show="dropdownOpen" style="z-index: 50000"
+            class="absolute right-0 z-index-40 mt-2 pt-4 flex w-62.5 flex-col rounded-sm border border-strokedark
+             shadow-default dark:border-strokedark dark:bg-boxdark bg-slate-900 text-white
+             hover:font-bold hover:text-white
+             ">
+            <ul class="relative right-0 z-index-40 flex flex-col gap-5 border-b border-strokedark px-6 py-7.5
+                 dark:border-strokedark">
                 @include(config('files.components') . '.profile_list', [
                     'prop' => [
                         'link' => '',

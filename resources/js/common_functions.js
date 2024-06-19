@@ -182,3 +182,23 @@ window.changeURL = function(newUrl) {
     }
     document.location.href = newUrl;
 }
+
+window.dataTable = function(table, cConfig={}){
+    let config = {}
+    config['language'] = {
+            searchPlaceholder: "Search records"
+        }
+    config["pageLength"] = "pageLength" in cConfig ? cConfig["pageLength"] : 25
+
+    config["order"] = [
+                        ["order" in cConfig && "col_no" in cConfig["order"] ?
+                         cConfig["order"]["col_no"] : 1 ,"desc"]
+                    ]
+
+    // config["scrollX"]= true
+
+    if(debug){
+        console.log(config)
+    }
+    return $(`#${table}`).DataTable(config);
+}

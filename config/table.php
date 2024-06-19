@@ -22,6 +22,8 @@ return [
     "user_id" => "user_id",
     "is_super_admin" => "is_super_admin",
     "is_admin" => "is_admin",
+    "primary_key" => "id",
+    "lands" => "lands",
 ];
 
 ?>
