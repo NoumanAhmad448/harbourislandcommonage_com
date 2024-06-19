@@ -42,7 +42,7 @@
                             <td >
                             @if(count($lands->landFiles) > 0)
                                 @foreach($lands->landFiles as $landFile)
-                                    <a href="{{Storage::path($landFile->link)}}">{{$landFile->f_name}}</a><br/>
+                                    <a href="{{Storage::url($landFile->link)}}">{{$landFile->f_name}}</a><br/>
                                 @endforeach
                             @endif
                             </td>
