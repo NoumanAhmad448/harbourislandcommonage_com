@@ -2,5 +2,9 @@
     "/js/app.js": "/js/app.js",
     "/js/common_functions.js": "/js/common_functions.js",
     "/js/main.js": "/js/main.js",
-    "/css/app.css": "/css/app.css"
+    "/js/land/land_create.js": "/js/land/land_create.js",
+    "/js/admin/admin_login.js": "/js/admin/admin_login.js",
+    "/js/login.js": "/js/login.js",
+    "/css/app.css": "/css/app.css",
+    "/css/land/land_create.css": "/css/land/land_create.css"
 }
