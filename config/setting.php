@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Facade;
 // config("setting.err_500")
 
 $css_folder = "css";
+$storage = "/storage/";
 $js_folder = "js";
 $layout_folder = "layouts";
 $public_folder = "public/";
@@ -15,9 +16,11 @@ if(config("app.env") == 'production'){
     $images_folder = $public_folder.$images_folder;
     $js_folder = $public_folder.$js_folder;
     $css_folder = $public_folder.$css_folder;
+    $storage = "/".$public_folder.$storage;
 }
 
 return [
+    "storage" => $storage."uploads/",
     "body" => $layout_folder.".body",
     "default_desc" => "Default Description",
     "app_css" => $css_folder."/app.css",
