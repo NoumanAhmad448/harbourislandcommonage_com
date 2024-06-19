@@ -42,7 +42,8 @@
                             <td >
                             @if(count($lands->landFiles) > 0)
                                 @foreach($lands->landFiles as $landFile)
-                                    <a href="{{file_path($landFile->link)}}">{{$landFile->f_name}}</a><br/>
+                                    <a target="_blank" href="{{file_path($landFile->link)}}">{{$landFile->f_name}}</a>
+                                    <br/><br/>
                                 @endforeach
                             @endif
                             </td>
