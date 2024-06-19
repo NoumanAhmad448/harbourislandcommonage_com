@@ -4,6 +4,7 @@
 @endsection
 @section('content')
     @php
+        use Illuminate\Support\Facades\Storage;
         $id = gen_str();
     @endphp
     @if ($data && $data['lands'])
@@ -19,7 +20,9 @@
                     <th >{{ __("table.".config("table.description"))}}</th>
                     <th >{{ __("table.".config("table.location"))}}</th>
                     <th >{{ __("table.".config("table.size"))}}</th>
+                    <th >{{ __("table.".config("table.city"))}}</th>
                     <th >{{ __("table.".config("table.is_admin_approved"))}}</th>
+                    <th >{{ __("table.".config("table.land_files"))}}</th>
                     <th >{{ __("table.".config("table.created_at"))}}</th>
                     <th >{{ __("table.".config("table.updated_at"))}}</th>
                 </tr>
@@ -28,15 +31,23 @@
                 @if(count($data['lands']) > 0)
                     @foreach ($data['lands'] as $lands)
                         <tr >
-                            <th >{{ '' }}</th>
-                            <th >{{ $lands->user ? $lands->user->name : 'no name' }}</th>
-                            <th >{{ $lands->title ?? ''  }}</th>
-                            <th >{{ $lands->description ?? ''  }}</th>
-                            <th >{{ $lands->location ?? ''  }}</th>
-                            <th >{{ $lands->size ?? ''  }}</th>
-                            <th class="text-white @if($lands->is_admin_approved){{"bg-blue-500" }} @else {{ "bg-red-500" }} @endif">{{ $lands->is_admin_approved ? "Yes" : 'No'  }}</th>
-                            <th >{{ $lands->created_at ? $lands->created_at  : ''  }}</th>
-                            <th >{{ $lands->updated_at ? $lands->updated_at  : '' }}</th>
+                            <td >{{ '' }}</td>
+                            <td >{{ $lands->user ? $lands->user->name : 'no name' }}</td>
+                            <td >{{ $lands->title ?? ''  }}</td>
+                            <td >{{ $lands->description ?? ''  }}</td>
+                            <td >{{ $lands->location ?? ''  }}</td>
+                            <td >{{ $lands->size ?? ''  }}</td>
+                            <td >{{ $lands->city && $lands->city->name ? $lands->city->name : ''  }}</td>
+                            <td class="text-white @if($lands->is_admin_approved){{"bg-blue-500" }} @else {{ "bg-red-500" }} @endif">{{ $lands->is_admin_approved ? "Yes" : 'No'  }}</td>
+                            <td >
+                            @if(count($lands->landFiles) > 0)
+                                @foreach($lands->landFiles as $landFile)
+                                    <a href="{{Storage::path($landFile->link)}}">{{$landFile->f_name}}</a><br/>
+                                @endforeach
+                            @endif
+                            </td>
+                            <td >{{ $lands->created_at ? $lands->created_at  : ''  }}</td>
+                            <td >{{ $lands->updated_at ? $lands->updated_at  : '' }}</td>
                         </tr>
                     @endforeach
                 @endif

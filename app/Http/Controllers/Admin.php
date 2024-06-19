@@ -62,12 +62,12 @@ class Admin extends Controller{
             $request->validated();
             $user = $this->verifyUser->verifyUser($request->all(), true);
             if(!$user){
-                return response()->json([config("setting.error") => __("messages.login_failed")],
+                return customResponse([config("setting.error") => __("messages.login_failed")],
                     config("setting.err_422"));
             }
             $request->session()->regenerate();
             Auth::login($user);
-            return response()->json([config("setting.is_success") => true,
+            return customResponse([config("setting.is_success") => true,
                 config("setting.message") => __("messages.logged_in")],config("setting.status_200"));
         }
         catch (\Exception $d) {
@@ -91,10 +91,11 @@ class Admin extends Controller{
 
             $lands = CreateLand::whereIn(config("table.user_id"), $users);
             $lands = $lands->showQuery();
+            $lands = $lands->orderByDesc(config("table.primary_key"));
             $lands = $lands->get();
             $data[config("table.lands")] = $lands;
             $data[config("table.title")] = __("messages.lands");
-            // dd($data[config("table.lands")]);
+
             return view(config("setting.admin_lands"), compact("data"));
         }
         catch (\Exception $d) {

@@ -4,7 +4,7 @@ return [
     "cities" => "cities",
     "states" => "states",
     "land_create" => "land_create",
-    "land_files" => "land_files",
+    "land_files" => "Land Files",
     'f_name' => 'f_name',
     'f_mimetype' => 'f_mimetype',
     'is_admin_approved' => 'Approved By Admin',

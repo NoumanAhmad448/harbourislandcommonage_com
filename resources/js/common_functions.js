@@ -10,22 +10,25 @@ window.show_popup = function (message) {
 }
 
 window.show_message = function(text="your message",title="Info",icon="info",button="ok"){
-    if(text){
-        swal({
+    if(!text){
+        text = err_msg
+    }
+    if(debug && text == err_msg){
+        console.log("no output is given")
+    }
+
+    swal({
         title: title,
         text: text,
         icon: icon,
         button: button,
-        })
-    }else{
-        console.log("no output is given")
-    }
+    })
 }
 
 window.popup_message = function(d){
     if(debug){
-        console.error(d)
-        console.error(typeof d)
+        console.log(d)
+        console.log(typeof d)
     }
     if(Array.isArray(d)){
         show_message(text=d[0])
@@ -51,7 +54,15 @@ window.popup_message = function(d){
                     console.log(dd)
                 }
                 d = dd[api_message]
-            }else{
+            }
+            else if(api_message in dd){
+                if(debug){
+                    console.log(dd)
+                }
+                d = dd[api_message]
+                show_message(text=d)
+            }
+            else{
                 d = dd
             }
         } catch (e) {
@@ -73,10 +84,11 @@ window.popup_message = function(d){
 
         if(typeof d == "string"){
               show_message(text=d)
-        }else if(Array.isArray(d) && d.length > 1){
+        }else if(Array.isArray(d) && d.length > 0){
             show_message(text=d[0])
         }
         else if(typeof d == "object"){
+            console.log(d)
             let msg = "";
             let counter = 0
             for (const key in d){
@@ -190,12 +202,14 @@ window.dataTable = function(table, cConfig={}){
         }
     config["pageLength"] = "pageLength" in cConfig ? cConfig["pageLength"] : 25
 
-    config["order"] = [
-                        ["order" in cConfig && "col_no" in cConfig["order"] ?
-                         cConfig["order"]["col_no"] : 1 ,"desc"]
-                    ]
+    if("order" in cConfig){
+        config["order"] = [
+            ["col_no" in cConfig["order"] ?
+            cConfig["order"]["col_no"] : 1 ,"desc"]
+       ]
+    }
 
-    // config["scrollX"]= true
+    config["scrollX"]= true
 
     if(debug){
         console.log(config)

@@ -51,7 +51,7 @@ class LandCreateController extends Controller
                 __("messages.land_reg_mail_sub")));
             }
 
-            return response()->json([config("setting.is_success") => true,
+            return customResponse([config("setting.is_success") => true,
                 config("setting.message") => __("messages.land_reg_msg")],config("setting.status_200"));
 
         } catch (\Exception $d) {

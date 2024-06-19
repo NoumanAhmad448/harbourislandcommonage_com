@@ -2,12 +2,10 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Contracts\Validation\Validator;
 use App\Rules\NameRules;
 
-class LandCreate extends FormRequest
+class LandCreate extends CustomRequest
 {
     private $nameRules;
     public function __construct() {
@@ -20,7 +18,11 @@ class LandCreate extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        $is_allowed = true;
+        if(isAdmin(false)){
+            $is_allowed = false;
+        }
+        return $is_allowed;
     }
 
     /**
@@ -54,10 +56,6 @@ class LandCreate extends FormRequest
             $this->nameRules->captchaValidation()
         );
         return $messages;
-    }
-
-    protected function failedValidation(Validator $validator) {
-        failValidation($validator);
     }
 
     /**

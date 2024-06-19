@@ -28,14 +28,20 @@ class CreateLand extends CustomModel
 
         $data[config("table.user_id")] = $user->id;
         $data[config("table.city")."_id"] = $input[config("table.city")];
+        $created_obj = CreateLand::create($data);
         debug_logs($data);
-        debug_logs(CreateLand::create($data)->toSql());
-        return CreateLand::create($data);
+        debug_logs($created_obj->toSql());
+        return $created_obj;
     }
 
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function landFiles()
+    {
+        return $this->hasMany(LandFile::class, config("table.land_create_id"));
     }
 
     public function commonUser()
