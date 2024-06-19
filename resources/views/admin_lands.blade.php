@@ -1,6 +1,6 @@
 @extends(config('setting.admin_body'))
 @section('page-css')
-@include(config('files.lib')."datatables")
+@include(config('files.lib')."data_tables")
 @endsection
 @section('content')
     @php
