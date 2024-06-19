@@ -18,7 +18,4 @@ Alpine.plugin(persist)
 Alpine.start();
 
 window.$ = window.jQuery = require('jquery'); //jquery added here after appling npm install --save jquery
-
-import DataTable from 'datatables.net-dt';
-import 'datatables.net-buttons-dt';
-import 'datatables.net-responsive-dt';
+import 'flowbite';

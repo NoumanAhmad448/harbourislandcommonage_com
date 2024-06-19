@@ -92,9 +92,9 @@ class Admin extends Controller{
             $lands = CreateLand::whereIn(config("table.user_id"), $users);
             $lands = $lands->showQuery();
             $lands = $lands->get();
-            $data['lands'] = $lands;
-            $data['title'] = __("messages.lands");
-
+            $data[config("table.lands")] = $lands;
+            $data[config("table.title")] = __("messages.lands");
+            // dd($data[config("table.lands")]);
             return view(config("setting.admin_lands"), compact("data"));
         }
         catch (\Exception $d) {
