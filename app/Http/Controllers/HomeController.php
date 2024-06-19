@@ -36,7 +36,7 @@ class HomeController extends Controller
     }
     public function indexApi(){
         try {
-            return response()->json([config("setting.is_success")=> true, "data" => '']);
+            return customResponse([config("setting.is_success")=> true, "data" => '']);
         } catch(\Exception $d){
             return server_logs($e=[true,$d], $request=[false,''],$config=true);
         }

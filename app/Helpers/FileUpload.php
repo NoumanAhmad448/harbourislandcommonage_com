@@ -2,10 +2,7 @@
 
 namespace App\Helpers;
 
-use Illuminate\Support\Facades\Auth;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
-use Intervention\Image\ImageManager;
 
 class FileUpload
 {

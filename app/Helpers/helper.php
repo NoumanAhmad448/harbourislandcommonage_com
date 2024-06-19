@@ -48,7 +48,8 @@ if (!function_exists('isAdmin')){
         if($action){
             $action = abort(403);
         }
-        return Auth::user()->is_admin | Auth::user()->is_super_admin ?? $action;
+        $auth = Auth::user();
+        return $auth && ($auth->is_admin | $auth->is_super_admin) ?? $action;
     }
 }
 
@@ -103,9 +104,24 @@ if (!function_exists('server_logs')){
                 dump(config("setting.dash_lines"));
             }
         }else if($return_response){
-            return response()->json([config("setting.error") => __("messages.err_msg")], $response_status);
+            return customResponse([config("setting.error") => __("messages.err_msg")], $response_status);
         }
    }
+}
+if (!function_exists('customResponse')){
+    function customResponse($data) {
+        /*
+        include error key if there is no success and error key exist however message
+        entity must exist
+        */
+        if(is_key_not_exists(config("setting.is_success"), $data) &&
+            is_key_not_exists(config("setting.error"), $data) &&
+            is_key_exists(config("setting.message"), $data)
+            ){
+            $data[config("setting.error")] = __("messages.err_msg");
+        }
+        return response()->json($data);
+    }
 }
 if (!function_exists('failValidation')){
     function failValidation($validator): void {
@@ -117,7 +133,8 @@ if (!function_exists('failValidation')){
                 dump($validator->errors());
             }
         }
-        throw new HttpResponseException(response()->json([config("setting.error") => $errors],
+
+        throw new HttpResponseException(customResponse([config("setting.error") => $errors],
                     config("setting.err_422"),
         ));
     }
@@ -126,6 +143,11 @@ if (!function_exists('failValidation')){
 if (!function_exists('is_key_exists')){
     function is_key_exists($key,$array): bool {
         return array_key_exists($key,$array);
+    }
+}
+if (!function_exists('is_key_not_exists')){
+    function is_key_not_exists($key,$array): bool {
+        return !array_key_exists($key,$array);
     }
 }
 
@@ -167,8 +189,16 @@ if (!function_exists('fromMailer')){
 if (!function_exists('gen_str')){
     function gen_str($uuid=false, $limit=8): string {
         if($uuid)
-            return (string) Str::uuid();
-        else
-            return "d".substr(sha1(time()),0,$limit);
+        return (string) Str::uuid();
+    else
+    return "d".substr(sha1(time()),0,$limit);
+}
+}
+if (!function_exists('is_normal_user')){
+    function is_normal_user():bool{
+        /*
+        every unregisterd user and non admin is a normal user
+        */
+        return !isAdmin(false);
     }
 }

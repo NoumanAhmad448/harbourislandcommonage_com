@@ -40614,21 +40614,23 @@ window.show_message = function () {
   var title = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "Info";
   var icon = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "info";
   var button = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "ok";
-  if (text) {
-    swal({
-      title: title,
-      text: text,
-      icon: icon,
-      button: button
-    });
-  } else {
+  if (!text) {
+    text = err_msg;
+  }
+  if (debug && text == err_msg) {
     console.log("no output is given");
   }
+  swal({
+    title: title,
+    text: text,
+    icon: icon,
+    button: button
+  });
 };
 window.popup_message = function (d) {
   if (debug) {
-    console.error(d);
-    console.error(_typeof(d));
+    console.log(d);
+    console.log(_typeof(d));
   }
   if (Array.isArray(d)) {
     show_message(text = d[0]);
@@ -40651,6 +40653,12 @@ window.popup_message = function (d) {
           console.log(dd);
         }
         d = dd[api_message];
+      } else if (api_message in dd) {
+        if (debug) {
+          console.log(dd);
+        }
+        d = dd[api_message];
+        show_message(text = d);
       } else {
         d = dd;
       }
@@ -40672,9 +40680,10 @@ window.popup_message = function (d) {
     }
     if (typeof d == "string") {
       show_message(text = d);
-    } else if (Array.isArray(d) && d.length > 1) {
+    } else if (Array.isArray(d) && d.length > 0) {
       show_message(text = d[0]);
     } else if (_typeof(d) == "object") {
+      console.log(d);
       var msg = "";
       var counter = 0;
       for (var key in d) {
@@ -40792,10 +40801,10 @@ window.dataTable = function (table) {
     searchPlaceholder: "Search records"
   };
   config["pageLength"] = "pageLength" in cConfig ? cConfig["pageLength"] : 25;
-  config["order"] = [["order" in cConfig && "col_no" in cConfig["order"] ? cConfig["order"]["col_no"] : 1, "desc"]];
-
-  // config["scrollX"]= true
-
+  if ("order" in cConfig) {
+    config["order"] = [["col_no" in cConfig["order"] ? cConfig["order"]["col_no"] : 1, "desc"]];
+  }
+  config["scrollX"] = true;
   if (debug) {
     console.log(config);
   }

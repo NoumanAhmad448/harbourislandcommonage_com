@@ -5,7 +5,7 @@ $text = $prop["text"] ?? __("messages.mprofile");
 @endphp
 <li>
     <a href="{{$link}}"
-        class="py-2 hover:text-white hover:font-bold
+        class="py-2
             flex items-center gap-3.5 text-sm font-medium duration-300 ease-in-out lg:text-base">
         @if($svg)
             @include($svg)

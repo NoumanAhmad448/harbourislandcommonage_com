@@ -9,9 +9,14 @@
                         <hr/>
                     @endif
                     @include(config("files.components").".land_registeration")
-
-                    @include(config("files.components").".forms.col", ["input" => config("files.components").".forms.submit",
-                    "move_btn_right" => true, "id" => "submit"])
+                    @if(is_normal_user())
+                        @include(config("files.components").".forms.col", ["input" => config("files.components").".forms.submit",
+                        "move_btn_right" => true, "id" => "submit"])
+                    @else
+                        <div class="md:col-span-2">
+                            <div class="text-white bg-red-500"> {{ __("messages.prob_action")}} </div>
+                        </div>
+                    @endif
                 </div>
             </section>
         </div>

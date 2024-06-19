@@ -1,9 +1,8 @@
 @php
 
 $id = $prop['id'] ?? '';
-$hide_el = $prop['hide_el'] ?? '';
-// dump($id);
-
+$hide_el = $prop['hide_el'] ?? 'default';
+debug_logs($id);
 @endphp
 
 <script>

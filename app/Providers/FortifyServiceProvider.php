@@ -26,7 +26,7 @@ class FortifyServiceProvider extends ServiceProvider
         $this->app->instance(LoginResponse::class, new class implements LoginResponse {
             public function toResponse($request)
             {
-                return response()->json([config("setting.is_success") => true,
+                return customResponse([config("setting.is_success") => true,
                     config("setting.message") => __("messages.logged_in")],config("setting.status_200"));
             }
         });
