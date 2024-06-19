@@ -5,37 +5,18 @@
 
     <div class="pt-20">
         <h2 class="section-title text-4xl text-center pb-8 langBN">{{ __('Article & Advices') }}</h2>
-        <div class="flex -mx-4">
-            <div class="flex-1 px-4">
-                <div class="bg-white rounded-xl flex">
-                    {{-- <div style="min-width:130px; background-image: url(/img/6.jpg)" class="bg-cover bg-center"></div> --}}
-                    <div style="min-width:130px; background-image: url(https://picsum.photos/1200/800)" class="bg-cover bg-center"></div>
-                    <div class="p-4">
-                        <h3 class="mb-4 text-xl">Lorem ipsum dolor sit amet, consectetur</h3>
-                        <a href="" class="fullwidth-btn">Read More</a>
+        <div class="md:flex -mx-4">
+            @foreach([1,2,3] as $_)
+                <div class="md:flex-1 px-4 mt-7 md:mt-3">
+                    <div class="bg-white rounded-xl flex">
+                        <div style="min-width:130px; background-image: url(https://picsum.photos/1200/800)" class="bg-cover bg-center"></div>
+                        <div class="p-4">
+                            <h3 class="mb-4 text-xl">Lorem ipsum dolor sit amet, consectetur</h3>
+                            <a href="" class="fullwidth-btn">Read More</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="flex-1 px-4">
-                <div class="bg-white rounded-xl flex">
-                    <div style="min-width:130px; background-image: url(https://picsum.photos/1200/800)" class="bg-cover bg-center"></div>
-                    <div class="p-4">
-                        <h3 class="mb-4 text-xl">Lorem ipsum dolor sit amet, consectetur</h3>
-                        <a href="" class="fullwidth-btn">Read More</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="flex-1 px-4">
-                <div class="bg-white rounded-xl flex">
-                    <div style="min-width:130px; background-image: url(https://picsum.photos/1200/800)" class="bg-cover bg-center"></div>
-                    <div class="p-4">
-                        <h3 class="mb-4 text-xl">Lorem ipsum dolor sit amet, consectetur</h3>
-                        <a href="" class="fullwidth-btn">Read More</a>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
     @endif
@@ -65,19 +46,20 @@
             {{ __("messages.contact") }}
        </h2>
         <p>
-            {{ __("messages.contact_desc") }}
+            {{ __("messages.getting_invol") }}
         </p>
     </div>
     @endif
 
     @if(config("setting.en_footer"))
-    <div class="flex pb-12" id="footer">
-        <div class="w-1/4 pr-6">
+    <div class="md:flex pb-12 text-center md:text-left" id="footer">
+        <div class="lg:w-1/4 pr-6 flex justify-center items-center
+                md:block grid place-items-center">
             <img class="rounded" width="100" src="{{url(config('setting.im_welcome'))}}" alt="{{ __("messages.welcome") }}">
             <p class="text-sm mt-7">{{ __("messages.wel_title") }}</p>
         </div>
 
-        <div class="w-2/4 font-bold leading-8">
+        <div class="md:w-2/4 font-bold leading-8 mt-4 md:mt-0">
             {{-- <div class="flex -mx-6">
                 <div class="flex-1 px-6">
                     <ul>
@@ -105,7 +87,7 @@
                 </div>
             </div> --}}
         </div>
-        <div class="w-1/4 pr-6">
+        <div class="md:w-1/4 pr-6 mt-4 md:mt-0">
             <div class="text-sm font-bold">{{ __("messages.address")}}</div>
             <div class="text-sm mt-2">{{ config("setting.address")}}</div>
             <div class="text-sm mt-2 font-bold">{{ __("messages.phone_no")}}</div>
@@ -118,4 +100,3 @@
 
 </div>
 @endif
-{{-- <img class="w-full" src="{{url(config('setting.im_sponsorship'))}}" alt=""> --}}

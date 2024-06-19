@@ -1,30 +1,37 @@
-
-<div class="fixed top-0 w-full py-2 px-12 flex justify-between items-center z-30 sticky-header {{request()->routeIs('home') ? '' : 'general-header'}}">
+<nav
+    class="fixed top-0 w-full py-2 px-12 flex justify-between items-center z-30 sticky-header
+     general-header sticky-header-active">
     <div class="min-w-max">
-        <a href=""><img width="100" src="/img/house-logo.png" alt=""></a>
+        <a href="{{route('index')}}"><img width="100" src="{{url(config('setting.im_log'))}}" alt="{{config('app.name')}}"></a>
     </div>
-
-    <div class="w-full">
-        <ul class="flex justify-center">
-            <li><a class="inline-block p-4 text-white {{request('type') == '3' ? 'bg-gray-50' : ''}}" href="">{{ __('Land') }}</a></li>
-            <li><a class="inline-block p-4 text-white {{request('type') == '2' ? 'bg-gray-50' : ''}}" href="">{{ __('Villa') }}</a></li>
-            <li><a class="inline-block p-4 text-white {{request('type') == '1' ? 'bg-gray-50' : ''}}" href="">{{ __('Apartment') }}</a></li>
-            <li><a class="inline-block p-4 text-white {{ request()->is('*page/about-us*') ? 'bg-gray-50' : '' }}" href="#footer">
-                {{ __('messages.contact') }}</a></li>
-            <li><a class="inline-block p-4 text-white  {{ request()->is('page/contact-us') ? 'bg-gray-50' : '' }}" href="#footer">
-                {{ __('messages.about_u') }}</a></li>
+    <div class="hidden w-full md:block md:w-auto" id="navbar-dropdown">
+        <ul
+            class="flex flex-col font-medium p-4 md:p-0 mt-4 rounded-lg md:space-x-8 rtl:space-x-reverse
+                        md:flex-row md:mt-0 md:border-0">
+            <li><a class="inline-block p-4 text-white {{ request('type') == '3' ? 'bg-gray-50' : '' }}"
+                    href="{{route('index')}}">{{ __('Home') }}</a></li>
+            <li><a class="inline-block p-4 text-white {{ request('type') == '3' ? 'bg-gray-50' : '' }}"
+                    href="">{{ __('Land') }}</a></li>
+            <li><a class="inline-block p-4 text-white {{ request('type') == '1' ? 'bg-gray-50' : '' }}"
+                    href="">{{ __('messages.Residential') }}</a></li>
+            <li><a class="inline-block p-4 text-white {{ request()->is('*page/about-us*') ? 'bg-gray-50' : '' }}"
+                    href="#footer">
+                    {{ __('messages.contact') }}</a></li>
+            <li><a class="inline-block p-4 text-white  {{ request()->is('page/contact-us') ? 'bg-gray-50' : '' }}"
+                    href="#footer">
+                    {{ __('messages.about_u') }}</a></li>
         </ul>
     </div>
 
 
     <div class="min-w-max text-3xl flex justify-end">
-        <!------ Currency Change Button ------->
-        {{-- <div class="mr-10 text-2xl currency">
-            <a class="inline-block text-xl rounded-full px-3 py-1 text-white" href="" title="Change Currency to Doller">$</a>
-            <a class="inline-block text-xl rounded-full px-3 py-1 text-white" href="" title="Change Currency to Lira">₺</a>
-            <a class="inline-block text-xl rounded-full px-3 py-1 text-white" href="" title="Change Currency to Taka">৳</a>
-        </div> --}}
-        </a>
+        @include(config("files.components").'.user_profile',["prop" => [ "logout_url" => route('logout')]])
     </div>
+    @if(!auth()->user())
+        <div class="hidden w-full md:block md:w-auto">
+            <a href="{{route('login')}}">{{__("messages.login")}}</a>
+        </div>
+    @endif
 
-</div>
+    @include("svg.toggle")
+</nav>

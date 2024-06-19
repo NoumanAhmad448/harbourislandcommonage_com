@@ -15,28 +15,29 @@ npm run watch
 3. show loader on user request ```profile.js``` and search for ```hide loader``` & ```show loader```
 4. server logs ```server_logs``` function in ```helper.php```
 5. server configuration ```php_config``` function in ```helper.php```
-6. whm password
-```
-```
-7. DB password
-```
-```
+6. css/js/images folders are meant to be in the root/main folder with sample file names only for local
 8. Checkout storage on server
 ```
 df -hi
 ```
 9. global css file ```app.css```
 10. sample or generic file ```sample_body.blade.php```
+11. use sample view|css|js file to create fresh new view|css|js and update everything accordingly.Copy css|js
+files in the root folder of laravel. Don't forget to update ```webpack.mix.js```
+12. use ```popup_message``` function for popup
+13. use ```SampleRequest.php``` function for Request Validation
+14. use ```data_tables.blade.php``` file to work with ```datatables``` e.g. ```admin_lands.blade.php```
 
 ## Local Setup (Development)
-1. install xampp (Required PHP version -> 8.1) [Download Link](https://downloadsapachefriends.global.ssl.fastly.net/7.4.30/xampp-windows-x64-7.4.30-1-VC15-installer.exe?from_af=true)
+1. install xampp (Required PHP version -> 8.2|8.0|8.1) [Download Link](https://www.apachefriends.org/)
 2. download node 16.18.0
 2. Go to .env file and change the DB connection
 3. Create a database
 ```
 thesunr8_harbourislandcommonage_com
 ```
-4. You need to follow of either mentioned path
+4. [Visit this file](/database/seeders/DatabaseSeeder.php) and uncomment everything inside ```run``` method
+5. You need to follow of either mentioned path
     1. One
         1. run
            1. usmansaleem234_lyskills_new.sql
@@ -44,10 +45,8 @@ thesunr8_harbourislandcommonage_com
         file locally. These files are avaiable in the source code, path /
         3. Add primary key manually in every table or create a alter query and try changing table name and primary key column
     2. Second
-        1. php artisan migrate
-        2. Get dump from someone else and upload
-5. composer install
-6. npm install
+        1. run [this file](/local_development.sh)
+6. Get dump from someone else and upload
 7. php artisan serve --port=8081
 
 ## Troubleshooting
@@ -72,6 +71,11 @@ mysql connection
 ```
 mysql -h 127.0.0.1 -P 3306 -u usmansaleem234_lyskills_root5 -p
 ```
+clear user table for local development
+```
+DELETE from users;
+```
+
 mysql configuration
 ```
 systemctl status mysql
@@ -114,9 +118,19 @@ php artisan config:cache
 cd ~/public_html/website_7171ee6c &&
 php artisan route:list
 ```
+create model with migrations
+```
+php artisan make:model name --migration
+```
+
+
 storage logs
 ```
 cd ~/public_html/website_7171ee6c/storage/logs/
+```
+make/create controller
+```
+php artisan make:controller
 ```
 
 
@@ -192,12 +206,11 @@ deployment.yml
 
 
 ## Plan
-1. create a property table on the home page
-2. show all the information on the home page
-3. list the property data on the home page
-4. create an admin panel
-5. let admin login
+
+6. send email to the user provided address
+
 6. Admin can approve/reject the land
+3. list the property data on the home page
 7. on approve send an email with the password
 8. on reject allow the agent to add any comment and let the commonager to login and update the information
 9. commonager can login & check the land information

@@ -5,15 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {{-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/> --}}
 
-    <link rel="shortcut icon" href="{{ asset(config('setting.favicon')) }}">
-    <title id="seo_title"> {{ config('app.name') }} </title>
+    <link rel="shortcut icon" href="{{ url(config('setting.im_log')) }}">
+    <title id="seo_title"> {{ config('setting.app_name') }} </title>
     <meta id="seo_desc" name="description" content="{{ config('setting.default_desc') }}">
     <meta property="og:title" content="{{ config('app.name') }}">
     <meta id="seo_fb" property="og:description" content="{{ config('setting.default_desc') }}">
     <link rel="canonical" href="{{ url()->current() }}">
-
-    {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" --}}
-        {{-- integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous"> --}}
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
     integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
@@ -25,10 +22,20 @@
 
     {{-- should alway be in the end --}}
     <script>
-        debug = '{{ config('app.debug') ? 1 : 0 }}';
+        let debug = '{{ config('app.debug') ? 1 : 0 }}';
         debug = debug == "1" ? true : false;
         let err_msg = '{{ __('messages.err_msg') }}';
+        let file_upload_ft = '{{ __('messages.file_upload_ft') }}';
         let en_typewriter = {{ config("setting.en_typewriter") }};
+        let dash_lines = "{{ config("setting.dash_lines") }}";
+        let fuas = "{{ config("setting.fuas") }}";
+        let fuasm = "{{ __("messages.fuasm") }}";
+        let img_val_rules =  {!! config("form.img_val_rules_json") !!};
+        let api_message =  "{{ config('setting.message') }}";
+        let api_is_success =  "{{ config('setting.is_success') }}";
+        let default_timeout =  "{{ config('setting.default_timeout') }}";
+        let domain_name =  "{{ config('app.url') }}";
+
     </script>
 
     {{-- add global js file here --}}
