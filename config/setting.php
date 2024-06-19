@@ -8,6 +8,7 @@ $storage = "/storage/";
 $js_folder = "js";
 $layout_folder = "layouts";
 $public_folder = "public/";
+$public_fo = "public";
 $images_folder = "images/";
 $land_folder = "land/";
 $admin_folder = "admin/";
@@ -16,7 +17,7 @@ if(config("app.env") == 'production'){
     $images_folder = $public_folder.$images_folder;
     $js_folder = $public_folder.$js_folder;
     $css_folder = $public_folder.$css_folder;
-    $storage = "/".$public_folder.$storage;
+    $storage = "/".$public_fo.$storage;
 }
 
 return [
@@ -48,6 +49,7 @@ return [
     "im_welcome" => $images_folder."welcome.jpg",
     "im_log" => $images_folder."logo.png",
     "im_log_desc" => "",
+    "en_slf" => true,
     "en_wel" => true,
     "en_typewriter" => true,
     "en_mo_info_con" => true,
