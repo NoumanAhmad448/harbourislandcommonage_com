@@ -32,3 +32,7 @@ $("#admin_login").submit(function (e) {
       dataType: 'JSON'
     });
   });
+
+  $("#click").click(function(){
+    console.log("hello")
+  });
