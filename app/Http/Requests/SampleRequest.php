@@ -3,10 +3,9 @@
 namespace App\Http\Requests;
 
 use App\Rules\IsScriptAttack;
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 
-class IProfileRequest extends FormRequest
+class IProfileRequest extends CustomRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -40,18 +39,5 @@ class IProfileRequest extends FormRequest
         return [
             'headline.required' => 'Professional title must be provided',
         ];
-    }
-
-    protected function failedValidation(Validator $validator) {
-        failValidation($validator);
-    }
-    /**
-     * Get custom attributes for validator errors.
-     *
-     * @return array<string, string>
-     */
-    public function attributes(): array
-    {
-        return __("attributes");
     }
 }
