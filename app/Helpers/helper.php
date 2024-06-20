@@ -108,8 +108,9 @@ if (!function_exists('server_logs')){
         }
    }
 }
-if (!function_exists('customResponse')){
-    function customResponse($data) {
+
+if (!function_exists('includeErr')){
+    function includeErr($data) {
         /*
         include error key if there is no success and error key exist however message
         entity must exist
@@ -120,7 +121,17 @@ if (!function_exists('customResponse')){
             ){
             $data[config("setting.error")] = __("messages.err_msg");
         }
-        return response()->json($data);
+        return $data;
+    }
+}
+if (!function_exists('customResponse')){
+    function customResponse($data,$status="") {
+        if(empty($status)){
+            $status = config('setting.status_200');
+        }
+
+        $data= includeErr($data);
+        return response()->json($data,$status);
     }
 }
 if (!function_exists('failValidation')){
@@ -134,6 +145,8 @@ if (!function_exists('failValidation')){
             }
         }
 
+        $errors= includeErr($errors);
+
         throw new HttpResponseException(customResponse([config("setting.error") => $errors],
                     config("setting.err_422"),
         ));
@@ -142,12 +155,12 @@ if (!function_exists('failValidation')){
 
 if (!function_exists('is_key_exists')){
     function is_key_exists($key,$array): bool {
-        return array_key_exists($key,$array);
+        return is_array($array) && array_key_exists($key,$array);
     }
 }
 if (!function_exists('is_key_not_exists')){
     function is_key_not_exists($key,$array): bool {
-        return !array_key_exists($key,$array);
+        return !is_key_exists($key,$array);
     }
 }
 

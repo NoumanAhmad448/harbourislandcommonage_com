@@ -2,11 +2,10 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use App\Rules\NameRules;
 
-class AdminLogin extends FormRequest
+class AdminLogin extends CustomRequest
 {
     private $nameRules;
 
