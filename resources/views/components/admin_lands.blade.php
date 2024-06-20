@@ -13,7 +13,7 @@ debug_logs($data);
     @if ($data['title'])
         <h1> {{ $data['title'] }} </h1>
     @endif
-    <table class="display hidden" id="{{ $id }}">
+    <table class="display" id="{{ $id }}">
         <thead>
             <tr>
                 <th>#</th>
@@ -31,7 +31,7 @@ debug_logs($data);
                 <th>{{ __('table.' . config('table.updated_at')) }}</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody class="hidden" id="{{$id}}tbody">
             @if (count($data['lands']) > 0)
                 @foreach ($data['lands'] as $lands)
                     <tr>
@@ -70,7 +70,7 @@ debug_logs($data);
             @include(config("files.components_")."loader_script", ["prop" =>
             [
                 'id' => $id,
-                "hide_el" => $id
+                "hide_el" => "{$id}tbody"
             ]
             ])
         </tbody>
