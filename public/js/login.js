@@ -5,15 +5,10 @@ var __webpack_exports__ = {};
   \*******************************/
 $("#login").submit(function (e) {
   e.preventDefault();
-  var loading_screen = $("#loading-screen");
   var data = new FormData($(this).get(0));
-  if (debug) {
-    console.log(data);
-  }
-  // disable submit btn and show loader
-  debug_logs("loading_screen");
-  debug_logs(loading_screen);
-  loading_screen.toggleClass("hidden");
+  debug_logs(data);
+  // showLoader
+  var loading_screen = showLoader();
   var submit = $("#submit");
   submit.prop("disabled", "disabled");
   // disable submit btn and show loader

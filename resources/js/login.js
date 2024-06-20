@@ -1,14 +1,9 @@
 $("#login").submit(function (e) {
     e.preventDefault();
-    let loading_screen = $("#loading-screen")
     var data = new FormData($(this).get(0));
-    if(debug){
-        console.log(data)
-    }
-    // disable submit btn and show loader
-    debug_logs("loading_screen")
-    debug_logs(loading_screen)
-    loading_screen.toggleClass("hidden")
+    debug_logs(data)
+    // showLoader
+    const loading_screen = showLoader()
 
     let submit = $("#submit")
     submit.prop("disabled","disabled")

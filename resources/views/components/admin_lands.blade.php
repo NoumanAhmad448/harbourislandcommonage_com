@@ -7,6 +7,7 @@ debug_logs("admin blade component");
 debug_logs($data);
 
 @endphp
+@include(config("files.components_")."modal")
 @include(config("files.components_")."loader", ["prop" => [
     "id" => $id
 ]])
@@ -35,6 +36,7 @@ debug_logs($data);
             'input' => config("files.forms")."submit",
             "text" => __("attributes.update"),
             "id" => config("form.update"),
+            "is_btn" => "button",
             "classes" => "pt-5",
         ])
     </div>
@@ -65,6 +67,7 @@ debug_logs($data);
                             @include(config('files.forms') . 'checkbox', [
                                 'prop' => [
                                     'id' => config('form.land_ids'),
+                                    "value" => $lands->id
                                 ],
                             ])
                         </td>
@@ -107,6 +110,10 @@ debug_logs($data);
     let land_ids = "{{ config('form.land_ids') }}";
     let update_field = "{{ config('form.update') }}";
     let land_ops = "{{ config('form.land_ops') }}";
+
+    debug_logs(land_ids);
+    debug_logs(update_field);
+    debug_logs(land_ops);
 </script>
 <script src="{{ mix(config('setting.admin_lands_js')) }}"></script>
 @endif
