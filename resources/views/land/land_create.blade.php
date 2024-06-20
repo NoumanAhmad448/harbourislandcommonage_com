@@ -1,6 +1,6 @@
 @extends(config('setting.body'))
 @section('page-css')
-<link rel="stylesheet" href="{{ url(config('setting.land_create_css')) }}">
+<link rel="stylesheet" href="{{ mix(config('setting.land_create_css')) }}">
 @endsection
 @section('content')
     <form id="land_reg" enctype="multipart/form-data">
@@ -12,5 +12,5 @@
 <script>
     let land_save = "{{route('land_save')}}";
 </script>
-<script src="{{ url(config('setting.land_create_js')) }}"></script>
+<script src="{{ mix(config('setting.land_create_js')) }}"></script>
 @endsection

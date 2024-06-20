@@ -66,5 +66,5 @@
   let login_form = "{{route('login')}}";
   let index = "{{route('index')}}";
 </script>
-<script src="{{ url(config('setting.login_js')) }}"></script>
+<script src="{{ mix(config('setting.login_js')) }}"></script>
 @endsection
