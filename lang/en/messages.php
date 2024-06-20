@@ -80,5 +80,6 @@ return [
     "summary" => "Summary",
     "menu" => "MENU",
     "lands" => "Lands",
+    "land_op" => "Land Operation",
     "prob_action" => "This Action is forbidden for admin user",
 ];

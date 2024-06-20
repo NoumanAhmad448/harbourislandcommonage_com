@@ -6,6 +6,7 @@ return [
     config("form.email") => "Email Address",
     config("form.password") => "Password",
     config("form.c_password") => "Confirm Password",
-    config("form.g-recaptcha-response") => "Google Captcha"
+    config("form.g-recaptcha-response") => "Google Captcha",
+    config("form.update") => "Update",
 ];
 ?>

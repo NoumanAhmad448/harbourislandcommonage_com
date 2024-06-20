@@ -1,1 +1,44 @@
-$("#login").submit((function(e){e.preventDefault();var a=$("#loading-screen"),s=new FormData($(this).get(0));debug&&console.log(s),debug_logs("loading_screen"),debug_logs(a),a.toggleClass("hidden");var o=$("#submit");o.prop("disabled","disabled"),$.ajax({url:login_form,type:"post",contentType:!1,processData:!1,data:s,success:function(e){o.prop("disabled",""),a.toggleClass("hidden"),popup_message(e),changeURL("".concat(index))},error:function(e){o.prop("disabled",""),a.toggleClass("hidden"),popup_message(e)},headers:{"X-CSRF-TOKEN":$('meta[name="csrf-token"]').attr("content")},dataType:"JSON"})}));
+/******/ (() => { // webpackBootstrap
+var __webpack_exports__ = {};
+/*!*******************************!*\
+  !*** ./resources/js/login.js ***!
+  \*******************************/
+$("#login").submit(function (e) {
+  e.preventDefault();
+  var loading_screen = $("#loading-screen");
+  var data = new FormData($(this).get(0));
+  if (debug) {
+    console.log(data);
+  }
+  // disable submit btn and show loader
+  debug_logs("loading_screen");
+  debug_logs(loading_screen);
+  loading_screen.toggleClass("hidden");
+  var submit = $("#submit");
+  submit.prop("disabled", "disabled");
+  // disable submit btn and show loader
+  $.ajax({
+    url: login_form,
+    type: 'post',
+    contentType: false,
+    processData: false,
+    data: data,
+    success: function success(d) {
+      submit.prop("disabled", "");
+      loading_screen.toggleClass("hidden");
+      popup_message(d);
+      changeURL("".concat(index));
+    },
+    error: function error(d) {
+      submit.prop("disabled", "");
+      loading_screen.toggleClass("hidden");
+      popup_message(d);
+    },
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    },
+    dataType: 'JSON'
+  });
+});
+/******/ })()
+;

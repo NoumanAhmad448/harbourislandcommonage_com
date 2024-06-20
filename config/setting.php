@@ -68,6 +68,7 @@ return [
     "land_create_css" => "{$css_folder}/{$land_folder}land_create.css",
     "land_create_js" => "{$js_folder}/{$land_folder}land_create.js",
     "admin_login_js" => "{$js_folder}/{$admin_folder}admin_login.js",
+    "admin_lands_js" => "{$js_folder}/{$admin_folder}admin_lands.js",
     "login_js" => "{$js_folder}/login.js",
     "svg_toggle" => '',
     "isLoaderLoaded" => false,
