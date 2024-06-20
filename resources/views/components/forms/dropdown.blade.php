@@ -36,9 +36,9 @@ if(!$data){
         @endif
         @include(config("files.components").".bottom_arrow")
     </button>
-    <section id="{{$id}}loader">
-        @include(config("files.components").".loader")
-    </section>
+    @include(config("files.components_")."loader", ["prop" => [
+        "id" => $id
+    ]])
     <div id="{{$id}}dropdown" autocomplete="off"
         class="@If($data) max-h-52 @endif z-50 hidden overflow-y-scroll md:col-span-{{$col}} @if($move_btn_right) {{ 'text-right' }} @endif absolute right-0 mt-2 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 p-1 space-y-1">
         <!-- Search input -->

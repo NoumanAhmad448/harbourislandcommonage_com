@@ -14,9 +14,9 @@ $input_title = $prop["input_title"] ?? __("messages.file_upload_title");
 $is_multiple = $prop["is_multiple"] ?? false;
 
 @endphp
-<section id="{{$id}}loader">
-    @include(config("files.components").".loader")
-</section>
+@include(config("files.components").".loader", ["prop" => [
+    "id" => $id
+]])
 <label><span class="mr-2 mb-2">{{$label}}</span></label>
 @if ($include_star)
     {!! config('setting.red_star') !!}

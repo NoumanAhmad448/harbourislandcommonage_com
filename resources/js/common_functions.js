@@ -216,3 +216,9 @@ window.dataTable = function(table, cConfig={}){
     }
     return $(`#${table}`).DataTable(config);
 }
+
+window.debug_logs = function(whatever){
+    if(debug){
+        console.log(whatever)
+    }
+}

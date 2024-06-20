@@ -19,9 +19,9 @@
     ];
 
 @endphp
-<section id="{{$id}}loader">
-    @include(config("files.components").".loader")
-</section>
+@include(config("files.components").".loader", ["prop" => [
+    "id" => $id
+]])
 <ul id="{{$sidebar_menu}}" class="mb-6 flex flex-col gap-2.5 hidden">
     <!-- Menu Item Dashboard -->
     @foreach ($menu as $op)
