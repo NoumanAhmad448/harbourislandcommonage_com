@@ -45,3 +45,7 @@ mix.js(`${$resource_js}app.js`, $js_path)
         //
     ])
     ;
+
+if (mix.inProduction()) {
+    mix.version();
+}

@@ -39,6 +39,6 @@
     </script>
 
     {{-- add global js file here --}}
-    <script src="{{ url(config('setting.app_js')) }}"></script>
-    <script src="{{ url(config('setting.common_functions')) }}"></script>
+    <script src="{{ mix(config('setting.app_js')) }}"></script>
+    <script src="{{ mix(config('setting.common_functions')) }}"></script>
     {{-- should not include after this line --}}
