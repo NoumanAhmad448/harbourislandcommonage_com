@@ -5,4 +5,4 @@
 <script src="https://cdn.datatables.net/2.0.8/js/dataTables.js" crossorigin="anonymous"></script>
 <script src="https://cdn.datatables.net/buttons/3.0.2/js/dataTables.buttons.min.js" crossorigin="anonymous"></script>
 <script src="https://cdn.datatables.net/2.0.8/js/dataTables.tailwindcss.js" crossorigin="anonymous"></script>
-<script src="https://cdn.tailwindcss.com" crossorigin="anonymous"></script>
+

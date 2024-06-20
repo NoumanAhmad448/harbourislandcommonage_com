@@ -1,11 +1,15 @@
 $("#login").submit(function (e) {
     e.preventDefault();
+    let loading_screen = $("#loading-screen")
     var data = new FormData($(this).get(0));
     if(debug){
         console.log(data)
     }
     // disable submit btn and show loader
-    $("#loading-screen").toggleClass("hidden")
+    debug_logs("loading_screen")
+    debug_logs(loading_screen)
+    loading_screen.toggleClass("hidden")
+
     let submit = $("#submit")
     submit.prop("disabled","disabled")
     // disable submit btn and show loader
@@ -17,13 +21,13 @@ $("#login").submit(function (e) {
       data: data,
       success: function success(d) {
         submit.prop("disabled","")
-        $("#loading-screen").toggleClass("hidden")
+        loading_screen.toggleClass("hidden")
         popup_message(d)
         changeURL(`${index}`)
       },
       error: function error(d) {
         submit.prop("disabled","")
-        $("#loading-screen").toggleClass("hidden")
+        loading_screen.toggleClass("hidden")
         popup_message(d)
       },
       headers: {
