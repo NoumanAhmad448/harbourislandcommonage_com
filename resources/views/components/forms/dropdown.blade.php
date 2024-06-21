@@ -12,7 +12,8 @@ $col = $prop['col'] ?? 3;
 $data = $prop["data"] ?? "";
 // by default pick the column name from the table
 $key = $prop["key"] ?? "name";
-
+$move_btn_right = $move_btn_right ?? '';
+$extra_classes = "";
 if(!$data){
     switch($id){
         case config("setting.city"):

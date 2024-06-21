@@ -2,6 +2,7 @@
 
 $fuas = config('setting.fuas');
 return [
+    "opeation" => "Operation",
     "err_msg" => "Something went wrong",
     "welcome" => "welcome",
     "phone_no" => "Phone Number",
@@ -80,5 +81,6 @@ return [
     "summary" => "Summary",
     "menu" => "MENU",
     "lands" => "Lands",
+    "land_op" => "Land Operation",
     "prob_action" => "This Action is forbidden for admin user",
 ];

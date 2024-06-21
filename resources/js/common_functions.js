@@ -220,5 +220,30 @@ window.dataTable = function(table, cConfig={}){
 window.debug_logs = function(whatever){
     if(debug){
         console.log(whatever)
+        console.log(dash_lines)
+        }
+}
+window.getElValues = function(whatever){
+    // select an multiple elements and
+    // return their values in array
+    // @return array
+    if(whatever.length){
+        return whatever.map(function() { return this.value; }).get()
+    }else{
+        return []
     }
+}
+
+window.isCheckboxChecked = function(whatever){
+    return whatever.is(":checked")
+}
+
+window.showLoader = function(){
+    let loading_screen = $("#loading-screen")
+
+    // disable submit btn and show loader
+    debug_logs("loading_screen")
+    debug_logs(loading_screen)
+    loading_screen.toggleClass("hidden")
+    return loading_screen
 }

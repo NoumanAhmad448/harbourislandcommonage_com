@@ -37,7 +37,7 @@ use Illuminate\Support\Facades\Cache;
       <!-- ===== Header End ===== -->
 
       <!-- ===== Main Content Start ===== -->
-            <main>
+            <main class="m-2">
                 @yield('content')
             </main>
     <!-- ===== Main Content End ===== -->
