@@ -22,7 +22,7 @@ update.on("click", function () {
     if (isCheckboxChecked(lands)) {
       land_id = getElValues(lands);
       debug_logs(land_id);
-      $("#modal").toggleClass("hidden");
+      $("#default-modal").toggleClass("hidden");
     } else {
       popup_message("Please select atleast one Land to apply operation");
     }

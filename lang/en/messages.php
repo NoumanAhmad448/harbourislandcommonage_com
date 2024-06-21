@@ -2,6 +2,7 @@
 
 $fuas = config('setting.fuas');
 return [
+    "opeation" => "Operation",
     "err_msg" => "Something went wrong",
     "welcome" => "welcome",
     "phone_no" => "Phone Number",

@@ -38,6 +38,7 @@ debug_logs($data);
             "id" => config("form.update"),
             "is_btn" => "button",
             "classes" => "pt-5",
+            "extra_atrr" => ["data-modal-target" => "default-modal"]
         ])
     </div>
     @endif
