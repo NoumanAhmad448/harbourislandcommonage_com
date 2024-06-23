@@ -20,34 +20,9 @@ debug_logs($data);
     @if ($data['title'])
         <h1> {{ $data['title'] }} </h1>
     @endif
-    @if($en_fun && count($data['lands']) && isAdmin(false))
-    <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5 p-4">
-        @include(config("files.forms").'three_col', ['input' =>
-        config("files.forms")."dropdown",
-        "prop" => [
-            "id" => config("form.land_ops"),
-            "include_star" => false,
-            "label" => __("messages.land_op"),
-            "data" => __("messages.lnd_oprtn") ,
-        ]
-        ]
-        )
-        @include(config("files.forms").'two_col', [
-            'input' => config("files.forms")."submit",
-            "text" => __("attributes.update"),
-            "id" => config("form.update"),
-            "is_btn" => "button",
-            "classes" => "pt-5",
-            "extra_atrr" => ["data-modal-target" => "default-modal"]
-        ])
-    </div>
-    @endif
     <table class="display" id="{{ $id }}">
         <thead>
             <tr>
-                @if(isAdmin(false))
-                    <th>#</th>
-                @endif
                 <th>{{ __('table.' . config('table.user')) }}</th>
                 <th>{{ __('table.' . config('table.title')) }}</th>
                 <th>{{ __('table.' . config('table.description')) }}</th>
@@ -68,16 +43,6 @@ debug_logs($data);
             @if (count($data['lands']) > 0)
                 @foreach ($data['lands'] as $lands)
                     <tr>
-                        @if(isAdmin(false))
-                            <td>
-                                @include(config('files.forms') . 'checkbox', [
-                                    'prop' => [
-                                        'id' => config('form.land_ids'),
-                                        "value" => $lands->id
-                                    ],
-                                ])
-                            </td>
-                        @endif
                         <td>{{ $lands->user ? $lands->user->name : 'no name' }}</td>
                         <td>{{ $lands->title ?? '' }}</td>
                         <td>{{ $lands->description ?? '' }}</td>

@@ -155,7 +155,7 @@ if (!function_exists('failValidation')){
 
 if (!function_exists('is_key_exists')){
     function is_key_exists($key,$array): bool {
-        return is_array($array) && array_key_exists($key,$array);
+        return isArray($array) && array_key_exists($key,$array);
     }
 }
 if (!function_exists('is_key_not_exists')){
@@ -189,6 +189,11 @@ if (!function_exists('add_key_if_exist')){
 if (!function_exists('isArray')){
     function isArray($array): bool {
        return is_array($array);
+    }
+}
+if (!function_exists('isNotArray')){
+    function isNotArray($array): bool {
+       return !is_array($array);
     }
 }
 

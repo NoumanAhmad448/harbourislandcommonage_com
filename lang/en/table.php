@@ -1,5 +1,7 @@
 <?php
 return [
+    "comment" => "Comment",
+    "created_by" => "Created By",
     "countries" => "countries",
     "cities" => "cities",
     "states" => "states",

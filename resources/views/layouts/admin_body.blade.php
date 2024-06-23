@@ -33,7 +33,7 @@ use Illuminate\Support\Facades\Cache;
       class="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden"
     >
       <!-- ===== Header Start ===== -->
-      @include(config('files.partials').".header")
+      @include(config('files.partials_')."header")
       <!-- ===== Header End ===== -->
 
       <!-- ===== Main Content Start ===== -->

@@ -17,7 +17,7 @@ class Admin extends Controller{
     private $fileUplaodObj;
     private $user;
     private $verifyUser;
-
+    private $createLand;
 
     public function __construct() {
         $this->createLandObj = new CreateLand();
@@ -25,7 +25,7 @@ class Admin extends Controller{
         $this->landFileObj = new LandFile;
         $this->fileUplaodObj = new FileUpload;
         $this->verifyUser = new VerifyUser;
-
+        $this->createLand = new CreateLand;
     }
     public function login(Request $request)
     {
@@ -88,16 +88,8 @@ class Admin extends Controller{
         try {
             $data = [];
             $users = $this->user->getIds();
+            $lands = $this->createLand->landDetails($users);
 
-            $lands = CreateLand::whereIn(config("table.user_id"), $users)
-                        ->with("landComment", function($query){
-                            return $query->orderByDesc(config("table.created_at"));
-                        })
-            ;
-            $lands = $lands->showQuery();
-            $lands = $lands->orderByDesc(config("table.primary_key"));
-            $lands = $lands->get();
-            // dd($lands);
             $data[config("table.lands")] = $lands;
             $data[config("table.title")] = __("messages.lands");
 

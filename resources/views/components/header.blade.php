@@ -1,6 +1,6 @@
 <nav
-    class="fixed top-0 w-full py-2 px-12 flex justify-between items-center z-30 sticky-header
-     general-header sticky-header-active">
+    class="w-full py-2 px-12 flex justify-between items-center sticky top-0 z-50
+     general-header">
     <div class="min-w-max">
         <a href="{{route('index')}}"><img width="100" src="{{url(config('setting.im_log'))}}" alt="{{config('app.name')}}"></a>
     </div>
