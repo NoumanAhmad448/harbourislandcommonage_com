@@ -2,6 +2,7 @@
 
 $fuas = config('setting.fuas');
 return [
+    "usr_dshbrd" => "User Dashboard",
     "land_updt_op" => "Land Operation has been implemented!",
     "lnd_oprtn" => [
         [

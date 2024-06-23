@@ -185,25 +185,31 @@ window.changeURL = function(newUrl) {
 }
 
 window.dataTable = function(table, cConfig={}){
+    debug_logs(cConfig)
     let config = {}
-    config['language'] = {
+    config[LANG_KEY] = {
             searchPlaceholder: "Search records"
-        }
-    config["pageLength"] = "pageLength" in cConfig ? cConfig["pageLength"] : 25
+    }
+    config[PGL_KEY] = PGL_KEY in cConfig ? cConfig[PGL_KEY] : 25
 
-    if("order" in cConfig){
-        config["order"] = [
-            ["col_no" in cConfig["order"] ?
-            cConfig["order"]["col_no"] : 1 ,"desc"]
+    if(ORDER_KEY in cConfig){
+        config[ORDER_KEY] = [
+            [
+                COL_NO_KEY in cConfig[ORDER_KEY] ?
+                cConfig[ORDER_KEY][COL_NO_KEY] : 1 , DESC_KEY
+            ]
        ]
+    }else{
+        config[ScrollX_TYPE]= true
     }
 
-    config["scrollX"]= true
-
-    if(debug){
-        console.log(config)
+    config[InitComplete_KEY] = function(){
+        $(`#${table}`).wrap("<div style='overflow:auto; width:100%;position:relative;'></div>")
     }
-    return $(`#${table}`).DataTable(config);
+    debug_logs(config)
+    let tble = $(`#${table}`).DataTable(config)
+    tble.columns.adjust().draw()
+    return table;
 }
 
 window.debug_logs = function(whatever){

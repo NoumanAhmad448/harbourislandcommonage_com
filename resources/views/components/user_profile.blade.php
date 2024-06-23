@@ -43,7 +43,16 @@
                         ],
                     ])
                 @endif
-                @include(config('files.components') . '.profile_list', [
+                @if(is_normal_user())
+                    @include(config('files.components_') . 'profile_list', [
+                        'prop' => [
+                            'link' => route("land_index"),
+                            'svg' => config('files.svg') . 'dashboard',
+                            'text' => __('messages.usr_dshbrd'),
+                        ],
+                    ])
+                @endif
+                @include(config('files.components_') . 'profile_list', [
                     'prop' => [
                         'link' => 'messages.html',
                         'svg' => config('files.svg') . 'setting',

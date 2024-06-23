@@ -20,13 +20,31 @@ class LandCreateController extends Controller
 {
     private $createNewUser;
     private $landComments;
+    private $createLand;
     private $email;
 
     public function __construct() {
         $this->createNewUser = new CreateNewUser;
         $this->landComments = new LandComments;
+        $this->createLand = new CreateLand;
         $this->email = config("form.email");
 
+    }
+    public function land(Request $request) {
+        try {
+            $data = [];
+            $user = auth()->id();
+
+            $lands = $this->createLand->landDetails($user);
+
+            $data[config("table.lands")] = $lands;
+            $data[config("table.title")] = __("messages.lands");
+
+            return view(config("setting.lands"), compact("data"));
+        }
+        catch (\Exception $d) {
+            return server_logs($e = [true, $d], $request = [true, $request], $config = true);
+        }
     }
     public function landSave(LandCreate $request)
     {
@@ -76,9 +94,9 @@ class LandCreateController extends Controller
                 config("setting.status_200")
             );
 
-    } catch (\Exception $d) {
-        return server_logs($e = [true, $d], $request = [true, $request], $config = true);
-    }
+        } catch (\Exception $d) {
+            return server_logs($e = [true, $d], $request = [true, $request], $config = true);
+        }
     }
     public function landSaveAPI(LandCreate $request)
     {

@@ -43,4 +43,8 @@ class LandComments extends CustomModel
         return $created_obj;
     }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class, config("table.created_by"));
+    }
 }

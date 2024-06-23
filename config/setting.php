@@ -21,6 +21,7 @@ if(config("app.env") == 'production'){
 }
 
 return [
+    "lands" => "lands",
     "var_js" => $js_folder."/vars.js",
     "message_form" => "message_form",
     "storage" => $storage."uploads/",

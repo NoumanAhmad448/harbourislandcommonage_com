@@ -1,4 +1,4 @@
-@extends(config('setting.admin_body'))
+@extends(config('setting.body'))
 @section('page-css')
 @include(config('files.lib')."data_tables")
 @endsection
@@ -8,7 +8,7 @@
         $id = gen_str();
         $data["id"] = $id;
     @endphp
-   @include(config('files.components_')."admin_lands", [
+   @include(config('files.components_')."land", [
     "prop" => [
         "data" => $data
     ]

@@ -16,6 +16,20 @@ class CreateLand extends CustomModel
         // array_push($this->fillable, config("table.city"));
     }
 
+    public function landDetails($user){
+        if(isNotArray($user)){
+            $user = [$user];
+        }
+        $lands = self::whereIn(config("table.user_id"), $user)
+        ->with("landComment", function($query){
+            return $query->orderByDesc(config("table.created_at"));
+        })
+        ;
+        $lands = $lands->showQuery();
+        $lands = $lands->orderByDesc(config("table.primary_key"));
+        $lands = $lands->get();
+        return $lands;
+    }
     public function insert($user,$input){
         $data = [];
         debug_logs($input);
