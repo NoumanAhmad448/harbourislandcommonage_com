@@ -1,5 +1,6 @@
 $("#login").submit(function (e) {
     e.preventDefault();
+    debug_logs($(this).get(0))
     var data = new FormData($(this).get(0));
     debug_logs(data)
     // showLoader

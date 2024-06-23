@@ -215,6 +215,16 @@ if (!function_exists('is_normal_user')){
         return !isAdmin(false);
     }
 }
+if (!function_exists('str_to_array')){
+    function str_to_array($str,$sep=","):array{
+        return explode($sep, $str);
+    }
+}
+if (!function_exists('add_array')){
+    function add_array($main_array, $given_array){
+        return array_push($main_array, $given_array);
+    }
+}
 if (!function_exists('file_path')){
     function file_path($path,$disk=""){
         if(empty($disk)){

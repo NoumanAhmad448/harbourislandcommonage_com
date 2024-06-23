@@ -2,6 +2,20 @@
 
 $fuas = config('setting.fuas');
 return [
+    "land_updt_op" => "Land Operation has been implemented!",
+    "lnd_oprtn" => [
+        [
+            "id" => 1,
+            "name" => "Accepted"
+        ],
+        [
+            "id" => 2,
+            "name" => "Rejected"
+        ]
+        ],
+    "lnd_msg_txtara_lbl" => "Your message",
+    "land_msg_txtarea" => "Please provide the message for the land registering person to better
+            let him/her know the reason of land acceptance/rejection",
     "opeation" => "Operation",
     "err_msg" => "Something went wrong",
     "welcome" => "welcome",

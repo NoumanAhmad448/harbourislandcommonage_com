@@ -20,10 +20,12 @@ Route::get('/login', [HomeController::class, 'login'])->name('login');
 Route::prefix($land_path)->group(function () {
     $land_create_route = '/create';
     $land_update_route = '/{land}';
+    $land_blk_update = 'blk_update';
     Route::get('/', [LandCreateController::class, 'land'])->name('land_index');
     Route::get($land_create_route, [LandCreateController::class, 'landCreate'])->name('land_create');
     Route::post($land_create_route, [LandCreateController::class, 'landSave'])->name('land_save');
     Route::get($land_update_route, [LandCreateController::class, 'landUpdateShow'])->name('land_updateshow');
+    Route::patch($land_blk_update, [LandCreateController::class, 'landUpdateBulk'])->name('land_update_blk');
     Route::patch($land_update_route, [LandCreateController::class, 'landUpdate'])->name('land_update');
     Route::delete($land_update_route, [LandCreateController::class, 'landDelete'])->name('land_delete');
 });

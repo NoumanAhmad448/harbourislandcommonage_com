@@ -89,10 +89,15 @@ class Admin extends Controller{
             $data = [];
             $users = $this->user->getIds();
 
-            $lands = CreateLand::whereIn(config("table.user_id"), $users);
+            $lands = CreateLand::whereIn(config("table.user_id"), $users)
+                        ->with("landComment", function($query){
+                            return $query->orderByDesc(config("table.created_at"));
+                        })
+            ;
             $lands = $lands->showQuery();
             $lands = $lands->orderByDesc(config("table.primary_key"));
             $lands = $lands->get();
+            // dd($lands);
             $data[config("table.lands")] = $lands;
             $data[config("table.title")] = __("messages.lands");
 

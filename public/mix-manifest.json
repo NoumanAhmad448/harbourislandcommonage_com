@@ -1,11 +1,12 @@
 {
-    "/js/app.js": "/js/app.js?id=8c3b5edf56ec211fa5dc52e469e20e43",
-    "/js/common_functions.js": "/js/common_functions.js?id=38f6ba6a9ede4fb5f734f92385a07f74",
-    "/js/main.js": "/js/main.js?id=cbfe4724461b3f13ad02a4977f3315a6",
-    "/js/land/land_create.js": "/js/land/land_create.js?id=fb3635a6c1e986bb2400c29df1bdf262",
-    "/js/admin/admin_login.js": "/js/admin/admin_login.js?id=211b208608cde9191ef22101b3447aa0",
-    "/js/admin/admin_lands.js": "/js/admin/admin_lands.js?id=35a669fc639036163f8e2c7f30a072e2",
-    "/js/login.js": "/js/login.js?id=3d6742cc22d129d9d5b9ce0accc02ae0",
-    "/css/app.css": "/css/app.css?id=fce3f809616b1af2072d58835a48e4cf",
-    "/css/land/land_create.css": "/css/land/land_create.css?id=68b329da9893e34099c7d8ad5cb9c940"
+    "/js/app.js": "/js/app.js",
+    "/js/common_functions.js": "/js/common_functions.js",
+    "/js/main.js": "/js/main.js",
+    "/js/land/land_create.js": "/js/land/land_create.js",
+    "/js/admin/admin_login.js": "/js/admin/admin_login.js",
+    "/js/admin/admin_lands.js": "/js/admin/admin_lands.js",
+    "/js/login.js": "/js/login.js",
+    "/js/vars.js": "/js/vars.js",
+    "/css/app.css": "/css/app.css",
+    "/css/land/land_create.css": "/css/land/land_create.css"
 }

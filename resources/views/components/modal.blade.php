@@ -1,8 +1,12 @@
-
+@php
+$body = $prop["body"] ?? "";
+$footer = $prop["footer"] ?? "";
+debug_logs($prop);
+@endphp
   <!-- Main modal -->
-  <div id="default-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed
-        left-500 flex justify-center items-center top-50 z-50 w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-      <div class="flex justify-center items-center p-4 w-full max-w-2xl max-h-full">
+  <div id="default-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden
+        left-500 absolute justify-center items-center top-50 z-50 w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+      <div class="relative justify-center items-center p-4 w-full max-w-2xl max-h-full">
           <!-- Modal content -->
           <div class="relative rounded-lg shadow dark:bg-gray-700">
               <!-- Modal header -->
@@ -13,11 +17,13 @@
                   @include(config("files.svg")."close")
               </div>
               <!-- Modal body -->
-              <div class="p-4 md:p-5 space-y-4" id="modal_body">
-
+              <div class="bg-gray-50 p-4 md:p-5 space-y-4" id="modal_body">
+                @if($body)
+                    @include($body)
+                @endif
               </div>
               <!-- Modal footer -->
-              <div id="modal_footer" class="hidden flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
+              <div id="modal_footer" class="@if(empty($footer)) hidden @endif flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
 
               </div>
           </div>

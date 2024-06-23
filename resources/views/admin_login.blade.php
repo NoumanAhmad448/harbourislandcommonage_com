@@ -46,8 +46,8 @@
                                   @endif
                                 </div>
                                 <div class="mb-5">
-                                @include(config('files.components') . '.forms.col', [
-                                    'input' => config('files.components') . '.forms.submit',
+                                @include(config('files.forms') . 'col', [
+                                    'input' => config('files.forms') . 'submit',
                                     'move_btn_right' => true,
                                     'id' => 'submit',
                                     "text" => __("messages.login")

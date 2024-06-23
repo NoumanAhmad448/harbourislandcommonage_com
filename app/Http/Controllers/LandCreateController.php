@@ -8,7 +8,9 @@ use App\Rules\NameRules;
 use App\Actions\Fortify\CreateNewUser;
 use App\Models\CreateLand;
 use App\Helpers\FileUpload;
+use App\Http\Requests\AdminLandsPatch;
 use App\Mail\LandCreateEmail;
+use App\Models\LandComments;
 use App\Models\LandFile;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -17,9 +19,12 @@ use Illuminate\Support\Facades\Mail;
 class LandCreateController extends Controller
 {
     private $createNewUser;
+    private $landComments;
     private $email;
+
     public function __construct() {
         $this->createNewUser = new CreateNewUser;
+        $this->landComments = new LandComments;
         $this->email = config("form.email");
 
     }
@@ -57,6 +62,23 @@ class LandCreateController extends Controller
         } catch (\Exception $d) {
             return server_logs($e = [true, $d], $request = [true, $request], $config = true);
         }
+    }
+    public function landUpdate(Request $request){
+        dd($request->all());
+    }
+    public function landUpdateBulk(AdminLandsPatch $request){
+        try {
+            $request->validated();
+            $this->landComments->insertRecords(auth()->user(), $request->all());
+            return customResponse([
+                config("setting.is_success") => true,
+                config("setting.message") => __("messages.land_updt_op")],
+                config("setting.status_200")
+            );
+
+    } catch (\Exception $d) {
+        return server_logs($e = [true, $d], $request = [true, $request], $config = true);
+    }
     }
     public function landSaveAPI(LandCreate $request)
     {

@@ -9,11 +9,7 @@ $extra_atrr = $extra_atrr ?? "";
 <div class="inline-flex items-end {{$classes}}">
     <button type="{{$is_btn}}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
     id={{$id}}
-    @if($extra_atrr && count($extra_atrr))
-        @foreach ($extra_atrr as $attr => $value)
-            {{$attr}} =  {{$value}}
-        @endforeach
-    @endif
+    @include(config("files.forms").'extra_attr', ["extra_atrr" => $extra_atrr])
     >
         @include(config("files.components").".right_arrow"){!! $text !!}
     </button>
