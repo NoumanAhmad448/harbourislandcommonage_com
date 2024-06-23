@@ -26,23 +26,20 @@ window.show_message = function(text="your message",title="Info",icon="info",butt
 }
 
 window.popup_message = function(d){
-    if(debug){
-        console.log(d)
-        console.log(typeof d)
-    }
+
+    debug_logs(d)
+    debug_logs(typeof d)
+
     if(Array.isArray(d)){
         show_message(text=d[0])
     }
     else if (typeof d === "object"){
         try {
             var dd = JSON.parse(d.responseText);
-            if(debug){
-                console.log(dd)
-            }
-            if(debug){
-                console.log(api_is_success in dd)
-                console.log(dd && "error" in dd || "errors" in dd)
-            }
+            debug_logs(dd)
+
+            debug_logs(api_is_success in dd)
+            debug_logs(dd && "error" in dd || "errors" in dd)
             if(dd && "error" in dd){
                 d = dd.error
             }
@@ -50,15 +47,11 @@ window.popup_message = function(d){
                 d = dd.errors
             }
             else if(api_is_success in dd){
-                if(debug){
-                    console.log(dd)
-                }
+                debug_logs(dd)
                 d = dd[api_message]
             }
             else if(api_message in dd){
-                if(debug){
-                    console.log(dd)
-                }
+                debug_logs(dd)
                 d = dd[api_message]
                 show_message(text=d)
             }
@@ -66,16 +59,12 @@ window.popup_message = function(d){
                 d = dd
             }
         } catch (e) {
-            if(debug){
-                console.log(api_is_success in d)
-            }
+
+            debug_logs(api_is_success in d)
             if(api_is_success in d){
-                console.log(d)
-                if(debug){
-                    console.log(d)
-                }
+                debug_logs(d)
                 d = d[api_message]
-                console.log(d)
+
                 show_message(text=d)
             }else{
                 show_message(text=err_msg)
@@ -88,7 +77,7 @@ window.popup_message = function(d){
             show_message(text=d[0])
         }
         else if(typeof d == "object"){
-            console.log(d)
+            debug_logs(d)
             let msg = "";
             let counter = 0
             for (const key in d){
@@ -246,4 +235,80 @@ window.showLoader = function(){
     debug_logs(loading_screen)
     loading_screen.toggleClass("hidden")
     return loading_screen
+}
+
+window.ajaxRequest = function(params, successCall, errCall=""){
+    let ob = {
+        contentType: false,
+        processData: false,
+        dataType: _JSON,
+        type: POST_TYPE,
+    }
+    ob['url'] = params['url']
+    ob['headers'] = {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+
+    if(params['type']){
+        ob['type'] = params['type']
+    }
+    if(params['data']){
+        ob['data'] = params['data']
+    }
+    const success = function success(d){
+        if(params['dis_el']){
+            params['dis_el'].prop("disabled","")
+        }
+        if(params['loading_screen']){
+            params['loading_screen'].toggleClass("hidden")
+        }
+        popup_message(d)
+        debug_logs(d)
+        successCall(d)
+    }
+
+    const error = function error(d){
+        if(params['dis_el']){
+            params['dis_el'].prop("disabled","")
+        }
+        if(params['loading_screen']){
+            params['loading_screen'].toggleClass("hidden")
+        }
+        popup_message(d)
+        if(errCall){
+            errCall(d)
+        }
+    }
+
+    ob['success'] = success
+    ob['error'] = error
+
+    debug_logs(ob)
+
+    $.ajax(ob);
+
+}
+
+window.formSubmit = function(params, successCall, errCall=""){
+    $(`#${params['el']}`).on(SUBMIT_EVENT, function(e){
+        e.preventDefault();
+        // showLoader
+        const loading_screen = showLoader()
+        params['loading_screen'] = loading_screen
+
+        // disable the required element
+        if(params['dis_el']){
+            params['dis_el'].prop("disabled","disabled")
+        }
+        let form_data = $(this).get(0)
+
+        debug_logs(form_data)
+        let data = new FormData(form_data)
+
+        debug_logs(`data => ${data}`)
+        params['data'] = data
+
+        ajaxRequest(params, successCall, errCall)
+
+    })
 }

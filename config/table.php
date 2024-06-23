@@ -1,5 +1,7 @@
 <?php
 return [
+    "lands_ids" => "lands_ids",
+    "land_ops_id" => "land_ops_id",
     "countries" => "countries",
     "cities" => "cities",
     "states" => "states",

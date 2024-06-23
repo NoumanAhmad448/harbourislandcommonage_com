@@ -3,6 +3,8 @@
 $img_val_rules = ["image/jpeg", "image/jpg", "image/png"];
 
 return [
+    "submit" => "submit",
+    "land_msg" => "land_msg",
     "first_name" => "first_name",
     "lastname" => "lastname",
     "email" => "email",

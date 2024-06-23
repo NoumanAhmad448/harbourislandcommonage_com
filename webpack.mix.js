@@ -39,6 +39,7 @@ mix.js(`${$resource_js}app.js`, $js_path)
     .js(`${$resource_js}${$admin}admin_login.js`, $admin_js)
     .js(`${$resource_js}${$admin}admin_lands.js`, $admin_js)
     .js(`${$resource_js}login.js`, $js_path)
+    .js(`${$resource_js}vars.js`, $js_path)
     .postCss(`${$resource_css}app.css`, $css_path, [
         //
     ])

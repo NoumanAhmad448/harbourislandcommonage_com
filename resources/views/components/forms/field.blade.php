@@ -9,7 +9,7 @@
     $placeholder = $prop['placeholder'] ?? $label;
 
 @endphp
-<label for="{{ $id }}">
+<label for="{{ $id }}" class="@if($form_type == 'hidden')hidden @endif">
     {{ $label }}@if ($include_star)
         {!! config('setting.red_star') !!}
     @endif

@@ -21,6 +21,8 @@ if(config("app.env") == 'production'){
 }
 
 return [
+    "var_js" => $js_folder."/vars.js",
+    "message_form" => "message_form",
     "storage" => $storage."uploads/",
     "body" => $layout_folder.".body",
     "default_desc" => "Default Description",

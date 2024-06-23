@@ -7,7 +7,12 @@ debug_logs("admin blade component");
 debug_logs($data);
 
 @endphp
-@include(config("files.components_")."modal")
+@include(config("files.components_")."modal",
+[
+    "prop" => [
+        "body" => config("files.forms").config("setting.message_form")
+    ]
+])
 @include(config("files.components_")."loader", ["prop" => [
     "id" => $id
 ]])
@@ -23,12 +28,7 @@ debug_logs($data);
             "id" => config("form.land_ops"),
             "include_star" => false,
             "label" => __("messages.land_op"),
-            "data" => [
-                [
-                "id" => 1,
-                "name" => "value"
-                ]
-            ],
+            "data" => __("messages.lnd_oprtn") ,
         ]
         ]
         )
@@ -79,8 +79,12 @@ debug_logs($data);
                         <td>{{ $lands->size ?? '' }}</td>
                         <td>{{ $lands->city && $lands->city->name ? $lands->city->name : '' }}</td>
                         <td
-                            class="text-white @if ($lands->is_admin_approved) {{ 'bg-blue-500' }} @else {{ 'bg-red-500' }} @endif">
-                            {{ $lands->is_admin_approved ? 'Yes' : 'No' }}</td>
+                        @php
+                        $is_admin_approved = $lands->landComment && count($lands->landComment) &&
+                                $lands->landComment[0]->is_admin_approved;
+                        @endphp
+                            class="text-white text-center @if ($is_admin_approved) {{ 'bg-blue-500' }} @else {{ 'bg-red-500' }} @endif">
+                            {{ $is_admin_approved ? 'Yes' : 'No' }}</td>
                         @if (config('setting.en_slf'))
                             <td>
                                 @if (count($lands->landFiles) > 0)
@@ -109,12 +113,18 @@ debug_logs($data);
 @if($en_fun)
 <script>
     let land_ids = "{{ config('form.land_ids') }}";
+    let lands_ids = '{{ config("table.land_create_id") }}';
     let update_field = "{{ config('form.update') }}";
     let land_ops = "{{ config('form.land_ops') }}";
+    let land_ops_id = '{{ config("table.land_ops_id") }}';
+    let message_form = '{{ config("setting.message_form") }}';
+    let land_update = '{{ route("land_update_blk") }}';
 
     debug_logs(land_ids);
+    debug_logs("lands_ids => ".lands_ids);
     debug_logs(update_field);
     debug_logs(land_ops);
+    debug_logs(land_ops_id);
 </script>
 <script src="{{ mix(config('setting.admin_lands_js')) }}"></script>
 @endif

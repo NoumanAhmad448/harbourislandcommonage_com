@@ -28,6 +28,7 @@ files in the root folder of laravel. Don't forget to update ```webpack.mix.js```
 13. use ```SampleRequest.php``` function for Request Validation
 14. use ```data_tables.blade.php``` file to work with ```datatables``` e.g. ```admin_lands.blade.php```
 15. sample migration file ```2024_06_19_160520_create_land_comments_table```
+16. define javascript/js constants in  ```vars.js```
 
 ## Local Setup (Development)
 1. install xampp (Required PHP version -> 8.2|8.0|8.1) [Download Link](https://www.apachefriends.org/)
@@ -209,11 +210,10 @@ deployment.yml
 ## Plan
 
 6. send email to the user provided address
-
-6. Admin can approve/reject the land
 3. list the property data on the home page
 7. on approve send an email with the password
 8. on reject allow the agent to add any comment and let the commonager to login and update the information
+
 9. commonager can login & check the land information
 10. Update his profile information
 11. Create Blog information from Admin Panel

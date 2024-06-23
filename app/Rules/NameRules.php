@@ -51,6 +51,13 @@ class NameRules
         return $rules;
     }
 
+    public function landUpdates(): Array {
+        return [
+            config("table.comment") => self::nameRules(),
+            config("table.land_create_id") => self::nameRules(),
+            config("table.land_ops_id") => self::nameRules(),
+        ];
+    }
     public function userValidationRules(): Array {
         return [
             config("form.first_name") => self::nameRules(),
