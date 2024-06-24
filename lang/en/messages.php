@@ -3,7 +3,18 @@
 $fuas = config('setting.fuas');
 return [
     "usr_dshbrd" => "User Dashboard",
+    "admn_del_op" => "Admin Operation has been implemented!",
     "land_updt_op" => "Land Operation has been implemented!",
+    "adm_oprtn" => [
+        [
+            "id" => 1,
+            "name" => "Delete"
+        ],
+        [
+            "id" => 2,
+            "name" => "Update Password"
+        ],
+        ],
     "lnd_oprtn" => [
         [
             "id" => 1,
@@ -88,6 +99,7 @@ return [
     "logout" => "Log Out",
     "login_failed" => "The provided credentials do not satisfy the system. Please try again!",
     "admin" => "Admin",
+    "sub_adns" => "Sub Admin",
     "mprofile" => "My Profile",
     "mcontact" => "My Contacts",
     "settings" => "Settings",
@@ -97,5 +109,6 @@ return [
     "menu" => "MENU",
     "lands" => "Lands",
     "land_op" => "Land Operation",
+    "admn_op" => "Admin Operation",
     "prob_action" => "This Action is forbidden for admin user",
 ];

@@ -21,6 +21,11 @@ if(config("app.env") == 'production'){
 }
 
 return [
+    "crtr_admn_mdl" => "crtr_admn_mdl",
+    "update_password" => "update_password",
+    "del_form" => "del_form",
+    "sub_admins_js" => "{$js_folder}/{$admin_folder}sub_admins.js",
+    "sub_admins" => $layout_folder.".sub_admins",
     "lands" => "lands",
     "var_js" => $js_folder."/vars.js",
     "message_form" => "message_form",

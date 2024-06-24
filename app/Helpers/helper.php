@@ -52,6 +52,15 @@ if (!function_exists('isAdmin')){
         return $auth && ($auth->is_admin | $auth->is_super_admin) ?? $action;
     }
 }
+if (!function_exists('isSuperAdmin')){
+     function isSuperAdmin($action=true){
+        if($action){
+            $action = abort(403);
+        }
+        $auth = Auth::user();
+        return $auth && ($auth->is_super_admin) ?? $action;
+    }
+}
 
 
 if (!function_exists('showLessText')){
