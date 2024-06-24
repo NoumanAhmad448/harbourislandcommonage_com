@@ -1,5 +1,8 @@
 <?php
 return [
+    "deleted_at" => "deleted_at",
+    "password" => "password",
+    "name" => "name",
     "lands_ids" => "lands_ids",
     "land_ops_id" => "land_ops_id",
     "countries" => "countries",

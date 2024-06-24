@@ -1,10 +1,11 @@
 @php
 $body = $prop["body"] ?? "";
 $footer = $prop["footer"] ?? "";
+$modal_id = $prop["id"] ?? "default-modal";
 debug_logs($prop);
 @endphp
   <!-- Main modal -->
-  <div id="default-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden
+  <div id="{{$modal_id}}" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden
         left-500 absolute justify-center items-center top-50 z-50 w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
       <div class="relative justify-center items-center p-4 w-full max-w-2xl max-h-full">
           <!-- Modal content -->

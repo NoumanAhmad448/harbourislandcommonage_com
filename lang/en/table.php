@@ -1,5 +1,6 @@
 <?php
 return [
+    "name" => "Name",
     "comment" => "Comment",
     "created_by" => "Created By",
     "countries" => "countries",
@@ -25,6 +26,7 @@ return [
     "is_super_admin" => "Approved By Admin",
     "is_admin" => "is_admin",
     "primary_key" => "id",
+    "email" => "Email",
 ];
 
 ?>

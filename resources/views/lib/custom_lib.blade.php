@@ -22,7 +22,7 @@
 
     {{-- should alway be in the end --}}
     <script>
-        let debug = '{{ config('app.debug') ? 1 : 0 }}';
+        let debug = '{{ config("app.debug") || config("app.js_debug") ? 1 : 0 }}';
         debug = debug == "1" ? true : false;
         let err_msg = '{{ __('messages.err_msg') }}';
         let file_upload_ft = '{{ __('messages.file_upload_ft') }}';

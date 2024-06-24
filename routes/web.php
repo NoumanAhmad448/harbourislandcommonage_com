@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LandCreateController;
+use App\Http\Controllers\SuperAdmin;
 
 $land_path = '/land';
 $admin_path = '/admin';
@@ -37,4 +38,10 @@ Route::prefix($admin_path)->group(function (){
 Route::prefix($admin_path)->middleware(config("middlewares.admin"))->group(function (){
     Route::get('/chart', [Admin::class, 'chart'])->name('admin_chart');
     Route::get('/lands', [Admin::class, 'lands'])->name('admin_lands');
+});
+
+Route::prefix($admin_path)->middleware(config("middlewares.super_admin"))->group(function (){
+    Route::get('/sub-admins', [SuperAdmin::class, "subAdmin"])->name('create_admin');
+    Route::delete('/sub-admins', [SuperAdmin::class, "DelsubAdmin"])->name('del_create_admin');
+    Route::patch('/sub-admins', [SuperAdmin::class, "UpdatesubAdmin"])->name('updt_create_admin');
 });

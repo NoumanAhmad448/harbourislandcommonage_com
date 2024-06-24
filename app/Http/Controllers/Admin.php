@@ -27,8 +27,7 @@ class Admin extends Controller{
         $this->verifyUser = new VerifyUser;
         $this->createLand = new CreateLand;
     }
-    public function login(Request $request)
-    {
+    public function login(Request $request){
         try {
             $user = auth()->user();
             if($user && ($user->is_super_admin || $user->is_admin)){
@@ -43,6 +42,7 @@ class Admin extends Controller{
             return server_logs($e = [true, $d], $request = [true, $request], $config = true);
         }
     }
+
     public function logout(Request $request) {
         try {
             if($this->verifyUser->logout($request)){
@@ -56,8 +56,8 @@ class Admin extends Controller{
         }
 
     }
-    public function adminLogin(AdminLogin $request)
-    {
+
+    public function adminLogin(AdminLogin $request){
         try {
             $request->validated();
             $user = $this->verifyUser->verifyUser($request->all(), true);
@@ -74,8 +74,8 @@ class Admin extends Controller{
             return server_logs($e = [true, $d], $request = [true, $request], $config = true);
         }
     }
-    public function chart(Request $request)
-    {
+
+    public function chart(Request $request){
         try {
             return view(config("setting.admin_chart"));
         }

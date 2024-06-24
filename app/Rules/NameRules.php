@@ -58,6 +58,17 @@ class NameRules
             config("table.land_ops_id") => self::nameRules(),
         ];
     }
+    public function adminDelete(): Array {
+        return [
+            config("table.primary_key") => self::nameRules(),
+        ];
+    }
+    public function adminUpdate(): Array {
+        return [
+            config("table.primary_key") => self::nameRules(),
+            config('form.password') => $this->passRules(),
+        ];
+    }
     public function userValidationRules(): Array {
         return [
             config("form.first_name") => self::nameRules(),
