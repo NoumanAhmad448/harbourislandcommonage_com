@@ -18,6 +18,7 @@ if(!$data){
     switch($id){
         case config("setting.city"):
         $data = City::where("country_id", config("setting.bahmas_country_code"))->get();
+        debug_logs("data => ".$data);
         break;
         case config("setting.country"):
         $data = Country::all();
