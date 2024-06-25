@@ -61,6 +61,11 @@ class User extends Authenticatable
         return $users;
     }
 
+    /**
+     * Change the user Password
+     *
+     * @return array<string>
+     */
     public function passChange($ids, $pass){
 
         $ids = str_to_array($ids);
@@ -84,6 +89,7 @@ class User extends Authenticatable
             }
         return $users;
     }
+
     /**
      * Get all admins
      *

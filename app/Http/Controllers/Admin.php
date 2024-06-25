@@ -77,14 +77,24 @@ class Admin extends Controller{
 
     public function chart(Request $request){
         try {
-            return view(config("setting.admin_chart"));
+            $data = [];
+            $users = User::whereNull(config("table.is_super_admin"))->whereNull(config("table.is_admin"));
+            $users = $users->count();
+            $data['users'] = $users;
+
+            $lands = CreateLand::count();
+            $data['lands'] = $lands;
+            debug_logs("users => ".$users);
+
+            $data['title'] = __('messages.summary');
+
+            return view(config("setting.admin_chart"), compact("data"));
         }
         catch (\Exception $d) {
             return server_logs($e = [true, $d], $request = [true, $request], $config = true);
         }
     }
-    public function lands(Request $request)
-    {
+    public function lands(Request $request){
         try {
             $data = [];
             $users = $this->user->getIds();
