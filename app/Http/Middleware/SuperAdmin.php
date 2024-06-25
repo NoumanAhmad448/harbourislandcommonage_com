@@ -16,7 +16,8 @@ class SuperAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        if(auth()->user()->is_super_admin !== 1){
+        $user = auth()->user();
+        if(empty($user) || ($user && $user->is_super_admin !== 1)){
             abort(403);
         }
         return $next($request);
