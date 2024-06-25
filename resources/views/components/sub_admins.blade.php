@@ -7,21 +7,23 @@ debug_logs("subadmin blade component");
 debug_logs($data);
 
 @endphp
-@include(config("files.components_")."modal",
-[
-    "prop" => [
-        "body" => config("files.forms").config("setting.update_password")
-    ]
-])
-@include(config("files.components_")."modal",
-[
-    "prop" => [
-        "id" => config("setting.crtr_admn_mdl"),
-        // "body" => config("files.forms").config("setting.update_password")
-    ]
-])
-@include(config("files.forms")."del_form")
+@if ($data && $data[config("keys.users")])
 
+    @include(config("files.components_")."modal",
+    [
+        "prop" => [
+            "body" => config("files.forms").config("setting.update_password")
+        ]
+    ])
+    @include(config("files.components_")."modal",
+    [
+        "prop" => [
+            "id" => config("setting.crtr_admn_mdl"),
+            "body" => config("files.forms")."user_reg_form"
+        ]
+    ])
+    @include(config("files.forms")."del_form")
+@endif
 @include(config("files.components_")."loader", ["prop" => [
     "id" => $id
 ]])
@@ -89,7 +91,7 @@ debug_logs($data);
                         @endif
                         <td>{{ $user->name ?? 'no name' }}</td>
                         <td>{{ $user->email ?? '' }}</td>
-                        <td class="@if($user->deleted_at) bg-red-500 text-white text-center @endif" >
+                        <td class="text-center @if($user->deleted_at) bg-red-500 text-white @endif" >
                             {{ $user->deleted_at ? "No" : 'Yes' }}</td>
                         <td>{{ $user->created_at ?? '' }}</td>
                         <td>{{ $user->updated_at ?? '' }}</td>
@@ -116,8 +118,13 @@ debug_logs($data);
     let update_form = '{{ config("setting.update_password") }}';
     let user_update = '{{ route("updt_create_admin") }}';
     let user_del = '{{ route("del_create_admin") }}';
-    let crte_admn = '{{ config("setting.crte_admn") }}';
+    let crte_admn = '{{ config("form.crte_admn") }}';
+    IselExist(`#${crte_admn}`)
+    let user_reg = "{{ config('setting.user_reg') }}";
+    IselExist(`#${user_reg}`)
     let crtr_admn_mdl = '{{ config("setting.crtr_admn_mdl") }}';
+    let crte_admin_url = '{{ route("crte_admin") }}';
+    debug_logs("crte_admin_url => ".crte_admin_url);
 
     debug_logs("user_ids => ".user_ids);
     debug_logs("users_ids => ".users_ids);
@@ -126,7 +133,11 @@ debug_logs($data);
     debug_logs(admn_op_id);
 </script>
 <script>
-    let table{{$id}} = dataTable('dt{{ $id }}');
+    let table{{$id}} = dataTable('dt{{ $id }}',{
+         order : {
+            col_no : 1
+        }
+    });
 </script>
 <script src="{{ mix(config('setting.sub_admins_js')) }}"></script>
 @endif

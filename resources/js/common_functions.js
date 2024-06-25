@@ -191,12 +191,16 @@ window.dataTable = function(table, cConfig={}){
             searchPlaceholder: "Search records"
     }
     config[PGL_KEY] = PGL_KEY in cConfig ? cConfig[PGL_KEY] : 25
-
+    config[ORDER_KEY] = [
+        [
+            DEFAULT_TBLE_COL , DESC_KEY
+        ]
+   ]
     if(ORDER_KEY in cConfig){
         config[ORDER_KEY] = [
             [
                 COL_NO_KEY in cConfig[ORDER_KEY] ?
-                cConfig[ORDER_KEY][COL_NO_KEY] : 1 , DESC_KEY
+                cConfig[ORDER_KEY][COL_NO_KEY] : DEFAULT_TBLE_COL , DESC_KEY
             ]
        ]
     }else{
@@ -206,7 +210,7 @@ window.dataTable = function(table, cConfig={}){
     config[InitComplete_KEY] = function(){
         $(`#${table}`).wrap("<div style='overflow:auto; width:100%;position:relative;'></div>")
     }
-    debug_logs(config)
+    debug_logs(`config => ${config}`)
     let tble = $(`#${table}`).DataTable(config)
     tble.columns.adjust().draw()
     return table;
@@ -214,9 +218,13 @@ window.dataTable = function(table, cConfig={}){
 
 window.debug_logs = function(whatever){
     if(debug){
-        console.log(whatever)
-        console.log(dash_lines)
+        try{
+            console.log(JSON.stringify(whatever, null, 4))
+        }catch(e){
+            console.log(whatever)
         }
+        console.log(dash_lines)
+    }
 }
 window.getElValues = function(whatever){
     // select an multiple elements and
@@ -317,4 +325,18 @@ window.formSubmit = function(params, successCall, errCall=""){
         ajaxRequest(params, successCall, errCall)
 
     })
+}
+
+window.IselExist = function(whatever){
+    debug_logs(`IselExist method`)
+    debug_logs(`before whatever=> ${whatever}`)
+    let before = whatever
+    whatever = $(whatever)
+    if(whatever.length){
+        debug_logs(`el ${before} exist`)
+        debug_logs(`count before ${before} => ${whatever.length}`)
+        debug_logs(`el itself ${whatever}`)
+    }else{
+        debug_logs(`el ${before} does not exist`)
+    }
 }

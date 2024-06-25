@@ -15,8 +15,19 @@
             @include(config("files.forms").'two_col', ['input' => config("files.forms").'lastname'])
             @include(config("files.forms").'five_col', ['input' => config("files.forms").'email'])
 
-            @include(config("files.forms").'three_col', ['input' => config("files.forms").'password'])
-            @include(config("files.forms").'two_col', ['input' => config("files.forms").'repeat_password'])
+            @include(config("files.forms").'three_col', [
+                'input' => config("files.forms").'password',
+                "prop" => [
+                    "id" => config('form.password'),
+                ],
+                ])
+            @include(config("files.forms").'two_col', [
+                'input' => config("files.forms").'repeat_password'
+                ,
+                "prop" => [
+                    "id" => config('form.c_password'),
+                ],
+                ])
         </div>
     </div>
 </div>

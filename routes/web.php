@@ -18,7 +18,7 @@ Route::get('/login', [HomeController::class, 'login'])->name('login');
 
 // for login route checkout fortifyserviceprovider class boot method
 
-Route::prefix($land_path)->group(function () {
+Route::prefix($land_path)->group(function(){
     $land_create_route = '/create';
     $land_update_route = '/{land}';
     $land_blk_update = 'blk_update';
@@ -44,4 +44,5 @@ Route::prefix($admin_path)->middleware(config("middlewares.super_admin"))->group
     Route::get('/sub-admins', [SuperAdmin::class, "subAdmin"])->name('create_admin');
     Route::delete('/sub-admins', [SuperAdmin::class, "DelsubAdmin"])->name('del_create_admin');
     Route::patch('/sub-admins', [SuperAdmin::class, "UpdatesubAdmin"])->name('updt_create_admin');
+    Route::post('/sub-admins', [SuperAdmin::class, "CreatesubAdmin"])->name('crte_admin');
 });

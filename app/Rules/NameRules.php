@@ -78,6 +78,11 @@ class NameRules
             config("form.password") => $this->passRules(),
         ];
     }
+    public function isAdminRules(): Array {
+        return [
+            config("table.is_admin") => self::nameRules()
+        ];
+    }
     public function landRegVal(): Array {
         $rules = [
             config("setting.title") => self::nameRules(),
