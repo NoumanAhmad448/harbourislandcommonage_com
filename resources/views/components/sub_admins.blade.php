@@ -6,20 +6,21 @@ $en_fun = $prop["data"]["en_fun"] ?? true;
 debug_logs("subadmin blade component");
 debug_logs($data);
 
+
 @endphp
+@include(config("files.components_")."modal",
+[
+    "prop" => [
+        "id" => config("setting.crtr_admn_mdl"),
+        "body" => config("files.forms")."user_reg_form"
+    ]
+])
 @if ($data && $data[config("keys.users")])
 
     @include(config("files.components_")."modal",
     [
         "prop" => [
             "body" => config("files.forms").config("setting.update_password")
-        ]
-    ])
-    @include(config("files.components_")."modal",
-    [
-        "prop" => [
-            "id" => config("setting.crtr_admn_mdl"),
-            "body" => config("files.forms")."user_reg_form"
         ]
     ])
     @include(config("files.forms")."del_form")
@@ -31,8 +32,8 @@ debug_logs($data);
     @if ($data[config("keys.title")])
         <h1> {{ $data[config("keys.title")] }} </h1>
     @endif
-    @if($en_fun && count($data[config("keys.users")]))
     <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-9 p-4">
+    @if($en_fun && count($data[config("keys.users")]))
         @include(config("files.forms").'five_col', ['input' =>
             config("files.forms")."dropdown",
             "prop" => [
@@ -52,6 +53,7 @@ debug_logs($data);
             "classes" => "pt-5",
             "extra_atrr" => ["data-modal-target" => "default-modal"]
         ])
+    @endif
         @include(config("files.forms").'two_col', [
             'input' => config("files.forms")."submit",
             "text" => __("attributes.crte_admn"),
@@ -61,7 +63,7 @@ debug_logs($data);
             "extra_atrr" => ["data-modal-target" => config("setting.crtr_admn_mdl")]
         ])
     </div>
-    @endif
+
     <table class="display" id="dt{{ $id }}">
         <thead>
             <tr>
