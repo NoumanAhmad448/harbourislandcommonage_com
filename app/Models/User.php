@@ -70,7 +70,7 @@ class User extends Authenticatable
         $users = $users->whereIn(config("table.primary_key"), $ids);
         debug_logs($users);
         if($users){
-            // make deleted admin active
+            // make deleted users active
             $users->restore();
             debug_logs($users);
             foreach($ids as $id){

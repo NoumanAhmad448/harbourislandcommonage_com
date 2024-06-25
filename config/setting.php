@@ -60,7 +60,7 @@ return [
     "im_event" => $images_folder."event.jpg",
     "im_sponsorship" => $images_folder."sponsorship.jpg",
     "im_welcome" => $images_folder."welcome.jpg",
-    "im_log" => $images_folder."logo.png",
+    "im_log" => $images_folder."logo.PNG",
     "im_log_desc" => "",
     "en_slf" => true,
     "en_wel" => true,
