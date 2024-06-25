@@ -21,6 +21,11 @@ if(config("app.env") == 'production'){
 }
 
 return [
+    "min_pass" => 6,
+    "pass_no_req" => false,
+    "pass_ltr_req" => true,
+    "pass_smbl_req" => false,
+    "user_reg" => "user_reg",
     "crtr_admn_mdl" => "crtr_admn_mdl",
     "update_password" => "update_password",
     "del_form" => "del_form",

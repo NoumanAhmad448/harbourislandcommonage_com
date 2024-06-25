@@ -10,8 +10,21 @@ debug_logs("user_update => ".user_update)
 
 let user_id = ""
 
-$(`${crte_admn}`).on(CLICK_EVENT, function () {
+$(`#${crte_admn}`).on(CLICK_EVENT, function () {
+    debug_logs(`inside the ${crte_admn} ${CLICK_EVENT} event`)
     $(`#${crtr_admn_mdl}`).toggleClass("hidden")
+    const update_params = {}
+    update_params["url"] = crte_admin_url
+    update_params["el"] = user_reg
+    update_params['dis_el'] = update
+    successCall = function successCallback(d){
+        location.reload();
+    }
+    errCall = function errCall(d){
+        debug_logs(d)
+    }
+
+    formSubmit(update_params,successCall, errCall)
 })
 
 update.on(CLICK_EVENT, function () {

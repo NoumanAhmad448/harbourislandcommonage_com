@@ -15,7 +15,7 @@ debug_logs($prop);
                   <h3 class="text-xl font-semibold text-white-900 dark:text-white">
                       {{__("messages.opeation")}}
                   </h3>
-                  @include(config("files.svg")."close")
+                  @include(config("files.svg")."close", ["modal_id" => $modal_id])
               </div>
               <!-- Modal body -->
               <div class="bg-gray-50 p-4 md:p-5 space-y-4" id="modal_body">

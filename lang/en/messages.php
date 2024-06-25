@@ -2,6 +2,8 @@
 
 $fuas = config('setting.fuas');
 return [
+    "spr" => "Super ",
+    "usr_reg" => "Register User",
     "usr_dshbrd" => "User Dashboard",
     "admn_del_op" => "Admin Operation has been implemented!",
     "land_updt_op" => "Land Operation has been implemented!",

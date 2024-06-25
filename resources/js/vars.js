@@ -10,3 +10,4 @@ window.DESC_KEY = "desc"
 window.LANG_KEY = "language"
 window.PGL_KEY = "pageLength"
 window.InitComplete_KEY = "initComplete"
+window.DEFAULT_TBLE_COL = 1
