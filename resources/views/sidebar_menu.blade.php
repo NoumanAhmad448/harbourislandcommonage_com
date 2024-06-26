@@ -25,7 +25,11 @@
                 [
                     'url' => route('create_admin'),
                     'html' => __('messages.sub_adns'),
-                ]
+                ],
+                [
+                    'url' => route('admin_op'),
+                    'html' => __('messages.admin_op'),
+                ],
             ]
         ]
     ];
