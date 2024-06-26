@@ -5,6 +5,7 @@
     @foreach ($records as $index => $rec)
         @php
             debug_logs("{$id}{$index}");
+            debug_logs(is_key_exists(config("vars.alert"),$rec) && $rec[config("vars.alert")]);
         @endphp
         @if(is_key_exists(config("vars.priv"),$rec)
             && $rec[config("vars.priv")]
@@ -16,7 +17,11 @@
             ])
 
             <section class="p-4 border border-stroke hidden mt-10 flex items-center
-                    hover:transition hover:ease-in-out hover:delay-150 hover:animate-pulse"
+                    hover:transition hover:ease-in-out hover:delay-150 hover:animate-pulse
+                    @if(is_key_exists(config("vars.alert"),$rec) && $rec[config("vars.alert")])
+                     {{ 'bg-red-500' }}
+                    @endif
+                    "
                     id="{{ $index }}section">
                 <section class="">
                     <h3> {{ $rec[config("vars.title")] }} </h3>

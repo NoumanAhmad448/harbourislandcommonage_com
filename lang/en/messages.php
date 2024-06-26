@@ -2,6 +2,8 @@
 
 $fuas = config('setting.fuas');
 return [
+    "cls_files" => "Clear Files ",
+    "cnsl_msg" => "\n  <options=bold>“ :msg ”</>\n",
     "cls_cache" => "Clear Cache ",
     "cls_logs" => "Clear Logs ",
     "inactive_admins" => "Inactive Admins ",

@@ -17,6 +17,12 @@
                 config("vars.title") =>  __("messages.cls_logs"),
                 config("vars.url") => route("clear_logs"),
             ],
+            [
+                config("vars.priv") => isSuperAdmin(false),
+                config("vars.title") =>  __("messages.cls_files"),
+                config("vars.url") => route("clear_files"),
+                config("vars.alert") => true,
+            ],
         ];
     @endphp
     @include(config("setting.admn_oprtn_list"), ["records" => $records])

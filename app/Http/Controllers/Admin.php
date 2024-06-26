@@ -30,9 +30,14 @@ class Admin extends Controller{
     }
 
     public function clearCache(){
-        Artisan::command("config:cache", function(){
-            $this->info(__("messages.admn_del_op"));
-        });
+        Artisan::call("config:cache");
+        return customResponse([config("setting.is_success") => true,
+            config("setting.message") => __("messages.admn_del_op")],
+            config("setting.status_200"));
+    }
+
+    public function clearFiles(){
+        Artisan::call("files:clear");
         return customResponse([config("setting.is_success") => true,
             config("setting.message") => __("messages.admn_del_op")],
             config("setting.status_200"));
@@ -51,10 +56,11 @@ class Admin extends Controller{
         }
     }
 
-    public function clearLogs(){
-        Artisan::command("log:clear", function(){
-            $this->info(__("messages.admn_del_op"));
-        });
+    public function clearLogs(Request $request){
+        $duration = $request->query("duration");
+        debug_logs($duration);
+        $duration = $duration ?? '';
+        Artisan::call("log:clear {$duration}");
         return customResponse([config("setting.is_success") => true,
             config("setting.message") => __("messages.admn_del_op")],
             config("setting.status_200"));
