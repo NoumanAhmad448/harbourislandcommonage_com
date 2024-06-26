@@ -9,17 +9,17 @@
     @php
         $records = [
             [
-                config("vars.priv") => true,
+                config("vars.priv") => isSuperAdmin(false),
                 config("vars.svg") => config("files.svg").'profile',
                 config("vars.details") => __("messages.Users"). $data['users']
             ],
             [
-                config("vars.priv") => true,
+                config("vars.priv") => isSuperAdmin(false),
                 config("vars.svg") => config("files.svg").'profile',
                 config("vars.details") => __("messages.active_users"). $data['active_users']
             ],
             [
-                config("vars.priv") => true,
+                config("vars.priv") => isSuperAdmin(false),
                 config("vars.svg") => config("files.svg").'profile',
                 config("vars.details") => __("messages.inactive_users"). (int)$data['users'] - (int)$data['active_users']
             ],
