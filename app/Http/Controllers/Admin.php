@@ -78,17 +78,34 @@ class Admin extends Controller{
     public function chart(Request $request){
         try {
             $data = [];
-            $users = User::whereNull(config("table.is_super_admin"))->whereNull(config("table.is_admin"));
+            $users = User::normalUserCond(true);
             $users = $users->count();
-            $data['users'] = $users;
+            debug_logs("users => ".$users);
+            $data[config('vars.users')] = $users;
+
+            $active_users = User::normalUserCond();
+            $active_users = $active_users->count();
+            debug_logs("active_users => ".$active_users);
+            $data[config('vars.active_users')] = $active_users;
+
+
+            $admins = User::adminCond(true);
+            $admins = $admins->count();
+            debug_logs("admins => ".$admins);
+            $data[config('vars.admins')] = $admins;
+
+            $active_admins = User::adminCond();
+            $active_admins = $active_admins->count();
+            debug_logs("active_admins => ".$active_admins);
+            $data[config('vars.active_admins')] = $active_admins;
 
             $lands = CreateLand::count();
-            $data['lands'] = $lands;
-            debug_logs("users => ".$users);
+            $data[config("vars.lands")] = $lands;
+            // debug_logs("users => ".$users);
 
-            $data['title'] = __('messages.summary');
+            $data[config("vars.title")] = __('messages.summary');
 
-            return view(config("setting.admin_chart"), compact("data"));
+            return view(config("setting.admin_chart"), compact(config("vars.data")));
         }
         catch (\Exception $d) {
             return server_logs($e = [true, $d], $request = [true, $request], $config = true);

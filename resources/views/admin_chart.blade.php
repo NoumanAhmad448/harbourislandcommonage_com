@@ -6,25 +6,50 @@
     @if ($data['title'])
         <h1> {{ $data['title'] }} </h1>
     @endif
+    @php
+        $records = [
+            [
+                config("vars.priv") => true,
+                config("vars.svg") => config("files.svg").'profile',
+                config("vars.details") => __("messages.Users"). $data['users']
+            ],
+            [
+                config("vars.priv") => true,
+                config("vars.svg") => config("files.svg").'profile',
+                config("vars.details") => __("messages.active_users"). $data['active_users']
+            ],
+            [
+                config("vars.priv") => true,
+                config("vars.svg") => config("files.svg").'profile',
+                config("vars.details") => __("messages.inactive_users"). (int)$data['users'] - (int)$data['active_users']
+            ],
+            [
+                config("vars.url") => route("admin_lands"),
+                config("vars.priv") => true,
+                config("vars.svg") => config("files.svg").'dashboard',
+                config("vars.details") => __("messages.Lands").$data['lands']
+            ],
+            [
+                config("vars.url") => route("create_admin"),
+                config("vars.priv") => isSuperAdmin(false),
+                config("vars.svg") => config("files.svg").'profile',
+                config("vars.details") => __("messages.Admins").$data['admins']
+            ],
+            [
+                config("vars.url") => route("create_admin"),
+                config("vars.priv") => isSuperAdmin(false),
+                config("vars.svg") => config("files.svg").'profile',
+                config("vars.details") => __("messages.active_admins").$data['active_admins']
+            ],
+            [
+                config("vars.priv") => isSuperAdmin(false),
+                config("vars.svg") => config("files.svg").'profile',
+                config("vars.details") => __("messages.inactive_admins").(int)$data['admins'] - (int)$data['active_admins']
+            ],
 
-    <div class="grid grid-cols-4 sm:grid-cols-5 mt-10">
-        @if ($data['users'])
-        <section>
-            <section class="ml-4">
-                @include(config("files.svg").'.profile')
-            </section>
-            <div class="mt-3"> Users {{ $data['users'] }} </div>
-        </section>
-        @endif
-        @if ($data['lands'])
-        <section>
-            <section class="ml-4">
-                @include(config("files.svg").'.dashboard')
-            </section>
-            <div class="mt-3"> Lands {{ $data['lands'] }} </div>
-        </section>
-        @endif
-    </div>
+        ];
+    @endphp
+    @include("admin_chart_list", ["records" => $records])
     <!-- ===== Main Content End ===== -->
 @endsection
 @section('script')
