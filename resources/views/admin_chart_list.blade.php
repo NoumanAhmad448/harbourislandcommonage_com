@@ -6,7 +6,9 @@
         @php
             debug_logs("{$id}{$index}");
         @endphp
-        @if(is_key_exists(config('vars.details'),$rec) && is_key_exists(config("vars.priv"),$rec))
+        @if(is_key_exists(config('vars.details'),$rec) && is_key_exists(config("vars.priv"),$rec)
+            && $rec[config("vars.priv")]
+        )
             @include(config('files.components_') . 'loader', [
                 'prop' => [
                     'id' => "{$id}{$index}",
