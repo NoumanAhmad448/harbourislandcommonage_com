@@ -209,10 +209,5 @@ deployment.yml
 
 ## Plan
 
-6. send email to the user provided address
-3. list the property data on the home page
-7. on approve send an email with the password
-8. on reject allow the agent to add any comment and let the commonager to login and update the information
-
-10. Update his profile information
-11. Create Blog information from Admin Panel
+1. Update his profile information
+2. Create Blog information from Admin Panel
