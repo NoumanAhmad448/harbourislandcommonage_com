@@ -1,5 +1,6 @@
 <?php
 return [
+    "alert" => "alert",
     "url" => "url",
     "active_admins" => "active_admins",
     "active_users" => "active_users",

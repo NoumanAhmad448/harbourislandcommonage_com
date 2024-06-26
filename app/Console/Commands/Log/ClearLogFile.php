@@ -22,7 +22,7 @@ class ClearLogFile extends Command
         debug_logs($path);
 
         $command = "find ".$path." -type f -mtime +".$this->argument('duration').
-            " -name ".$this->argument('ext')." -execdir rm -- '{}' ;";
+            " -name ".$this->argument('ext')." -execdir rm -- '{}' \;";
 
         $os = strtolower(substr(PHP_OS, 0, 3));
         if ($os === 'win') {
@@ -33,6 +33,6 @@ class ClearLogFile extends Command
         debug_logs($command);
 
         exec($command);
-        $this->info('Logs have been cleared');
+        $this->info(__("messages.cnsl_msg", ['msg' => 'Logs have been cleared']));
     }
 }

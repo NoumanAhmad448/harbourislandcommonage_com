@@ -31,9 +31,6 @@ Route::prefix($land_path)->group(function(){
     Route::delete($land_update_route, [LandCreateController::class, 'landDelete'])->name('land_delete');
 });
 Route::prefix($admin_path)->group(function (){
-    Route::get('/clear-storage-logs', [Admin::class, 'clearLogs'])->name('clear_logs');
-    Route::get('/clear-cache', [Admin::class, 'clearCache'])->name('clear_cache');
-    Route::get('/admin-operations', [Admin::class, 'adminOp'])->name('admin_op');
     Route::get('/login', [Admin::class, 'login'])->name('admin_login');
     Route::post('/logout', [Admin::class, 'logout'])->name('admin_logout');
     Route::post('/login', [Admin::class, 'adminLogin'])->name('admin_login_post');
@@ -44,6 +41,10 @@ Route::prefix($admin_path)->middleware(config("middlewares.admin"))->group(funct
 });
 
 Route::prefix($admin_path)->middleware(config("middlewares.super_admin"))->group(function (){
+    Route::get('/clear-storage-logs', [Admin::class, 'clearLogs'])->name('clear_logs');
+    Route::get('/clear-files', [Admin::class, 'clearFiles'])->name('clear_files');
+    Route::get('/clear-cache', [Admin::class, 'clearCache'])->name('clear_cache');
+    Route::get('/admin-operations', [Admin::class, 'adminOp'])->name('admin_op');
     Route::get('/sub-admins', [SuperAdmin::class, "subAdmin"])->name('create_admin');
     Route::delete('/sub-admins', [SuperAdmin::class, "DelsubAdmin"])->name('del_create_admin');
     Route::patch('/sub-admins', [SuperAdmin::class, "UpdatesubAdmin"])->name('updt_create_admin');
