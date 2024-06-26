@@ -48,13 +48,46 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public static function normalUserCond($all_users=false){
+        $query = "";
+        if($all_users){
+            $query = self::deletedUsr()->whereNull(config("table.is_super_admin"))->
+                    whereNull(config("table.is_admin"));
+        }else{
+            $query = self::whereNull(config("table.is_super_admin"))->whereNull(config("table.is_admin"));
+        }
+        return $query;
+    }
+
+    public function normalUsrCond(){
+        $query = $this->whereNull(config("table.is_super_admin"))->whereNull(config("table.is_admin"));
+        return $query;
+    }
+
+    public static function adminCond($all_users=false){
+        if($all_users){
+            $query = self::deletedUsr()->where(config("table.is_admin"),true);
+        }else{
+            $query = self::where(config("table.is_admin"),true);
+        }
+        return $query;
+    }
+    public function adminCondion(){
+        $query = $this->where(config("table.is_admin"),true);
+        return $query;
+    }
+
+    public static function deletedUsr(){
+        $query = self::withTrashed();
+        return $query;
+    }
     /**
      * Get all ids of users
      *
      * @return array<string>
      */
     public function getIds(): array{
-        $users = $this::whereNull(config("table.is_super_admin"))->whereNull(config("table.is_admin"));
+        $users = self::normalUserCond();
         $users = $users->pluck(config("table.primary_key"));
         $users = $users->all();
         debug_logs($users);
@@ -70,7 +103,7 @@ class User extends Authenticatable
 
         $ids = str_to_array($ids);
         debug_logs($ids);
-        $users = User::withTrashed();
+        $users = User::deletedUsr();
 
         $users = $users->whereIn(config("table.primary_key"), $ids);
         debug_logs($users);
@@ -96,7 +129,7 @@ class User extends Authenticatable
      * @return array<string>
      */
     public function getAdmins(): Collection{
-        $users = self::withTrashed()->where(config("table.is_admin"),true);
+        $users = self::deletedUsr()->where(config("table.is_admin"),true);
         $users = $users->get();
         debug_logs($users);
         return $users;

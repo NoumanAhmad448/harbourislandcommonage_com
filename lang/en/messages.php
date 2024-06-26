@@ -2,6 +2,13 @@
 
 $fuas = config('setting.fuas');
 return [
+    "inactive_admins" => "Inactive Admins ",
+    "active_admins" => "Active Admins ",
+    "inactive_users" => "Inactive Users ",
+    "active_users" => "Active Users ",
+    "Admins" => "Admins ",
+    "Users" => "Users ",
+    "Lands" => "Lands ",
     "spr" => "Super ",
     "usr_reg" => "Register User",
     "usr_dshbrd" => "User Dashboard",

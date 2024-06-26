@@ -48,29 +48,25 @@ class CreateLand extends CustomModel
         return $created_obj;
     }
 
-    public function user()
-    {
+    public function user(){
         return $this->belongsTo(User::class);
     }
 
-    public function landFiles()
-    {
+    public function landFiles(){
         return $this->hasMany(LandFile::class, config("table.land_create_id"));
     }
-    public function landComment()
-    {
+
+    public function landComment(){
         return $this->hasMany(LandComments::class, config("table.land_create_id"));
     }
 
-    public function commonUser()
-    {
+    public function commonUser(){
         return $this->belongsTo(User::class, "user_id")
             ->whereNull("users.".config("table.is_super_admin"))
             ->whereNull("users.".config("table.is_admin"));
     }
 
-    public function city()
-    {
+    public function city(){
         return $this->belongsTo(City::class);
     }
 
