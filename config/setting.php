@@ -21,6 +21,8 @@ if(config("app.env") == 'production'){
 }
 
 return [
+    "admn_oprtn_list" => $layout_folder.".admin_operations_list",
+    "admn_oprtn" => $layout_folder.".admin_operations",
     "min_pass" => 6,
     "pass_no_req" => false,
     "pass_ltr_req" => true,

@@ -9,6 +9,7 @@ use App\Helpers\FileUpload;
 use App\Models\CreateLand;
 use App\Actions\Fortify\VerifyUser;
 use App\Models\User;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 
 class Admin extends Controller{
@@ -27,6 +28,38 @@ class Admin extends Controller{
         $this->verifyUser = new VerifyUser;
         $this->createLand = new CreateLand;
     }
+
+    public function clearCache(){
+        Artisan::command("config:cache", function(){
+            $this->info(__("messages.admn_del_op"));
+        });
+        return customResponse([config("setting.is_success") => true,
+            config("setting.message") => __("messages.admn_del_op")],
+            config("setting.status_200"));
+    }
+
+    public function adminOp(Request $request){
+        try{
+            $data = [];
+            $data[config("vars.title")] = __('messages.admin_op');
+            debug_logs("data => ");
+            debug_logs($data);
+            return view(config("setting.admn_oprtn"), compact(config("vars.data")));
+        }
+        catch (\Exception $d) {
+            return server_logs($e = [true, $d], $request = [true, $request], $config = true);
+        }
+    }
+
+    public function clearLogs(){
+        Artisan::command("log:clear", function(){
+            $this->info(__("messages.admn_del_op"));
+        });
+        return customResponse([config("setting.is_success") => true,
+            config("setting.message") => __("messages.admn_del_op")],
+            config("setting.status_200"));
+    }
+
     public function login(Request $request){
         try {
             $user = auth()->user();
@@ -101,7 +134,7 @@ class Admin extends Controller{
 
             $lands = CreateLand::count();
             $data[config("vars.lands")] = $lands;
-            // debug_logs("users => ".$users);
+            debug_logs("users => ".$users);
 
             $data[config("vars.title")] = __('messages.summary');
 

@@ -2,6 +2,8 @@
 
 $fuas = config('setting.fuas');
 return [
+    "cls_cache" => "Clear Cache ",
+    "cls_logs" => "Clear Logs ",
     "inactive_admins" => "Inactive Admins ",
     "active_admins" => "Active Admins ",
     "inactive_users" => "Inactive Users ",
@@ -12,6 +14,7 @@ return [
     "spr" => "Super ",
     "usr_reg" => "Register User",
     "usr_dshbrd" => "User Dashboard",
+    "admin_op" => "Admin Operation",
     "admn_del_op" => "Admin Operation has been implemented!",
     "land_updt_op" => "Land Operation has been implemented!",
     "adm_oprtn" => [
