@@ -7,8 +7,8 @@ php artisan down || true
 # Install/update composer dependecies
 # /opt/cpanel/composer/bin/composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev --no-cache
 
-Install Specific package
-/opt/cpanel/composer/bin/composer require doctrine/dbal
+# Install Specific package
+# /opt/cpanel/composer/bin/composer require doctrine/dbal
 
 
 # Clear caches
