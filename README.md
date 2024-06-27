@@ -209,5 +209,4 @@ deployment.yml
 
 ## Plan
 
-1. Update his profile information
 2. Create Blog information from Admin Panel
