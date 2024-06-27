@@ -18,7 +18,7 @@ php artisan cache:clear
 php artisan migrate --force
 
 # Run seeder
-# yes | php artisan db:seed
+yes | php artisan db:seed
 
 #generate artisan key
 yes | php artisan key:generate

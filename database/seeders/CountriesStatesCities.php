@@ -220,6 +220,10 @@ class CountriesStatesCities
     {
         return self::getJsonFileAsArray('countries');
     }
+    public static function getJobs(): array
+    {
+        return self::getJsonFileAsArray(config("vars.educational_jobs"));
+    }
 
     public static function getStates(): array
     {

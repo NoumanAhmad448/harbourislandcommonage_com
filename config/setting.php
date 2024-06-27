@@ -21,6 +21,11 @@ if(config("app.env") == 'production'){
 }
 
 return [
+    "gender" => [
+        "male", "female", "others"
+    ],
+    "en_prfle_form" => true,
+    "my_prfle" => $layout_folder.".my_profile",
     "admn_oprtn_list" => $layout_folder.".admin_operations_list",
     "admn_oprtn" => $layout_folder.".admin_operations",
     "min_pass" => 6,
@@ -51,6 +56,7 @@ return [
     "status_200" => 200,
     "err_500" => 500,
     "err_422" => 422,
+    "err_403" => 403,
     "err_301" => 301,
     "favicon" => $images_folder."favicon.ico",
     "email" => "harbourislandcommonage@gmail.com",
@@ -78,7 +84,7 @@ return [
     "en_articleadvices" => true,
     "en_articleadvices_con" => true,
     "land_create" => $land_folder."land_create",
-    "en_land_display" => true,
+    "en_land_display" => false,
     "en_reg_form" => true,
     "land_create_css" => "{$css_folder}/{$land_folder}land_create.css",
     "land_create_js" => "{$js_folder}/{$land_folder}land_create.js",

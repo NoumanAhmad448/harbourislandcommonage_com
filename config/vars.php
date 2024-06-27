@@ -1,5 +1,17 @@
 <?php
 return [
+    "text" => "text",
+    "move_btn_right" => "move_btn_right",
+    "key" => "key",
+    "educational_jobs" => "educational_jobs",
+    "include_star" => "include_star",
+    "col" => "col",
+    "input" => "input",
+    "prop" => "prop",
+    "value" => "value",
+    "label" => "label",
+    "id" => "id",
+    "user" => "user",
     "alert" => "alert",
     "url" => "url",
     "active_admins" => "active_admins",

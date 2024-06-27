@@ -1,6 +1,7 @@
 <?php
 
 return [
+    config("table.name") => "Full Name",
     config("form.first_name") => "First Name",
     config("form.lastname") => "Last Name",
     config("form.email") => "Email Address",

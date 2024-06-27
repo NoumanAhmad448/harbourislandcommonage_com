@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LandCreateController;
 use App\Http\Controllers\SuperAdmin;
+use App\Http\Controllers\UserController;
 
 $land_path = '/land';
 $admin_path = '/admin';
@@ -17,6 +18,10 @@ Route::post('/logout', [HomeController::class, 'logout'])->name('logout');
 Route::get('/login', [HomeController::class, 'login'])->name('login');
 
 // for login route checkout fortifyserviceprovider class boot method
+
+Route::middleware("auth")->group(function(){
+    Route::get('/my-profile', [UserController::class, 'myProfile'])->name('my_profile');
+});
 
 Route::prefix($land_path)->group(function(){
     $land_create_route = '/create';
