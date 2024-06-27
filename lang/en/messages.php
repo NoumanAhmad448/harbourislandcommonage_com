@@ -2,6 +2,7 @@
 
 $fuas = config('setting.fuas');
 return [
+    "oprntn_succ" => "Opeartion was successfull! ",
     "cls_files" => "Clear Files ",
     "cnsl_msg" => "\n  <options=bold>“ :msg ”</>\n",
     "cls_cache" => "Clear Cache ",

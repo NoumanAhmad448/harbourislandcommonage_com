@@ -5,10 +5,10 @@ php artisan down || true
 # composer update
 
 # Install/update composer dependecies
-#/opt/cpanel/composer/bin/composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev --no-cache
+# /opt/cpanel/composer/bin/composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev --no-cache
 
-# Install Specific package
-# /opt/cpanel/composer/bin/composer require anhskohbo/no-captcha
+Install Specific package
+/opt/cpanel/composer/bin/composer require doctrine/dbal
 
 
 # Clear caches
@@ -18,7 +18,7 @@ php artisan cache:clear
 php artisan migrate --force
 
 # Run seeder
-yes | php artisan db:seed
+# yes | php artisan db:seed
 
 #generate artisan key
 yes | php artisan key:generate

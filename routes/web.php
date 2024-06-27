@@ -21,6 +21,7 @@ Route::get('/login', [HomeController::class, 'login'])->name('login');
 
 Route::middleware("auth")->group(function(){
     Route::get('/my-profile', [UserController::class, 'myProfile'])->name('my_profile');
+    Route::patch('/my-profile', [UserController::class, 'myProfilePatch'])->name('my_profile_ptch');
 });
 
 Route::prefix($land_path)->group(function(){

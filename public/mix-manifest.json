@@ -7,6 +7,7 @@
     "/js/admin/admin_lands.js": "/js/admin/admin_lands.js",
     "/js/admin/sub_admins.js": "/js/admin/sub_admins.js",
     "/js/login.js": "/js/login.js",
+    "/js/my_profile.js": "/js/my_profile.js",
     "/js/vars.js": "/js/vars.js",
     "/css/app.css": "/css/app.css",
     "/css/land/land_create.css": "/css/land/land_create.css"

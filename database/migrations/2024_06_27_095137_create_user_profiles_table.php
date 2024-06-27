@@ -31,7 +31,7 @@ return new class extends Migration
                     ->onDelete('cascade')
                     ;
 
-                $table->string(config("table.mobile"), 255)->comment("mobile number");
+                $table->string(config("table.mobile"), 255)->nullable()->comment("mobile number");
                 $table->string(config("table.age"), 255)->comment("user age");
                 $table->string(config("table.address"), 255)->comment("user permanent address");
                 $table->enum(config("table.gender"), [

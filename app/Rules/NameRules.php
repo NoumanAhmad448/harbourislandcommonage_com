@@ -14,9 +14,16 @@ class NameRules
      *
      * @return array
      */
-    public static function nameRules()
+    public static function nameRules($is_required=true)
     {
-        return ['required', 'string',new IsScriptAttack];
+        $rules = [];
+        if($is_required){
+            $rules[] = 'required';
+        }else{
+            $rules[] = "nullable";
+        }
+        add_array($rules, ['string', new IsScriptAttack]);
+        return $rules;
     }
 
     public static function emailRules($should_unique=True)
@@ -56,6 +63,17 @@ class NameRules
             config("table.comment") => self::nameRules(),
             config("table.land_create_id") => self::nameRules(),
             config("table.land_ops_id") => self::nameRules(),
+        ];
+    }
+
+    public function myProfile(): Array {
+        return [
+            config("table.name") => self::nameRules(),
+            config("table.mobile") => self::nameRules(false),
+            config("table.age") => self::nameRules(false),
+            config("table.gender") => self::nameRules(false),
+            config("table.address") => self::nameRules(false),
+            config("table.job_id") => self::nameRules(false),
         ];
     }
     public function adminDelete(): Array {
