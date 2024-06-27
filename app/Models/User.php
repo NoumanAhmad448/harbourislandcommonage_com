@@ -147,9 +147,12 @@ class User extends Authenticatable
         return $users;
     }
 
-    public function defaultProfilePhotoUrl()
-    {
+    public function defaultProfilePhotoUrl(){
         return 'https://ui-avatars.com/api/?name='.urlencode($this->name).'&color=7F9CF5&background=EBF4FF';
+    }
+
+    public function userProfile(){
+        return $this->hasOne(UserProfile::class);
     }
 
 }

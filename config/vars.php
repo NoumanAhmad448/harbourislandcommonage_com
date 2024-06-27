@@ -1,5 +1,7 @@
 <?php
 return [
+    "show_value" => "show_value",
+    "my_profile_form" => "my_profile_form",
     "text" => "text",
     "move_btn_right" => "move_btn_right",
     "key" => "key",

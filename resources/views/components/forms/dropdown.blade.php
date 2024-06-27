@@ -9,6 +9,7 @@ $id = $prop['id'] ?? 'c_password';
 $include_star = $prop['include_star'] ?? true;
 $label = $prop['label'] ?? '';
 $value = $prop['value'] ?? '';
+$show_value = $prop['show_value'] ?? '';
 $col = $prop['col'] ?? 3;
 $data = $prop["data"] ?? "";
 // by default pick the column name from the table
@@ -38,7 +39,7 @@ if(!$data){
     <button id="{{$id}}dropdown-button" type="button"
         class="inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-blue-500">
         <label id="{{$id}}label">
-            <span class="mr-2">{{$label}}</span>
+            <span class="mr-2">{{$value !== "" ? $value : $label}}</span>
         </label>
         @if ($include_star)
             {!! config('setting.red_star') !!}
@@ -51,7 +52,7 @@ if(!$data){
     <div id="{{$id}}dropdown" autocomplete="off"
         class="@If($data) max-h-52 @endif z-50 hidden overflow-y-scroll md:col-span-{{$col}} @if($move_btn_right) {{ 'text-right' }} @endif absolute right-0 mt-2 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 p-1 space-y-1">
         <!-- Search input -->
-        <input id="{{$id }}" name="{{$id}}" type="hidden" value="{{$value ?? ''}}" />
+        <input id="{{$id }}" name="{{$id}}" type="hidden" value="{{$show_value ?? ''}}" />
         <input id="{{$id }}search"
             class="block w-full px-4 py-2 text-gray-800 border rounded-md  border-gray-300 focus:outline-none"
             type="text" placeholder="Search items" autocomplete="off">
@@ -70,7 +71,8 @@ if(!$data){
                     @else
                         {{ $record->id }}
                     @endif
-                }}">
+                    "
+                >
                     @if( is_key_exists($key, $record) && $record[$key])
                     {{-- treat $record as an array --}}
                         {{ $record[$key] }}
