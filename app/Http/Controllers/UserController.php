@@ -58,9 +58,9 @@ class UserController extends Controller
     public function myProfile(Request $request){
         try {
             $data = [];
-            $user = auth()->user();
-            debug_logs($user->userProfile);
-            debug_logs($user->userProfile->job);
+            $user = auth()?->user();
+            debug_logs($user?->userProfile);
+            debug_logs($user?->userProfile?->job);
             $data[config("vars.user")] = $user;
             $data[config("vars.title")] = __('messages.mprofile');
             debug_logs("data => ");

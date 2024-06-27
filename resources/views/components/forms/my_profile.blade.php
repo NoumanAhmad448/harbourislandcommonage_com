@@ -18,7 +18,7 @@
                 config("vars.prop") => [
                     config('vars.id') => config("table.name"),
                     config('vars.label') => __("label.flnme"),
-                    config('vars.value') => $user && $user->name ? $user->name : "",
+                    config('vars.value') => $user?->name,
                 ]
             ])
             @include(config("files.forms").'col', [
@@ -28,8 +28,7 @@
                     config('vars.id') => config("table.age"),
                     config('vars.label') => __("label.age"),
                     config('vars.include_star') => false,
-                    config('vars.value') => $user && $user->userProfile
-                    && $user->userProfile->age ? $user->userProfile->age : "",
+                    config('vars.value') => $user?->userProfile?->age,
                 ]
             ])
             @include(config("files.forms").'col', [
@@ -39,8 +38,7 @@
                     config('vars.id') => config("table.mobile"),
                     config('vars.label') => __("label.mble_no"),
                     config('vars.include_star') => false,
-                    config('vars.value') => $user && $user->userProfile
-                    && $user->userProfile->mobile ? $user->userProfile->mobile : "",
+                    config('vars.value') => $user?->userProfile?->mobile,
                 ]
             ])
             @include(config("files.forms").'col', [
