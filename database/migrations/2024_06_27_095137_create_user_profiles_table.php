@@ -36,7 +36,9 @@ return new class extends Migration
                 $table->string(config("table.mobile"), 255)->comment("mobile number");
                 $table->string(config("table.age"), 255)->comment("user age");
                 $table->string(config("table.address"), 255)->comment("user permanent address");
-                $table->enum(config("table.gender"), config("setting.gender"))->comment("user gender");
+                $table->enum(config("table.gender"), [
+                    "male", "female", "others"
+                ])->comment("user gender");
 
                 $table->timestamp(config("table.created_at"))->useCurrent();
                 $table->timestamp(config("table.updated_at"))->useCurrent();
