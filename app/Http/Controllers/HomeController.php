@@ -64,4 +64,8 @@ class HomeController extends Controller
             return server_logs($e = [true, $d], $request = [true, $request], $config = true);
         }
     }
+
+    public function myProfile(Request $request){
+        dd("here");
+    }
 }

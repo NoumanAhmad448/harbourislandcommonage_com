@@ -10,12 +10,13 @@
         @endif
     </label>
     <input type="email" name="{{ config('form.email') }}" id="{{ config('form.email') }}"
-        placeholder="{{ __('messages.EmailAddressSample') }}" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
+        placeholder="{{ __('label.EmailAddressSample') }}" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
         value="{{ $email ?? '' }}" />
 @else
-    <label for="{{ config('form.email') }}" class="mb-2.5 block font-medium text-black dark:text-white">{{ __('messages.EmailAddress') }}</label>
+    <label for="{{ config('form.email') }}" class="mb-2.5 block font-medium text-black dark:text-white">
+        {{ __('label.EmailAddress') }}</label>
     <div class="relative">
-        <input type="email" placeholder="{{ __('messages.EmailAddressSample') }}"
+        <input type="email" placeholder="{{ __('label.EmailAddressSample') }}"
             name="{{ config('form.email') }}" id="{{ config('form.email') }}"
             class="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary" />
 

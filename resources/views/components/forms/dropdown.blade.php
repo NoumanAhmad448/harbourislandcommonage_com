@@ -1,6 +1,7 @@
 @php
 use App\Models\Country;
 use App\Models\City;
+use App\Models\Job;
 
 $text = !empty($text) ? $text : __('messages.create_land_btn');
 
@@ -22,6 +23,12 @@ if(!$data){
         break;
         case config("setting.country"):
         $data = Country::all();
+        break;
+        case config("table.gender"):
+        $data = config("setting.gender");
+        break;
+        case config("table.job_id"):
+        $data = Job::get();
         break;
     }
 }
@@ -53,8 +60,27 @@ if(!$data){
             @foreach ($data as $record)
             <p
                 class="dropdown-item block px-4 py-2 text-gray-700 hover:bg-gray-100 active:bg-blue-100 cursor-pointer rounded-md"
-                value="{{$record['id']}}">
-                {{$record[$key]}}
+                value="
+                    {{-- treat $record as an array --}}
+                    @if(is_key_exists(config('vars.id'), $record) && $record[config('vars.id')])
+                       {{ $record[config('vars.id')] }}
+                    {{-- treat $record as a simple array --}}
+                    @elseif(is_string($record))
+                        {{ $record }}
+                    @else
+                        {{ $record->id }}
+                    @endif
+                }}">
+                    @if( is_key_exists($key, $record) && $record[$key])
+                    {{-- treat $record as an array --}}
+                        {{ $record[$key] }}
+                    @elseif(is_string($record))
+                    {{-- treat $record as a simple array --}}
+                        {{ $record }}
+                    @else
+                        {{ $record->$key }}
+                    @endif
+
             </p>
             @endforeach
         @endif

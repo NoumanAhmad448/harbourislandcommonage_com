@@ -28,15 +28,17 @@
              ">
             <ul class="relative right-0 z-index-40 flex flex-col gap-5 border-b px-6 py-7.5
                  dark:border-strokedark">
-                @include(config('files.components') . '.profile_list', [
-                    'prop' => [
-                        'link' => '',
-                        'svg' => config('files.svg') . 'profile',
-                        'text' => __('messages.mprofile'),
-                    ],
-                ])
+                @if(is_auth_user())
+                    @include(config('files.components_') . 'profile_list', [
+                        'prop' => [
+                            'link' => route("my_profile"),
+                            'svg' => config('files.svg') . 'profile',
+                            'text' => __('messages.mprofile'),
+                        ],
+                    ])
+                @endif
                 @if(isAdmin(false))
-                    @include(config('files.components') . '.profile_list', [
+                    @include(config('files.components_') . 'profile_list', [
                         'prop' => [
                             'link' => route("admin_chart"),
                             'svg' => config('files.svg') . 'dashboard',
@@ -62,7 +64,7 @@
                 ])
             </ul>
             <form method="POST" action="@if(isAdmin(false)){{ $admin_logout }} @else {{ $user_logout }} @endif">
-                @include(config("files.components").'.csrf')
+                @include(config("files.components_").'csrf')
             <button type="submit"
                 class="flex items-center gap-3.5 px-6 py-4 text-sm font-medium duration-300 ease-in-out
                  hover:text-primary lg:text-base">

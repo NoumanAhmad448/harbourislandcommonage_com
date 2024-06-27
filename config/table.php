@@ -1,5 +1,12 @@
 <?php
 return [
+    "jobs" => "jobs",
+    "job_id" => "job_id",
+    "user_profiles" => "user_profiles",
+    "mobile" => "mobile",
+    "age" => "age",
+    "gender" => "gender",
+    "address" => "address",
     "deleted_at" => "deleted_at",
     "password" => "password",
     "name" => "name",
@@ -33,6 +40,7 @@ return [
     "primary_key" => "id",
     "lands" => "lands",
     "land_comments" => "land_comments",
+    "SubmitButton" => "Submit",
 ];
 
 ?>

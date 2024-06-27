@@ -229,6 +229,21 @@ if (!function_exists('is_normal_user')){
         return !isAdmin(false);
     }
 }
+if (!function_exists('is_auth_user')){
+    function is_auth_user($action=false):bool{
+        /*
+        every registerd user and admin(excluding super admin) is a auth user
+        */
+        if($action){
+            $action = abort(config("setting.err_403"));
+        }
+        $auth = Auth::user();
+        if(!$auth){
+            return false;
+        }
+        return $auth &&  ! $auth->is_super_admin ?? $action;
+    }
+}
 if (!function_exists('str_to_array')){
     function str_to_array($str,$sep=","):array{
         return explode($sep, $str);
@@ -246,5 +261,10 @@ if (!function_exists('file_path')){
             $server_path = config("setting.storage");
             return $site_path.$server_path.$path;
         }
+    }
+}
+if (!function_exists('can_call_fun')){
+    function can_call_fun($fun){
+        return is_callable($fun);
     }
 }

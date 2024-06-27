@@ -1,11 +1,12 @@
 @php
     $text = !empty($text) ? $text : __('messages.create_land_btn');
+    can_call_fun(debug_logs($prop));
 
-    $id = $prop['id'] ?? 'c_password';
-    $include_star = $prop['include_star'] ?? true;
-    $label = $prop['label'] ?? '';
+    $id = $prop[config('vars.id')] ?? 'c_password';
+    $include_star = $prop[config('vars.include_star')] ?? true;
+    $label = $prop[config('vars.label')] ?? '';
     $form_type = $prop['type'] ?? 'text';
-    $value = $prop['value'] ?? '';
+    $value = $prop[config('vars.value')] ?? '';
     $placeholder = $prop['placeholder'] ?? $label;
 
 @endphp
