@@ -21,7 +21,7 @@ return new class extends Migration
                     ->on(config("table.users"))
                     ->constrained()
                     ->onDelete('cascade')
-                    ->comment(config("table.users")." table foreign key")
+                    ->comment("users table foreign key")
                     ;
                 // nullable in foregin key always comes first from constrained
                 $table->foreignId(config("table.job_id"))
@@ -30,13 +30,15 @@ return new class extends Migration
                     ->nullable()
                     ->constrained()
                     ->onDelete('cascade')
-                    ->comment(config("table.jobs")." table foreign key")
+                    ->comment("jobs table foreign key")
                     ;
 
                 $table->string(config("table.mobile"), 255)->comment("mobile number");
                 $table->string(config("table.age"), 255)->comment("user age");
                 $table->string(config("table.address"), 255)->comment("user permanent address");
-                $table->enum(config("table.gender"), config("setting.gender"))->comment("user gender");
+                $table->enum(config("table.gender"), [
+                    "male", "female", "others"
+                ])->comment("user gender");
 
                 $table->timestamp(config("table.created_at"))->useCurrent();
                 $table->timestamp(config("table.updated_at"))->useCurrent();
