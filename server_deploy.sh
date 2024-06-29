@@ -8,11 +8,17 @@ php artisan down || true
 # /opt/cpanel/composer/bin/composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev --no-cache
 
 # Install Specific package
-# /opt/cpanel/composer/bin/composer require doctrine/dbal
-
+/opt/cpanel/composer/bin/composer require spatie/laravel-health
+/opt/cpanel/composer/bin/composer require spatie/cpu-load-health-check
+/opt/cpanel/composer/bin/composer  require spatie/security-advisories-health-check
 
 # Clear caches
-php artisan cache:clear
+# php artisan cache:clear
+php artisan optimize # will cache config and routes
+
+# will cache events
+php artisan event:cache
+
 
 # Run database migrations
 php artisan migrate --force
@@ -27,7 +33,7 @@ yes | php artisan key:generate
 yes | chmod -R 777 storage bootstrap/cache
 
 # Clear and cache routes
-php artisan route:cache
+# php artisan route:cache
 
 # Clear and cache config
 php artisan config:cache
@@ -40,6 +46,9 @@ php artisan view:cache
 
 # Build assets using Laravel Mix
 #npm run prod
+
+# check project health notification
+php artisan health:check --no-notification
 
 # Turn off maintenance mode
 php artisan up

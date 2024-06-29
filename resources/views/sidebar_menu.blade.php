@@ -30,6 +30,14 @@
                     'url' => route('admin_op'),
                     'html' => __('messages.admin_op'),
                 ],
+                [
+                    'url' => route('health', ["fresh" => 1]),
+                    'html' => __('messages.health'),
+                ],
+                [
+                    'url' => route("optimize"),
+                    'html' => __('messages.optimize'),
+                ],
             ]
         ]
     ];

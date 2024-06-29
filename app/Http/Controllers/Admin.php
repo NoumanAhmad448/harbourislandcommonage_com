@@ -35,6 +35,12 @@ class Admin extends Controller{
             config("setting.message") => __("messages.admn_del_op")],
             config("setting.status_200"));
     }
+    public function optimize(){
+        Artisan::call("optimize");
+        return customResponse([config("setting.is_success") => true,
+            config("setting.message") => __("messages.admn_del_op")],
+            config("setting.status_200"));
+    }
 
     public function clearFiles(){
         Artisan::call("files:clear");

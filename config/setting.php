@@ -21,6 +21,8 @@ if(config("app.env") == 'production'){
 }
 
 return [
+    "retry_time" => 30,
+    "max_tble_size" => 9_0000000000,
     "gender" => [
         "male", "female", "others"
     ],
