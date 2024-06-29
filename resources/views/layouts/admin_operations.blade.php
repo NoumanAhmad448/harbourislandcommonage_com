@@ -23,6 +23,11 @@
                 config("vars.url") => route("clear_files"),
                 config("vars.alert") => true,
             ],
+            [
+                config("vars.priv") => isSuperAdmin(false),
+                config("vars.title") =>  __('messages.optimize'),
+                config("vars.url") => route("optimize"),
+            ],
         ];
     @endphp
     @include(config("setting.admn_oprtn_list"), ["records" => $records])

@@ -33,11 +33,7 @@
                 [
                     'url' => route('health', ["fresh" => 1]),
                     'html' => __('messages.health'),
-                ],
-                [
-                    'url' => route("optimize"),
-                    'html' => __('messages.optimize'),
-                ],
+                ]
             ]
         ]
     ];
