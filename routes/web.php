@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LandCreateController;
 use App\Http\Controllers\SuperAdmin;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\HealthCheckResultsController;
 
 $land_path = '/land';
 $admin_path = '/admin';
@@ -47,6 +48,8 @@ Route::prefix($admin_path)->middleware(config("middlewares.admin"))->group(funct
 });
 
 Route::prefix($admin_path)->middleware(config("middlewares.super_admin"))->group(function (){
+    Route::get('/health', HealthCheckResultsController::class)->name('health');
+    Route::get('/optimize-logs', [Admin::class, 'optimize'])->name('optimize');
     Route::get('/clear-storage-logs', [Admin::class, 'clearLogs'])->name('clear_logs');
     Route::get('/clear-files', [Admin::class, 'clearFiles'])->name('clear_files');
     Route::get('/clear-cache', [Admin::class, 'clearCache'])->name('clear_cache');

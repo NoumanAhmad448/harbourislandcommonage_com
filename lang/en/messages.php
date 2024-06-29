@@ -2,6 +2,8 @@
 
 $fuas = config('setting.fuas');
 return [
+    "optimize" => "Optimize routes & config",
+    "health" => "Project Health",
     "oprntn_succ" => "Opeartion was successfull! ",
     "cls_files" => "Clear Files ",
     "cnsl_msg" => "\n  <options=bold>“ :msg ”</>\n",

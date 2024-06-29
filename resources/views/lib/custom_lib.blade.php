@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{{-- class="{{$theme == 'dark' ? 'dark' : ''}}" --}}
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
@@ -11,6 +12,7 @@
     <meta property="og:title" content="{{ config('app.name') }}">
     <meta id="seo_fb" property="og:description" content="{{ config('setting.default_desc') }}">
     <link rel="canonical" href="{{ url()->current() }}">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
     integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
