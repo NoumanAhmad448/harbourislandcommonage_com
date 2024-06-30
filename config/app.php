@@ -17,6 +17,8 @@ return [
 
     'name' => env('APP_NAME', 'Laravel'),
     'js_debug' => env('JS_DEBUG', false),
+    'google_captcha_key' => env('NOCAPTCHA_SITEKEY', false),
+    'google_captcha_secret' => env('NOCAPTCHA_SECRET', false),
 
     /*
     |--------------------------------------------------------------------------
