@@ -8,9 +8,7 @@ php artisan down || true
 # /opt/cpanel/composer/bin/composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev --no-cache
 
 # Install Specific package
-/opt/cpanel/composer/bin/composer require spatie/laravel-health
-/opt/cpanel/composer/bin/composer require spatie/cpu-load-health-check
-/opt/cpanel/composer/bin/composer  require spatie/security-advisories-health-check
+# /opt/cpanel/composer/bin/composer require spatie/laravel-health
 
 # Clear caches
 # php artisan cache:clear
