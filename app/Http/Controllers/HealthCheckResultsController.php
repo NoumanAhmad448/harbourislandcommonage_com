@@ -20,8 +20,7 @@ class HealthCheckResultsController
         }
         $checkResults = $resultStore->latestResults();
 
-        // return view('health::list', [
-        return view('list', [
+        return view('health', [
             'lastRanAt' => new Carbon($checkResults?->finishedAt),
             'checkResults' => $checkResults,
             'assets' => $health->assets(),

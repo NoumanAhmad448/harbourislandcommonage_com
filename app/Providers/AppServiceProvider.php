@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Spatie\GoogleCaptcha;
+use App\Spatie\Js_Debug;
 use Illuminate\Support\ServiceProvider;
 use Spatie\Health\Facades\Health;
 use Spatie\Health\Checks\Checks\UsedDiskSpaceCheck;
@@ -40,7 +42,6 @@ class AppServiceProvider extends ServiceProvider
         // CpuLoadCheck::new()
         //     ->failWhenLoadIsHigherInTheLast15Minutes(2.0),
         $checks = [
-            UsedDiskSpaceCheck::new(),
             DatabaseCheck::new(),
             CacheCheck::new(),
             OptimizedAppCheck::new()
@@ -48,17 +49,22 @@ class AppServiceProvider extends ServiceProvider
                 ->checkRoutes(),
             DatabaseConnectionCountCheck::new()
                 ->failWhenMoreConnectionsThan(100),
-            DatabaseSizeCheck::new(),
             DatabaseTableSizeCheck::new()
                 ->table(config("table.users"), maxSizeInMb: config("setting.max_tble_size"))
                 ->table(config("table.user_profiles"), maxSizeInMb: config("setting.max_tble_size"))
                 ->table(config("table.land_comments"), maxSizeInMb: config("setting.max_tble_size")),
             DebugModeCheck::new(),
             EnvironmentCheck::new(),
-            PingCheck::new()->url(config("app.url"))->retryTimes(config("setting.retry_time")),
             SecurityAdvisoriesCheck::new(),
-
+            Js_Debug::new(),
+            GoogleCaptcha::new(),
+            DatabaseSizeCheck::new(),
         ];
+
+        if(in_array(config('app.env'),["production", "prod"])){
+            $checks[] = UsedDiskSpaceCheck::new();
+            $checks[] = PingCheck::new()->url(config("app.url"))->retryTimes(config("setting.retry_time"));
+        }
         Health::checks($checks);
     }
 }
