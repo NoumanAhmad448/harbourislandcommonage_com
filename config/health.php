@@ -35,10 +35,10 @@ return [
         /*
          * Notifications will only get sent if this option is set to `true`.
          */
-        'enabled' => false,
+        'enabled' => true,
 
         'notifications' => [
-            Spatie\Health\Notifications\CheckFailedNotification::class => ['mail'],
+            Spatie\Health\Notifications\CheckFailedNotification::class => ['slack'],
         ],
 
         /*
@@ -67,14 +67,14 @@ return [
         ],
 
         'slack' => [
-            'webhook_url' => env('HEALTH_SLACK_WEBHOOK_URL', ''),
+            'webhook_url' => env('HEALTH_SLACK_WEBHOOK_URL', 'https://hooks.slack.com/services/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'),
 
             /*
              * If this is set to null the default channel of the webhook will be used.
              */
-            'channel' => null,
+            'channel' => env("HEALTH_SLACK_CHANNEL", "web-development"),
 
-            'username' => null,
+            'username' => env("HEALTH_SLACK_USERNAME", "urooman"),
 
             'icon' => null,
         ],
