@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Spatie\GoogleCaptcha;
 use App\Spatie\Js_Debug;
+use App\Spatie\SlackKeys;
 use Illuminate\Support\ServiceProvider;
 use Spatie\Health\Facades\Health;
 use Spatie\Health\Checks\Checks\UsedDiskSpaceCheck;
@@ -54,14 +55,15 @@ class AppServiceProvider extends ServiceProvider
                 ->table(config("table.user_profiles"), maxSizeInMb: config("setting.max_tble_size"))
                 ->table(config("table.land_comments"), maxSizeInMb: config("setting.max_tble_size")),
             DebugModeCheck::new(),
-            EnvironmentCheck::new(),
             SecurityAdvisoriesCheck::new(),
-            Js_Debug::new(),
             GoogleCaptcha::new(),
             DatabaseSizeCheck::new(),
+            SlackKeys::new(),
         ];
 
         if(in_array(config('app.env'),["production", "prod"])){
+            $checks[] = Js_Debug::new();
+            $checks[] = EnvironmentCheck::new();
             $checks[] = UsedDiskSpaceCheck::new();
             $checks[] = PingCheck::new()->url(config("app.url"))->retryTimes(config("setting.retry_time"));
         }

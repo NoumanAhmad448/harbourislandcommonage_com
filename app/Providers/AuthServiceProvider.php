@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\Policies\DashboardPolicy;
+use App\Policies\LandPolicy;
+use App\Policies\ProfilePolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
@@ -25,6 +28,11 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Gate::define(config("policy.update_land"), [LandPolicy::class, 'update']);
+        Gate::define(config("policy.create_land"), [LandPolicy::class, 'create']);
+        Gate::define(config("policy.update_profile"), [ProfilePolicy::class, 'update']);
+        Gate::define(config("policy.view_admin_dashboard"), [DashboardPolicy::class, 'view']);
+        Gate::define(config("policy.view_dashboard"), [DashboardPolicy::class, 'viewUser']);
+
     }
 }

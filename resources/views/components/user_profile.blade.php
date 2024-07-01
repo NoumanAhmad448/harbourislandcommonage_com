@@ -28,7 +28,8 @@
              ">
             <ul class="relative right-0 z-index-40 flex flex-col gap-5 border-b px-6 py-7.5
                  dark:border-strokedark">
-                @if(is_auth_user())
+
+                @can(config("policy.update_profile"))
                     @include(config('files.components_') . 'profile_list', [
                         'prop' => [
                             'link' => route("my_profile"),
@@ -36,8 +37,8 @@
                             'text' => __('messages.mprofile'),
                         ],
                     ])
-                @endif
-                @if(isAdmin(false))
+                @endcan
+                @can(config("policy.view_admin_dashboard"))
                     @include(config('files.components_') . 'profile_list', [
                         'prop' => [
                             'link' => route("admin_chart"),
@@ -45,8 +46,8 @@
                             'text' => __('messages.dashboard'),
                         ],
                     ])
-                @endif
-                @if(is_normal_user())
+                @endcan
+                @can(config("policy.view_dashboard"))
                     @include(config('files.components_') . 'profile_list', [
                         'prop' => [
                             'link' => route("land_index"),
@@ -54,7 +55,7 @@
                             'text' => __('messages.usr_dshbrd'),
                         ],
                     ])
-                @endif
+                @endcan
                 @include(config('files.components_') . 'profile_list', [
                     'prop' => [
                         'link' => 'messages.html',

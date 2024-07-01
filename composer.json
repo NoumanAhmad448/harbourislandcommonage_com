@@ -17,6 +17,7 @@
         "laravel/tinker": "^2.7",
         "spatie/cpu-load-health-check": "^1.0",
         "spatie/laravel-health": "^1.29",
+        "spatie/laravel-permission": "^6.9",
         "spatie/security-advisories-health-check": "^1.2"
     },
     "require-dev": {
