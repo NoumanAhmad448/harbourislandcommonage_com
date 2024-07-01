@@ -62,7 +62,7 @@ class AppServiceProvider extends ServiceProvider
         ];
 
         if(in_array(config('app.env'),["production", "prod"])){
-            // $checks[] = Js_Debug::new();
+            $checks[] = Js_Debug::new();
             $checks[] = EnvironmentCheck::new();
             $checks[] = UsedDiskSpaceCheck::new();
             $checks[] = PingCheck::new()->url(config("app.url"))->retryTimes(config("setting.retry_time"));
