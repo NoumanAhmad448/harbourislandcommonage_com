@@ -33,6 +33,8 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define(config("policy.update_profile"), [ProfilePolicy::class, 'update']);
         Gate::define(config("policy.view_admin_dashboard"), [DashboardPolicy::class, 'view']);
         Gate::define(config("policy.view_dashboard"), [DashboardPolicy::class, 'viewUser']);
+        Gate::define(config("policy.is_super_admin"), [DashboardPolicy::class, 'isSuperAdmin']);
+        Gate::define(config("policy.can_be_admin"), [DashboardPolicy::class, 'isAdmin']);
 
     }
 }

@@ -70,4 +70,18 @@ class UserController extends Controller
             return server_logs($e = [true, $d], $request = [true, $request], $config = true);
         }
     }
+
+    public function showUsers(Request $request) {
+        try {
+            $data = [];
+            $users = $this->user::normalUserCond(true)->get();
+            $data['users'] = $users;
+            $data['title'] = __('messages.Users');
+
+            return view(config("setting.show_users"), compact("data"));
+        }
+        catch (\Exception $d) {
+            return server_logs($e = [true, $d], $request = [true, $request], $config = true);
+        }
+    }
 }

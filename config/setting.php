@@ -7,6 +7,7 @@ $css_folder = "css";
 $storage = "/storage/";
 $js_folder = "js";
 $layout_folder = "layouts";
+$layout_folder_ = "{$layout_folder}.";
 $public_folder = "public/";
 $public_fo = "public";
 $images_folder = "images/";
@@ -21,6 +22,7 @@ if(config("app.env") == 'production'){
 }
 
 return [
+    "show_users" => $layout_folder_."show_users",
     "retry_time" => 30,
     "max_tble_size" => 9_0000000000,
     "gender" => [
