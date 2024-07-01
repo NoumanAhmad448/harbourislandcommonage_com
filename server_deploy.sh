@@ -8,7 +8,7 @@ php artisan down || true
 # /opt/cpanel/composer/bin/composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev --no-cache
 
 # Install Specific package
-/opt/cpanel/composer/bin/composer require spatie/laravel-permission
+# /opt/cpanel/composer/bin/composer require spatie/laravel-permission
 
 
 # Clear caches
