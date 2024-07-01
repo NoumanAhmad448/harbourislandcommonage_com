@@ -1,10 +1,13 @@
 @foreach ($menu as $op)
     @php
         debug_logs($op);
+        $constant = gen_str();
     @endphp
-    @if($op['priv'])
+
+    @canany($op[config('vars.priv')])
         <li>
-            <a class="group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
+            <a class="group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium
+             text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
                 href="#"
                 @click.prevent="selected = (selected === '{{ $op['menu'] }}' ? '':
                     '{{ $op['menu'] }}')"
@@ -20,21 +23,41 @@
                 ])
             </a>
             @if (count($op['sub_menu']) > 0)
-                @foreach ($op['sub_menu'] as $sub_menu)
-                    <!-- Dropdown Menu Start -->
-                    <div class="translate transform overflow-hidden"
-                        :class="(selected === '{{ $op['menu'] }}') ? 'block' : 'hidden'">
-                        <ul class="mb-5.5 mt-4 flex flex-col gap-2.5 pl-6">
-                            <li>
-                                <a class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium
+                @foreach ($op['sub_menu'] as $key => $sub_menu)
+                    @php debug_logs($sub_menu);
+                    $constant = gen_str();
+                    @endphp
+                    @canany($sub_menu[config('vars.priv')])
+                        <!-- Dropdown Menu Start -->
+                        {{-- @include(config('files.components_') . 'loader', [
+                            'prop' => [
+                                'id' => "{$constant}",
+                            ],
+                        ]) --}}
+                        @php
+                            debug_logs("{$constant}{$key}");
+                        @endphp
+                        <div
+                            class="translate transform overflow-hidden"
+                            :class="(selected === '{{ $op['menu'] }}') ? 'block' : 'hidden'">
+                            <ul class="mb-5.5 mt-4 flex flex-col gap-2.5 pl-6">
+                                <li>
+                                    <a class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium
                                 text-bodydark2 duration-300 ease-in-out"
-                                    href="{{ $sub_menu['url'] }}">{{ $sub_menu['html'] }}
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+                                        href="{{ $sub_menu['url'] }}">{{ $sub_menu['html'] }}
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        {{-- @include(config('files.components_') . 'loader_script', [
+                            'prop' => [
+                                'id' => "{$constant}",
+                                'hide_el' => "{$constant}{$key}",
+                            ],
+                        ]) --}}
+                    @endcanany
                 @endforeach
             @endif
         </li>
-    @endif
-    @endforeach
+    @endcanany
+@endforeach

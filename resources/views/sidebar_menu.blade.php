@@ -3,37 +3,48 @@
     $sidebar_menu = $prop['id'] ."sidebar_menu";
     $menu = [
         [
-            'priv' => true,
+            'priv' => [config("policy.can_be_admin")],
             'menu' => __('messages.dashboard'),
-            'svg' => 'dashboard',
-            'sub_menu' => [
+            config("vars.svg") => 'dashboard',
+            config("vars.sub_menu") => [
                 [
-                    'url' => route('admin_chart'),
+                    config('vars.url') => route('admin_chart'),
                     'html' => __('messages.summary'),
+                    config("vars.priv") => [config("policy.can_be_admin")],
                 ],
                 [
-                    'url' => route('admin_lands'),
+                    config('vars.url') => route('admin_lands'),
                     'html' => __('messages.lands'),
+                    config("vars.priv") => [config("policy.can_be_admin")]
                 ],
             ],
         ],
         [
-            'priv' => isSuperAdmin(false),
-            'menu' => __('messages.ap'),
-            'svg' => 'profile',
-            'sub_menu' => [
+            config("vars.priv") => [config("policy.is_super_admin")],
+            config("vars.menu") => __('messages.ap'),
+            config("vars.svg") => 'profile',
+            config("vars.sub_menu") => [
                 [
-                    'url' => route('create_admin'),
+                    config('vars.url') => route('create_admin'),
                     'html' => __('messages.sub_adns'),
+                    config("vars.priv") => [config("policy.is_super_admin")],
                 ],
                 [
-                    'url' => route('admin_op'),
+                    config('vars.url') => route('admin_op'),
                     'html' => __('messages.admin_op'),
+                    config("vars.priv") => [config("policy.is_super_admin")],
+
                 ],
                 [
-                    'url' => route('health', ["fresh" => 1]),
+                    config('vars.url') => route('health', ["fresh" => 1]),
                     'html' => __('messages.health'),
-                ]
+                    config("vars.priv") => [config("policy.is_super_admin")],
+                ],
+                [
+                    config('vars.url') => route('show_users'),
+                    'html' => __('messages.Users'),
+                    config("vars.priv") => [config("policy.is_super_admin")],
+                ],
             ]
         ]
     ];

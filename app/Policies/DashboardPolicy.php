@@ -25,4 +25,11 @@ class DashboardPolicy
     public function viewUser(): bool {
         return is_normal_user();
     }
+
+    public function isSuperAdmin(): bool {
+        return isSuperAdmin(false);
+    }
+    public function isAdmin(): bool {
+        return isAdmin(false);
+    }
 }
