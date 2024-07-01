@@ -1,5 +1,7 @@
 <?php
 return [
+    "permissions" => "permissions",
+    "roles" => "roles",
     "jobs" => "jobs",
     "job_id" => "job_id",
     "user_profiles" => "user_profiles",

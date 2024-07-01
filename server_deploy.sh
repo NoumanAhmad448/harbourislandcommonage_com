@@ -2,13 +2,13 @@
 php artisan down || true
 
 #Install/update composer dependecies
-/opt/cpanel/composer/bin/composer update --no-cache
+# /opt/cpanel/composer/bin/composer update --no-cache
 
 # Install/update composer dependecies
 # /opt/cpanel/composer/bin/composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev --no-cache
 
 # Install Specific package
-/opt/cpanel/composer/bin/composer require laravel/slack-notification-channel
+# /opt/cpanel/composer/bin/composer require laravel/slack-notification-channel
 
 
 # Clear caches
