@@ -9,7 +9,8 @@
                         <hr/>
                     @endif
                     @include(config("files.components").".land_registeration")
-                    @can(config("policy.create_land"))
+
+                    @if(is_normal_user())
                         @include(config("files.forms")."col", ["input" => config("files.forms")."submit",
                         "move_btn_right" => true, "id" => "submit"])
                     @else

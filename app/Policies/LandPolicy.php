@@ -22,8 +22,7 @@ class LandPolicy
     {
         //
     }
-    public function create()
-    {
+    public function create(): bool{
         return is_normal_user();
     }
 }

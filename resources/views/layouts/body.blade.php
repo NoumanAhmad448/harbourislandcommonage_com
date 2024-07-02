@@ -1,9 +1,7 @@
 <?php
-
 use App\Models\UserAnnModel;
 use App\Models\Categories;
 use Illuminate\Support\Facades\Cache;
-
 
 ?>
         @include(config("files.lib")."custom_lib")
