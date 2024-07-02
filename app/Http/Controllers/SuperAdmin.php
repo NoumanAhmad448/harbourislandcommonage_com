@@ -13,6 +13,7 @@ use App\Http\Requests\SubAdminsPost;
 use App\Http\Requests\SubAdminsUpdate;
 use App\Models\User;
 use App\Actions\Fortify\CreateNewUser;
+use App\Models\CreateLandLog;
 
 class SuperAdmin extends Controller
 {
@@ -23,6 +24,7 @@ class SuperAdmin extends Controller
     private $verifyUser;
     private $createLand;
     private $createNewUser;
+    private $createLandLog;
 
     public function __construct() {
         $this->createLandObj = new CreateLand();
@@ -31,6 +33,7 @@ class SuperAdmin extends Controller
         $this->fileUplaodObj = new FileUpload;
         $this->verifyUser = new VerifyUser;
         $this->createLand = new CreateLand;
+        $this->createLandLog = new CreateLandLog;
         $this->createNewUser = new CreateNewUser;
 
     }
@@ -87,6 +90,26 @@ class SuperAdmin extends Controller
                 config("setting.message") => __("messages.admn_del_op")],
                 config("setting.status_200")
             );
+        }
+        catch (\Exception $d) {
+            return server_logs($e = [true, $d], $request = [true, $request], $config = true);
+        }
+    }
+
+    public function landLogs(Request $request) {
+        try {
+            $data = [];
+            if($request->has(config("table.primary_key"))){
+                $land_id = $request->get(config("table.primary_key"));
+            }else{
+                abort(config("setting.err_403"));
+            }
+            $lands = $this->createLandLog->landDetails($land_id);
+
+            $data[config("table.lands")] = $lands;
+            $data[config("table.title")] = __("table.land_logs");
+
+            return view(config("setting.land_logs"), compact("data"));
         }
         catch (\Exception $d) {
             return server_logs($e = [true, $d], $request = [true, $request], $config = true);

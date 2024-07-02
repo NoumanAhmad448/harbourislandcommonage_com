@@ -1,5 +1,7 @@
 <?php
 return [
+    "land_logs" => "land_logs",
+    "land_id" => "land_id",
     "permissions" => "permissions",
     "roles" => "roles",
     "jobs" => "jobs",

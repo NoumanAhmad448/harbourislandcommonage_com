@@ -1,5 +1,6 @@
 <?php
 return [
+    "land_logs" => "Land Logs",
     "user_profiles" => "User Profile",
     "name" => "Name",
     "comment" => "Comment",
