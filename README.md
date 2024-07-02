@@ -31,7 +31,7 @@ files in the root folder of laravel. Don't forget to update ```webpack.mix.js```
 16. define javascript/js constants in  ```vars.js```
 
 ## Local Setup (Development)
-1. install xampp (Required PHP version -> 8.2|8.0|8.1) [Download Link](https://www.apachefriends.org/)
+1. install xampp (Required PHP version -> 8.2) [Download Link](https://www.apachefriends.org/)
 2. download node 16.18.0
 2. Go to .env file and change the DB connection
 3. Create a database
@@ -39,17 +39,9 @@ files in the root folder of laravel. Don't forget to update ```webpack.mix.js```
 thesunr8_harbourislandcommonage_com
 ```
 4. [Visit this file](/database/seeders/DatabaseSeeder.php) and uncomment everything inside ```run``` method
-5. You need to follow of either mentioned path
-    1. One
-        1. run
-           1. usmansaleem234_lyskills_new.sql
-           2.  <b>user_ann_models.sql</b>
-        file locally. These files are avaiable in the source code, path /
-        3. Add primary key manually in every table or create a alter query and try changing table name and primary key column
-    2. Second
-        1. run [this file](/local_development.sh)
+5. Run [this file](/local_development.sh)
 6. Get dump from someone else and upload
-7. php artisan serve --port=8081
+7. ```php artisan serve --port=8080```
 
 ## Troubleshooting
 mysql configuration file finder
@@ -188,6 +180,19 @@ php --ini
 nano /opt/cpanel/ea-php80/root/etc/php.ini
 ```
 
+## Change PHP version in xampp
+1. download ```thread safe``` php version from ```php.net```
+2. make sure php folder has following files
+```C:/xampp/php/php8apache2_4.dll``` <br/>
+```C:/xampp/php/php8ts.dll``` <br/>
+3. replace ```php.ini-development``` to ```php.ini```
+4. Open ```php.ini``` file and enable all possible extensions using previous ```php.ini``` files
+5. Replace following line ```curl.cainfo="C:\xampp\apache\bin\curl-ca-bundle.crt"```
+6. Add ```extension_dir = "ext"```
+7. restart apache server and make sure all settings are updated in ```http://localhost/dashboard/phpinfo.php```
+8. Update php version in ```composer.json```
+9. Run ```composer update```
+10. restart ```artisan serve```
 
 
 ## Fresh Laravel Project
@@ -205,8 +210,3 @@ nano /opt/cpanel/ea-php80/root/etc/php.ini
 ```
 deployment.yml
 ```
-
-
-## Plan
-
-2. Create Blog information from Admin Panel

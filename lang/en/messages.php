@@ -127,5 +127,6 @@ return [
     "lands" => "Lands",
     "land_op" => "Land Operation",
     "admn_op" => "Admin Operation",
+    "usr_op" => "User Operation",
     "prob_action" => "This Action is forbidden for admin user",
 ];

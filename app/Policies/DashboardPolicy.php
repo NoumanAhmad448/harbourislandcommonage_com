@@ -32,4 +32,12 @@ class DashboardPolicy
     public function isAdmin(): bool {
         return isAdmin(false);
     }
+
+    public function hasNotId(): bool {
+        return ! $this->hasId();
+    }
+
+    public function hasId(): bool {
+        return request()->has(config("table.primary_key"));
+    }
 }

@@ -11,16 +11,16 @@ php artisan migrate --force
 yes | php artisan db:seed
 
 #generate artisan key
-# yes | php artisan key:generate
+yes | php artisan key:generate
 
 # change folder permission
 # yes | chmod -R 777 storage bootstrap/cache
 
 # Clear and cache routes
-php artisan route:cache
+php artisan optimize # will cache config and routes
 
-# Clear and cache config
-php artisan config:cache
+# will cache events
+php artisan event:cache
 
 # Clear and cache views
 php artisan view:cache
@@ -30,6 +30,3 @@ npm install
 
 # Build assets using Laravel Mix
 npm run watch
-
-# Turn off maintenance mode
-# php artisan up

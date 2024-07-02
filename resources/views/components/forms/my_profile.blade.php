@@ -66,6 +66,7 @@
             @include(config("files.forms").'col', [
                 config("vars.input") => config("files.forms").'field',
                 config("vars.prop") => [
+                    config('vars.include_star') => false,
                     config('vars.id') => config("table.address"),
                     config('vars.label') => __("label.location_desc"),
                     config('vars.value') => $user?->userProfile?->address,

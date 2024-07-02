@@ -35,6 +35,8 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define(config("policy.view_dashboard"), [DashboardPolicy::class, 'viewUser']);
         Gate::define(config("policy.is_super_admin"), [DashboardPolicy::class, 'isSuperAdmin']);
         Gate::define(config("policy.can_be_admin"), [DashboardPolicy::class, 'isAdmin']);
+        Gate::define(config("policy.has_not_id"), [DashboardPolicy::class, 'hasNotId']);
+        Gate::define(config("policy.has_id"), [DashboardPolicy::class, 'hasId']);
 
     }
 }
