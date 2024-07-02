@@ -13,7 +13,6 @@ class CreateLand extends CustomModel
 
     public function __construct() {
         $this->table = config("table.land_create");
-        // array_push($this->fillable, config("table.city"));
     }
 
     public function landDetails($user){
@@ -30,6 +29,7 @@ class CreateLand extends CustomModel
         $lands = $lands->get();
         return $lands;
     }
+
     public function insert($user,$input){
         $data = [];
         debug_logs($input);
@@ -43,8 +43,14 @@ class CreateLand extends CustomModel
         $data[config("table.user_id")] = $user->id;
         $data[config("table.city")."_id"] = $input[config("table.city")];
         $created_obj = CreateLand::create($data);
-        CreateLandLog::create($data);
+        debug_logs("Before data");
         debug_logs($data);
+
+        $data[config("table.land_id")] = $created_obj->id;
+        CreateLandLog::create($data);
+        debug_logs("After Data");
+        debug_logs($data);
+
         debug_logs($created_obj->toSql());
         return $created_obj;
     }

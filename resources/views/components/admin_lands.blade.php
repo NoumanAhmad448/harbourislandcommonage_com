@@ -56,6 +56,9 @@ debug_logs($data);
                 <th>{{ __('table.' . config('table.city')) }}</th>
                 <th>{{ __('table.' . config('table.is_admin_approved')) }}</th>
                 <th>{{ __('table.' . config("table.comment")) }}</th>
+                @can(config("policy.is_super_admin"))
+                    <th>{{ __('table.' . config("table.land_logs")) }}</th>
+                @endcan
                 <th>{{ __('table.' . config("table.created_by")) }}</th>
                 @if (config('setting.en_slf'))
                     <th>{{ __('table.' . config('table.land_files')) }}</th>
@@ -96,6 +99,15 @@ debug_logs($data);
                             {{ $is_admin_approved ? 'Yes' : 'No' }}
                         </td>
                         <td>{{ $is_admin_approved ? $lands->landComment[0]->comment : '' }}</td>
+                        @can(config("policy.is_super_admin"))
+                            <th>
+                                <a target="_blank" class="hover:no-underline underline"
+                                            href="{{ route("land_logs",
+                                            [config("table.primary_key") => $lands->id]) }}">
+                                            {{ __("table.land_logs") }}
+                                </a>
+                            </th>
+                        @endcan
                         <td>{{ $is_admin_approved && $lands->landComment[0]->user
                                 ? $lands->landComment[0]->user->name : '' }}
                         </td>

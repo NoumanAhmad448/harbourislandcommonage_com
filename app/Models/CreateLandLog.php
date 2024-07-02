@@ -14,4 +14,17 @@ class CreateLandLog extends CustomModel
     public function __construct() {
         $this->table = config("table.land_create_logs");
     }
+
+
+    public function landDetails($land_id){
+        $land_id = str_to_array($land_id);
+        $land = CreateLandLog::whereIn(config("table.land_id"), $land_id)
+        ;
+        $land = $land->orderByDesc(config("table.primary_key"));
+        $land = $land->get();
+        return $land;
+    }
+    public function city(){
+        return $this->belongsTo(City::class);
+    }
 }

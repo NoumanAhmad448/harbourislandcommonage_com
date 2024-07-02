@@ -60,4 +60,6 @@ Route::prefix($admin_path)->middleware(config("middlewares.super_admin"))->group
     Route::delete('/sub-admins', [SuperAdmin::class, "DelsubAdmin"])->name('del_create_admin');
     Route::patch('/sub-admins', [SuperAdmin::class, "UpdatesubAdmin"])->name('updt_create_admin');
     Route::post('/sub-admins', [SuperAdmin::class, "CreatesubAdmin"])->name('crte_admin');
+    Route::get('/land-logs', [SuperAdmin::class, 'landLogs'])->name('land_logs');
+
 });
