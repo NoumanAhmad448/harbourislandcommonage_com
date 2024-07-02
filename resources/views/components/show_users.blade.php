@@ -84,8 +84,8 @@ debug_logs($data);
                             {{ $user->deleted_at ? "No" : 'Yes' }}
                         </td>
                         <td>
-                            <a class="underline hover:no-underline" href="{{ route('my_profile', ["id" => $user?->id]) }}">
-                             {{__("table.user_profiles")}}
+                            <a target="_blank" class="underline hover:no-underline" href="{{ route('my_profile', ["id" => $user?->id]) }}">
+                                {{__("table.user_profiles")}}
                              </a>
                         </td>
                         <td>{{ $user->created_at ?? '' }}</td>

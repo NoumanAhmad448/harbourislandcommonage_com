@@ -68,7 +68,7 @@ debug_logs($data);
                             <td>
                                 @if (count($lands->landFiles) > 0)
                                     @foreach ($lands->landFiles as $landFile)
-                                        <a target="_blank" class="no-underline hover:underline"
+                                        <a target="_blank" class="hover:no-underline underline"
                                             href="{{ file_path($landFile->link) }}">{{ $landFile->f_name }}</a>
                                         <br /><br />
                                     @endforeach

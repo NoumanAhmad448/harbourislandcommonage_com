@@ -2,8 +2,6 @@
 
 namespace App\Policies;
 
-use App\Models\CreateLand;
-use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class LandPolicy

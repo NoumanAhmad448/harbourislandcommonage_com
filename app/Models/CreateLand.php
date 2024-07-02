@@ -43,6 +43,7 @@ class CreateLand extends CustomModel
         $data[config("table.user_id")] = $user->id;
         $data[config("table.city")."_id"] = $input[config("table.city")];
         $created_obj = CreateLand::create($data);
+        CreateLandLog::create($data);
         debug_logs($data);
         debug_logs($created_obj->toSql());
         return $created_obj;
