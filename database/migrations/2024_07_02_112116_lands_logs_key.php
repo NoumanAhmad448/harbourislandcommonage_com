@@ -15,7 +15,7 @@ return new class extends Migration
     {
         if (Schema::hasTable(config("table.land_create_logs"))){
             Schema::table(config("table.land_create_logs"), function (Blueprint $table){
-                $table->text(config("table.land_id"))->index();
+                $table->text(config("table.land_id"));
             });
         }
     }
