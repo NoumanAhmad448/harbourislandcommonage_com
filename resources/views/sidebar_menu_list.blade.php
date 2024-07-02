@@ -29,11 +29,6 @@
                     @endphp
                     @canany($sub_menu[config('vars.priv')])
                         <!-- Dropdown Menu Start -->
-                        {{-- @include(config('files.components_') . 'loader', [
-                            'prop' => [
-                                'id' => "{$constant}",
-                            ],
-                        ]) --}}
                         @php
                             debug_logs("{$constant}{$key}");
                         @endphp
@@ -49,12 +44,6 @@
                                 </li>
                             </ul>
                         </div>
-                        {{-- @include(config('files.components_') . 'loader_script', [
-                            'prop' => [
-                                'id' => "{$constant}",
-                                'hide_el' => "{$constant}{$key}",
-                            ],
-                        ]) --}}
                     @endcanany
                 @endforeach
             @endif

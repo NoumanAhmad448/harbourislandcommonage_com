@@ -18,6 +18,7 @@ return [
     "cities" => "cities",
     "states" => "states",
     "land_create" => "land_create",
+    "land_create_logs" => "land_create_logs",
     "land_files" => "land_files",
     "land_create_id" => "land_create_id",
     'f_name' => 'f_name',
