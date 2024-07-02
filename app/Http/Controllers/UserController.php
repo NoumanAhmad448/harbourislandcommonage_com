@@ -24,8 +24,7 @@ class UserController extends Controller
     private $createLand;
     private $createNewUser;
 
-    public function __construct()
-    {
+    public function __construct(){
         $this->createLandObj = new CreateLand();
         $this->user = new User();
         $this->landFileObj = new LandFile;
@@ -34,6 +33,7 @@ class UserController extends Controller
         $this->createLand = new CreateLand;
         $this->createNewUser = new CreateNewUser;
     }
+
     public function myProfilePatch(MyProfilePatch $request){
         try {
             $request->validated();
@@ -58,7 +58,11 @@ class UserController extends Controller
     public function myProfile(Request $request){
         try {
             $data = [];
-            $user = auth()?->user();
+            if($request->has("id")){
+                $user = User::findOrFail($request->get("id"));
+            }else{
+                $user = auth()?->user();
+            }
             debug_logs($user?->userProfile);
             debug_logs($user?->userProfile?->job);
             $data[config("vars.user")] = $user;

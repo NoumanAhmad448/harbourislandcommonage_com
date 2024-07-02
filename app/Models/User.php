@@ -120,7 +120,7 @@ class User extends Authenticatable
                 ])->save();
                 debug_logs($users);
             }
-            }
+        }
         return $users;
     }
 

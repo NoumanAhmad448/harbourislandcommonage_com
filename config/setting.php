@@ -41,6 +41,7 @@ return [
     "update_password" => "update_password",
     "del_form" => "del_form",
     "sub_admins_js" => "{$js_folder}/{$admin_folder}sub_admins.js",
+    "usrs_js" => "{$js_folder}/{$admin_folder}show_users.js",
     "sub_admins" => $layout_folder.".sub_admins",
     "lands" => "lands",
     "var_js" => $js_folder."/vars.js",

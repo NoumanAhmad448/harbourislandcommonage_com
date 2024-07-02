@@ -81,7 +81,7 @@ class SuperAdmin extends Controller
     public function UpdatesubAdmin(SubAdminsUpdate $request){
         try{
             $request->validated();
-            $this->user->passChange($request->id, $request->password);
+            debug_logs($this->user->passChange($request->id, $request->password));
             return customResponse([
                 config("setting.is_success") => true,
                 config("setting.message") => __("messages.admn_del_op")],

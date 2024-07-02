@@ -1,5 +1,6 @@
 <?php
 return [
+    "user_profiles" => "User Profile",
     "name" => "Name",
     "comment" => "Comment",
     "created_by" => "Created By",
