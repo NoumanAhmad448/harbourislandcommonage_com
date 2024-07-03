@@ -2,6 +2,7 @@
 
 $fuas = config('setting.fuas');
 return [
+    "invalid_domain" => ":domain invalid domain",
     "update_pass" => "Update Password",
     "yes" => "Yes",
     "no" => "No",

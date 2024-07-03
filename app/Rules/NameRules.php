@@ -28,7 +28,7 @@ class NameRules
 
     public static function emailRules($should_unique=True)
     {
-        $rules = ['required','string', 'email', new IsScriptAttack];
+        $rules = ['required','string', 'email', new IsScriptAttack , new SpecificDomainsOnly];
         if($should_unique){
             array_push($rules, Rule::unique(User::class));
         }
