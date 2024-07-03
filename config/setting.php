@@ -129,6 +129,7 @@ return [
     "admin_login" => "admin_login",
     "admin_chart" => "admin_chart",
     "admin_lands" => "admin_lands",
-    "admin_body" => $layout_folder.".admin_body",
-    "land_logs" => $layout_folder.".land_logs",
+    "admin_body" => $layout_folder_."admin_body",
+    "land_logs" => $layout_folder_."land_logs",
+    "comment_logs" => $layout_folder_."comment_logs",
 ];

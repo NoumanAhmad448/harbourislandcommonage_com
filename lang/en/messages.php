@@ -2,6 +2,8 @@
 
 $fuas = config('setting.fuas');
 return [
+    "yes" => "Yes",
+    "no" => "No",
     "optimize" => "Optimize routes & config",
     "health" => "Project Health",
     "oprntn_succ" => "Opeartion was successfull! ",

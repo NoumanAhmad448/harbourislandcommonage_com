@@ -81,7 +81,7 @@ debug_logs($data);
                         <td>{{ $user->name ?? 'no name' }}</td>
                         <td>{{ $user->email ?? '' }}</td>
                         <td class="text-center @if($user->deleted_at) bg-red-500 text-white @endif" >
-                            {{ $user->deleted_at ? "No" : 'Yes' }}
+                            {{ $user->deleted_at ? __("messages.no") : __("messages.yes") }}
                         </td>
                         <td>
                             <a target="_blank" class="underline hover:no-underline" href="{{ route('my_profile', ["id" => $user?->id]) }}">

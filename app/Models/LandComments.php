@@ -43,8 +43,18 @@ class LandComments extends CustomModel
         return $created_obj;
     }
 
-    public function user()
-    {
+    public function user(){
         return $this->belongsTo(User::class, config("table.created_by"));
+    }
+
+    public function landDetails($land_id, $setting=["order" => "asc"]){
+        $land_id = str_to_array($land_id);
+        $land = LandComments::whereIn(config("table.land_create_id"), $land_id)
+        ;
+        if($setting[config("vars.order")] === config("vars.desc")){
+            $land = $land->orderByDesc(config("table.primary_key"));
+        }
+        $land = $land->get();
+        return $land;
     }
 }

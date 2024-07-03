@@ -1,6 +1,7 @@
 <?php
 return [
-    "update_land" => 'update-land',
+    "view_land_comment" => 'view_land_comment',
+    "update_land" => 'update_land',
     "create_land" => 'create_land',
     "update_profile" => 'update-profile',
     "view_admin_dashboard" => 'view_admin_dashboard',

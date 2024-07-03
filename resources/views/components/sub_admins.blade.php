@@ -91,10 +91,12 @@ debug_logs($data);
                                 ])
                             </td>
                         @endif
-                        <td>{{ $user->name ?? 'no name' }}</td>
-                        <td>{{ $user->email ?? '' }}</td>
-                        <td class="text-center @if($user->deleted_at) bg-red-500 text-white @endif" >
-                            {{ $user->deleted_at ? "No" : 'Yes' }}</td>
+                        <td>{{ $user?->name ?? 'no name' }}</td>
+                        <td>{{ $user?->email ?? '' }}</td>
+                        <td class="text-center @include(config("files.cls").'deleted'
+                            , ["deleted_at" => $user?->deleted_at]
+                            )" >
+                            {{ $user->deleted_at ? __("messages.no") : __("messages.yes") }}</td>
                         <td>{{ $user->created_at ?? '' }}</td>
                         <td>{{ $user->updated_at ?? '' }}</td>
                     </tr>

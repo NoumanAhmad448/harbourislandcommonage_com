@@ -29,6 +29,11 @@ class DashboardPolicy
     public function isSuperAdmin(): bool {
         return isSuperAdmin(false);
     }
+
+    public function viewLand(): bool {
+        return isSuperAdmin(false);
+    }
+
     public function isAdmin(): bool {
         return isAdmin(false);
     }

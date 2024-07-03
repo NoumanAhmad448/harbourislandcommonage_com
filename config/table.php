@@ -45,6 +45,7 @@ return [
     "primary_key" => "id",
     "lands" => "lands",
     "land_comments" => "land_comments",
+    "land_comments_logs" => "land_comments_logs",
     "SubmitButton" => "Submit",
 ];
 

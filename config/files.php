@@ -9,5 +9,6 @@ return [
     "middlewares" => "middlewares.",
     "lib" => "lib.",
     "forms" => "components.forms.",
+    "cls" => "cls.",
 ];
 ?>

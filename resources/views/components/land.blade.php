@@ -58,7 +58,7 @@ debug_logs($data);
                                 }
                             @endphp
                             class="text-white text-center @if ($is_admin_approved) {{ 'bg-blue-500' }} @else {{ 'bg-red-500' }} @endif">
-                            {{ $is_admin_approved ? 'Yes' : 'No' }}
+                            {{ $is_admin_approved ? __("messages.yes") : __("messages.no") }}
                         </td>
                         <td>{{ $is_admin_approved ? $lands->landComment[0]->comment : '' }}</td>
                         <td>{{ $is_admin_approved && $lands->landComment[0]->user
