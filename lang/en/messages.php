@@ -2,6 +2,8 @@
 
 $fuas = config('setting.fuas');
 return [
+    "invalid_domain" => ":domain invalid domain",
+    "update_pass" => "Update Password",
     "yes" => "Yes",
     "no" => "No",
     "optimize" => "Optimize routes & config",
@@ -22,6 +24,7 @@ return [
     "usr_reg" => "Register User",
     "usr_dshbrd" => "User Dashboard",
     "admin_op" => "Admin Operation",
+    "del_op" => "Operation has been implemented!",
     "admn_del_op" => "Admin Operation has been implemented!",
     "land_updt_op" => "Land Operation has been implemented!",
     "adm_oprtn" => [

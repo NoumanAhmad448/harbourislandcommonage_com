@@ -1,6 +1,6 @@
 @if (config('setting.en_prfle_form'))
-    <div class="px-6 bg-gray-100 flex items-center justify-center">
-        <div class="container max-w-screen-lg mx-auto">
+    <div class="bg-gray-100 flex items-center justify-center">
+        <div class="">
             <section class="mt-20">
                 <h1 class="pb-5 font-semibold text-xl text-gray-600">{{ __('messages.mprofile') }}</h1>
                 <div class="bg-white rounded shadow-lg p-4 px-4 md:p-8 mb-6">

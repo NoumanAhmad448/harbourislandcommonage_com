@@ -18,7 +18,7 @@ class SubAdminsUpdate extends CustomRequest
      */
     public function authorize()
     {
-        return isSuperAdmin(false);
+        return true;
     }
 
     /**
@@ -29,7 +29,7 @@ class SubAdminsUpdate extends CustomRequest
     public function rules()
     {
         $rules = [];
-        $rules = $this->nameRules->adminDelete();
+        $rules = $this->nameRules->adminUpdate();
         return $rules;
     }
 

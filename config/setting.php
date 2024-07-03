@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Facade;
 $css_folder = "css";
 $storage = "/storage/";
 $js_folder = "js";
+$js_folder_ = "{$js_folder}/";
 $layout_folder = "layouts";
 $layout_folder_ = "{$layout_folder}.";
 $public_folder = "public/";
@@ -22,6 +23,7 @@ if(config("app.env") == 'production'){
 }
 
 return [
+    "setting_lay" => $layout_folder_."settings",
     "show_users" => $layout_folder_."show_users",
     "retry_time" => 30,
     "max_tble_size" => 9_0000000000,
@@ -44,7 +46,8 @@ return [
     "usrs_js" => "{$js_folder}/{$admin_folder}show_users.js",
     "sub_admins" => $layout_folder.".sub_admins",
     "lands" => "lands",
-    "var_js" => $js_folder."/vars.js",
+    "var_js" => $js_folder_."vars.js",
+    "settings_js" => $js_folder_."settings.js",
     "message_form" => "message_form",
     "storage" => $storage."uploads/",
     "body" => $layout_folder.".body",

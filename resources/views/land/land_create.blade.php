@@ -4,8 +4,8 @@
 @endsection
 @section('content')
     <form id="land_reg" enctype="multipart/form-data">
-        @include(config("files.components").'.csrf')
-        @include(config("files.components").'.register_land')
+        @include(config("files.components_").'csrf')
+        @include(config("files.components_").'register_land')
     </form>
 @endsection
 @section('script')

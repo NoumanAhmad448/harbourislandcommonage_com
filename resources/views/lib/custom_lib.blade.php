@@ -20,7 +20,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="stylesheet" href="{{ url(config('setting.app_css')) }}">
+    <link rel="stylesheet" href="{{ mix(config('setting.app_css')) }}">
 
     {{-- should alway be in the end --}}
     <script>

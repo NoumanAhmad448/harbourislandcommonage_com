@@ -56,13 +56,17 @@
                         ],
                     ])
                 @endcan
-                @include(config('files.components_') . 'profile_list', [
-                    'prop' => [
-                        'link' => 'messages.html',
-                        'svg' => config('files.svg') . 'setting',
-                        'text' => __('messages.settings'),
-                    ],
-                ])
+
+                @can(config("policy.view_setting"))
+                    @include(config('files.components_') . 'profile_list', [
+                        'prop' => [
+                            'link' => route("setting"),
+                            'svg' => config('files.svg') . 'setting',
+                            'text' => __('messages.settings'),
+                        ],
+                    ])
+                @endcan
+
             </ul>
             <form method="POST" action="@if(isAdmin(false)){{ $admin_logout }} @else {{ $user_logout }} @endif">
                 @include(config("files.components_").'csrf')

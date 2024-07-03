@@ -1,5 +1,7 @@
 <?php
 return [
+    "user_id" => "user_id",
+    "type" => "type",
     "sub_menu" => "sub_menu",
     'svg' => 'svg',
     'menu' => 'menu',

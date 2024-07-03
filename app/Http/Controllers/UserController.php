@@ -88,4 +88,19 @@ class UserController extends Controller
             return server_logs($e = [true, $d], $request = [true, $request], $config = true);
         }
     }
+
+    /**
+     * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
+     */
+    public function setting(Request $request) {
+        try {
+            $data = [];
+            $data[config("vars.title")] = __('messages.settings');
+
+            return view(config("setting.setting_lay"), compact("data"));
+        }
+        catch (\Exception $d) {
+            return server_logs($e = [true, $d], $request = [true, $request], $config = true);
+        }
+    }
 }
