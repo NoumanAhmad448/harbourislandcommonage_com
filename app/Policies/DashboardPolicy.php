@@ -45,4 +45,8 @@ class DashboardPolicy
     public function hasId(): bool {
         return request()->has(config("table.primary_key"));
     }
+
+    public function viewSetting(): bool {
+        return isNotSuperAdmin() ;
+    }
 }

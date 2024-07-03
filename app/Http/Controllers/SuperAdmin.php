@@ -90,7 +90,7 @@ class SuperAdmin extends Controller
             debug_logs($this->user->passChange($request->id, $request->password));
             return customResponse([
                 config("setting.is_success") => true,
-                config("setting.message") => __("messages.admn_del_op")],
+                config("setting.message") => __("messages.del_op")],
                 config("setting.status_200")
             );
         }
@@ -119,6 +119,9 @@ class SuperAdmin extends Controller
         }
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
+     */
     public function commentLogs(Request $request) {
         try {
             $data = [];

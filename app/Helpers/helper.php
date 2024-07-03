@@ -53,12 +53,23 @@ if (!function_exists('isAdmin')){
     }
 }
 if (!function_exists('isSuperAdmin')){
-     function isSuperAdmin($action=true){
+    /**
+    * @throws \Symfony\Component\HttpKernel\Exception\HttpException
+    **/
+     function isSuperAdmin(bool $action=true){
         if($action){
             $action = abort(403);
         }
         $auth = Auth::user();
         return $auth && ($auth->is_super_admin) ?? $action;
+    }
+}
+if (!function_exists('isNotSuperAdmin')){
+    /**
+    * @throws \Symfony\Component\HttpKernel\Exception\HttpException
+    **/
+     function isNotSuperAdmin(bool $action=false){
+        return !isSuperAdmin($action);
     }
 }
 

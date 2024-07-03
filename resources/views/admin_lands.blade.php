@@ -4,7 +4,6 @@
 @endsection
 @section('content')
     @php
-        use Illuminate\Support\Facades\Storage;
         $id = gen_str();
         $data["id"] = $id;
     @endphp

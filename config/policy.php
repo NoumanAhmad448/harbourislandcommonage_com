@@ -1,5 +1,6 @@
 <?php
 return [
+    "view_setting" => 'view_setting',
     "view_land_comment" => 'view_land_comment',
     "update_land" => 'update_land',
     "create_land" => 'create_land',

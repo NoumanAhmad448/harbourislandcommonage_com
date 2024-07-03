@@ -23,6 +23,8 @@ Route::get('/login', [HomeController::class, 'login'])->name('login');
 Route::middleware("auth")->group(function(){
     Route::get('/my-profile', [UserController::class, 'myProfile'])->name('my_profile');
     Route::patch('/my-profile', [UserController::class, 'myProfilePatch'])->name('my_profile_ptch');
+    Route::get('/settings', [UserController::class, 'setting'])->name('setting');
+    Route::patch('/sub-admins', [SuperAdmin::class, "UpdatesubAdmin"])->name('updt_create_admin');
 });
 
 Route::prefix($land_path)->group(function(){
@@ -58,7 +60,6 @@ Route::prefix($admin_path)->middleware(config("middlewares.super_admin"))->group
     Route::get('/admin-operations', [Admin::class, 'adminOp'])->name('admin_op');
     Route::get('/sub-admins', [SuperAdmin::class, "subAdmin"])->name('create_admin');
     Route::delete('/sub-admins', [SuperAdmin::class, "DelsubAdmin"])->name('del_create_admin');
-    Route::patch('/sub-admins', [SuperAdmin::class, "UpdatesubAdmin"])->name('updt_create_admin');
     Route::post('/sub-admins', [SuperAdmin::class, "CreatesubAdmin"])->name('crte_admin');
     Route::get('/land-logs', [SuperAdmin::class, 'landLogs'])->name('land_logs');
     Route::get('/comment-logs', [SuperAdmin::class, 'commentLogs'])->name('comment_logs');
