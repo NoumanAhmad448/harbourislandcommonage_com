@@ -29,4 +29,7 @@ return [
     "admins" => "admins",
     "users" => "users",
     "title" => "title",
+    "order" => "order",
+    "asc" => "asc",
+    "desc" => "desc",
 ];

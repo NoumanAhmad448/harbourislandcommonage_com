@@ -59,6 +59,9 @@ debug_logs($data);
                 @can(config("policy.is_super_admin"))
                     <th>{{ __('table.' . config("table.land_logs")) }}</th>
                 @endcan
+                @can(config("policy.view_land_comment"))
+                    <th>{{ __('table.' . config("table.land_comments_logs")) }}</th>
+                @endcan
                 <th>{{ __('table.' . config("table.created_by")) }}</th>
                 @if (config('setting.en_slf'))
                     <th>{{ __('table.' . config('table.land_files')) }}</th>
@@ -95,8 +98,10 @@ debug_logs($data);
                                     $is_admin_approved = $lands->landComment[0]->is_admin_approved;
                                 }
                             @endphp
-                            class="text-white text-center @if ($is_admin_approved) {{ 'bg-blue-500' }} @else {{ 'bg-red-500' }} @endif">
-                            {{ $is_admin_approved ? 'Yes' : 'No' }}
+                            class="text-white text-center @include(config("files.cls").'admin_approved'
+                            , ["is_admin_approved" => $is_admin_approved]
+                            )">
+                            {{ $is_admin_approved ? __("messages.yes") : __("messages.no") }}
                         </td>
                         <td>{{ $is_admin_approved ? $lands->landComment[0]->comment : '' }}</td>
                         @can(config("policy.is_super_admin"))
@@ -107,6 +112,15 @@ debug_logs($data);
                                             {{ __("table.land_logs") }}
                                 </a>
                             </th>
+                        @endcan
+                        @can(config("policy.view_land_comment"))
+                        <th>
+                            <a target="_blank" class="hover:no-underline underline"
+                                        href="{{ route("comment_logs",
+                                        [config("table.primary_key") => $lands->id]) }}">
+                                        {{ __("table.land_comments_logs") }}
+                            </a>
+                        </th>
                         @endcan
                         <td>{{ $is_admin_approved && $lands->landComment[0]->user
                                 ? $lands->landComment[0]->user->name : '' }}
