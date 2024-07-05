@@ -13,33 +13,31 @@ return new class extends Migration
      */
     public function up()
     {
-        if (!Schema::hasTable(config("table.user_profiles"))){
-            Schema::create(config("table.user_profiles"), function (Blueprint $table) {
-                $table->increments(config("table.primary_key"));
-                $table->foreignId(config("table.user_id"))
-                    ->references(config("table.primary_key"))
-                    ->on(config("table.users"))
+        if (! Schema::hasTable(config('table.user_profiles'))) {
+            Schema::create(config('table.user_profiles'), function (Blueprint $table) {
+                $table->increments(config('table.primary_key'));
+                $table->foreignId(config('table.user_id'))
+                    ->references(config('table.primary_key'))
+                    ->on(config('table.users'))
                     ->constrained()
-                    ->onDelete('cascade')
-                    ;
+                    ->onDelete('cascade');
                 // nullable in foregin key always comes first from constrained
-                $table->foreignId(config("table.job_id"))
-                    ->references(config("table.primary_key"))
-                    ->on(config("table.jobs"))
+                $table->foreignId(config('table.job_id'))
+                    ->references(config('table.primary_key'))
+                    ->on(config('table.jobs'))
                     ->nullable()
                     ->constrained()
-                    ->onDelete('cascade')
-                    ;
+                    ->onDelete('cascade');
 
-                $table->string(config("table.mobile"), 255)->nullable()->comment("mobile number");
-                $table->string(config("table.age"), 255)->comment("user age");
-                $table->string(config("table.address"), 255)->comment("user permanent address");
-                $table->enum(config("table.gender"), [
-                    "male", "female", "others"
-                ])->comment("user gender");
+                $table->string(config('table.mobile'), 255)->nullable()->comment('mobile number');
+                $table->string(config('table.age'), 255)->comment('user age');
+                $table->string(config('table.address'), 255)->comment('user permanent address');
+                $table->enum(config('table.gender'), [
+                    'male', 'female', 'others',
+                ])->comment('user gender');
 
-                $table->timestamp(config("table.created_at"))->useCurrent();
-                $table->timestamp(config("table.updated_at"))->useCurrent();
+                $table->timestamp(config('table.created_at'))->useCurrent();
+                $table->timestamp(config('table.updated_at'))->useCurrent();
             });
         }
     }
@@ -51,6 +49,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists(config("table.user_profiles"));
+        Schema::dropIfExists(config('table.user_profiles'));
     }
 };

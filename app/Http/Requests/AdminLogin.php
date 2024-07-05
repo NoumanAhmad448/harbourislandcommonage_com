@@ -2,16 +2,18 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Contracts\Validation\Validator;
 use App\Rules\NameRules;
+use Illuminate\Contracts\Validation\Validator;
 
 class AdminLogin extends CustomRequest
 {
     private $nameRules;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->nameRules = new NameRules;
     }
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -31,12 +33,13 @@ class AdminLogin extends CustomRequest
     {
 
         $rules = [
-            config("form.email") => NameRules::emailRules(false),
-            config("form.password") => $this->nameRules->passRules(),
+            config('form.email') => NameRules::emailRules(false),
+            config('form.password') => $this->nameRules->passRules(),
         ];
-        if(config("setting.en_gc")){
-            $rules[config("form.g-recaptcha-response")] = NameRules::gCaptchaRules();
+        if (config('setting.en_gc')) {
+            $rules[config('form.g-recaptcha-response')] = NameRules::gCaptchaRules();
         }
+
         return $rules;
     }
 
@@ -57,9 +60,11 @@ class AdminLogin extends CustomRequest
         return $messages;
     }
 
-    protected function failedValidation(Validator $validator) {
+    protected function failedValidation(Validator $validator)
+    {
         failValidation($validator);
     }
+
     /**
      * Get custom attributes for validator errors.
      *
@@ -67,6 +72,6 @@ class AdminLogin extends CustomRequest
      */
     public function attributes(): array
     {
-        return __("attributes");
+        return __('attributes');
     }
 }

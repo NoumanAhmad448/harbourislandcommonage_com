@@ -3,7 +3,6 @@
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
@@ -16,15 +15,17 @@ class LandCreateEmail extends Mailable
      *
      * @return void
      */
+    public $name;
 
-     public $name;
-     public $email ;
-     public $land_create;
-     public $subject;
+    public $email;
 
-    public function __construct($name,$email,$land_create,$subject)
+    public $land_create;
+
+    public $subject;
+
+    public function __construct($name, $email, $land_create, $subject)
     {
-        $this->name=$name;
+        $this->name = $name;
         $this->email = $email;
         $this->subject = $subject;
 
@@ -38,7 +39,7 @@ class LandCreateEmail extends Mailable
      */
     public function build()
     {
-        return $this->from(fromMailer(config("mail.default")), $this->name )
+        return $this->from(fromMailer(config('mail.default')), $this->name)
             ->subject($this->subject)->markdown('emails.land_create');
     }
 }

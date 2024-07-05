@@ -16,7 +16,7 @@ define('LARAVEL_START', microtime(true));
 |
 */
 
-$is_root = "";
+$is_root = '';
 // if you move this file in public folder uncomment the below line
 // $is_root = "../";
 

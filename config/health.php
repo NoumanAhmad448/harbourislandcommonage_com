@@ -13,7 +13,6 @@ return [
             'keep_history_for_days' => 5,
         ],
 
-
         Spatie\Health\ResultStores\CacheHealthResultStore::class => [
             'store' => 'file',
         ],
@@ -72,9 +71,9 @@ return [
             /*
              * If this is set to null the default channel of the webhook will be used.
              */
-            'channel' => env("HEALTH_SLACK_CHANNEL", "web-development"),
+            'channel' => env('HEALTH_SLACK_CHANNEL', 'web-development'),
 
-            'username' => env("HEALTH_SLACK_USERNAME", "urooman"),
+            'username' => env('HEALTH_SLACK_USERNAME', 'urooman'),
 
             'icon' => null,
         ],

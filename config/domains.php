@@ -1,8 +1,9 @@
 <?php
-return array(
-    "harbourislandcommonage.com",
-    "habour.com",
-    "bypass.com",
+
+return [
+    'harbourislandcommonage.com',
+    'habour.com',
+    'bypass.com',
     'gmail.com',
     'yahoo.com',
     'outlook.com',
@@ -52,6 +53,5 @@ return array(
     'mail.ru',
     'list.ru',
     'inbox.ru',
-    'bk.ru'
-);
-
+    'bk.ru',
+];

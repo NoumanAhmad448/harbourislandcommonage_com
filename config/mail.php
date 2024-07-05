@@ -42,7 +42,7 @@ return [
             'username' => env('MAIL_USERNAME'),
             'password' => env('MAIL_PASSWORD'),
             'timeout' => null,
-            "from" => env('MAIL_FROM_ADDRESS'),
+            'from' => env('MAIL_FROM_ADDRESS'),
         ],
         'admin' => [
             'transport' => 'smtp',
@@ -52,7 +52,7 @@ return [
             'username' => env('MAIL_ADMIN_USERNAME'),
             'password' => env('MAIL_ADMIN_PASSWORD'),
             'timeout' => null,
-            "from" => env('MAIL_ADMIN_FROM_ADDRESS'),
+            'from' => env('MAIL_ADMIN_FROM_ADDRESS'),
         ],
 
         'ses' => [

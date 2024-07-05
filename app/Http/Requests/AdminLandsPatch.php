@@ -2,15 +2,17 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Support\Facades\Auth;
 use App\Rules\NameRules;
 
 class AdminLandsPatch extends CustomRequest
 {
     private $nameRules;
-    public function __construct() {
+
+    public function __construct()
+    {
         $this->nameRules = new NameRules;
     }
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -30,8 +32,7 @@ class AdminLandsPatch extends CustomRequest
     {
         $rules = [];
         $rules = $this->nameRules->landUpdates();
+
         return $rules;
     }
-
 }
-

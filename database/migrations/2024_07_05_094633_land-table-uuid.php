@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        if (Schema::hasTable(config("table.land_create"))){
-            Schema::table(config("table.land_create"), function (Blueprint $table) {
-                    $table->uuid(config("table.uuid"));
+        if (Schema::hasTable(config('table.land_create'))) {
+            Schema::table(config('table.land_create'), function (Blueprint $table) {
+                $table->uuid(config('table.uuid'));
             });
         }
     }
@@ -27,9 +27,9 @@ return new class extends Migration
      */
     public function down()
     {
-        if (Schema::hasTable(config("table.land_create"))){
-            Schema::table(config("table.land_create"), function (Blueprint $table) {
-                $table->removeColumn(config("table.uuid"));
+        if (Schema::hasTable(config('table.land_create'))) {
+            Schema::table(config('table.land_create'), function (Blueprint $table) {
+                $table->removeColumn(config('table.uuid'));
             });
         }
     }

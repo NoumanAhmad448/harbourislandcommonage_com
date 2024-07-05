@@ -3,7 +3,6 @@
 namespace App\Http\Requests;
 
 use App\Rules\IsScriptAttack;
-use Illuminate\Contracts\Validation\Validator;
 
 class IProfileRequest extends CustomRequest
 {
@@ -25,7 +24,7 @@ class IProfileRequest extends CustomRequest
     public function rules()
     {
         return [
-            'name' => ['required','string', new IsScriptAttack],
+            'name' => ['required', 'string', new IsScriptAttack],
         ];
     }
 
