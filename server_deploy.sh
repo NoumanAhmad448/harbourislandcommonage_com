@@ -18,12 +18,11 @@ php artisan optimize # will cache config and routes
 # will cache events
 php artisan event:cache
 
+# Clear and cache routes
+php artisan route:cache
 
-# Run database migrations
-php artisan migrate --force
-
-# Run seeder
-# yes | php artisan db:seed
+# Clear and cache config
+php artisan config:cache
 
 #generate artisan key
 yes | php artisan key:generate
@@ -31,14 +30,11 @@ yes | php artisan key:generate
 # change folder permission
 yes | chmod -R 777 storage bootstrap/cache
 
-# Clear and cache routes
-# php artisan route:cache
+# Run seeder
+# yes | php artisan db:seed
 
-# Clear and cache config
-php artisan config:cache
-
-# Clear and cache views
-php artisan view:cache
+# Run database migrations
+php artisan migrate --force
 
 # Install node modules
 #npm install
