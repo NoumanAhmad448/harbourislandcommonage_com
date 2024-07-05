@@ -47,8 +47,9 @@
         "validate-php": ["./vendor/bin/pint"],
         "deploy": [
             "composer validate-php",
+            "npm run prod",
             "git add . ",
-            "git commit -m 'default commit'",
+            "git commit --allow-empty",
             "git push"
         ],
         "post-autoload-dump": [
