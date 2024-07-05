@@ -1,5 +1,6 @@
 <?php
 return [
+    "domain" => "domain",
     "user_id" => "user_id",
     "type" => "type",
     "sub_menu" => "sub_menu",

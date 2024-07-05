@@ -40,6 +40,6 @@ class SpecificDomainsOnly implements Rule
      */
     public function message()
     {
-        return __("messages.invalid_domain", ["domain" => $this->domain]);
+        return __("messages.invalid_domain", [config("vars.domain") => $this->domain]);
     }
 }
