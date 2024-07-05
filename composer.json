@@ -44,6 +44,13 @@
         }
     },
     "scripts": {
+        "validate-php": ["./vendor/bin/pint"],
+        "deploy": [
+            "composer validate-php",
+            "git add . ",
+            "git commit -m 'default commit'",
+            "git push"
+        ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi"

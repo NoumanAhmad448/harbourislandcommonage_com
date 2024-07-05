@@ -2,53 +2,56 @@ name: Harbourislandcommonage Deployment
 
 on:
   push:
-    branches: [ "master" ]
+    branches: ["master"]
 jobs:
   laravel-deployment:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: true
       matrix:
-          php: [8.3]
-          commit_msg: ['Fixes coding style']
-          script_command: ['pwd && cd ~/public_html/website_7171ee6c && pwd && chmod u+x ./server_deploy.sh && ./server_deploy.sh']
+        php: [8.3]
+        commit_msg: ["Fixes coding style"]
+        script_command:
+          [
+            "pwd && cd ~/public_html/website_7171ee6c && pwd && chmod u+x ./server_deploy.sh && ./server_deploy.sh",
+          ]
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Copy .env
-      run: php -r "file_exists('.env') || copy('.env.live', '.env');"
+      - uses: actions/checkout@v3
+      - name: Copy .env
+        run: php -r "file_exists('.env') || copy('.env.live', '.env');"
 
-    - name: Setup PHP with fail-fast
-      uses: shivammathur/setup-php@v2
-      with:
-        php-version: ${{ matrix.php }}
-        extensions: json, dom, curl, libxml, mbstring
-        coverage: none
+      - name: Setup PHP with fail-fast
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: json, dom, curl, libxml, mbstring, bz2, fileinfo, gd, gettext,mbstring,exif,mysqli,pdo_mysql
+          coverage: none
 
-    - name: Install Pint
-      run: composer global require laravel/pint
+      - name: Install Pint
+        run: composer global require laravel/pint
 
-    - name: Run Pint
-      run: pint
+      - name: Run Pint
+        run: pint
 
-    - name: Commit linted files
-      uses: stefanzweifel/git-auto-commit-action@v5
-      with:
-        commit_message: ${{ matrix.commit_msg }}
+      - name: Commit linted files
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: ${{ matrix.commit_msg }}
 
-    - name: Sync files
-      uses: SamKirkland/FTP-Deploy-Action@4.0.0
-      with:
-        server: ${{secrets.FTP_SERVER}}
-        username: ${{secrets.FTP_USERNAME}}
-        password: ${{secrets.FTP_PASS}}
-        server-dir: /
+      - name: Sync files
+        uses: SamKirkland/FTP-Deploy-Action@4.0.0
+        with:
+          server: ${{secrets.FTP_SERVER}}
+          username: ${{secrets.FTP_USERNAME}}
+          password: ${{secrets.FTP_PASS}}
+          server-dir: /
 
-    - name: Running Scripts
-      uses: appleboy/ssh-action@master
-      with:
-        username: ${{secrets.SSH_USERNAME}}
-        host: ${{secrets.IP_SERVER}}
-        password: ${{ secrets.SSH_PASSWORD }}
-        use_insecure_cipher: true
-        script: ${{matrix.script_command}}
+      - name: Running Scripts
+        uses: appleboy/ssh-action@master
+        with:
+          username: ${{secrets.SSH_USERNAME}}
+          host: ${{secrets.IP_SERVER}}
+          password: ${{ secrets.SSH_PASSWORD }}
+          use_insecure_cipher: true
+          script: ${{matrix.script_command}}
