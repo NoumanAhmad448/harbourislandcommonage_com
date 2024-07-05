@@ -4,23 +4,20 @@ namespace App\Helpers;
 
 use Illuminate\Support\Facades\Storage;
 
-class FileUpload
-{
+class FileUpload {
     private $file_path = '';
 
-    public function __construct()
-    {
+    public function __construct() {
         $this->file_path = config('setting.landreg_folder');
     }
 
-    public function upload($files, $key, $value)
-    {
+    public function upload($files, $key, $value) {
         $data = [];
         debug_logs($files);
 
         if (isArray($files) && count($files) > 0) {
             foreach ($files as $file) {
-                array_push($data, $this->uploadFile($file, $key, $value));
+                $data[] = $this->uploadFile($file, $key, $value);
             }
         } else {
             $data = $this->uploadFile($files, $key, $value);
@@ -29,8 +26,7 @@ class FileUpload
         return $data;
     }
 
-    private function uploadFile($file, $key, $value)
-    {
+    private function uploadFile($file, $key, $value) {
         $data = [];
         Storage::makeDirectory($this->file_path, 0775, true);
         debug_logs('in uploadFile');

@@ -30,6 +30,10 @@ files in the root folder of laravel. Don't forget to update ```webpack.mix.js```
 15. sample migration file ```2024_06_19_160520_create_land_comments_table```
 16. define javascript/js constants in  ```vars.js```
 17. checkout local php syntax
+config file
+```
+pint.json
+```
 for normal usuage
 ```
 ./vendor/bin/pint

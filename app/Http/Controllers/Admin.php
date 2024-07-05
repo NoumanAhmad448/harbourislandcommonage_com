@@ -12,8 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 
-class Admin extends Controller
-{
+class Admin extends Controller {
     private $createLandObj;
 
     private $landFileObj;
@@ -26,8 +25,7 @@ class Admin extends Controller
 
     private $createLand;
 
-    public function __construct()
-    {
+    public function __construct() {
         $this->createLandObj = new CreateLand;
         $this->user = new User;
         $this->landFileObj = new LandFile;
@@ -36,8 +34,7 @@ class Admin extends Controller
         $this->createLand = new CreateLand;
     }
 
-    public function clearCache()
-    {
+    public function clearCache() {
         Artisan::call('config:cache');
 
         return customResponse([config('setting.is_success') => true,
@@ -45,8 +42,7 @@ class Admin extends Controller
             config('setting.status_200'));
     }
 
-    public function optimize()
-    {
+    public function optimize() {
         Artisan::call('optimize');
 
         return customResponse([config('setting.is_success') => true,
@@ -54,8 +50,7 @@ class Admin extends Controller
             config('setting.status_200'));
     }
 
-    public function clearFiles()
-    {
+    public function clearFiles() {
         Artisan::call('files:clear');
 
         return customResponse([config('setting.is_success') => true,
@@ -63,8 +58,7 @@ class Admin extends Controller
             config('setting.status_200'));
     }
 
-    public function adminOp(Request $request)
-    {
+    public function adminOp(Request $request) {
         try {
             $data = [];
             $data[config('vars.title')] = __('messages.admin_op');
@@ -77,8 +71,7 @@ class Admin extends Controller
         }
     }
 
-    public function clearLogs(Request $request)
-    {
+    public function clearLogs(Request $request) {
         $duration = $request->query('duration');
         debug_logs($duration);
         $duration = $duration ?? '';
@@ -89,8 +82,7 @@ class Admin extends Controller
             config('setting.status_200'));
     }
 
-    public function login(Request $request)
-    {
+    public function login(Request $request) {
         try {
             $user = auth()->user();
             if ($user && ($user->is_super_admin || $user->is_admin)) {
@@ -105,8 +97,7 @@ class Admin extends Controller
         }
     }
 
-    public function logout(Request $request)
-    {
+    public function logout(Request $request) {
         try {
             if ($this->verifyUser->logout($request)) {
                 return redirect()->route('admin_login', [], config('setting.err_301'));
@@ -119,8 +110,7 @@ class Admin extends Controller
 
     }
 
-    public function adminLogin(AdminLogin $request)
-    {
+    public function adminLogin(AdminLogin $request) {
         try {
             $request->validated();
             $user = $this->verifyUser->verifyUser($request->all(), true);
@@ -138,8 +128,7 @@ class Admin extends Controller
         }
     }
 
-    public function chart(Request $request)
-    {
+    public function chart(Request $request) {
         try {
             $data = [];
             $users = User::normalUserCond(true);
@@ -174,8 +163,7 @@ class Admin extends Controller
         }
     }
 
-    public function lands(Request $request)
-    {
+    public function lands(Request $request) {
         try {
             $data = [];
             $users = $this->user->getIds();

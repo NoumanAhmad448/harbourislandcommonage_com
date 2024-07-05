@@ -11,10 +11,8 @@ use Spatie\Health\Commands\RunHealthChecksCommand;
 use Spatie\Health\Health;
 use Spatie\Health\ResultStores\ResultStore;
 
-class HealthCheckResultsController
-{
-    public function __invoke(Request $request, ResultStore $resultStore, Health $health): JsonResponse|View
-    {
+class HealthCheckResultsController {
+    public function __invoke(Request $request, ResultStore $resultStore, Health $health): JsonResponse|View {
         if ($request->has('fresh')) {
             Artisan::call(RunHealthChecksCommand::class);
         }

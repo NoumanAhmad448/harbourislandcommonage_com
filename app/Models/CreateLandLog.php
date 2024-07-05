@@ -4,21 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class CreateLandLog extends CustomModel
-{
+class CreateLandLog extends CustomModel {
     use HasFactory;
 
     protected $table = 'land_create_logs';
 
     protected $guarded = [];
 
-    public function __construct()
-    {
+    public function __construct() {
         $this->table = config('table.land_create_logs');
     }
 
-    public function landDetails($land_id)
-    {
+    public function landDetails($land_id) {
         $land_id = str_to_array($land_id);
         $land = CreateLandLog::whereIn(config('table.land_id'), $land_id);
         $land = $land->orderByDesc(config('table.primary_key'));
@@ -27,8 +24,7 @@ class CreateLandLog extends CustomModel
         return $land;
     }
 
-    public function city()
-    {
+    public function city() {
         return $this->belongsTo(City::class);
     }
 }

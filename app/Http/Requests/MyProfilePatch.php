@@ -5,12 +5,10 @@ namespace App\Http\Requests;
 use App\Rules\NameRules;
 use Illuminate\Contracts\Validation\Validator;
 
-class MyProfilePatch extends CustomRequest
-{
+class MyProfilePatch extends CustomRequest {
     private $nameRules;
 
-    public function __construct()
-    {
+    public function __construct() {
         $this->nameRules = new NameRules;
     }
 
@@ -19,8 +17,7 @@ class MyProfilePatch extends CustomRequest
      *
      * @return bool
      */
-    public function authorize()
-    {
+    public function authorize() {
         return true;
     }
 
@@ -29,8 +26,7 @@ class MyProfilePatch extends CustomRequest
      *
      * @return array<string, mixed>
      */
-    public function rules()
-    {
+    public function rules() {
 
         return $this->nameRules->myProfile();
     }
@@ -40,8 +36,7 @@ class MyProfilePatch extends CustomRequest
      *
      * @return array
      */
-    public function messages()
-    {
+    public function messages() {
         $messages = [];
 
         $messages = $this->nameRules->userValidationMsg();
@@ -52,8 +47,7 @@ class MyProfilePatch extends CustomRequest
         return $messages;
     }
 
-    protected function failedValidation(Validator $validator)
-    {
+    protected function failedValidation(Validator $validator) {
         failValidation($validator);
     }
 }

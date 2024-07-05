@@ -14,8 +14,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 
-class LandCreateController extends Controller
-{
+class LandCreateController extends Controller {
     private $createNewUser;
 
     private $landComments;
@@ -24,8 +23,7 @@ class LandCreateController extends Controller
 
     private $email;
 
-    public function __construct()
-    {
+    public function __construct() {
         $this->createNewUser = new CreateNewUser;
         $this->landComments = new LandComments;
         $this->createLand = new CreateLand;
@@ -33,8 +31,7 @@ class LandCreateController extends Controller
 
     }
 
-    public function land(Request $request)
-    {
+    public function land(Request $request) {
         try {
             $data = [];
             $user = auth()->id();
@@ -50,8 +47,7 @@ class LandCreateController extends Controller
         }
     }
 
-    public function landSave(LandCreate $request)
-    {
+    public function landSave(LandCreate $request) {
         php_config();
         $createLandObj = new CreateLand;
         $landFileObj = new LandFile;
@@ -86,13 +82,11 @@ class LandCreateController extends Controller
         }
     }
 
-    public function landUpdate(Request $request)
-    {
+    public function landUpdate(Request $request) {
         dd($request->all());
     }
 
-    public function landUpdateBulk(AdminLandsPatch $request)
-    {
+    public function landUpdateBulk(AdminLandsPatch $request) {
         try {
             $request->validated();
             $this->landComments->insertRecords(auth()->user(), $request->all());
@@ -108,8 +102,7 @@ class LandCreateController extends Controller
         }
     }
 
-    public function landSaveAPI(LandCreate $request)
-    {
+    public function landSaveAPI(LandCreate $request) {
         php_config();
         if ($request->ajax()) {
             try {
@@ -122,8 +115,7 @@ class LandCreateController extends Controller
         }
     }
 
-    public function landCreate(Request $request)
-    {
+    public function landCreate(Request $request) {
         try {
             return view(config('setting.land_create'));
         } catch (\Exception $d) {

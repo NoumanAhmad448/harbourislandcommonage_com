@@ -4,15 +4,13 @@ namespace App\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
 
-class IsScriptAttack implements Rule
-{
+class IsScriptAttack implements Rule {
     /**
      * Create a new rule instance.
      *
      * @return void
      */
-    public function __construct()
-    {
+    public function __construct() {
         //
     }
 
@@ -23,8 +21,7 @@ class IsScriptAttack implements Rule
      * @param  mixed  $value
      * @return bool
      */
-    public function passes($attribute, $value)
-    {
+    public function passes($attribute, $value) {
         return strip_tags($value) == $value;
     }
 
@@ -33,8 +30,7 @@ class IsScriptAttack implements Rule
      *
      * @return string
      */
-    public function message()
-    {
+    public function message() {
         return __('validation.not_allowed');
     }
 }
