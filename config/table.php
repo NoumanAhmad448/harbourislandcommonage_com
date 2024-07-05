@@ -1,6 +1,6 @@
 <?php
 return [
-    "uuid   " => "uuid ",
+    "uuid" => "uuid",
     "land_logs" => "land_logs",
     "land_id" => "land_id",
     "permissions" => "permissions",
