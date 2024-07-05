@@ -4,8 +4,7 @@ namespace App\Console\Commands\Log;
 
 use Illuminate\Console\Command;
 
-class DeleteFiles extends Command
-{
+class DeleteFiles extends Command {
     // Command name
     protected $signature = 'files:clear
                 {disable_js=0}
@@ -16,8 +15,7 @@ class DeleteFiles extends Command
     // Description
     protected $description = 'Clear js/css/php files';
 
-    public function handle()
-    {
+    public function handle() {
         $path = base_path();
         $js_files = " -o -name '*.js*' ";
         $css_files = " -o -name '*.css*' ";

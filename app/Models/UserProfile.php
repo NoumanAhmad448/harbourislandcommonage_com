@@ -5,21 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class UserProfile extends Model
-{
+class UserProfile extends Model {
     use HasFactory;
 
     protected $table = 'user_profiles';
 
     protected $guarded = [];
 
-    public function __construct()
-    {
+    public function __construct() {
         $this->table = config('table.user_profiles');
     }
 
-    public static function saveInsertProfile($record)
-    {
+    public static function saveInsertProfile($record) {
 
         debug_logs(is_array($record));
         $data = [
@@ -55,8 +52,7 @@ class UserProfile extends Model
         UserProfile::updateOrCreate($unique, $data);
     }
 
-    public function job()
-    {
+    public function job() {
         return $this->belongsTo(Job::class, config('table.job_id'));
     }
 }

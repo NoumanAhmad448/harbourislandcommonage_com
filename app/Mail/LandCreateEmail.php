@@ -6,8 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class LandCreateEmail extends Mailable
-{
+class LandCreateEmail extends Mailable {
     use Queueable, SerializesModels;
 
     /**
@@ -23,8 +22,7 @@ class LandCreateEmail extends Mailable
 
     public $subject;
 
-    public function __construct($name, $email, $land_create, $subject)
-    {
+    public function __construct($name, $email, $land_create, $subject) {
         $this->name = $name;
         $this->email = $email;
         $this->subject = $subject;
@@ -37,8 +35,7 @@ class LandCreateEmail extends Mailable
      *
      * @return $this
      */
-    public function build()
-    {
+    public function build() {
         return $this->from(fromMailer(config('mail.default')), $this->name)
             ->subject($this->subject)->markdown('emails.land_create');
     }

@@ -4,15 +4,13 @@ namespace App\Http\Requests;
 
 use App\Rules\IsScriptAttack;
 
-class IProfileRequest extends CustomRequest
-{
+class IProfileRequest extends CustomRequest {
     /**
      * Determine if the user is authorized to make this request.
      *
      * @return bool
      */
-    public function authorize()
-    {
+    public function authorize() {
         return true;
     }
 
@@ -21,8 +19,7 @@ class IProfileRequest extends CustomRequest
      *
      * @return array
      */
-    public function rules()
-    {
+    public function rules() {
         return [
             'name' => ['required', 'string', new IsScriptAttack],
         ];
@@ -33,8 +30,7 @@ class IProfileRequest extends CustomRequest
      *
      * @return array
      */
-    public function messages()
-    {
+    public function messages() {
         return [
             'headline.required' => 'Professional title must be provided',
         ];

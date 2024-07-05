@@ -6,17 +6,14 @@ use Illuminate\Support\Facades\Schema;
 use Spatie\Health\Models\HealthCheckResultHistoryItem;
 use Spatie\Health\ResultStores\EloquentHealthResultStore;
 
-return new class extends Migration
-{
+return new class extends Migration {
     private $tableName = '';
 
-    public function __construct()
-    {
+    public function __construct() {
         $this->tableName = EloquentHealthResultStore::getHistoryItemInstance()->getTable();
     }
 
-    public function up()
-    {
+    public function up() {
         $connection = (new HealthCheckResultHistoryItem)->getConnectionName();
         if (! Schema::hasTable($this->tableName)) {
 
@@ -42,8 +39,7 @@ return new class extends Migration
         }
     }
 
-    public function down()
-    {
+    public function down() {
         Schema::dropIfExists($this->tableName);
     }
 };

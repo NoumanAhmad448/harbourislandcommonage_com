@@ -6,8 +6,7 @@ use App\Actions\Fortify\PasswordValidationRules;
 use App\Models\User;
 use Illuminate\Validation\Rule;
 
-class NameRules
-{
+class NameRules {
     use PasswordValidationRules;
 
     /**
@@ -15,8 +14,7 @@ class NameRules
      *
      * @return array
      */
-    public static function nameRules($is_required = true)
-    {
+    public static function nameRules($is_required = true) {
         $rules = [];
         if ($is_required) {
             $rules[] = 'required';
@@ -28,28 +26,24 @@ class NameRules
         return $rules;
     }
 
-    public static function emailRules($should_unique = true)
-    {
+    public static function emailRules($should_unique = true) {
         $rules = ['required', 'string', 'email', new IsScriptAttack, new SpecificDomainsOnly];
         if ($should_unique) {
-            array_push($rules, Rule::unique(User::class));
+            $rules[] = Rule::unique(User::class);
         }
 
         return $rules;
     }
 
-    public static function gCaptchaRules()
-    {
+    public static function gCaptchaRules() {
         return ['required', 'captcha'];
     }
 
-    public function passRules($verifyReq = false)
-    {
+    public function passRules($verifyReq = false) {
         return $this->passwordRules();
     }
 
-    public function fileRules($is_required = false)
-    {
+    public function fileRules($is_required = false) {
         $allowed_fuas = config('setting.fuas');
         $allowed_fuas = (int) $allowed_fuas * 1000;
         $img_val_rules_str = config('form.img_val_rules_str');
@@ -64,8 +58,7 @@ class NameRules
         return $rules;
     }
 
-    public function landUpdates(): array
-    {
+    public function landUpdates(): array {
         return [
             config('table.comment') => self::nameRules(),
             config('table.land_create_id') => self::nameRules(),
@@ -73,8 +66,7 @@ class NameRules
         ];
     }
 
-    public function myProfile(): array
-    {
+    public function myProfile(): array {
         return [
             config('table.name') => self::nameRules(),
             config('table.mobile') => self::nameRules(false),
@@ -85,23 +77,20 @@ class NameRules
         ];
     }
 
-    public function adminDelete(): array
-    {
+    public function adminDelete(): array {
         return [
             config('table.primary_key') => self::nameRules(),
         ];
     }
 
-    public function adminUpdate(): array
-    {
+    public function adminUpdate(): array {
         return [
             config('table.primary_key') => self::nameRules(),
             config('form.password') => $this->passRules(),
         ];
     }
 
-    public function userValidationRules(): array
-    {
+    public function userValidationRules(): array {
         return [
             config('form.first_name') => self::nameRules(),
             config('form.lastname') => self::nameRules(),
@@ -111,15 +100,13 @@ class NameRules
         ];
     }
 
-    public function isAdminRules(): array
-    {
+    public function isAdminRules(): array {
         return [
             config('table.is_admin') => self::nameRules(),
         ];
     }
 
-    public function landRegVal(): array
-    {
+    public function landRegVal(): array {
         $rules = [
             config('setting.title') => self::nameRules(),
             config('setting.description') => self::nameRules(),
@@ -144,8 +131,7 @@ class NameRules
         return $rules;
     }
 
-    public function userValidationMsg(): array
-    {
+    public function userValidationMsg(): array {
         return [
             config('form.first_name').'.required' => __('validation.required'),
             config('form.lastname').'.required' => __('validation.required'),
@@ -155,16 +141,14 @@ class NameRules
         ];
     }
 
-    public function captchaValidation(): array
-    {
+    public function captchaValidation(): array {
         return [
             config('form.g-recaptcha-response').'.required' => __('validation.required'),
             config('form.g-recaptcha-response').'.captcha' => __('validation.required'),
         ];
     }
 
-    public function landRegValMsg(): array
-    {
+    public function landRegValMsg(): array {
         return [
             config('setting.title').'.required' => __('validation.required'),
             config('setting.description').'.required' => __('validation.required'),

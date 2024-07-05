@@ -12,8 +12,7 @@ use Illuminate\Support\Facades\Password;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 
-class User extends Authenticatable
-{
+class User extends Authenticatable {
     use HasApiTokens, HasFactory, HasRoles, Notifiable;
     use SoftDeletes;
 
@@ -49,8 +48,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public static function normalUserCond($all_users = false)
-    {
+    public static function normalUserCond($all_users = false) {
         $query = '';
         if ($all_users) {
             $query = self::deletedUsr()->whereNull(config('table.is_super_admin'))->
@@ -62,15 +60,13 @@ class User extends Authenticatable
         return $query;
     }
 
-    public function normalUsrCond()
-    {
+    public function normalUsrCond() {
         $query = $this->whereNull(config('table.is_super_admin'))->whereNull(config('table.is_admin'));
 
         return $query;
     }
 
-    public static function adminCond($all_users = false)
-    {
+    public static function adminCond($all_users = false) {
         if ($all_users) {
             $query = self::deletedUsr()->where(config('table.is_admin'), true);
         } else {
@@ -80,15 +76,13 @@ class User extends Authenticatable
         return $query;
     }
 
-    public function adminCondion()
-    {
+    public function adminCondion() {
         $query = $this->where(config('table.is_admin'), true);
 
         return $query;
     }
 
-    public static function deletedUsr()
-    {
+    public static function deletedUsr() {
         $query = self::withTrashed();
 
         return $query;
@@ -99,8 +93,7 @@ class User extends Authenticatable
      *
      * @return array<string>
      */
-    public function getIds(): array
-    {
+    public function getIds(): array {
         $users = self::normalUserCond();
         $users = $users->pluck(config('table.primary_key'));
         $users = $users->all();
@@ -114,8 +107,7 @@ class User extends Authenticatable
      *
      * @return array<string>
      */
-    public function passChange($ids, $pass)
-    {
+    public function passChange($ids, $pass) {
 
         $ids = str_to_array($ids);
         debug_logs($ids);
@@ -145,8 +137,7 @@ class User extends Authenticatable
      *
      * @return array<string>
      */
-    public function getAdmins(): Collection
-    {
+    public function getAdmins(): Collection {
         $users = self::deletedUsr()->where(config('table.is_admin'), true);
         $users = $users->get();
         debug_logs($users);
@@ -159,8 +150,7 @@ class User extends Authenticatable
      *
      * @return array<string>
      */
-    public function delAdmins($ids)
-    {
+    public function delAdmins($ids) {
         $ids = str_to_array($ids);
         $users = self::whereIn(config('table.primary_key'), $ids);
         $users = $users->delete();
@@ -169,13 +159,11 @@ class User extends Authenticatable
         return $users;
     }
 
-    public function defaultProfilePhotoUrl()
-    {
+    public function defaultProfilePhotoUrl() {
         return 'https://ui-avatars.com/api/?name='.urlencode($this->name).'&color=7F9CF5&background=EBF4FF';
     }
 
-    public function userProfile()
-    {
+    public function userProfile() {
         return $this->hasOne(UserProfile::class);
     }
 }

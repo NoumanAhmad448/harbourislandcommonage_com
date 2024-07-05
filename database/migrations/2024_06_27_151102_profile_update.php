@@ -3,15 +3,13 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up()
-    {
+    public function up() {
         if (Schema::hasTable(config('table.user_profiles'))) {
             Schema::table(config('table.user_profiles'), function ($table) {
                 $table->foreignId(config('table.job_id'))->nullable()->comment('jobs table')->change();
@@ -29,8 +27,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function down()
-    {
+    public function down() {
         //
     }
 };

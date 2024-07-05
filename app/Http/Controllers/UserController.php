@@ -12,8 +12,7 @@ use App\Models\User;
 use App\Models\UserProfile;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
-{
+class UserController extends Controller {
     private $createLandObj;
 
     private $landFileObj;
@@ -28,8 +27,7 @@ class UserController extends Controller
 
     private $createNewUser;
 
-    public function __construct()
-    {
+    public function __construct() {
         $this->createLandObj = new CreateLand;
         $this->user = new User;
         $this->landFileObj = new LandFile;
@@ -39,8 +37,7 @@ class UserController extends Controller
         $this->createNewUser = new CreateNewUser;
     }
 
-    public function myProfilePatch(MyProfilePatch $request)
-    {
+    public function myProfilePatch(MyProfilePatch $request) {
         try {
             $request->validated();
             $user = User::find(auth()->user()->id);
@@ -61,8 +58,7 @@ class UserController extends Controller
         }
     }
 
-    public function myProfile(Request $request)
-    {
+    public function myProfile(Request $request) {
         try {
             $data = [];
             if ($request->has('id')) {
@@ -82,8 +78,7 @@ class UserController extends Controller
         }
     }
 
-    public function showUsers(Request $request)
-    {
+    public function showUsers(Request $request) {
         try {
             $data = [];
             $users = $this->user::normalUserCond(true)->get();
@@ -99,8 +94,7 @@ class UserController extends Controller
     /**
      * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
      */
-    public function setting(Request $request)
-    {
+    public function setting(Request $request) {
         try {
             $data = [];
             $data[config('vars.title')] = __('messages.settings');
