@@ -2,31 +2,36 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\LandFile;
-use App\Helpers\FileUpload;
-use App\Models\CreateLand;
-use App\Actions\Fortify\VerifyUser;
-use App\Models\User;
 use App\Actions\Fortify\CreateNewUser;
+use App\Actions\Fortify\VerifyUser;
+use App\Helpers\FileUpload;
 use App\Http\Requests\MyProfilePatch;
+use App\Models\CreateLand;
+use App\Models\LandFile;
+use App\Models\User;
 use App\Models\UserProfile;
-use mysqli;
+use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-
     private $createLandObj;
+
     private $landFileObj;
+
     private $fileUplaodObj;
+
     private $user;
+
     private $verifyUser;
+
     private $createLand;
+
     private $createNewUser;
 
-    public function __construct(){
-        $this->createLandObj = new CreateLand();
-        $this->user = new User();
+    public function __construct()
+    {
+        $this->createLandObj = new CreateLand;
+        $this->user = new User;
         $this->landFileObj = new LandFile;
         $this->fileUplaodObj = new FileUpload;
         $this->verifyUser = new VerifyUser;
@@ -34,7 +39,8 @@ class UserController extends Controller
         $this->createNewUser = new CreateNewUser;
     }
 
-    public function myProfilePatch(MyProfilePatch $request){
+    public function myProfilePatch(MyProfilePatch $request)
+    {
         try {
             $request->validated();
             $user = User::find(auth()->user()->id);
@@ -45,46 +51,47 @@ class UserController extends Controller
 
             return customResponse(
                 [
-                    config("setting.is_success") => true,
-                    config("setting.message") => __("messages.oprntn_succ")
+                    config('setting.is_success') => true,
+                    config('setting.message') => __('messages.oprntn_succ'),
                 ],
-                config("setting.status_200")
+                config('setting.status_200')
             );
         } catch (\Exception $d) {
             return server_logs($e = [true, $d], $request = [true, $request], $config = true);
         }
     }
 
-    public function myProfile(Request $request){
+    public function myProfile(Request $request)
+    {
         try {
             $data = [];
-            if($request->has("id")){
-                $user = User::findOrFail($request->get("id"));
-            }else{
+            if ($request->has('id')) {
+                $user = User::findOrFail($request->get('id'));
+            } else {
                 $user = auth()?->user();
             }
             debug_logs($user?->userProfile);
             debug_logs($user?->userProfile?->job);
-            $data[config("vars.user")] = $user;
-            $data[config("vars.title")] = __('messages.mprofile');
-            debug_logs("data => ");
+            $data[config('vars.user')] = $user;
+            $data[config('vars.title')] = __('messages.mprofile');
+            debug_logs('data => ');
 
-            return view(config("setting.my_prfle"), compact(config("vars.data")));
+            return view(config('setting.my_prfle'), compact(config('vars.data')));
         } catch (\Exception $d) {
             return server_logs($e = [true, $d], $request = [true, $request], $config = true);
         }
     }
 
-    public function showUsers(Request $request) {
+    public function showUsers(Request $request)
+    {
         try {
             $data = [];
             $users = $this->user::normalUserCond(true)->get();
             $data['users'] = $users;
             $data['title'] = __('messages.Users');
 
-            return view(config("setting.show_users"), compact("data"));
-        }
-        catch (\Exception $d) {
+            return view(config('setting.show_users'), compact('data'));
+        } catch (\Exception $d) {
             return server_logs($e = [true, $d], $request = [true, $request], $config = true);
         }
     }
@@ -92,14 +99,14 @@ class UserController extends Controller
     /**
      * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
      */
-    public function setting(Request $request) {
+    public function setting(Request $request)
+    {
         try {
             $data = [];
-            $data[config("vars.title")] = __('messages.settings');
+            $data[config('vars.title')] = __('messages.settings');
 
-            return view(config("setting.setting_lay"), compact("data"));
-        }
-        catch (\Exception $d) {
+            return view(config('setting.setting_lay'), compact('data'));
+        } catch (\Exception $d) {
             return server_logs($e = [true, $d], $request = [true, $request], $config = true);
         }
     }

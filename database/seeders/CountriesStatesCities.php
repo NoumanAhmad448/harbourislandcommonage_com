@@ -220,9 +220,10 @@ class CountriesStatesCities
     {
         return self::getJsonFileAsArray('countries');
     }
+
     public static function getJobs(): array
     {
-        return self::getJsonFileAsArray(config("vars.educational_jobs"));
+        return self::getJsonFileAsArray(config('vars.educational_jobs'));
     }
 
     public static function getStates(): array
@@ -237,7 +238,7 @@ class CountriesStatesCities
 
     private static function getJsonFileAsArray(string $fileName)
     {
-        $data = File::get(__DIR__."/data/"."$fileName.json");
+        $data = File::get(__DIR__.'/data/'."$fileName.json");
         if (! $data) {
             return [];
         }

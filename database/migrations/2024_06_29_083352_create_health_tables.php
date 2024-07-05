@@ -8,37 +8,38 @@ use Spatie\Health\ResultStores\EloquentHealthResultStore;
 
 return new class extends Migration
 {
-    private $tableName = "";
+    private $tableName = '';
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->tableName = EloquentHealthResultStore::getHistoryItemInstance()->getTable();
     }
 
     public function up()
     {
-        $connection = (new HealthCheckResultHistoryItem())->getConnectionName();
-        if (!Schema::hasTable($this->tableName)){
+        $connection = (new HealthCheckResultHistoryItem)->getConnectionName();
+        if (! Schema::hasTable($this->tableName)) {
 
-        Schema::connection($connection)->create($this->tableName, function (Blueprint $table) {
-            $table->increments(config("table.primary_key"))->comment('Primary Key');
+            Schema::connection($connection)->create($this->tableName, function (Blueprint $table) {
+                $table->increments(config('table.primary_key'))->comment('Primary Key');
 
-            $table->string('check_name');
-            $table->string('check_label');
-            $table->string('status');
-            $table->text('notification_message')->nullable();
-            $table->string('short_summary')->nullable();
-            $table->json('meta');
-            $table->timestamp('ended_at');
-            $table->uuid('batch');
+                $table->string('check_name');
+                $table->string('check_label');
+                $table->string('status');
+                $table->text('notification_message')->nullable();
+                $table->string('short_summary')->nullable();
+                $table->json('meta');
+                $table->timestamp('ended_at');
+                $table->uuid('batch');
 
-            $table->timestamps();
-        });
+                $table->timestamps();
+            });
 
-        Schema::connection($connection)->table($this->tableName, function(Blueprint $table) {
-            $table->index('created_at');
-            $table->index('batch');
-        });
-    }
+            Schema::connection($connection)->table($this->tableName, function (Blueprint $table) {
+                $table->index('created_at');
+                $table->index('batch');
+            });
+        }
     }
 
     public function down()

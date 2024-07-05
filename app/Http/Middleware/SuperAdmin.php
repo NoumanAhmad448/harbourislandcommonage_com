@@ -10,16 +10,15 @@ class SuperAdmin
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
      * @return mixed
      */
     public function handle(Request $request, Closure $next)
     {
         $user = auth()->user();
-        if(empty($user) || ($user && $user->is_super_admin !== 1)){
+        if (empty($user) || ($user && $user->is_super_admin !== 1)) {
             abort(403);
         }
+
         return $next($request);
     }
 }

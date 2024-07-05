@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Query\Builder;
 
@@ -9,19 +10,22 @@ class CustomBuilder extends Builder
     protected function showQuery()
     {
         debug_logs($this->toSql());
+
         return $this;
     }
 }
 
 trait CustomModelTrait
 {
-    public function showQuery($query){
+    public function showQuery($query)
+    {
         return new CustomBuilder($query);
     }
 
-    function showModelQuery($query)
+    public function showModelQuery($query)
     {
         debug_logs($query->toSql());
+
         return $query;
     }
 
@@ -34,7 +38,8 @@ trait CustomModelTrait
 }
 class CustomModel extends Model
 {
-    public function scopeshowQuery($query){
+    public function scopeshowQuery($query)
+    {
         return $this->showModelQuery($query);
     }
     // public function scopeget($query){
@@ -42,7 +47,3 @@ class CustomModel extends Model
     //     return $this->get($query);
     // }
 }
-
-
-
-

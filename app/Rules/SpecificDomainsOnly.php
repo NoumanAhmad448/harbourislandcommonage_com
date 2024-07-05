@@ -7,6 +7,7 @@ use Illuminate\Contracts\Validation\Rule;
 class SpecificDomainsOnly implements Rule
 {
     private $domain;
+
     /**
      * Create a new rule instance.
      *
@@ -28,7 +29,7 @@ class SpecificDomainsOnly implements Rule
     {
         $domain = strtolower(substr($value, strpos($value, '@') + 1));
         $this->domain = $domain;
-        $domains = config("domains");
+        $domains = config('domains');
 
         return in_array($domain, $domains);
     }
@@ -40,6 +41,6 @@ class SpecificDomainsOnly implements Rule
      */
     public function message()
     {
-        return __("messages.invalid_domain", [config("vars.domain") => $this->domain]);
+        return __('messages.invalid_domain', [config('vars.domain') => $this->domain]);
     }
 }

@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        if (Schema::hasTable(config("table.land_create_logs"))){
-            Schema::table(config("table.land_create_logs"), function (Blueprint $table){
-                $table->text(config("table.land_id"));
+        if (Schema::hasTable(config('table.land_create_logs'))) {
+            Schema::table(config('table.land_create_logs'), function (Blueprint $table) {
+                $table->text(config('table.land_id'));
             });
         }
     }
@@ -27,9 +27,9 @@ return new class extends Migration
      */
     public function down()
     {
-        if (Schema::hasTable(config("table.land_create_logs"))){
-            Schema::table(config("table.land_create_logs"), function (Blueprint $table){
-                $table->dropColumn(config("table.land_id"));
+        if (Schema::hasTable(config('table.land_create_logs'))) {
+            Schema::table(config('table.land_create_logs'), function (Blueprint $table) {
+                $table->dropColumn(config('table.land_id'));
             });
         }
     }

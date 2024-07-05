@@ -2,14 +2,16 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Foundation\Http\FormRequest;
 
 class CustomRequest extends FormRequest
 {
-    protected function failedValidation(Validator $validator) {
+    protected function failedValidation(Validator $validator)
+    {
         failValidation($validator);
     }
+
     /**
      * Get custom attributes for validator errors.
      *
@@ -18,6 +20,6 @@ class CustomRequest extends FormRequest
      *      */
     public function attributes(): array
     {
-        return __("attributes");
+        return __('attributes');
     }
 }

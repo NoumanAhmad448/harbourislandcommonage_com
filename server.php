@@ -3,15 +3,13 @@
 /**
  * Laravel - A PHP Framework For Web Artisans
  *
- * @package  Laravel
  * @author   Taylor Otwell <taylor@laravel.com>
  */
-
 $uri = urldecode(
     parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)
 );
 
-$is_root = "";
+$is_root = '';
 // if you move this file in public folder uncomment the below line
 // $is_root = "public/";
 

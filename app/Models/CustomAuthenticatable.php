@@ -1,4 +1,5 @@
 <?php
+
 class CustomAuthenticatable extends Authenticatable
 {
     /*
@@ -7,7 +8,8 @@ class CustomAuthenticatable extends Authenticatable
     2. define a logic in a `CustomModelTrait` class with additional method
     */
 
-    public function scopeshowQuery($query){
+    public function scopeshowQuery($query)
+    {
         return $this->showModelQuery($query);
     }
 

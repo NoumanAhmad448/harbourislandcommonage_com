@@ -2,7 +2,6 @@
 
 namespace App\Policies;
 
-use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class ProfilePolicy
@@ -19,7 +18,8 @@ class ProfilePolicy
         //
     }
 
-    public function update() {
+    public function update()
+    {
         return is_auth_user();
     }
 }

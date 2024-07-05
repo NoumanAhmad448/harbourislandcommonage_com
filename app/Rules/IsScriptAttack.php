@@ -35,6 +35,6 @@ class IsScriptAttack implements Rule
      */
     public function message()
     {
-        return __("validation.not_allowed");
+        return __('validation.not_allowed');
     }
 }

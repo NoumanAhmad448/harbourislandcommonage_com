@@ -11,8 +11,7 @@ class BaseCountriesStatesCitiesSeeder extends Seeder
 {
     public function __construct(
         protected CountriesStatesCities $serves
-    ) {
-    }
+    ) {}
 
     public function run(): void
     {

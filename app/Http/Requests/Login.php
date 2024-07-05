@@ -2,17 +2,19 @@
 
 namespace App\Http\Requests;
 
-use Laravel\Fortify\Http\Requests\LoginRequest as FortifyLoginRequest;
 use App\Rules\NameRules;
 use Illuminate\Contracts\Validation\Validator;
+use Laravel\Fortify\Http\Requests\LoginRequest as FortifyLoginRequest;
 
 class Login extends FortifyLoginRequest
 {
     private $nameRules;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->nameRules = new NameRules;
     }
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -32,12 +34,13 @@ class Login extends FortifyLoginRequest
     {
 
         $rules = [
-            config("form.email") => NameRules::emailRules(false),
-            config("form.password") => $this->nameRules->passRules(),
+            config('form.email') => NameRules::emailRules(false),
+            config('form.password') => $this->nameRules->passRules(),
         ];
-        if(config("setting.en_gc")){
-            $rules[config("form.g-recaptcha-response")] = NameRules::gCaptchaRules();
+        if (config('setting.en_gc')) {
+            $rules[config('form.g-recaptcha-response')] = NameRules::gCaptchaRules();
         }
+
         return $rules;
     }
 
@@ -58,9 +61,11 @@ class Login extends FortifyLoginRequest
         return $messages;
     }
 
-    protected function failedValidation(Validator $validator) {
+    protected function failedValidation(Validator $validator)
+    {
         failValidation($validator);
     }
+
     /**
      * Get custom attributes for validator errors.
      *
@@ -68,7 +73,6 @@ class Login extends FortifyLoginRequest
      */
     public function attributes(): array
     {
-        return __("attributes");
+        return __('attributes');
     }
-
 }

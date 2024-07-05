@@ -2,18 +2,14 @@
 
 namespace Database\Seeders;
 
-use App\Models\City;
-use App\Models\Country;
 use App\Models\Job;
-use App\Models\State;
 use Illuminate\Database\Seeder;
 
 class JobSeeder extends Seeder
 {
     public function __construct(
         protected CountriesStatesCities $serves
-    ) {
-    }
+    ) {}
 
     public function run(): void
     {
@@ -38,16 +34,15 @@ class JobSeeder extends Seeder
                 Job::create([
                     config('table.primary_key') => $job->id,
                     config('table.title') => $job->title,
-                    config('table.description') => $job->description
+                    config('table.description') => $job->description,
                 ]);
             }
             $this->command->getOutput()->progressAdvance();
         }
 
         $this->command->getOutput()->progressFinish();
-        $this->command->info(__("messages.cnsl_msg", [ "msg" => 'jobs Data Seeded has successful']));
+        $this->command->info(__('messages.cnsl_msg', ['msg' => 'jobs Data Seeded has successful']));
         $this->command->line('');
 
     }
-
 }

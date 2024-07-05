@@ -2,15 +2,18 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Support\Facades\Auth;
 use App\Rules\NameRules;
+use Illuminate\Support\Facades\Auth;
 
 class LandCreate extends CustomRequest
 {
     private $nameRules;
-    public function __construct() {
+
+    public function __construct()
+    {
         $this->nameRules = new NameRules;
     }
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -19,9 +22,10 @@ class LandCreate extends CustomRequest
     public function authorize()
     {
         $is_allowed = true;
-        if(isAdmin(false)){
+        if (isAdmin(false)) {
             $is_allowed = false;
         }
+
         return $is_allowed;
     }
 
@@ -33,13 +37,13 @@ class LandCreate extends CustomRequest
     public function rules()
     {
         $rules = [];
-        if(!Auth::user()){
+        if (! Auth::user()) {
             $rules = $this->nameRules->userValidationRules();
         }
-        $rules = array_merge($rules,$this->nameRules->landRegVal());
+        $rules = array_merge($rules, $this->nameRules->landRegVal());
+
         return $rules;
     }
-
 
     /**
      * Get the validation messages
@@ -49,12 +53,13 @@ class LandCreate extends CustomRequest
     public function messages()
     {
         $messages = [];
-        if(!Auth::user()){
+        if (! Auth::user()) {
             $messages = $this->nameRules->userValidationMsg();
         }
-        $messages = array_merge($messages,$this->nameRules->landRegValMsg(),
+        $messages = array_merge($messages, $this->nameRules->landRegValMsg(),
             $this->nameRules->captchaValidation()
         );
+
         return $messages;
     }
 
@@ -65,7 +70,6 @@ class LandCreate extends CustomRequest
      */
     public function attributes(): array
     {
-        return __("attributes");
+        return __('attributes');
     }
 }
-

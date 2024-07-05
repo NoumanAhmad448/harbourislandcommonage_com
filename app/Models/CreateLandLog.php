@@ -8,23 +8,27 @@ class CreateLandLog extends CustomModel
 {
     use HasFactory;
 
-    protected $table = "land_create_logs";
+    protected $table = 'land_create_logs';
+
     protected $guarded = [];
 
-    public function __construct() {
-        $this->table = config("table.land_create_logs");
+    public function __construct()
+    {
+        $this->table = config('table.land_create_logs');
     }
 
-
-    public function landDetails($land_id){
+    public function landDetails($land_id)
+    {
         $land_id = str_to_array($land_id);
-        $land = CreateLandLog::whereIn(config("table.land_id"), $land_id)
-        ;
-        $land = $land->orderByDesc(config("table.primary_key"));
+        $land = CreateLandLog::whereIn(config('table.land_id'), $land_id);
+        $land = $land->orderByDesc(config('table.primary_key'));
         $land = $land->get();
+
         return $land;
     }
-    public function city(){
+
+    public function city()
+    {
         return $this->belongsTo(City::class);
     }
 }

@@ -34,6 +34,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Country extends Model
 {
     use SoftDeletes;
+
     // protected $table = "countries";
     protected $fillable = [
         'id', 'name', 'iso2', 'iso3', 'numeric_code', 'phonecode',

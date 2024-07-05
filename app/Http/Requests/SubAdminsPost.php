@@ -7,7 +7,9 @@ use App\Rules\NameRules;
 class SubAdminsPost extends CustomRequest
 {
     private $nameRules;
-    public function __construct() {
+
+    public function __construct()
+    {
         $this->nameRules = new NameRules;
     }
 
@@ -30,9 +32,8 @@ class SubAdminsPost extends CustomRequest
     {
         $rules = [];
         $rules = $this->nameRules->userValidationRules();
-        $rules = array_merge($rules,$this->nameRules->isAdminRules());
+        $rules = array_merge($rules, $this->nameRules->isAdminRules());
+
         return $rules;
     }
-
 }
-
