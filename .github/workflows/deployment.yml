@@ -4,13 +4,42 @@ on:
   push:
     branches: ["master"]
 jobs:
-  laravel-deployment:
+  setup-php:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: true
       matrix:
         php: [8.2]
         commit_msg: ["Fixes coding style"]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup PHP with fail-fast
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: json, dom, curl, libxml, mbstring, bz2, fileinfo, gd, gettext,mbstring,exif,mysqli,pdo_mysql
+          tools: pint:1.16.1,phpdoc,composer:2.4.4
+          coverage: none
+      - name: check composer version
+        run: composer --version
+      - name: Run Pint
+        run: pint --config configs/pint.json
+
+      - name: Run PHPDoc
+        run: phpdoc --config phpdoc.dist.xml
+
+      - name: Commit linted files
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: ${{ matrix.commit_msg }}
+          branch: master
+
+  laravel-deployment:
+    needs: setup-php
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+      matrix:
         script_command:
           [
             "pwd && cd ~/public_html/website_7171ee6c && pwd && chmod u+x ./server_deploy.sh && ./server_deploy.sh",
@@ -20,17 +49,6 @@ jobs:
       - uses: actions/checkout@v3
       - name: Copy .env
         run: php -r "file_exists('.env') || copy('.env.live', '.env');"
-
-      - name: Setup PHP with fail-fast
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: ${{ matrix.php }}
-          extensions: json, dom, curl, libxml, mbstring, bz2, fileinfo, gd, gettext,mbstring,exif,mysqli,pdo_mysql
-          tools: pint:1.16.1,phpdoc,composer:2.4.4
-          coverage: none
-
-      - name: check composer version
-        run: composer --version
 
       - name: setup nodejs
         uses: actions/setup-node@v4
@@ -45,18 +63,6 @@ jobs:
         with:
           prettier: true
           auto_fix: true
-
-      - name: Run Pint
-        run: pint --config configs/pint.json
-
-      - name: Run PHPDoc
-        run: phpdoc --config phpdoc.dist.xml
-
-      - name: Commit linted files
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: ${{ matrix.commit_msg }}
-          branch: master
 
       - name: Sync files
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
