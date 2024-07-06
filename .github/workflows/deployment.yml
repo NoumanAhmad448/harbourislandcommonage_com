@@ -36,6 +36,10 @@ jobs:
   nodejs-setup:
     runs-on: ubuntu-latest
     steps:
+
+      - name: Copy .env
+        run: php -r "file_exists('.env') || copy('.env.live', '.env');"
+
       - name: setup nodejs
         uses: actions/setup-node@v4
         with:
@@ -63,8 +67,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - name: Copy .env
-        run: php -r "file_exists('.env') || copy('.env.live', '.env');"
 
       - name: Sync files
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
