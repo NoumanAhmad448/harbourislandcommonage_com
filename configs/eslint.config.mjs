@@ -36,6 +36,7 @@ export default [
             "css/*",
             "js/*",
             "resources\\js\\slick-1.8.1.min.js",
+            ".github"
         ],
         linterOptions: {
             noInlineConfig: true,
