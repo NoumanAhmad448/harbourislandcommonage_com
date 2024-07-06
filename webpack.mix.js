@@ -17,20 +17,20 @@ const mix = require('laravel-mix');
 });
 
 
-$public_folder = "public/";
-$js_folder = "js";
-$css_folder = "css";
+let $public_folder = "public/";
+let $js_folder = "js";
+let $css_folder = "css";
 
-$js_path = $public_folder+$js_folder;
-$css_path = $public_folder+$css_folder;
-$land_folder = "land/";
-$admin = "admin/";
-$land_js = `${$js_path}/${$land_folder}`
-$admin_js = `${$js_path}/${$admin}`
-$land_css = `${$css_path}/${$land_folder}`
+let $js_path = $public_folder+$js_folder;
+let $css_path = $public_folder+$css_folder;
+let $land_folder = "land/";
+let $admin = "admin/";
+let $land_js = `${$js_path}/${$land_folder}`
+let $admin_js = `${$js_path}/${$admin}`
+let $land_css = `${$css_path}/${$land_folder}`
 
-$resource_js = `resources/${$js_folder}/`;
-$resource_css = `resources/${$css_folder}/`;
+let $resource_js = `resources/${$js_folder}/`;
+let $resource_css = `resources/${$css_folder}/`;
 
 mix.js(`${$resource_js}app.js`, $js_path)
     .js(`${$resource_js}common_functions.js`, $js_path)
