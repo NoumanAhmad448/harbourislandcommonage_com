@@ -6,10 +6,12 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
-class VerifyUser {
+class VerifyUser
+{
     use PasswordValidationRules;
 
-    public function verifyUser($data, $check_admin = false) {
+    public function verifyUser($data, $check_admin = false)
+    {
         // return false if password is invalid
         $user = User::where(config('form.email'), $data[config('form.email')]);
         if ($check_admin) {
@@ -26,11 +28,13 @@ class VerifyUser {
         return $user;
     }
 
-    public function verifyPass($data, $user): bool {
+    public function verifyPass($data, $user): bool
+    {
         return Hash::check($data[config('form.password')], $user->password);
     }
 
-    public function logout($request) {
+    public function logout($request)
+    {
         Auth::logout();
 
         $request->session()->invalidate();

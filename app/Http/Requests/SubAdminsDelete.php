@@ -4,10 +4,12 @@ namespace App\Http\Requests;
 
 use App\Rules\NameRules;
 
-class SubAdminsDelete extends CustomRequest {
+class SubAdminsDelete extends CustomRequest
+{
     private $nameRules;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->nameRules = new NameRules;
     }
 
@@ -16,7 +18,8 @@ class SubAdminsDelete extends CustomRequest {
      *
      * @return bool
      */
-    public function authorize() {
+    public function authorize()
+    {
         return isSuperAdmin(false);
     }
 
@@ -25,7 +28,8 @@ class SubAdminsDelete extends CustomRequest {
      *
      * @return array<string, mixed>
      */
-    public function rules() {
+    public function rules()
+    {
         $rules = [];
         $rules = $this->nameRules->adminDelete();
 

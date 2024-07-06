@@ -7,26 +7,30 @@ use Illuminate\Support\Str;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 if (! function_exists('check_input')) {
-    function check_input($u_input) {
+    function check_input($u_input)
+    {
         return htmlspecialchars(trim(stripslashes($u_input)));
     }
 }
 
 if (! function_exists('is_xss')) {
-    function is_xss($u_input) {
+    function is_xss($u_input)
+    {
         return strip_tags($u_input) !== $u_input;
     }
 }
 
 if (! function_exists('reduceCharIfAv')) {
     // reduce character in string if there is any available
-    function reduceCharIfAv($u_input, $limit) {
+    function reduceCharIfAv($u_input, $limit)
+    {
         return strlen($u_input) > $limit ? \Illuminate\Support\Str::limit($u_input, $limit) : $u_input;
     }
 }
 
 if (! function_exists('reduceWithStripping')) {
-    function reduceWithStripping($u_input, $limit) {
+    function reduceWithStripping($u_input, $limit)
+    {
         $u_input = strip_tags($u_input);
 
         return strlen($u_input) > $limit ? \Illuminate\Support\Str::limit($u_input, $limit) : $u_input;
@@ -34,7 +38,8 @@ if (! function_exists('reduceWithStripping')) {
 }
 
 if (! function_exists('removeSpace')) {
-    function removeSpace($input) {
+    function removeSpace($input)
+    {
         if (is_string($input)) {
             return trim($input);
         }
@@ -44,7 +49,8 @@ if (! function_exists('removeSpace')) {
 }
 
 if (! function_exists('isAdmin')) {
-    function isAdmin($action = true) {
+    function isAdmin($action = true)
+    {
         if ($action) {
             $action = abort(403);
         }
@@ -57,7 +63,8 @@ if (! function_exists('isSuperAdmin')) {
     /**
      * @throws \Symfony\Component\HttpKernel\Exception\HttpException
      **/
-    function isSuperAdmin(bool $action = true) {
+    function isSuperAdmin(bool $action = true)
+    {
         if ($action) {
             $action = abort(403);
         }
@@ -70,13 +77,15 @@ if (! function_exists('isNotSuperAdmin')) {
     /**
      * @throws \Symfony\Component\HttpKernel\Exception\HttpException
      **/
-    function isNotSuperAdmin(bool $action = false) {
+    function isNotSuperAdmin(bool $action = false)
+    {
         return ! isSuperAdmin($action);
     }
 }
 
 if (! function_exists('showLessText')) {
-    function showLessText($text, $len) {
+    function showLessText($text, $len)
+    {
         if (strlen($text) > $len) {
             return substr($text, $len);
         }
@@ -87,13 +96,15 @@ if (! function_exists('showLessText')) {
 
 if (! function_exists('dateFormat')) {
 
-    function dateFormat($value) {
+    function dateFormat($value)
+    {
         return Carbon::parse($value)->format('Y-m-d');
     }
 }
 if (! function_exists('php_config')) {
 
-    function php_config() {
+    function php_config()
+    {
         if (config('app.debug')) {
             dump('memory_limit =>'.ini_get('memory_limit'));
             dump(config('setting.dash_lines'));
@@ -106,7 +117,8 @@ if (! function_exists('php_config')) {
 }
 if (! function_exists('server_logs')) {
     function server_logs($e = [], $request = [], $config = false, $response_status = '',
-        $return_response = true) {
+        $return_response = true)
+    {
         if (empty($response_status)) {
             $response_status = config('setting.err_500');
         }
@@ -132,7 +144,8 @@ if (! function_exists('server_logs')) {
 }
 
 if (! function_exists('includeErr')) {
-    function includeErr($data) {
+    function includeErr($data)
+    {
         /*
         include error key if there is no success and error key exist however message
         entity must exist
@@ -148,7 +161,8 @@ if (! function_exists('includeErr')) {
     }
 }
 if (! function_exists('customResponse')) {
-    function customResponse($data, $status = '') {
+    function customResponse($data, $status = '')
+    {
         if (empty($status)) {
             $status = config('setting.status_200');
         }
@@ -159,7 +173,8 @@ if (! function_exists('customResponse')) {
     }
 }
 if (! function_exists('failValidation')) {
-    function failValidation($validator): void {
+    function failValidation($validator): void
+    {
         try {
             $errors = $validator->errors();
         } catch (AccessDeniedHttpException $e) {
@@ -178,18 +193,21 @@ if (! function_exists('failValidation')) {
 }
 
 if (! function_exists('is_key_exists')) {
-    function is_key_exists($key, $array): bool {
+    function is_key_exists($key, $array): bool
+    {
         return isArray($array) && array_key_exists($key, $array);
     }
 }
 if (! function_exists('is_key_not_exists')) {
-    function is_key_not_exists($key, $array): bool {
+    function is_key_not_exists($key, $array): bool
+    {
         return ! is_key_exists($key, $array);
     }
 }
 
 if (! function_exists('debug_logs')) {
-    function debug_logs($input): void {
+    function debug_logs($input): void
+    {
         if (config('app.debug')) {
             dump($input);
             dump(config('setting.dash_lines'));
@@ -198,7 +216,8 @@ if (! function_exists('debug_logs')) {
 }
 
 if (! function_exists('add_key_if_exist')) {
-    function add_key_if_exist($key, $array, $new_data = []) {
+    function add_key_if_exist($key, $array, $new_data = [])
+    {
         // add the data in the array and returns
         debug_logs($key);
         debug_logs($array);
@@ -212,18 +231,21 @@ if (! function_exists('add_key_if_exist')) {
 }
 
 if (! function_exists('isArray')) {
-    function isArray($array): bool {
+    function isArray($array): bool
+    {
         return is_array($array);
     }
 }
 if (! function_exists('isNotArray')) {
-    function isNotArray($array): bool {
+    function isNotArray($array): bool
+    {
         return ! is_array($array);
     }
 }
 
 if (! function_exists('fromMailer')) {
-    function fromMailer($mailer): string {
+    function fromMailer($mailer): string
+    {
         $from = config("mail.mailers.{$mailer}.from");
 
         return $from;
@@ -231,7 +253,8 @@ if (! function_exists('fromMailer')) {
 }
 
 if (! function_exists('gen_str')) {
-    function gen_str($uuid = false, $limit = 8): string {
+    function gen_str($uuid = false, $limit = 8): string
+    {
         if ($uuid) {
             return (string) Str::uuid();
         } else {
@@ -240,7 +263,8 @@ if (! function_exists('gen_str')) {
     }
 }
 if (! function_exists('is_normal_user')) {
-    function is_normal_user(): bool {
+    function is_normal_user(): bool
+    {
         /*
         every unregisterd user and non admin is a normal user
         */
@@ -248,7 +272,8 @@ if (! function_exists('is_normal_user')) {
     }
 }
 if (! function_exists('is_auth_user')) {
-    function is_auth_user($action = false): bool {
+    function is_auth_user($action = false): bool
+    {
         /*
         every registerd user and admin(excluding super admin) is a auth user
         */
@@ -264,17 +289,20 @@ if (! function_exists('is_auth_user')) {
     }
 }
 if (! function_exists('str_to_array')) {
-    function str_to_array($str, $sep = ','): array {
+    function str_to_array($str, $sep = ','): array
+    {
         return explode($sep, $str);
     }
 }
 if (! function_exists('add_array')) {
-    function add_array($main_array, $given_array) {
+    function add_array($main_array, $given_array)
+    {
         return array_push($main_array, $given_array);
     }
 }
 if (! function_exists('file_path')) {
-    function file_path($path, $disk = '') {
+    function file_path($path, $disk = '')
+    {
         if (empty($disk)) {
             $site_path = config('app.url');
             $server_path = config('setting.storage');
@@ -284,7 +312,8 @@ if (! function_exists('file_path')) {
     }
 }
 if (! function_exists('can_call_fun')) {
-    function can_call_fun($fun) {
+    function can_call_fun($fun)
+    {
         return is_callable($fun);
     }
 }

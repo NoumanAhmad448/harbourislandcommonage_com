@@ -4,7 +4,8 @@ namespace App\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class LandPolicy {
+class LandPolicy
+{
     use HandlesAuthorization;
 
     /**
@@ -12,15 +13,18 @@ class LandPolicy {
      *
      * @return void
      */
-    public function __construct() {
+    public function __construct()
+    {
         //
     }
 
-    public function update() {
+    public function update()
+    {
         //
     }
 
-    public function create(): bool {
+    public function create(): bool
+    {
         return is_normal_user();
     }
 }

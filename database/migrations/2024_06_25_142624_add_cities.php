@@ -4,15 +4,18 @@ use App\Models\City;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration {
+return new class extends Migration
+{
     private $cities;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->cities = ['Lower Bogue', 'Upper Bogue', 'Spanish Wells', 'Bluff', 'Harbour island',
         ];
     }
 
-    public function up() {
+    public function up()
+    {
         if (Schema::hasTable(config('table.cities'))) {
 
             $data = [];
@@ -33,7 +36,8 @@ return new class extends Migration {
      *
      * @return void
      */
-    public function down() {
+    public function down()
+    {
         if (Schema::hasTable(config('table.cities'))) {
             City::whereIn('name', $this->cities)->where('country_id', config('setting.bahmas_country_code'))->delete();
         }

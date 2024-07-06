@@ -5,10 +5,12 @@ namespace App\Http\Requests;
 use App\Rules\NameRules;
 use Illuminate\Support\Facades\Auth;
 
-class LandCreate extends CustomRequest {
+class LandCreate extends CustomRequest
+{
     private $nameRules;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->nameRules = new NameRules;
     }
 
@@ -17,7 +19,8 @@ class LandCreate extends CustomRequest {
      *
      * @return bool
      */
-    public function authorize() {
+    public function authorize()
+    {
         $is_allowed = true;
         if (isAdmin(false)) {
             $is_allowed = false;
@@ -31,7 +34,8 @@ class LandCreate extends CustomRequest {
      *
      * @return array<string, mixed>
      */
-    public function rules() {
+    public function rules()
+    {
         $rules = [];
         if (! Auth::user()) {
             $rules = $this->nameRules->userValidationRules();
@@ -46,7 +50,8 @@ class LandCreate extends CustomRequest {
      *
      * @return array
      */
-    public function messages() {
+    public function messages()
+    {
         $messages = [];
         if (! Auth::user()) {
             $messages = $this->nameRules->userValidationMsg();
@@ -63,7 +68,8 @@ class LandCreate extends CustomRequest {
      *
      * @return array<string, string>
      */
-    public function attributes(): array {
+    public function attributes(): array
+    {
         return __('attributes');
     }
 }

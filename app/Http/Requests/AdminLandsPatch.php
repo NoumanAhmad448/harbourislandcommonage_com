@@ -4,10 +4,12 @@ namespace App\Http\Requests;
 
 use App\Rules\NameRules;
 
-class AdminLandsPatch extends CustomRequest {
+class AdminLandsPatch extends CustomRequest
+{
     private $nameRules;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->nameRules = new NameRules;
     }
 
@@ -16,7 +18,8 @@ class AdminLandsPatch extends CustomRequest {
      *
      * @return bool
      */
-    public function authorize() {
+    public function authorize()
+    {
         return isAdmin(false);
     }
 
@@ -25,7 +28,8 @@ class AdminLandsPatch extends CustomRequest {
      *
      * @return array<string, mixed>
      */
-    public function rules() {
+    public function rules()
+    {
         $rules = [];
         $rules = $this->nameRules->landUpdates();
 

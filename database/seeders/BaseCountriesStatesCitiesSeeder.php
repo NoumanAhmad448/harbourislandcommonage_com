@@ -7,12 +7,14 @@ use App\Models\Country;
 use App\Models\State;
 use Illuminate\Database\Seeder;
 
-class BaseCountriesStatesCitiesSeeder extends Seeder {
+class BaseCountriesStatesCitiesSeeder extends Seeder
+{
     public function __construct(
         protected CountriesStatesCities $serves
     ) {}
 
-    public function run(): void {
+    public function run(): void
+    {
         try {
             $this->serves->ensureIsoCodesIsValid();
             $this->createCountries();
@@ -24,7 +26,8 @@ class BaseCountriesStatesCitiesSeeder extends Seeder {
 
     }
 
-    protected function createCountries(): void {
+    protected function createCountries(): void
+    {
         $countries = $this->serves->getCountries();
         $chunkLength = $this->serves->getCountriesChunkLength();
 
@@ -70,7 +73,8 @@ class BaseCountriesStatesCitiesSeeder extends Seeder {
 
     }
 
-    protected function createStates(): void {
+    protected function createStates(): void
+    {
         $states = $this->serves->getStates();
         $chunkLength = $this->serves->getStatesChunkLength();
 
@@ -98,7 +102,8 @@ class BaseCountriesStatesCitiesSeeder extends Seeder {
         $this->command->line('');
     }
 
-    protected function createCities(): void {
+    protected function createCities(): void
+    {
         $cities = $this->serves->getCities();
         $chunkLength = $this->serves->getCitiesChunkLength();
 

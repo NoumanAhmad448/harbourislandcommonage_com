@@ -11,116 +11,143 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Str;
 
-class CountriesStatesCities {
-    public static function isActivateCountries(): bool {
+class CountriesStatesCities
+{
+    public static function isActivateCountries(): bool
+    {
         return Config::get('countries-states-cities.countries.activation.default', true);
     }
 
-    public static function isActivateStates(): bool {
+    public static function isActivateStates(): bool
+    {
         return Config::get('countries-states-cities.states.activation.default', true);
     }
 
-    public static function isActivateCities(): bool {
+    public static function isActivateCities(): bool
+    {
         return Config::get('countries-states-cities.cities.activation.default', true);
     }
 
-    public static function getIso2Activate(): array {
+    public static function getIso2Activate(): array
+    {
         return Config::get('countries-states-cities.countries.activation.only.iso2', []);
     }
 
-    public static function getIso3Activate(): array {
+    public static function getIso3Activate(): array
+    {
         return Config::get('countries-states-cities.countries.activation.only.iso3', []);
     }
 
-    public static function getIso2Except(): array {
+    public static function getIso2Except(): array
+    {
         return Config::get('countries-states-cities.countries.activation.except.iso2', []);
     }
 
-    public static function getIso3Except(): array {
+    public static function getIso3Except(): array
+    {
         return Config::get('countries-states-cities.countries.activation.except.iso3', []);
     }
 
-    public static function getCountriesChunkLength(): int {
+    public static function getCountriesChunkLength(): int
+    {
         return Config::get('countries-states-cities.countries.chunk_length', 50);
     }
 
-    public static function getStatesChunkLength(): int {
+    public static function getStatesChunkLength(): int
+    {
         return Config::get('countries-states-cities.states.chunk_length', 200);
     }
 
-    public static function getCitiesChunkLength(): int {
+    public static function getCitiesChunkLength(): int
+    {
         return Config::get('countries-states-cities.cities.chunk_length', 200);
     }
 
     // Activate
-    public static function hasIso2Activate(): bool {
+    public static function hasIso2Activate(): bool
+    {
         return ! empty(self::getIso2Activate());
     }
 
-    public static function hasIso3Activate(): bool {
+    public static function hasIso3Activate(): bool
+    {
         return ! empty(self::getIso3Activate());
     }
 
-    public static function hasIsoCodeActivate(): bool {
+    public static function hasIsoCodeActivate(): bool
+    {
         return self::hasIso2Activate() || self::hasIso3Activate();
     }
 
     // Except
-    public static function hasIso2Except(): bool {
+    public static function hasIso2Except(): bool
+    {
         return ! empty(self::getIso2Except());
     }
 
-    public static function hasIso3Except(): bool {
+    public static function hasIso3Except(): bool
+    {
         return ! empty(self::getIso3Except());
     }
 
-    public static function hasIsoCodeExcept(): bool {
+    public static function hasIsoCodeExcept(): bool
+    {
         return self::hasIso2Except() || self::hasIso3Except();
     }
 
     // Tables
 
-    public static function hasAllTables(): bool {
+    public static function hasAllTables(): bool
+    {
         return self::hasCountriesTable() &&
             self::hasStatesTable() &&
             self::hasCitiesTable();
     }
 
-    public static function hasCountriesTable(): bool {
+    public static function hasCountriesTable(): bool
+    {
         return self::hasTable(tableName: 'countries');
     }
 
-    public static function hasStatesTable(): bool {
+    public static function hasStatesTable(): bool
+    {
         return self::hasTable(tableName: 'states');
     }
 
-    public static function hasCitiesTable(): bool {
+    public static function hasCitiesTable(): bool
+    {
         return self::hasTable(tableName: 'cities');
     }
 
-    public static function isAllTablesEmpty(): bool {
+    public static function isAllTablesEmpty(): bool
+    {
         return self::isCitiesTableEmpty() &&
             self::isStatesTableEmpty() &&
             self::isCitiesTableEmpty();
     }
 
-    public static function isCountriesTableEmpty(): bool {
+    public static function isCountriesTableEmpty(): bool
+    {
         return self::isTableEmpty(tableName: 'countries');
     }
 
-    public static function isStatesTableEmpty(): bool {
+    public static function isStatesTableEmpty(): bool
+    {
         return self::isTableEmpty(tableName: 'states');
     }
 
-    public static function isCitiesTableEmpty(): bool {
+    public static function isCitiesTableEmpty(): bool
+    {
         return self::isTableEmpty(tableName: 'cities');
     }
 
-    private static function hasTable(string $tableName): bool {
+    private static function hasTable(string $tableName): bool
+    {
         return Schema::hasTable($tableName);
     }
 
-    private static function isTableEmpty($tableName): bool {
+    private static function isTableEmpty($tableName): bool
+    {
         if (! self::hasTable($tableName) && (DB::table($tableName)->count() > 0)) {
             return false;
         }
@@ -128,12 +155,14 @@ class CountriesStatesCities {
         return true;
     }
 
-    public static function isSeedersPublished(): bool {
+    public static function isSeedersPublished(): bool
+    {
         return ! empty(glob(database_path('seeders/CountriesStatesCitiesTableSeeder.php')));
     }
 
     // get Ids
-    public static function getIdsCountriesActiveByIso2(): array {
+    public static function getIdsCountriesActiveByIso2(): array
+    {
         if (! self::hasIso2Activate()) {
             return [];
         }
@@ -144,7 +173,8 @@ class CountriesStatesCities {
         );
     }
 
-    public static function getIdsCountriesActiveByIso3(): array {
+    public static function getIdsCountriesActiveByIso3(): array
+    {
         if (! self::hasIso3Activate()) {
             return [];
         }
@@ -155,7 +185,8 @@ class CountriesStatesCities {
         );
     }
 
-    public static function getIdsCountriesExceptByIso2(): array {
+    public static function getIdsCountriesExceptByIso2(): array
+    {
         if (! self::hasIso2Except()) {
             return [];
         }
@@ -166,7 +197,8 @@ class CountriesStatesCities {
         );
     }
 
-    public static function getIdsCountriesExceptByIso3(): array {
+    public static function getIdsCountriesExceptByIso3(): array
+    {
         if (! self::hasIso3Except()) {
             return [];
         }
@@ -177,29 +209,35 @@ class CountriesStatesCities {
         );
     }
 
-    private static function getCountriesIdsBy(string $column, array $values): array {
+    private static function getCountriesIdsBy(string $column, array $values): array
+    {
         $countries = collect(self::getCountries());
 
         return $countries->whereIn($column, $values)->pluck('id')->toArray();
     }
 
-    public static function getCountries(): array {
+    public static function getCountries(): array
+    {
         return self::getJsonFileAsArray('countries');
     }
 
-    public static function getJobs(): array {
+    public static function getJobs(): array
+    {
         return self::getJsonFileAsArray(config('vars.educational_jobs'));
     }
 
-    public static function getStates(): array {
+    public static function getStates(): array
+    {
         return self::getJsonFileAsArray('states');
     }
 
-    public static function getCities(): array {
+    public static function getCities(): array
+    {
         return self::getJsonFileAsArray('cities');
     }
 
-    private static function getJsonFileAsArray(string $fileName) {
+    private static function getJsonFileAsArray(string $fileName)
+    {
         $data = File::get(__DIR__.'/data/'."$fileName.json");
         if (! $data) {
             return [];
@@ -208,7 +246,8 @@ class CountriesStatesCities {
         return json_decode($data);
     }
 
-    protected static function isIso2CountriesActive(string $iso2): bool {
+    protected static function isIso2CountriesActive(string $iso2): bool
+    {
         if (! self::hasIso2Activate()) {
             return false;
         }
@@ -216,7 +255,8 @@ class CountriesStatesCities {
         return in_array($iso2, self::getIso2Activate());
     }
 
-    protected static function isIso3CountriesActive(string $iso3): bool {
+    protected static function isIso3CountriesActive(string $iso3): bool
+    {
         if (! self::hasIso3Activate()) {
             return false;
         }
@@ -224,7 +264,8 @@ class CountriesStatesCities {
         return in_array($iso3, self::getIso3Activate());
     }
 
-    protected static function isIso2CountriesExcept(string $iso2): bool {
+    protected static function isIso2CountriesExcept(string $iso2): bool
+    {
         if (! self::hasIso2Except()) {
             return false;
         }
@@ -232,7 +273,8 @@ class CountriesStatesCities {
         return in_array($iso2, self::getIso2Except());
     }
 
-    protected static function isIso3CountriesExcept(string $iso3): bool {
+    protected static function isIso3CountriesExcept(string $iso3): bool
+    {
         if (! self::hasIso3Except()) {
             return false;
         }
@@ -241,7 +283,8 @@ class CountriesStatesCities {
     }
 
     // check if Country Active By Iso2 Or Iso3 in config file
-    public static function isCountryActiveByIso2OrIso3(string $iso2, string $iso3): bool {
+    public static function isCountryActiveByIso2OrIso3(string $iso2, string $iso3): bool
+    {
         if (self::hasIsoCodeExcept()) {
             if (! empty($iso2) && self::hasIso2Except()) {
                 if (self::isIso2CountriesExcept($iso2)) {
@@ -275,7 +318,8 @@ class CountriesStatesCities {
 
     // check if State Active By id Country
 
-    public static function isStateActiveByCountryId(int $countryId): bool {
+    public static function isStateActiveByCountryId(int $countryId): bool
+    {
         if (self::hasIsoCodeExcept() && ! empty($countryId)) {
             if (self::isIdCountryExcept($countryId)) {
                 return false;
@@ -288,7 +332,8 @@ class CountriesStatesCities {
         return self::isActivateStates();
     }
 
-    public static function isCityActiveByCountryId(int $countryId): bool {
+    public static function isCityActiveByCountryId(int $countryId): bool
+    {
         if (self::hasIsoCodeExcept() && ! empty($countryId)) {
             if (self::isIdCountryExcept($countryId)) {
                 return false;
@@ -302,12 +347,14 @@ class CountriesStatesCities {
         return self::isActivateCities();
     }
 
-    private static function isIdCountryExcept(int $countryId): bool {
+    private static function isIdCountryExcept(int $countryId): bool
+    {
         return in_array($countryId, self::getIdsCountriesExceptByIso2OrIso3());
 
     }
 
-    private static function getIdsCountriesExceptByIso2OrIso3(): array {
+    private static function getIdsCountriesExceptByIso2OrIso3(): array
+    {
         $ids = [];
 
         if (self::hasIso2Except()) {
@@ -324,11 +371,13 @@ class CountriesStatesCities {
         return $ids;
     }
 
-    private static function isIdCountryActive(int $countryId): bool {
+    private static function isIdCountryActive(int $countryId): bool
+    {
         return in_array($countryId, self::getIdsCountriesActiveByIso2OrIso3());
     }
 
-    private static function getIdsCountriesActiveByIso2OrIso3(): array {
+    private static function getIdsCountriesActiveByIso2OrIso3(): array
+    {
         $idsIso2 = self::getIdsCountriesActiveByIso2();
         $idsIso3 = self::getIdsCountriesActiveByIso3();
         $ids = array_merge(
@@ -346,7 +395,8 @@ class CountriesStatesCities {
     /**
      * @throws InvalidCodeException
      */
-    public static function ensureIsoCodesIsValid(): void {
+    public static function ensureIsoCodesIsValid(): void
+    {
         self::ensureIso2IsValid();
         self::ensureIso3IsValid();
 
@@ -355,7 +405,8 @@ class CountriesStatesCities {
     /**
      * @throws InvalidCodeException
      */
-    protected static function ensureIso2IsValid(): void {
+    protected static function ensureIso2IsValid(): void
+    {
         if (! empty(self::getIso2ActivateOrExcept())) {
             foreach (self::getIso2ActivateOrExcept() as $key => $value) {
                 if (! self::isIsoCodeValid(
@@ -371,7 +422,8 @@ class CountriesStatesCities {
     /**
      * @throws InvalidCodeException
      */
-    protected static function ensureIso3IsValid(): void {
+    protected static function ensureIso3IsValid(): void
+    {
         if (! empty(self::getIso3ActivateOrExcept())) {
             foreach (self::getIso3ActivateOrExcept() as $value) {
                 if (! self::isIsoCodeValid(
@@ -384,7 +436,8 @@ class CountriesStatesCities {
         }
     }
 
-    protected static function getIso2ActivateOrExcept(): array {
+    protected static function getIso2ActivateOrExcept(): array
+    {
         $iso2 = [];
         if (self::hasIso2Activate()) {
             $iso2 = array_merge($iso2, self::getIso2Activate());
@@ -400,7 +453,8 @@ class CountriesStatesCities {
         return $iso2;
     }
 
-    private static function isIsoCodeValid(string $column, string $value): bool {
+    private static function isIsoCodeValid(string $column, string $value): bool
+    {
         $validate = collect(self::getCountries())
             ->pluck($column);
         $validate = $validate->all();
@@ -408,7 +462,8 @@ class CountriesStatesCities {
         return in_array($value, $validate);
     }
 
-    private static function getIso3ActivateOrExcept(): array {
+    private static function getIso3ActivateOrExcept(): array
+    {
         $iso3 = [];
         if (self::hasIso3Activate()) {
             $iso3 = array_merge($iso3, self::getIso3Activate());
@@ -427,7 +482,8 @@ class CountriesStatesCities {
     /**
      * Returns existing migration file if found, else uses the current timestamp.
      */
-    public static function getMigrationFileName(string $migrationFileName): ?string {
+    public static function getMigrationFileName(string $migrationFileName): ?string
+    {
 
         $filesystem = app()->make(Filesystem::class);
         $databasePath = app()->databasePath().DIRECTORY_SEPARATOR.'migrations'.DIRECTORY_SEPARATOR;
@@ -444,7 +500,8 @@ class CountriesStatesCities {
 
     }
 
-    public static function hasMigrationFileName(string $migrationFileName): bool {
+    public static function hasMigrationFileName(string $migrationFileName): bool
+    {
         return ! is_null(self::getMigrationFileName($migrationFileName));
     }
 }

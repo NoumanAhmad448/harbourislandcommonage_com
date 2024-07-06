@@ -5,12 +5,14 @@ namespace Database\Seeders;
 use App\Models\Job;
 use Illuminate\Database\Seeder;
 
-class JobSeeder extends Seeder {
+class JobSeeder extends Seeder
+{
     public function __construct(
         protected CountriesStatesCities $serves
     ) {}
 
-    public function run(): void {
+    public function run(): void
+    {
         try {
             $this->createJobs();
         } catch (\Exception $e) {
@@ -19,7 +21,8 @@ class JobSeeder extends Seeder {
 
     }
 
-    protected function createJobs(): void {
+    protected function createJobs(): void
+    {
         $jobs = $this->serves->getJobs();
         $chunkLength = $this->serves->getCountriesChunkLength();
 

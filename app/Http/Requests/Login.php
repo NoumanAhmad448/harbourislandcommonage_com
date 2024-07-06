@@ -6,10 +6,12 @@ use App\Rules\NameRules;
 use Illuminate\Contracts\Validation\Validator;
 use Laravel\Fortify\Http\Requests\LoginRequest as FortifyLoginRequest;
 
-class Login extends FortifyLoginRequest {
+class Login extends FortifyLoginRequest
+{
     private $nameRules;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->nameRules = new NameRules;
     }
 
@@ -18,7 +20,8 @@ class Login extends FortifyLoginRequest {
      *
      * @return bool
      */
-    public function authorize() {
+    public function authorize()
+    {
         return true;
     }
 
@@ -27,7 +30,8 @@ class Login extends FortifyLoginRequest {
      *
      * @return array<string, mixed>
      */
-    public function rules() {
+    public function rules()
+    {
 
         $rules = [
             config('form.email') => NameRules::emailRules(false),
@@ -45,7 +49,8 @@ class Login extends FortifyLoginRequest {
      *
      * @return array
      */
-    public function messages() {
+    public function messages()
+    {
         $messages = [];
 
         $messages = $this->nameRules->userValidationMsg();
@@ -56,7 +61,8 @@ class Login extends FortifyLoginRequest {
         return $messages;
     }
 
-    protected function failedValidation(Validator $validator) {
+    protected function failedValidation(Validator $validator)
+    {
         failValidation($validator);
     }
 
@@ -65,7 +71,8 @@ class Login extends FortifyLoginRequest {
      *
      * @return array<string, string>
      */
-    public function attributes(): array {
+    public function attributes(): array
+    {
         return __('attributes');
     }
 }

@@ -4,7 +4,8 @@ namespace App\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class ProfilePolicy {
+class ProfilePolicy
+{
     use HandlesAuthorization;
 
     /**
@@ -12,11 +13,13 @@ class ProfilePolicy {
      *
      * @return void
      */
-    public function __construct() {
+    public function __construct()
+    {
         //
     }
 
-    public function update() {
+    public function update()
+    {
         return is_auth_user();
     }
 }

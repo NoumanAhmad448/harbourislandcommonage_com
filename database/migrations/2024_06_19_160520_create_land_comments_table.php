@@ -4,13 +4,15 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration {
+return new class extends Migration
+{
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up() {
+    public function up()
+    {
         if (! Schema::hasTable(config('table.land_comments'))) {
             Schema::create(config('table.land_comments'), function (Blueprint $table) {
                 $table->increments(config('table.primary_key'));
@@ -33,7 +35,8 @@ return new class extends Migration {
      *
      * @return void
      */
-    public function down() {
+    public function down()
+    {
         Schema::dropIfExists(config('table.land_comments'));
     }
 };

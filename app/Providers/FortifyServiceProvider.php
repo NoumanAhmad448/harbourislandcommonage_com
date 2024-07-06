@@ -15,13 +15,17 @@ use Illuminate\Support\Str;
 use Laravel\Fortify\Contracts\LoginResponse;
 use Laravel\Fortify\Fortify;
 
-class FortifyServiceProvider extends ServiceProvider {
+class FortifyServiceProvider extends ServiceProvider
+{
     /**
      * Register any application services.
      */
-    public function register(): void {
-        $this->app->instance(LoginResponse::class, new class implements LoginResponse {
-            public function toResponse($request) {
+    public function register(): void
+    {
+        $this->app->instance(LoginResponse::class, new class implements LoginResponse
+        {
+            public function toResponse($request)
+            {
                 return customResponse([config('setting.is_success') => true,
                     config('setting.message') => __('messages.logged_in')], config('setting.status_200'));
             }
@@ -31,7 +35,8 @@ class FortifyServiceProvider extends ServiceProvider {
     /**
      * Bootstrap any application services.
      */
-    public function boot(): void {
+    public function boot(): void
+    {
         Fortify::createUsersUsing(CreateNewUser::class);
         Fortify::updateUserProfileInformationUsing(UpdateUserProfileInformation::class);
         Fortify::updateUserPasswordsUsing(UpdateUserPassword::class);

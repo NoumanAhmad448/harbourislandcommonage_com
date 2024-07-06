@@ -4,13 +4,15 @@ namespace App\Actions\Fortify;
 
 use Illuminate\Validation\Rules\Password;
 
-trait PasswordValidationRules {
+trait PasswordValidationRules
+{
     /**
      * Get the validation rules used to validate passwords.
      *
      * @return array<int, \Illuminate\Contracts\Validation\Rule|array|string>
      */
-    protected function passwordRules($verifyReq = false): array {
+    protected function passwordRules($verifyReq = false): array
+    {
         $pass = new Password(config('setting.min_pass'));
         if (config('setting.pass_ltr_req')) {
             $pass = $pass->letters();

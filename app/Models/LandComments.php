@@ -5,18 +5,21 @@ namespace App\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class LandComments extends CustomModel {
+class LandComments extends CustomModel
+{
     use CustomModelTrait, HasFactory;
 
     protected $table = 'land_comments';
 
     protected $guarded = [];
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->table = config('table.land_comments');
     }
 
-    public function insertRecords($user, $input) {
+    public function insertRecords($user, $input)
+    {
         $data = [];
         debug_logs($input);
         debug_logs($user);
@@ -43,11 +46,13 @@ class LandComments extends CustomModel {
         return $created_obj;
     }
 
-    public function user() {
+    public function user()
+    {
         return $this->belongsTo(User::class, config('table.created_by'));
     }
 
-    public function landDetails($land_id, $setting = ['order' => 'asc']) {
+    public function landDetails($land_id, $setting = ['order' => 'asc'])
+    {
         $land_id = str_to_array($land_id);
         $land = LandComments::whereIn(config('table.land_create_id'), $land_id);
         if ($setting[config('vars.order')] === config('vars.desc')) {

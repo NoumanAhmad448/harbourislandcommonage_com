@@ -16,7 +16,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string $longitude
  * @property bool $is_active
  */
-class State extends Model {
+class State extends Model
+{
     use SoftDeletes;
 
     protected $fillable = [
@@ -27,15 +28,18 @@ class State extends Model {
         'is_active' => 'boolean',
     ];
 
-    public function scopeActive(Builder $query): void {
+    public function scopeActive(Builder $query): void
+    {
         $query->where('is_active', 1);
     }
 
-    public function country(): BelongsTo {
+    public function country(): BelongsTo
+    {
         return $this->belongsTo(Country::class);
     }
 
-    public function cities(): HasMany {
+    public function cities(): HasMany
+    {
         return $this->hasMany(City::class);
     }
 }

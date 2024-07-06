@@ -4,7 +4,8 @@ namespace App\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
 
-class SpecificDomainsOnly implements Rule {
+class SpecificDomainsOnly implements Rule
+{
     private $domain;
 
     /**
@@ -12,7 +13,8 @@ class SpecificDomainsOnly implements Rule {
      *
      * @return void
      */
-    public function __construct() {
+    public function __construct()
+    {
         //
     }
 
@@ -23,7 +25,8 @@ class SpecificDomainsOnly implements Rule {
      * @param  mixed  $value
      * @return bool
      */
-    public function passes($attribute, $value) {
+    public function passes($attribute, $value)
+    {
         $domain = strtolower(substr($value, strpos($value, '@') + 1));
         $this->domain = $domain;
         $domains = config('domains');
@@ -36,7 +39,8 @@ class SpecificDomainsOnly implements Rule {
      *
      * @return string
      */
-    public function message() {
+    public function message()
+    {
         return __('messages.invalid_domain', [config('vars.domain') => $this->domain]);
     }
 }
