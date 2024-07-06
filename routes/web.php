@@ -63,5 +63,6 @@ Route::prefix($admin_path)->middleware(config('middlewares.super_admin'))->group
     Route::post('/sub-admins', [SuperAdmin::class, 'CreatesubAdmin'])->name('crte_admin');
     Route::get('/land-logs', [SuperAdmin::class, 'landLogs'])->name('land_logs');
     Route::get('/comment-logs', [SuperAdmin::class, 'commentLogs'])->name('comment_logs');
+    Route::get('/documentation', [SuperAdmin::class, 'documentation'])->name('documentation');
 
 });

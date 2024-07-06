@@ -14,6 +14,7 @@ use App\Models\LandComments;
 use App\Models\LandFile;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class SuperAdmin extends Controller {
     private $createLandObj;
@@ -144,5 +145,9 @@ class SuperAdmin extends Controller {
         } catch (\Exception $d) {
             return server_logs($e = [true, $d], $request = [true, $request], $config = true);
         }
+    }
+
+    public function documentation() {
+        return File::get(resource_path().'/docs/index.html');
     }
 }
