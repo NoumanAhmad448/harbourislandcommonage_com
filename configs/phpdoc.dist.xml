@@ -13,8 +13,11 @@
       <api format="php">
       <source dsn=".">
         <!--1 or more repetitions:-->
-        <!-- <path>src</path> -->
+        <path>/**</path>
       </source>
+      <files>
+        <directory>.</directory>
+      </files>
       <!--Optional:-->
       <!-- <output>api</output> -->
       <!--Optional:-->
