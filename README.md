@@ -51,6 +51,10 @@ composer deploy
 ```
 npx eslint -c configs/eslint.config.mjs
 ```
+20.
+```
+npx prettier . --write
+```
 
 ## Local Setup (Development)
 1. install xampp (Required PHP version -> 8.2) [Download Link](https://www.apachefriends.org/)

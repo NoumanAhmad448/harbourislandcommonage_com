@@ -35,7 +35,7 @@ jobs:
       - name: setup nodejs
         uses: actions/setup-node@v4
         with:
-          node-version: '18.18.0'
+          node-version: "18.18.0"
 
       - name: Install Node.js dependencies
         run: npm ci
@@ -44,6 +44,7 @@ jobs:
         uses: wearerequired/lint-action@v2
         with:
           prettier: true
+          auto_fix: true
 
       - name: Run Pint
         run: pint --config configs/pint.json
