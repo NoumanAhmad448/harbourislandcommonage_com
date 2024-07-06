@@ -9,7 +9,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        php: [8.3]
+        php: [8.2]
         commit_msg: ["Fixes coding style"]
         script_command:
           [
@@ -26,18 +26,26 @@ jobs:
         with:
           php-version: ${{ matrix.php }}
           extensions: json, dom, curl, libxml, mbstring, bz2, fileinfo, gd, gettext,mbstring,exif,mysqli,pdo_mysql
+          tools: pint:1.16.1,phpdoc,composer:2.4.4
           coverage: none
 
-      - name: Install Pint
-        run: composer global require laravel/pint
+      - name: check composer version
+        run: composer --version
+
+      # - name: Install Pint
+      #   run: composer global require laravel/pint
 
       - name: Run Pint
-        run: pint
+        run: pint --config configs/pint.json
+
+      - name: Run PHPDoc
+        run: phpdoc --config configs/phpdoc.dist.xml
 
       - name: Commit linted files
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: ${{ matrix.commit_msg }}
+          branch: master
 
       - name: Sync files
         uses: SamKirkland/FTP-Deploy-Action@4.0.0

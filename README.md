@@ -43,6 +43,11 @@ for not letting change the file
 ./vendor/bin/pint --test
 ```
 
+18. deploy with one key
+```
+composer deploy
+```
+
 ## Local Setup (Development)
 1. install xampp (Required PHP version -> 8.2) [Download Link](https://www.apachefriends.org/)
 2. download node 16.18.0
