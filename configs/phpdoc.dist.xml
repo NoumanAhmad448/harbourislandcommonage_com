@@ -13,7 +13,7 @@
       <api format="php">
       <source dsn=".">
         <!--1 or more repetitions:-->
-        <path>/**</path>
+        <path>app</path>
       </source>
       <!--Optional:-->
       <!-- <output>api</output> -->
