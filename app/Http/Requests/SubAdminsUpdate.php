@@ -4,12 +4,10 @@ namespace App\Http\Requests;
 
 use App\Rules\NameRules;
 
-class SubAdminsUpdate extends CustomRequest
-{
+class SubAdminsUpdate extends CustomRequest {
     private $nameRules;
 
-    public function __construct()
-    {
+    public function __construct() {
         $this->nameRules = new NameRules;
     }
 
@@ -18,8 +16,7 @@ class SubAdminsUpdate extends CustomRequest
      *
      * @return bool
      */
-    public function authorize()
-    {
+    public function authorize() {
         return true;
     }
 
@@ -28,8 +25,7 @@ class SubAdminsUpdate extends CustomRequest
      *
      * @return array<string, mixed>
      */
-    public function rules()
-    {
+    public function rules() {
         $rules = [];
         $rules = $this->nameRules->adminUpdate();
 

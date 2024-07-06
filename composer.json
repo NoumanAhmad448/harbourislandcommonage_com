@@ -44,10 +44,16 @@
         }
     },
     "scripts": {
-        "validate-php": ["./vendor/bin/pint"],
+        "validate-php": ["./vendor/bin/pint --config configs/pint.json"],
         "deploy": [
             "composer validate-php",
             "npm run prod",
+            "git add . ",
+            "git commit -m --allow-empty",
+            "git push"
+        ],
+        "deploy_without": [
+            "composer validate-php",
             "git add . ",
             "git commit -m --allow-empty",
             "git push"

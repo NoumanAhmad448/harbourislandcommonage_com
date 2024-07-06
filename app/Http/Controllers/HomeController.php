@@ -5,20 +5,17 @@ namespace App\Http\Controllers;
 use App\Actions\Fortify\VerifyUser;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
-{
+class HomeController extends Controller {
     private $verifyUser;
 
     private $user;
 
-    public function __construct()
-    {
+    public function __construct() {
         $this->verifyUser = new VerifyUser;
         $this->user = auth()->user();
     }
 
-    public function index()
-    {
+    public function index() {
         try {
             $response = $this->indexApi();
             $data = [];
@@ -39,8 +36,7 @@ class HomeController extends Controller
         }
     }
 
-    public function indexApi()
-    {
+    public function indexApi() {
         try {
             return customResponse([config('setting.is_success') => true, 'data' => '']);
         } catch (\Exception $d) {
@@ -48,8 +44,7 @@ class HomeController extends Controller
         }
     }
 
-    public function logout(Request $request)
-    {
+    public function logout(Request $request) {
         try {
             $this->verifyUser->logout($request);
 
@@ -59,8 +54,7 @@ class HomeController extends Controller
         }
     }
 
-    public function login(Request $request)
-    {
+    public function login(Request $request) {
         try {
             if ($this->user) {
                 if (isAdmin(false)) {
@@ -76,8 +70,7 @@ class HomeController extends Controller
         }
     }
 
-    public function myProfile(Request $request)
-    {
+    public function myProfile(Request $request) {
         dd('here');
     }
 }

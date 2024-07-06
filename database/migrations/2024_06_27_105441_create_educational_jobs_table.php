@@ -4,15 +4,13 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEducationalJobsTable extends Migration
-{
+class CreateEducationalJobsTable extends Migration {
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up()
-    {
+    public function up() {
         if (! Schema::hasTable(config('table.jobs'))) {
 
             Schema::create(config('table.jobs'), function (Blueprint $table) {
@@ -30,8 +28,7 @@ class CreateEducationalJobsTable extends Migration
      *
      * @return void
      */
-    public function down()
-    {
+    public function down() {
         Schema::dropIfExists(config('table.jobs'));
     }
 }

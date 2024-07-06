@@ -4,8 +4,7 @@ namespace App\Console\Commands\Log;
 
 use Illuminate\Console\Command;
 
-class ClearLogFile extends Command
-{
+class ClearLogFile extends Command {
     // Command name
     protected $signature = "log:clear {duration=7}
                 {ext='*.log'}
@@ -14,8 +13,7 @@ class ClearLogFile extends Command
     // Description
     protected $description = 'Clear Laravel log';
 
-    public function handle()
-    {
+    public function handle() {
         debug_logs('duration => '.$this->argument('duration'));
         debug_logs('ext => '.$this->argument('ext'));
         $path = storage_path('logs');

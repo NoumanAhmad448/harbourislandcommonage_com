@@ -15,8 +15,7 @@ use App\Models\LandFile;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class SuperAdmin extends Controller
-{
+class SuperAdmin extends Controller {
     private $createLandObj;
 
     private $landFileObj;
@@ -35,8 +34,7 @@ class SuperAdmin extends Controller
 
     private $landComments;
 
-    public function __construct()
-    {
+    public function __construct() {
         $this->createLandObj = new CreateLand;
         $this->user = new User;
         $this->landFileObj = new LandFile;
@@ -49,8 +47,7 @@ class SuperAdmin extends Controller
 
     }
 
-    public function subAdmin(Request $request)
-    {
+    public function subAdmin(Request $request) {
         try {
             $data = [];
             $users = $this->user->getAdmins();
@@ -63,8 +60,7 @@ class SuperAdmin extends Controller
         }
     }
 
-    public function DelsubAdmin(SubAdminsDelete $request)
-    {
+    public function DelsubAdmin(SubAdminsDelete $request) {
         try {
             $request->validated();
             $this->user->delAdmins($request->id);
@@ -79,8 +75,7 @@ class SuperAdmin extends Controller
         }
     }
 
-    public function CreatesubAdmin(SubAdminsPost $request)
-    {
+    public function CreatesubAdmin(SubAdminsPost $request) {
         try {
             $request->validated();
             $this->createNewUser->createUser($request->all());
@@ -95,8 +90,7 @@ class SuperAdmin extends Controller
         }
     }
 
-    public function UpdatesubAdmin(SubAdminsUpdate $request)
-    {
+    public function UpdatesubAdmin(SubAdminsUpdate $request) {
         try {
             $request->validated();
             debug_logs($this->user->passChange($request->id, $request->password));
@@ -111,8 +105,7 @@ class SuperAdmin extends Controller
         }
     }
 
-    public function landLogs(Request $request)
-    {
+    public function landLogs(Request $request) {
         try {
             $data = [];
             if ($request->has(config('table.primary_key'))) {
@@ -134,8 +127,7 @@ class SuperAdmin extends Controller
     /**
      * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
      */
-    public function commentLogs(Request $request)
-    {
+    public function commentLogs(Request $request) {
         try {
             $data = [];
             if ($request->has(config('table.primary_key'))) {

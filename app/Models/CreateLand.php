@@ -4,21 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class CreateLand extends CustomModel
-{
+class CreateLand extends CustomModel {
     use CustomModelTrait, HasFactory;
 
     protected $table = 'land_create';
 
     protected $guarded = [];
 
-    public function __construct()
-    {
+    public function __construct() {
         $this->table = config('table.land_create');
     }
 
-    public function landDetails($user)
-    {
+    public function landDetails($user) {
         if (isNotArray($user)) {
             $user = [$user];
         }
@@ -33,8 +30,7 @@ class CreateLand extends CustomModel
         return $lands;
     }
 
-    public function insert($user, $input)
-    {
+    public function insert($user, $input) {
         $data = [];
         debug_logs($input);
         debug_logs($user);
@@ -60,35 +56,29 @@ class CreateLand extends CustomModel
         return $created_obj;
     }
 
-    public function user()
-    {
+    public function user() {
         return $this->belongsTo(User::class);
     }
 
-    public function landFiles()
-    {
+    public function landFiles() {
         return $this->hasMany(LandFile::class, config('table.land_create_id'));
     }
 
-    public function landComment()
-    {
+    public function landComment() {
         return $this->hasMany(LandComments::class, config('table.land_create_id'));
     }
 
-    public function commonUser()
-    {
+    public function commonUser() {
         return $this->belongsTo(User::class, 'user_id')
             ->whereNull('users.'.config('table.is_super_admin'))
             ->whereNull('users.'.config('table.is_admin'));
     }
 
-    public function city()
-    {
+    public function city() {
         return $this->belongsTo(City::class);
     }
 
-    public function normalUserRel()
-    {
+    public function normalUserRel() {
         return ['users' => function ($query) {
             $query->where('users.'.config('table.is_super_admin'), false);
         }];
