@@ -51,10 +51,10 @@
     -->
   </version>
   <!--Zero or more repetitions:-->
-  <setting name="string" value="string"/>
+  <!-- <setting name="string" value="string"/> -->
   <!--Zero or more repetitions:-->
-  <template name="string" location="string">
-    <!--Zero or more repetitions:-->
+  <!-- <template name="string" location="string">
+    Zero or more repetitions:
     <parameter name="string" value="string"/>
-  </template>
+  </template> -->
 </phpdocumentor>
