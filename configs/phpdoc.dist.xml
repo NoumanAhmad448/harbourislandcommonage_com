@@ -15,9 +15,6 @@
         <!--1 or more repetitions:-->
         <path>/**</path>
       </source>
-      <files>
-        <directory>.</directory>
-      </files>
       <!--Optional:-->
       <!-- <output>api</output> -->
       <!--Optional:-->
