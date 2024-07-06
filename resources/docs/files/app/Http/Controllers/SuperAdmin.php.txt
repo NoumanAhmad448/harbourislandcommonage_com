@@ -15,6 +15,7 @@ use App\Models\LandFile;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+
 class SuperAdmin extends Controller {
     private $createLandObj;
 
@@ -145,7 +146,8 @@ class SuperAdmin extends Controller {
             return server_logs($e = [true, $d], $request = [true, $request], $config = true);
         }
     }
-    function documentation() {
-        return File::get(public_path() . 'docs/index.html');
+
+    public function documentation() {
+        return File::get(resource_path().'/docs/index.html');
     }
 }
