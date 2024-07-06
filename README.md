@@ -47,6 +47,10 @@ for not letting change the file
 ```
 composer deploy
 ```
+19. js config change
+```
+npx eslint -c configs/eslint.config.mjs
+```
 
 ## Local Setup (Development)
 1. install xampp (Required PHP version -> 8.2) [Download Link](https://www.apachefriends.org/)

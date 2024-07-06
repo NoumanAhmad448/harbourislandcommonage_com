@@ -32,8 +32,18 @@ jobs:
       - name: check composer version
         run: composer --version
 
-      # - name: Install Pint
-      #   run: composer global require laravel/pint
+      - name: setup nodejs
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18.18.0'
+
+      - name: Install Node.js dependencies
+        run: npm ci
+
+      - name: Run linters
+        uses: wearerequired/lint-action@v2
+        with:
+          prettier: true
 
       - name: Run Pint
         run: pint --config configs/pint.json
