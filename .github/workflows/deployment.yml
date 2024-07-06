@@ -26,7 +26,7 @@ jobs:
         with:
           php-version: ${{ matrix.php }}
           extensions: json, dom, curl, libxml, mbstring, bz2, fileinfo, gd, gettext,mbstring,exif,mysqli,pdo_mysql
-          tools: pint:1.16.1,phpdoc
+          tools: pint:1.16.1,phpdoc,composer:2.4.4
           coverage: none
 
       - name: check composer version
