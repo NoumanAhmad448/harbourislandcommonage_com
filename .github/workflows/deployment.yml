@@ -33,23 +33,9 @@ jobs:
         with:
           commit_message: ${{ matrix.commit_msg }}
           branch: master
-
-  laravel-deployment:
-    needs: setup-php
+  nodejs-setup:
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: true
-      matrix:
-        script_command:
-          [
-            "pwd && cd ~/public_html/website_7171ee6c && pwd && chmod u+x ./server_deploy.sh && ./server_deploy.sh",
-          ]
-
     steps:
-      - uses: actions/checkout@v3
-      - name: Copy .env
-        run: php -r "file_exists('.env') || copy('.env.live', '.env');"
-
       - name: setup nodejs
         uses: actions/setup-node@v4
         with:
@@ -63,6 +49,22 @@ jobs:
         with:
           prettier: true
           auto_fix: true
+
+  project:
+    needs: ['setup-php',"nodejs-setup"]
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+      matrix:
+        script_command:
+          [
+            "pwd && cd ~/public_html/website_7171ee6c && pwd && chmod u+x ./server_deploy.sh && ./server_deploy.sh",
+          ]
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Copy .env
+        run: php -r "file_exists('.env') || copy('.env.live', '.env');"
 
       - name: Sync files
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
