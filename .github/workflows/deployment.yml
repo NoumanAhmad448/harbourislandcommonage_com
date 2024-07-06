@@ -39,7 +39,7 @@ jobs:
         run: pint --config configs/pint.json
 
       - name: Run PHPDoc
-        run: phpdoc --config configs/phpdoc.dist.xml
+        run: phpdoc --config phpdoc.dist.xml
 
       - name: Commit linted files
         uses: stefanzweifel/git-auto-commit-action@v5
