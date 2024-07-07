@@ -29,6 +29,10 @@ yes | php artisan key:generate
 
 # change folder permission
 yes | chmod -R 777 storage bootstrap/cache
+# read only permission
+# yes | chmod 444 file_name
+# read & write only permission
+# yes | chmod 666 file_name
 
 # Run seeder
 # yes | php artisan db:seed

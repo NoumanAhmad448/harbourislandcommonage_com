@@ -10,8 +10,8 @@ debug_logs("user_update => ".user_update)
 
 let user_id = ""
 
-$(`#${crte_admn}`).on(CLICK_EVENT, function () {
-    debug_logs(`inside the ${crte_admn} ${CLICK_EVENT} event`)
+$(`#${crte_admn}`).on(window.CLICK_EVENT, function () {
+    debug_logs(`inside the ${crte_admn} ${window.CLICK_EVENT} event`)
     $(`#${crtr_admn_mdl}`).toggleClass("hidden")
     const update_params = {}
     update_params["url"] = crte_admin_url
@@ -27,7 +27,7 @@ $(`#${crte_admn}`).on(CLICK_EVENT, function () {
     formSubmit(update_params,successCall, errCall)
 })
 
-update.on(CLICK_EVENT, function () {
+update.on(window.CLICK_EVENT, function () {
     // showLoader
     const loading_screen = showLoader()
 

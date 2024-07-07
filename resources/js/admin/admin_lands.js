@@ -10,7 +10,7 @@ debug_logs(message_form)
 debug_logs("land_update => ".land_update)
 let land_id = ""
 
-update.on(CLICK_EVENT, function () {
+update.on(window.CLICK_EVENT, function () {
     // showLoader
     const loading_screen = showLoader()
 
