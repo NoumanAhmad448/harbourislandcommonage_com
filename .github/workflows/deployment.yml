@@ -68,7 +68,7 @@ jobs:
         with:
           linter: prettier
           auto_fix: true
-          args: "--config configs/.prettierrc.json"
+          args: --config configs/.prettierrc.json
           extensions: "js,ts,html,css,tsx,json"
 
       - name: Sync files
