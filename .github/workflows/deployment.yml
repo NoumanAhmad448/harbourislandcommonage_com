@@ -60,11 +60,16 @@ jobs:
       - name: Install Node.js dependencies
         run: npm ci
 
-      - name: Run linters
+      - name: setup 8GB memory heap for node JS
+        run: export NODE_OPTIONS="--max-old-space-size=8192"
+
+      - name: Run linter prettier
         uses: wearerequired/lint-action@v2
         with:
-          prettier: true
+          linter: prettier
           auto_fix: true
+          args: "--config configs/.prettierrc.json"
+          extensions: "js,ts,html,css,tsx,json"
 
       - name: Sync files
         uses: SamKirkland/FTP-Deploy-Action@4.0.0

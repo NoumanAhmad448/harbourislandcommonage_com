@@ -47,13 +47,20 @@ for not letting change the file
 ```
 composer deploy
 ```
+or
+```
+composer deploy_without
+```
 19. js config change
 ```
 npx eslint -c configs/eslint.config.mjs
 ```
 20.
 ```
-npx prettier . --write
+npx prettier configs/pint.json --write --config configs/.prettierrc.json
+```
+```
+npx prettier . --write --config configs/.prettierrc.json
 ```
 
 ## Local Setup (Development)
