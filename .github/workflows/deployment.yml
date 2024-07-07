@@ -61,7 +61,9 @@ jobs:
         run: npm ci
 
       - name: setup 8GB memory heap for node JS
-        run: export NODE_OPTIONS="--max-old-space-size=2002"
+        run: |
+          export NODE_OPTIONS="--max-old-space-size=8002"
+          npm run build
 
       - name: Run linter prettier
         uses: wearerequired/lint-action@v2
