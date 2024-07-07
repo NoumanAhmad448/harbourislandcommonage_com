@@ -19,6 +19,7 @@ return [
     'inactive_users' => 'Inactive Users ',
     'active_users' => 'Active Users ',
     'Admins' => 'Admins ',
+    'phpdoc' => 'PHP Documentation ',
     'Users' => 'Users ',
     'Lands' => 'Lands ',
     'spr' => 'Super ',
