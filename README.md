@@ -65,7 +65,7 @@ npx prettier . --write --config configs/.prettierrc.json
 
 ## Local Setup (Development)
 1. install xampp (Required PHP version -> 8.2) [Download Link](https://www.apachefriends.org/)
-2. download node 16.18.0
+2. download node 18.18.0
 2. Go to .env file and change the DB connection
 3. Create a database
 ```

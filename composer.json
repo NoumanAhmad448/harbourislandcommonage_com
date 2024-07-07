@@ -47,6 +47,10 @@
         }
     },
     "scripts": {
+        "tags": [
+            "git tag v1 -a",
+            "git push origin --tags"
+        ],
         "validate-php": [
             "./vendor/bin/pint --config configs/pint.json"
         ],
