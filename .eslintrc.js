@@ -8,14 +8,14 @@ module.exports = {
         update_field: true,
         define: true,
         successCall: true,
-        errCall: true,
+        errCall: true
     },
     globals: {
         errCall: "readonly",
-        successCall: "readonly",
+        successCall: "readonly"
     },
     parserOptions: {
         ecmaVersion: 2022,
-        sourceType: "module",
-    },
+        sourceType: "module"
+    }
 };
