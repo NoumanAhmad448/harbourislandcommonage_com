@@ -66,10 +66,10 @@ jobs:
       - name: Run linter prettier
         uses: wearerequired/lint-action@v2
         with:
-          linter: prettier
-          auto_fix: true
-          args: --config configs/.prettierrc.json
-          extensions: "js,ts,html,css,tsx,json"
+          prettier: true
+          prettier_fix: true
+          prettier_args: --config configs/.prettierrc.json
+          prettier_extensions: "js,ts,html,css,tsx,json"
 
       - name: Sync files
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
