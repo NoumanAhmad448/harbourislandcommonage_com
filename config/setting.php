@@ -19,7 +19,7 @@ if (config('app.env') == 'production') {
     $js_folder = $public_folder.$js_folder;
     $css_folder = $public_folder.$css_folder;
     $storage = '/'.$public_fo.$storage;
-    $js_folder_ = $public_fo.$js_folder_;
+    $js_folder_ = $public_folder.$js_folder_;
 }
 
 return [
