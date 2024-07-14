@@ -28,7 +28,7 @@ php artisan config:cache
 yes | php artisan key:generate
 
 # change folder permission
-yes | chmod -R 777 storage bootstrap/cache
+yes | chmod -R 777 ~/public_html/website_7171ee6c/storage/ ~/public_html/website_7171ee6c/bootstrap/cache
 # read only permission
 # yes | chmod 444 file_name
 # read & write only permission
