@@ -41,6 +41,7 @@ class CreateLand extends CustomModel {
         $data = add_key_if_exist(config('table.description'), $input, $data);
 
         $data[config('table.user_id')] = $user->id;
+        $data[config('table.uuid')] = gen_str(true);
         $data[config('table.city').'_id'] = $input[config('table.city')];
         $created_obj = CreateLand::create($data);
         debug_logs('Before data');
