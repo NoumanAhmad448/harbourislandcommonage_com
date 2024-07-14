@@ -121,6 +121,26 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Console-Commands-Log-DeleteFiles.html#property_description"
         },                {
+            "fqsen": "\\App\\Console\\Commands\\Log\\StorageLink",
+            "name": "StorageLink",
+            "summary": "",
+            "url": "classes/App-Console-Commands-Log-StorageLink.html"
+        },                {
+            "fqsen": "\\App\\Console\\Commands\\Log\\StorageLink\u003A\u003Ahandle\u0028\u0029",
+            "name": "handle",
+            "summary": "",
+            "url": "classes/App-Console-Commands-Log-StorageLink.html#method_handle"
+        },                {
+            "fqsen": "\\App\\Console\\Commands\\Log\\StorageLink\u003A\u003A\u0024signature",
+            "name": "signature",
+            "summary": "",
+            "url": "classes/App-Console-Commands-Log-StorageLink.html#property_signature"
+        },                {
+            "fqsen": "\\App\\Console\\Commands\\Log\\StorageLink\u003A\u003A\u0024description",
+            "name": "description",
+            "summary": "",
+            "url": "classes/App-Console-Commands-Log-StorageLink.html#property_description"
+        },                {
             "fqsen": "\\App\\Console\\Kernel",
             "name": "Kernel",
             "summary": "",
