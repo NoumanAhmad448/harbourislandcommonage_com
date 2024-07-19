@@ -55,12 +55,16 @@ composer deploy_without
 ```
 npx eslint -c configs/eslint.config.mjs
 ```
-20.
+20. prettier syntax
 ```
 npx prettier configs/pint.json --write --config configs/.prettierrc.json
 ```
 ```
 npx prettier . --write --config configs/.prettierrc.json
+```
+21. create storage folder link
+```
+php artisan strge:ln
 ```
 
 ## Local Setup (Development)

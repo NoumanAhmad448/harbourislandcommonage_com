@@ -19,6 +19,7 @@ return [
     'js_debug' => env('JS_DEBUG', false),
     'google_captcha_key' => env('NOCAPTCHA_SITEKEY', false),
     'google_captcha_secret' => env('NOCAPTCHA_SECRET', false),
+    'server_path' => env('SERVER_PATH', '~/public_html/website_7171ee6c/'),
 
     /*
     |--------------------------------------------------------------------------
