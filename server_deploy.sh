@@ -49,5 +49,8 @@ php artisan migrate --force
 # check project health notification
 php artisan health:check --no-notification
 
+# runs cron
+php artisan schedule:run >> /dev/null 2>&1
+
 # Turn off maintenance mode
 php artisan up

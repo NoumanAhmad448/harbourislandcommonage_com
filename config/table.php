@@ -1,6 +1,12 @@
 <?php
 
 return [
+    'message' => 'message',
+    'status' => 'status',
+    'w_name' => 'w_name',
+    'ends_at' => 'ends_at',
+    'starts_at' => 'starts_at',
+    'cron_jobs' => 'cron_jobs',
     'uuid' => 'uuid',
     'land_logs' => 'land_logs',
     'land_id' => 'land_id',
