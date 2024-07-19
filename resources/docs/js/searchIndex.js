@@ -1326,6 +1326,41 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Models-CreateLandLog.html#property_guarded"
         },                {
+            "fqsen": "\\App\\Models\\CronJobs",
+            "name": "CronJobs",
+            "summary": "",
+            "url": "classes/App-Models-CronJobs.html"
+        },                {
+            "fqsen": "\\App\\Models\\CronJobs\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/App-Models-CronJobs.html#method___construct"
+        },                {
+            "fqsen": "\\App\\Models\\CronJobs\u003A\u003Acreate_job\u0028\u0029",
+            "name": "create_job",
+            "summary": "",
+            "url": "classes/App-Models-CronJobs.html#method_create_job"
+        },                {
+            "fqsen": "\\App\\Models\\CronJobs\u003A\u003Aupdate_job\u0028\u0029",
+            "name": "update_job",
+            "summary": "",
+            "url": "classes/App-Models-CronJobs.html#method_update_job"
+        },                {
+            "fqsen": "\\App\\Models\\CronJobs\u003A\u003A\u0024table",
+            "name": "table",
+            "summary": "",
+            "url": "classes/App-Models-CronJobs.html#property_table"
+        },                {
+            "fqsen": "\\App\\Models\\CronJobs\u003A\u003A\u0024timestamps",
+            "name": "timestamps",
+            "summary": "",
+            "url": "classes/App-Models-CronJobs.html#property_timestamps"
+        },                {
+            "fqsen": "\\App\\Models\\CronJobs\u003A\u003A\u0024guarded",
+            "name": "guarded",
+            "summary": "",
+            "url": "classes/App-Models-CronJobs.html#property_guarded"
+        },                {
             "fqsen": "\\CustomAuthenticatable",
             "name": "CustomAuthenticatable",
             "summary": "",

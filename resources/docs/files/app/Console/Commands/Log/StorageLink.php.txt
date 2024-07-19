@@ -2,6 +2,9 @@
 
 namespace App\Console\Commands\Log;
 
+use App\Models\CronJobs;
+use Carbon\Carbon;
+use Exception;
 use Illuminate\Console\Command;
 
 class StorageLink extends Command {
@@ -10,25 +13,43 @@ class StorageLink extends Command {
             ';
 
     // Description
-    protected $description = 'link storage folder and change the permission of storage folder';
+    protected $description = 'Link storage folder and change the permission of storage folder';
 
     public function handle() {
+        $cron_id = CronJobs::create_job([
+            config('table.name') => $this->signature,
+            config('table.status') => config('constants.idle'),
+        ]);
 
-        exec('pwd');
+        try {
 
-        $unlink_storage = 'unlink ~/public_html/website_7171ee6c/public/storage';
-        $storage = 'ln -s ~/public_html/website_7171ee6c/storage/app/public ~/public_html/website_7171ee6c/public/storage';
-        $change_permission = 'chmod -R 777 ~/public_html/website_7171ee6c/storage/';
-        $show_public_dir = 'ls ~/public_html/website_7171ee6c/public -l';
+            exec('pwd');
 
-        debug_logs($unlink_storage);
-        debug_logs($storage);
-        debug_logs($change_permission);
+            $unlink_storage = 'unlink '.config('app.server_path').'public/storage';
+            $storage = 'ln -s '.config('app.server_path').'storage/app/public '.config('app.server_path').'public/storage';
+            $change_permission = 'chmod -R 777 '.config('app.server_path').'storage/';
+            $show_public_dir = 'ls '.config('app.server_path').'public -l';
 
-        exec($unlink_storage);
-        exec($storage);
-        exec($change_permission);
-        $this->info(__('messages.cnsl_msg', ['msg' => 'storage folder has been linked']));
-        exec($show_public_dir);
+            debug_logs($unlink_storage);
+            debug_logs($storage);
+            debug_logs($change_permission);
+
+            exec($unlink_storage);
+            exec($storage);
+            exec($change_permission);
+            $this->info(__('messages.cnsl_msg', ['msg' => 'storage folder has been linked']));
+            exec($show_public_dir);
+
+            CronJobs::update_job($cron_id, [
+                config('table.status') => config('constants.successed'),
+                config('table.ends_at') => Carbon::now(),
+            ]);
+        } catch (Exception $e) {
+            CronJobs::update_job($cron_id, [
+                config('table.status') => config('constants.error'),
+                config('table.message') => $e->getMessage(),
+                config('table.ends_at') => Carbon::now(),
+            ]);
+        }
     }
 }
