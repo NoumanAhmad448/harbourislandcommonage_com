@@ -2,6 +2,8 @@
 
 namespace App\Policies;
 
+use App\Models\CreateLand;
+use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class LandPolicy {
@@ -16,8 +18,13 @@ class LandPolicy {
         //
     }
 
-    public function update() {
-        //
+    public function update(User $user, CreateLand $land) {
+        debug_logs($user->id);
+        debug_logs($land->id);
+        debug_logs('condition for land & user id');
+        debug_logs($user->id == $land->user_id);
+
+        return $user->id == $land->user_id;
     }
 
     public function create(): bool {

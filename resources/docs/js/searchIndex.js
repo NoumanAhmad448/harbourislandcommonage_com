@@ -516,6 +516,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Http-Controllers-LandCreateController.html#method_land"
         },                {
+            "fqsen": "\\App\\Http\\Controllers\\LandCreateController\u003A\u003AstoreFiles\u0028\u0029",
+            "name": "storeFiles",
+            "summary": "",
+            "url": "classes/App-Http-Controllers-LandCreateController.html#method_storeFiles"
+        },                {
             "fqsen": "\\App\\Http\\Controllers\\LandCreateController\u003A\u003AlandSave\u0028\u0029",
             "name": "landSave",
             "summary": "",
@@ -541,6 +546,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Http-Controllers-LandCreateController.html#method_landCreate"
         },                {
+            "fqsen": "\\App\\Http\\Controllers\\LandCreateController\u003A\u003AlandUpdateShow\u0028\u0029",
+            "name": "landUpdateShow",
+            "summary": "",
+            "url": "classes/App-Http-Controllers-LandCreateController.html#method_landUpdateShow"
+        },                {
             "fqsen": "\\App\\Http\\Controllers\\LandCreateController\u003A\u003A\u0024createNewUser",
             "name": "createNewUser",
             "summary": "",
@@ -560,6 +570,21 @@ Search.appendIndex(
             "name": "email",
             "summary": "",
             "url": "classes/App-Http-Controllers-LandCreateController.html#property_email"
+        },                {
+            "fqsen": "\\App\\Http\\Controllers\\LandCreateController\u003A\u003A\u0024createLandObj",
+            "name": "createLandObj",
+            "summary": "",
+            "url": "classes/App-Http-Controllers-LandCreateController.html#property_createLandObj"
+        },                {
+            "fqsen": "\\App\\Http\\Controllers\\LandCreateController\u003A\u003A\u0024landFileObj",
+            "name": "landFileObj",
+            "summary": "",
+            "url": "classes/App-Http-Controllers-LandCreateController.html#property_landFileObj"
+        },                {
+            "fqsen": "\\App\\Http\\Controllers\\LandCreateController\u003A\u003A\u0024fileUplaodObj",
+            "name": "fileUplaodObj",
+            "summary": "",
+            "url": "classes/App-Http-Controllers-LandCreateController.html#property_fileUplaodObj"
         },                {
             "fqsen": "\\App\\Http\\Controllers\\SuperAdmin",
             "name": "SuperAdmin",
@@ -1251,10 +1276,25 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Models-CreateLand.html#method_landDetails"
         },                {
+            "fqsen": "\\App\\Models\\CreateLand\u003A\u003AinsertData\u0028\u0029",
+            "name": "insertData",
+            "summary": "",
+            "url": "classes/App-Models-CreateLand.html#method_insertData"
+        },                {
             "fqsen": "\\App\\Models\\CreateLand\u003A\u003Ainsert\u0028\u0029",
             "name": "insert",
             "summary": "",
             "url": "classes/App-Models-CreateLand.html#method_insert"
+        },                {
+            "fqsen": "\\App\\Models\\CreateLand\u003A\u003AupdateLand\u0028\u0029",
+            "name": "updateLand",
+            "summary": "",
+            "url": "classes/App-Models-CreateLand.html#method_updateLand"
+        },                {
+            "fqsen": "\\App\\Models\\CreateLand\u003A\u003AgetLand\u0028\u0029",
+            "name": "getLand",
+            "summary": "",
+            "url": "classes/App-Models-CreateLand.html#method_getLand"
         },                {
             "fqsen": "\\App\\Models\\CreateLand\u003A\u003Auser\u0028\u0029",
             "name": "user",
