@@ -12,6 +12,7 @@ use App\Models\LandComments;
 use App\Models\LandFile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Mail;
 
 class LandCreateController extends Controller {
@@ -23,11 +24,20 @@ class LandCreateController extends Controller {
 
     private $email;
 
+    private $createLandObj;
+
+    private $landFileObj;
+
+    private $fileUplaodObj;
+
     public function __construct() {
         $this->createNewUser = new CreateNewUser;
         $this->landComments = new LandComments;
         $this->createLand = new CreateLand;
         $this->email = config('form.email');
+        $this->createLandObj = new CreateLand;
+        $this->landFileObj = new LandFile;
+        $this->fileUplaodObj = new FileUpload;
 
     }
 
@@ -47,11 +57,18 @@ class LandCreateController extends Controller {
         }
     }
 
+    private function storeFiles($request, $land = null) {
+
+        if (config('setting.en_land_reg_file') && $request->file(config('setting.land_reg_file_upload'))) {
+            $uploaded_records = $this->fileUplaodObj->upload($request->file(config('setting.land_reg_file_upload')),
+                config('table.land_create').'_id', $land ? $land?->id : $this?->createLand?->id
+            );
+            $this->landFileObj->insertRecords($uploaded_records);
+        }
+    }
+
     public function landSave(LandCreate $request) {
         php_config();
-        $createLandObj = new CreateLand;
-        $landFileObj = new LandFile;
-        $fileUplaodObj = new FileUpload;
         try {
             $request->validated();
             if (! Auth::user()) {
@@ -60,13 +77,8 @@ class LandCreateController extends Controller {
                 $user = auth()->user();
             }
 
-            $createLand = $createLandObj->insert($user, $request->all());
-            if (config('setting.en_land_reg_file') && $request->file(config('setting.land_reg_file_upload'))) {
-                $uploaded_records = $fileUplaodObj->upload($request->file(config('setting.land_reg_file_upload')),
-                    config('table.land_create').'_id', $createLand->id
-                );
-                $landFileObj->insertRecords($uploaded_records);
-            }
+            $createLand = $this->createLandObj->insert($user, $request->all());
+            $this->storeFiles($request, $createLand);
             if (config('setting.send_land_email')) {
                 // mailer(config("mail.default"))->
                 Mail::to($user->email)->send(new LandCreateEmail($user->name,
@@ -82,8 +94,19 @@ class LandCreateController extends Controller {
         }
     }
 
-    public function landUpdate(Request $request) {
-        dd($request->all());
+    public function landUpdate($uuid_or_id, LandCreate $request) {
+        $land = $this->createLandObj->getLand(($uuid_or_id));
+
+        $denies_update = Gate::denies(config('policy.update_land'), $land);
+        if (empty($land) || $denies_update) {
+            abort(config('setting.err_403'));
+        }
+
+        $this->createLandObj->updateLand($land, $request->all());
+        $this->storeFiles($request, $land);
+
+        return customResponse([config('setting.is_success') => true,
+            config('setting.message') => __('messages.lnd_updt_msg')], config('setting.status_200'));
     }
 
     public function landUpdateBulk(AdminLandsPatch $request) {
@@ -118,6 +141,23 @@ class LandCreateController extends Controller {
     public function landCreate(Request $request) {
         try {
             return view(config('setting.land_create'));
+        } catch (\Exception $d) {
+            return server_logs($e = [true, $d], $request = [true, $request], $config = true);
+        }
+    }
+
+    public function landUpdateShow($land, Request $request) {
+        try {
+            $land = $this->createLandObj->getLand(($land));
+            debug_logs($land);
+            debug_logs($land->user_id);
+            debug_logs($land->landFiles);
+            $denies_update = Gate::denies(config('policy.update_land'), $land);
+            if (empty($land) || $denies_update) {
+                abort(config('setting.err_403'));
+            }
+
+            return view(config('setting.land_create'), compact('land'));
         } catch (\Exception $d) {
             return server_logs($e = [true, $d], $request = [true, $request], $config = true);
         }

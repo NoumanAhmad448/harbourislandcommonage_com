@@ -65,6 +65,7 @@ return [
     'err_500' => 500,
     'err_422' => 422,
     'err_403' => 403,
+    'err_404' => 404,
     'err_301' => 301,
     'favicon' => $images_folder.'favicon.ico',
     'email' => 'harbourislandcommonage@gmail.com',

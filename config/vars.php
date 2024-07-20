@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'files' => 'files',
+    'method' => 'method',
     'domain' => 'domain',
     'user_id' => 'user_id',
     'type' => 'type',
