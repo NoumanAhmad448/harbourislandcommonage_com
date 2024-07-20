@@ -25,6 +25,7 @@ $("#admin_login").submit(function (e) {
         submit.prop("disabled","")
         $("#loading-screen").toggleClass("hidden")
         popup_message(d)
+        resetCaptcha()
       },
       headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
