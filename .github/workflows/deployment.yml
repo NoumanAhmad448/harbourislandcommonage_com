@@ -64,6 +64,10 @@ jobs:
         run: |
           export NODE_OPTIONS="--max-old-space-size=8096"
 
+      - name: Run npm
+        run: |
+          npm run prod
+
       - name: Run linter prettier
         uses: wearerequired/lint-action@v2
         with:

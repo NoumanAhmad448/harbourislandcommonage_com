@@ -175,7 +175,8 @@ window.showImage = function(input,show_images_el="show_images",validImageTypes=f
                     reader.readAsDataURL(file)}
                     }
     }
-    }
+}
+
 window.changeURL = function(newUrl) {
     if(debug){
         console.log(newUrl)
@@ -225,6 +226,7 @@ window.debug_logs = function(whatever){
         console.log(dash_lines)
     }
 }
+
 window.getElValues = function(whatever){
     // select an multiple elements and
     // return their values in array
@@ -342,4 +344,8 @@ window.IselExist = function(whatever){
 
 window.resetCaptcha = function(){
     grecaptcha.reset();
+}
+
+window.showMap = function(location){
+    console.log(location)
 }

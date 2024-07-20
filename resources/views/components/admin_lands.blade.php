@@ -84,12 +84,15 @@ debug_logs($data);
                                 ])
                             </td>
                         @endif
-                        <td>{{ $lands->user ? $lands->user->name : 'no name' }}</td>
-                        <td>{{ $lands->title ?? '' }}</td>
-                        <td>{{ $lands->description ?? '' }}</td>
-                        <td>{{ $lands->location ?? '' }}</td>
-                        <td>{{ $lands->size ?? '' }}</td>
-                        <td>{{ $lands->city && $lands->city->name ? $lands->city->name : '' }}</td>
+                        <td>{{ $lands?->user?->name }}</td>
+                        <td>{{ $lands?->title }}</td>
+                        <td>{{ $lands?->description }}</td>
+                        <td onclick="showMap('{{$lands?->location}} {{ $lands?->city?->name }}')"
+                            class="underline cursor-pointer">
+                            {{ $lands?->location }}
+                        </td>
+                        <td>{{ $lands?->size  }}</td>
+                        <td>{{ $lands?->city?->name }}</td>
                         <td
                             @php
                                 $land_approval = $lands->landComment && count($lands->landComment);
@@ -123,7 +126,7 @@ debug_logs($data);
                         </th>
                         @endcan
                         <td>{{ $is_admin_approved && $lands->landComment[0]->user
-                                ? $lands->landComment[0]->user->name : '' }}
+                                ? $lands?->landComment[0]?->user?->name : '' }}
                         </td>
                         @if (config('setting.en_slf'))
                             <td>
