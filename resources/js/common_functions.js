@@ -147,7 +147,6 @@ window.searchDropDown = function(searchInput,
 window.showImage = function(input,show_images_el="show_images",validImageTypes=false) {
     let files = input.files
     if (files && files.length > 0){
-        $(`.${show_images_el}`).text("")
         if(!validImageTypes){
             var validImageTypes = img_val_rules ;
             }
