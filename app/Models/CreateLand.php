@@ -30,7 +30,7 @@ class CreateLand extends CustomModel {
         return $lands;
     }
 
-    public function insert($user, $input) {
+    private function insertData($input, $user, $isInsertReq = false) {
         $data = [];
         debug_logs($input);
         debug_logs($user);
@@ -41,8 +41,16 @@ class CreateLand extends CustomModel {
         $data = add_key_if_exist(config('table.description'), $input, $data);
 
         $data[config('table.user_id')] = $user->id;
-        $data[config('table.uuid')] = gen_str(true);
+        if ($isInsertReq) {
+            $data[config('table.uuid')] = gen_str(true);
+        }
         $data[config('table.city').'_id'] = $input[config('table.city')];
+
+        return $data;
+    }
+
+    public function insert($user, $input) {
+        $data = $this->insertData($input, $user, true);
         $created_obj = CreateLand::create($data);
         debug_logs('Before data');
         debug_logs($data);
@@ -55,6 +63,48 @@ class CreateLand extends CustomModel {
         debug_logs($created_obj->toSql());
 
         return $created_obj;
+    }
+
+    public function updateLand($land, $input, $user = '') {
+        $data = [];
+        if (empty($user)) {
+            $user = auth()->user();
+        }
+
+        $data = $this->insertData($input, $user);
+
+        $land->update($data);
+        debug_logs('Before data');
+        debug_logs($data);
+
+        $data[config('table.land_id')] = $land->id;
+        $data[config('table.uuid')] = $land->uuid;
+        CreateLandLog::create($data);
+        debug_logs('After Data');
+        debug_logs($data);
+
+        debug_logs($land->toSql());
+
+        return $land;
+    }
+
+    public function getLand($id_or_uuid) {
+
+        if (isNotArray($id_or_uuid)) {
+            $id_or_uuid = [$id_or_uuid];
+        }
+        $land = self::whereIn(config('table.primary_key'), $id_or_uuid)
+            ->orWhereIn(config('table.uuid'), $id_or_uuid)
+            ->with(['city', 'landFiles']);
+        $land = $land->showQuery();
+        $land = $land->orderByDesc(config('table.primary_key'));
+        $land = $land->get();
+
+        if ($land->count() < 2) {
+            $land = $land[0];
+        }
+
+        return $land;
     }
 
     public function user() {

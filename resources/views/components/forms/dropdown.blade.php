@@ -35,7 +35,9 @@ if(!$data){
 }
 @endphp
 <div class="relative group">
-    <label><span class="mr-2">{{$label}}</span></label>
+    <label><span class="mr-2">{{$label}}@if ($include_star)
+        {!! config('setting.red_star') !!}
+    @endif</span></label>
     <button id="{{$id}}dropdown-button" type="button"
         class="inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-blue-500">
         <label id="{{$id}}label">

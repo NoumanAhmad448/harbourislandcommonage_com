@@ -11,16 +11,19 @@
             [
                 config("vars.priv") => isSuperAdmin(false),
                 config("vars.svg") => config("files.svg").'profile',
+                config("vars.url") => route("show_users"),
                 config("vars.details") => __("messages.Users"). $data['users']
             ],
             [
                 config("vars.priv") => isSuperAdmin(false),
                 config("vars.svg") => config("files.svg").'profile',
+                config("vars.url") => route("show_users"),
                 config("vars.details") => __("messages.active_users"). $data['active_users']
             ],
             [
                 config("vars.priv") => isSuperAdmin(false),
                 config("vars.svg") => config("files.svg").'profile',
+                config("vars.url") => route("show_users"),
                 config("vars.details") => __("messages.inactive_users"). (int)$data['users'] - (int)$data['active_users']
             ],
             [
@@ -44,6 +47,7 @@
             [
                 config("vars.priv") => isSuperAdmin(false),
                 config("vars.svg") => config("files.svg").'profile',
+                config("vars.url") => route("create_admin"),
                 config("vars.details") => __("messages.inactive_admins").(int)$data['admins'] - (int)$data['active_admins']
             ],
 

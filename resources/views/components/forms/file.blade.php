@@ -12,7 +12,7 @@ $data = $prop["data"] ?? "";
 $message = $prop["message"] ?? __("messages.file_upload_msg");
 $input_title = $prop["input_title"] ?? __("messages.file_upload_title");
 $is_multiple = $prop["is_multiple"] ?? false;
-
+$files = $prop[config("vars.files")] ?? false;
 @endphp
 @include(config("files.components").".loader", ["prop" => [
     "id" => $id
@@ -38,4 +38,14 @@ $is_multiple = $prop["is_multiple"] ?? false;
 </div>
 @include(config("files.components").".loader_script", ["prop" => ['id' => $id]])
 <section class="image{{$id}} flex items-center justify-center mt-5">
+    @if($files)
+        @foreach($files as $file)
+            <img
+            id='img{{$file?->id}}'
+            src='{{ file_path($file->link) }}' width="150" height="150" class="pr-4 rounded-lg
+            transition-all duration-300 cursor-pointer
+            h-auto max-w-lg
+            "/>
+        @endforeach
+    @endif
 </section>

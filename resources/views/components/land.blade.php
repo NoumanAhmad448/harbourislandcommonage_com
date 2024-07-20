@@ -43,9 +43,16 @@ debug_logs($data);
             @if (count($data['lands']) > 0)
                 @foreach ($data['lands'] as $lands)
                     <tr>
-                        <td>{{ $lands->user ? $lands->user->name : 'no name' }}</td>
-                        <td>{{ $lands->title ?? '' }}</td>
-                        <td>{{ $lands->description ?? '' }}</td>
+                        <td>{{ $lands?->user?->name }}</td>
+                        <td>
+                            <a class="underline" href="{{route("land_updateshow",
+                                ["land" => $lands?->uuid ?? $lands ?->id ])
+                             }}"
+                             target="_blank">
+                             {{ $lands?->title }}
+                             </a>
+                        </td>
+                        <td>{{ $lands?->description }}</td>
                         <td>{{ $lands->location ?? '' }}</td>
                         <td>{{ $lands->size ?? '' }}</td>
                         <td>{{ $lands->city && $lands->city->name ? $lands->city->name : '' }}</td>
