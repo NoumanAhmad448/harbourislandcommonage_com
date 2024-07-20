@@ -18,6 +18,7 @@ class CreateLandLog extends CustomModel {
     public function landDetails($land_id) {
         $land_id = str_to_array($land_id);
         $land = CreateLandLog::whereIn(config('table.land_id'), $land_id);
+        $land = $land->with('user');
         $land = $land->orderByDesc(config('table.primary_key'));
         $land = $land->get();
 
@@ -26,5 +27,9 @@ class CreateLandLog extends CustomModel {
 
     public function city() {
         return $this->belongsTo(City::class);
+    }
+
+    public function user() {
+        return $this->belongsTo(User::class);
     }
 }

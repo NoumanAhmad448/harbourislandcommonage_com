@@ -1356,6 +1356,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Models-CreateLandLog.html#method_city"
         },                {
+            "fqsen": "\\App\\Models\\CreateLandLog\u003A\u003Auser\u0028\u0029",
+            "name": "user",
+            "summary": "",
+            "url": "classes/App-Models-CreateLandLog.html#method_user"
+        },                {
             "fqsen": "\\App\\Models\\CreateLandLog\u003A\u003A\u0024table",
             "name": "table",
             "summary": "",
