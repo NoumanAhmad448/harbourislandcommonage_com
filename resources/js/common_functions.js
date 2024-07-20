@@ -339,3 +339,7 @@ window.IselExist = function(whatever){
         debug_logs(`el ${before} does not exist`)
     }
 }
+
+window.resetCaptcha = function(){
+    grecaptcha.reset();
+}
