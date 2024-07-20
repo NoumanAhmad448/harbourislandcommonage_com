@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'map' => 'map',
     'message' => 'message',
     'status' => 'status',
     'w_name' => 'w_name',

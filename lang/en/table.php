@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'map' => 'Map',
     'land_comments_logs' => 'Comments Logs',
     'land_logs' => 'Land Logs',
     'user_profiles' => 'User Profile',
