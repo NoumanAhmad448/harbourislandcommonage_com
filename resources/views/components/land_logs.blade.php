@@ -44,7 +44,7 @@ debug_logs($data);
                                 ])
                             </td>
                         @endif
-                        <td>{{ $lands->user ? $lands->user->name : 'no name' }}</td>
+                        <td>{{ $lands?->user?->name}}</td>
                         <td>{{ $lands->title ?? '' }}</td>
                         <td>{{ $lands->description ?? '' }}</td>
                         <td>{{ $lands->location ?? '' }}</td>
