@@ -80,6 +80,7 @@ return [
     'im_log' => $images_folder.'logo.png',
     'im_log_desc' => '',
     'en_slf' => true,
+    'en_lnd_edt' => false,
     'en_wel' => true,
     'en_typewriter' => true,
     'en_mo_info_con' => true,
