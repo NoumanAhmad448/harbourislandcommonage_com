@@ -148,7 +148,7 @@ window.showImage = function(input,show_images_el="show_images",validImageTypes=f
     let files = input.files
     if (files && files.length > 0){
         if(!validImageTypes){
-            var validImageTypes = img_val_rules ;
+            validImageTypes = img_val_rules ;
             }
         for (let file of files){
             const reader = new FileReader();
@@ -346,6 +346,10 @@ window.resetCaptcha = function(){
     grecaptcha.reset();
 }
 
-window.showMap = function(location){
-    console.log(location)
+window.showMap = function(location, map){
+    debug_logs(location)
+    // showLoader
+    const loading_screen = showLoader()
+    $(`#${map}`).toggleClass("hidden")
+    loading_screen.toggleClass("hidden")
 }

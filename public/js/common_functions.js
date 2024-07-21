@@ -40732,44 +40732,42 @@ window.searchDropDown = function (searchInput, dropdownMenu) {
 window.showImage = function (input) {
   var show_images_el = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "show_images";
   var validImageTypes = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
-  return function (validImageTypes) {
-    var files = input.files;
-    if (files && files.length > 0) {
-      if (!validImageTypes) {
-        var validImageTypes = img_val_rules;
-      }
-      var _iterator = _createForOfIteratorHelper(files),
-        _step;
-      try {
-        var _loop = function _loop() {
-            var file = _step.value;
-            var reader = new FileReader();
-            fileType = file["type"];
-            if ($.inArray(fileType, validImageTypes) < 0) {
-              popup_message(file_upload_ft);
-              $(".".concat(show_images_el)).text("");
-            } else if (file['size'] / 1024 / 1024 == fuas) {
-              popup_message(fuasm);
-              $(".".concat(show_images_el)).text("");
-            } else {
-              reader.fileName = file.name;
-              reader.onload = function (e) {
-                $(".".concat(show_images_el)).append("<img\n                    id='".concat(file.lastModified, "img'\n                    src=").concat(reader.result, " width=\"150\" height=\"150\" class=\"pr-4 rounded-lg\n                    transition-all duration-300 cursor-pointer\n                    h-auto max-w-lg\n                    \"/>"));
-              };
-              reader.readAsDataURL(file);
-            }
-          },
-          fileType;
-        for (_iterator.s(); !(_step = _iterator.n()).done;) {
-          _loop();
-        }
-      } catch (err) {
-        _iterator.e(err);
-      } finally {
-        _iterator.f();
-      }
+  var files = input.files;
+  if (files && files.length > 0) {
+    if (!validImageTypes) {
+      validImageTypes = img_val_rules;
     }
-  }(validImageTypes);
+    var _iterator = _createForOfIteratorHelper(files),
+      _step;
+    try {
+      var _loop = function _loop() {
+          var file = _step.value;
+          var reader = new FileReader();
+          fileType = file["type"];
+          if ($.inArray(fileType, validImageTypes) < 0) {
+            popup_message(file_upload_ft);
+            $(".".concat(show_images_el)).text("");
+          } else if (file['size'] / 1024 / 1024 == fuas) {
+            popup_message(fuasm);
+            $(".".concat(show_images_el)).text("");
+          } else {
+            reader.fileName = file.name;
+            reader.onload = function (e) {
+              $(".".concat(show_images_el)).append("<img\n                    id='".concat(file.lastModified, "img'\n                    src=").concat(reader.result, " width=\"150\" height=\"150\" class=\"pr-4 rounded-lg\n                    transition-all duration-300 cursor-pointer\n                    h-auto max-w-lg\n                    \"/>"));
+            };
+            reader.readAsDataURL(file);
+          }
+        },
+        fileType;
+      for (_iterator.s(); !(_step = _iterator.n()).done;) {
+        _loop();
+      }
+    } catch (err) {
+      _iterator.e(err);
+    } finally {
+      _iterator.f();
+    }
+  }
 };
 window.changeURL = function (newUrl) {
   if (debug) {
@@ -40915,8 +40913,12 @@ window.IselExist = function (whatever) {
 window.resetCaptcha = function () {
   grecaptcha.reset();
 };
-window.showMap = function (location) {
-  console.log(location);
+window.showMap = function (location, map) {
+  debug_logs(location);
+  // showLoader
+  var loading_screen = showLoader();
+  $("#".concat(map)).toggleClass("hidden");
+  loading_screen.toggleClass("hidden");
 };
 })();
 

@@ -45,9 +45,9 @@ debug_logs($data);
                     <tr>
                         <td>{{ $lands?->user?->name }}</td>
                         <td>
-                            <a class="underline" href="{{route("land_updateshow",
+                            <a class="underline" href="@if(config('setting.en_lnd_edt')){{route("land_updateshow",
                                 ["land" => $lands?->uuid ?? $lands ?->id ])
-                             }}"
+                             }}@endif"
                              target="_blank">
                              {{ $lands?->title }}
                              </a>

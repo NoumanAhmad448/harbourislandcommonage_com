@@ -71,7 +71,7 @@
             "composer validate-php",
             "npm run prod",
             "git add . ",
-            "git commit -m --allow-empty",
+            "git commit -m 'default message goes here'",
             "git push"
         ],
         "post-autoload-dump": [
