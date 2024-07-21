@@ -2,18 +2,24 @@
 $data = $prop["data"] ?? '';
 $id = $prop["data"]["id"];
 $en_fun = $prop["data"]["en_fun"] ?? true;
-
+$map = "map".gen_str();
 debug_logs("admin blade component");
 debug_logs($data);
 
 @endphp
 @include(config("files.components_")."modal",
 [
-    "prop" => [
+    config("vars.prop") => [
+        config("vars.id") => $map
+    ]
+])
+@include(config("files.components_")."modal",
+[
+    config("vars.prop") => [
         "body" => config("files.forms").config("setting.message_form")
     ]
 ])
-@include(config("files.components_")."loader", ["prop" => [
+@include(config("files.components_")."loader", [config("vars.prop") => [
     "id" => $id
 ]])
 @if ($data && $data['lands'])
@@ -24,7 +30,7 @@ debug_logs($data);
     <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5 p-4">
         @include(config("files.forms").'three_col', ['input' =>
         config("files.forms")."dropdown",
-        "prop" => [
+        config("vars.prop") => [
             "id" => config("form.land_ops"),
             "include_star" => false,
             "label" => __("messages.land_op"),
@@ -87,8 +93,10 @@ debug_logs($data);
                         <td>{{ $lands?->user?->name }}</td>
                         <td>{{ $lands?->title }}</td>
                         <td>{{ $lands?->description }}</td>
-                        <td onclick="showMap('{{$lands?->location}} {{ $lands?->city?->name }}')"
-                            class="underline cursor-pointer">
+                        <td onclick="showMap('{{$lands?->location}} {{ $lands?->city?->name }}','{{$map}}')"
+                            class="underline cursor-pointer"
+                            data-modal-target = "{{$map}}"
+                            >
                             {{ $lands?->location }}
                         </td>
                         <td>{{ $lands?->size  }}</td>
@@ -144,7 +152,7 @@ debug_logs($data);
                     </tr>
                 @endforeach
             @endif
-            @include(config("files.components_")."loader_script", ["prop" =>
+            @include(config("files.components_")."loader_script", [config("vars.prop") =>
             [
                 'id' => $id,
                 "hide_el" => "{$id}tbody"
@@ -162,12 +170,14 @@ debug_logs($data);
     let land_ops_id = '{{ config("table.land_ops_id") }}';
     let message_form = '{{ config("setting.message_form") }}';
     let land_update = '{{ route("land_update_blk") }}';
+    let map = '{{ $map }}';
 
     debug_logs(land_ids);
     debug_logs("lands_ids => ".lands_ids);
     debug_logs(update_field);
     debug_logs(land_ops);
     debug_logs(land_ops_id);
+    debug_logs(map);
 </script>
 <script src="{{ mix(config('setting.admin_lands_js')) }}"></script>
 @endif
