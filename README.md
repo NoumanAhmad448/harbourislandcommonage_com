@@ -68,17 +68,34 @@ php artisan strge:ln
 ```
 
 ## Local Setup (Development)
-1. install xampp (Required PHP version -> 8.2) [Download Link](https://www.apachefriends.org/)
-2. download node 18.18.0
-2. Go to .env file and change the DB connection
-3. Create a database
+1. set repo limit
+```
+git config --global http.postBuffer 1048576000
+```
+2. cloning the repo
+```
+git clone https://github.com/NoumanAhmad448/harbourislandcommonage_com
+```
+3. install xampp (Required PHP version -> 8.2) [Download Link](https://www.apachefriends.org/)
+4. download node 18.18.0
+5. Go to .env file and change the DB connection
+6. Create a database
 ```
 thesunr8_harbourislandcommonage_com
 ```
-4. [Visit this file](/database/seeders/DatabaseSeeder.php) and uncomment everything inside ```run``` method
-5. Run [this file](/local_development.sh)
-6. Get dump from someone else and upload
-7. ```php artisan serve --port=8080```
+7. [Visit this file](/database/seeders/DatabaseSeeder.php) and uncomment everything inside ```run``` method
+8. Get dump from someone else and upload
+9. Visit ```bootstrap/cache``` and delete every file
+10. visit ```storage/framework``` and create following folders
+1. ```sessions```
+2. ```views```
+3. ```cache```
+11. Run [this file](/local_development.sh)
+12. Finally 😍😍😍😍😍😍 run your project using
+```
+php artisan serve --port=8080
+```
+13. 
 
 ## Troubleshooting
 mysql configuration file finder
