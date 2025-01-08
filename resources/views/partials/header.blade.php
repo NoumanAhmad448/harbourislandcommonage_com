@@ -139,30 +139,6 @@
                                     <p class="text-xs">24 Feb, 2025</p>
                                 </a>
                             </li>
-                            <li>
-                                <a class="flex flex-col gap-2.5 border-t border-stroke px-4.5 py-3 hover:bg-gray-2 dark:border-strokedark dark:hover:bg-meta-4"
-                                    href="#">
-                                    <p class="text-sm">
-                                        <span class="text-black dark:text-white">There are many variations</span>
-                                        of passages of Lorem Ipsum available, but the majority have
-                                        suffered
-                                    </p>
-
-                                    <p class="text-xs">04 Jan, 2025</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="flex flex-col gap-2.5 border-t border-stroke px-4.5 py-3 hover:bg-gray-2 dark:border-strokedark dark:hover:bg-meta-4"
-                                    href="#">
-                                    <p class="text-sm">
-                                        <span class="text-black dark:text-white">There are many variations</span>
-                                        of passages of Lorem Ipsum available, but the majority have
-                                        suffered
-                                    </p>
-
-                                    <p class="text-xs">01 Dec, 2024</p>
-                                </a>
-                            </li>
                         </ul>
                     </div>
                     <!-- Dropdown End -->

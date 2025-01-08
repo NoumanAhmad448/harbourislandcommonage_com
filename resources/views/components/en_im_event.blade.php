@@ -7,7 +7,7 @@
             <div class="w-full-sm md:flex md:flex-wrap md:justify-between md:items-center">
                 @if (count($data['features']) > 0)
                     @foreach ($data['features'] as $feature)
-                        <div class="w-full-sm pt-4 rounded max-w-sm overflow-hidden shadow-lg">
+                        <div class="w-full-sm py-4 rounded max-w-sm overflow-hidden shadow-lg pr-10">
                             <img class="w-full" src="{{ $feature['img'] }}" alt="{{ $feature['alt'] }}">
                             <div class="px-6 py-4">
                                 <div class="font-bold text-xl mb-2">{{ $feature['title'] }}</div>

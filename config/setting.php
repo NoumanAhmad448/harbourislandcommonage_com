@@ -91,7 +91,7 @@ return [
     'en_works' => true,
     'en_footer' => true,
     'en_contact' => true,
-    'en_articleadvices' => true,
+    'en_articleadvices' => false,
     'en_articleadvices_con' => true,
     'land_create' => $land_folder.'land_create',
     'en_land_display' => false,
