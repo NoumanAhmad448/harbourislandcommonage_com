@@ -19,7 +19,7 @@ $extra_classes = "";
 if(!$data){
     switch($id){
         case config("setting.city"):
-        $data = City::where("country_id", config("setting.bahmas_country_code"))->get();
+        $data = City::where("country_id", config("setting.bahmas_country_code"))->where("is_active",1)->get();
         debug_logs("data => ".$data);
         break;
         case config("setting.country"):
