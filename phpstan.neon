@@ -10,7 +10,6 @@ parameters:
     excludePaths:
         - storage/*
         - vendor/*
-    checkMissingIterableValueType: false
     ignoreErrors:
         - '#Access to an undefined property [a-zA-Z0-9\\_]+::\$[a-zA-Z0-9\\_]+#'
         - '#Variable \$this might not be defined#'
