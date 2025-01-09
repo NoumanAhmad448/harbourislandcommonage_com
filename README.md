@@ -95,7 +95,6 @@ thesunr8_harbourislandcommonage_com
 ```
 php artisan serve --port=8080
 ```
-13. 
 
 ## Troubleshooting
 mysql configuration file finder
