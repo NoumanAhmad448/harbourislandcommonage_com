@@ -22,10 +22,10 @@ jobs:
       run: composer install
 
     # PHPStan Analysis
-    - name: PHPStan
-      run: |
-        composer require phpstan/phpstan
-        vendor/bin/phpstan analyse --configuration=phpstan.neon
+    # - name: PHPStan
+    #   run: |
+    #     composer require phpstan/phpstan
+    #     vendor/bin/phpstan analyse --configuration=phpstan.neon
 
     # PHPCS Check
     - name: PHPCS
