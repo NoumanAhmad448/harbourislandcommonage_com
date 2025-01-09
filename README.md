@@ -117,7 +117,7 @@ nano /var/lib/mysql/server1.nctest.net.err
 
 mysql connection
 ```
-mysql -h 127.0.0.1 -P 3306 -u usmansaleem234_lyskills_root5 -p
+mysql -h 127.0.0.1 -P 3306 -u user_name -p
 ```
 clear user table for local development
 ```
@@ -190,22 +190,7 @@ How to fix 'The file failed to upload.' error using any validation for image upl
 1. Login to WHM > search ``` PHP INI editor``` > Choose php81 > update the setting according to cpanel ``` INI editor```
 
 
-### SSH access
-Read the public key from ```git bash```
-```
-cat ~/.ssh/id_rsa.pub
-```
-Create a ```config``` file in ```.ssh``` folder and add the following lines
-```
-Host 162.241.216.239
-   HostName 162.241.216.239
-   PreferredAuthentications publickey
-   IdentityFile ~/.ssh/id_rsa.pub
-```
-ssh access command
-```
-ssh thesunr8@162.241.216.239
-```
+
 
 ### apache server
 1. apache status
