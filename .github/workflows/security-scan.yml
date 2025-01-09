@@ -31,7 +31,7 @@ jobs:
     - name: PHPCS
       run: |
         composer require squizlabs/php_codesniffer
-        vendor/bin/phpcs src
+        vendor/bin/phpcs --standard=phpcs.xml
 
     # Security Checker
     - name: Security Check
