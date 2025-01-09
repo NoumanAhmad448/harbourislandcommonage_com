@@ -1,0 +1,44 @@
+name: Security Scan
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  security:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.2'
+        
+    - name: Install Dependencies
+      run: composer install
+
+    # PHPStan Analysis
+    - name: PHPStan
+      run: |
+        composer require phpstan/phpstan
+        vendor/bin/phpstan analyse src tests
+
+    # PHPCS Check
+    - name: PHPCS
+      run: |
+        composer require squizlabs/php_codesniffer
+        vendor/bin/phpcs src
+
+    # Security Checker
+    - name: Security Check
+      uses: symfonycorp/security-checker-action@v4
+
+    # Upload results to GitHub Security
+    - name: Upload SARIF file
+      uses: github/codeql-action/upload-sarif@v2
+      with:
+        sarif_file: results.sarif
