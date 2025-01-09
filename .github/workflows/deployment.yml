@@ -43,7 +43,7 @@ jobs:
         run: php -r "file_exists('.env') || copy('.env.live', '.env');"
 
       - name: setup nodejs
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@48b90677b6048efbc723b11a94acb950d3f1ac36
         with:
           node-version: "18.18.0"
   project:
@@ -58,7 +58,7 @@ jobs:
           ]
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@cbb722410c2e876e24abbe8de2cc27693e501dcb
       - name: Install Node.js dependencies
         run: npm ci
 
