@@ -25,7 +25,7 @@ jobs:
     - name: PHPStan
       run: |
         composer require phpstan/phpstan
-        vendor/bin/phpstan analyse src tests
+        vendor/bin/phpstan analyse app routes config resources/views tests
 
     # PHPCS Check
     - name: PHPCS
