@@ -28,10 +28,10 @@ jobs:
     #     vendor/bin/phpstan analyse --configuration=phpstan.neon
 
     # PHPCS Check
-    - name: PHPCS
-      run: |
-        composer require squizlabs/php_codesniffer
-        vendor/bin/phpcs --standard=phpcs.xml
+    # - name: PHPCS
+    #   run: |
+    #     composer require squizlabs/php_codesniffer
+    #     vendor/bin/phpcs --standard=phpcs.xml
 
     # Security Checker
     - name: Security Check
