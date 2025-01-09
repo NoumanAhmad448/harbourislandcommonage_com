@@ -66,14 +66,14 @@ return [
         ],
 
         'slack' => [
-            'webhook_url' => env('HEALTH_SLACK_WEBHOOK_URL', 'https://hooks.slack.com/services/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'),
+            'webhook_url' => env('HEALTH_SLACK_WEBHOOK_URL', env("SLACK_URL", false)),
 
             /*
              * If this is set to null the default channel of the webhook will be used.
              */
-            'channel' => env('HEALTH_SLACK_CHANNEL', 'web-development'),
+            'channel' => env('HEALTH_SLACK_CHANNEL', env("SLACK_CHANNEL")),
 
-            'username' => env('HEALTH_SLACK_USERNAME', 'urooman'),
+            'username' => env('HEALTH_SLACK_USERNAME', env("SLACK_USR_NAME")),
 
             'icon' => null,
         ],
