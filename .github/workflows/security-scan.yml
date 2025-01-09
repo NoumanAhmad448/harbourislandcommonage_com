@@ -36,6 +36,8 @@ jobs:
     # Security Checker
     - name: Security Check
       uses: symfonycorp/security-checker-action@v4
+      with:
+        disable-exit-code: 1 # Prevent the action from failing on vulnerabilities
 
     # Upload results to GitHub Security
     - name: Upload SARIF file
