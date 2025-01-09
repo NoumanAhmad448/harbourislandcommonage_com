@@ -15,10 +15,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@cbb722410c2e876e24abbe8de2cc27693e501dcb
 
     - name: Setup PHP
-      uses: shivammathur/setup-php@21e092a
+      uses: shivammathur/setup-php@21e092a3e0c2fabb77bf641337eced34a4bcd3cc
       with:
         php-version: '8.2'
 
@@ -39,7 +39,7 @@ jobs:
 
     # Security Checker
     - name: Security Check
-      uses: symfonycorp/security-checker-action@e706dcc
+      uses: symfonycorp/security-checker-action@e706dcce24c03714d146fcad711c3bfb4e9c08a9
       with:
         disable-exit-code: 1 # Prevent the action from failing on vulnerabilities
 

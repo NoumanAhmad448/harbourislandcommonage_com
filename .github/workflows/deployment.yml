@@ -16,7 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Setup PHP with fail-fast
-        uses: shivammathur/setup-php@v2
+        uses: shivammathur/setup-php@21e092a3e0c2fabb77bf641337eced34a4bcd3cc
         with:
           php-version: ${{ matrix.php }}
           extensions: json, dom, curl, libxml, mbstring, bz2, fileinfo, gd, gettext,mbstring,exif,mysqli,pdo_mysql
@@ -31,7 +31,7 @@ jobs:
         run: phpdoc --config phpdoc.dist.xml
 
       - name: Commit linted files
-        uses: stefanzweifel/git-auto-commit-action@v5
+        uses: stefanzweifel/git-auto-commit-action@0b492c0d951b87f3cd12523a542dbd156c1dbc80
         with:
           commit_message: ${{ matrix.commit_msg }}
           branch: master
@@ -43,7 +43,7 @@ jobs:
         run: php -r "file_exists('.env') || copy('.env.live', '.env');"
 
       - name: setup nodejs
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@48b90677b6048efbc723b11a94acb950d3f1ac36
         with:
           node-version: "18.18.0"
   project:
@@ -58,7 +58,7 @@ jobs:
           ]
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@cbb722410c2e876e24abbe8de2cc27693e501dcb
       - name: Install Node.js dependencies
         run: npm ci
 
@@ -79,7 +79,7 @@ jobs:
       #     prettier_extensions: "js,ts,html,css,tsx,json"
 
       - name: Sync files
-        uses: SamKirkland/FTP-Deploy-Action@4.0.0
+        uses: SamKirkland/FTP-Deploy-Action@8e83cea8672e3fbcbb9fdafff34debf6ae4c5f65
         with:
           server: ${{secrets.FTP_SERVER}}
           username: ${{secrets.FTP_USERNAME}}
@@ -87,7 +87,7 @@ jobs:
           server-dir: /
 
       - name: Running Scripts
-        uses: appleboy/ssh-action@master
+        uses: appleboy/ssh-action@49751ff51697f88206b6c7a0f60f83d1a880b26d
         with:
           username: ${{secrets.SSH_USERNAME}}
           host: ${{secrets.IP_SERVER}}
