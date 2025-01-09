@@ -3,6 +3,8 @@ name: Harbourislandcommonage Deployment
 on:
   push:
     branches: ["master"]
+    paths-ignore:
+      - 'resources/js/lib/tailwindcss.js'
 jobs:
   setup-php:
     runs-on: ubuntu-latest
