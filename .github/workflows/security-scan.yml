@@ -18,7 +18,7 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Setup PHP
-      uses: shivammathur/setup-php@v2
+      uses: shivammathur/setup-php@21e092a
       with:
         php-version: '8.2'
 
@@ -39,7 +39,7 @@ jobs:
 
     # Security Checker
     - name: Security Check
-      uses: symfonycorp/security-checker-action@v4
+      uses: symfonycorp/security-checker-action@e706dcc
       with:
         disable-exit-code: 1 # Prevent the action from failing on vulnerabilities
 
