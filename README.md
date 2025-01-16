@@ -91,7 +91,7 @@ thesunr8_harbourislandcommonage_com
 2. ```views```
 3. ```cache```
 11. Run [this file](/local_development.sh)
-12. Finally 😍😍😍😍😍😍 run your project using
+12. Finally 😍😍😍😍😍😍😍 run your project using
 ```
 php artisan serve --port=8080
 ```
