@@ -7,7 +7,6 @@ return [
     'user_id' => 'user_id',
     'type' => 'type',
     'sub_menu' => 'sub_menu',
-    'svg' => 'svg',
     'menu' => 'menu',
     'show_value' => 'show_value',
     'my_profile_form' => 'my_profile_form',

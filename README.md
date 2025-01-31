@@ -83,6 +83,10 @@ git clone https://github.com/NoumanAhmad448/harbourislandcommonage_com
 ```
 thesunr8_harbourislandcommonage_com
 ```
+7. Visit this file database\migrations/2024_06_13_113402_add_super_admin.php and replace your
+```your_email_here.com``` and
+```your_password_here``` for super admin login
+
 7. [Visit this file](/database/seeders/DatabaseSeeder.php) and uncomment everything inside ```run``` method
 8. Get dump from someone else and upload
 9. Visit ```bootstrap/cache``` and delete every file
@@ -91,11 +95,15 @@ thesunr8_harbourislandcommonage_com
 2. ```views```
 3. ```cache```
 11. Run [this file](/local_development.sh)
-12. Finally 😍😍😍😍😍😍 run your project using
+12. Finally 😍😍😍😍😍😍😍 run your project using
 ```
 php artisan serve --port=8080
 ```
-13. 
+### Super Admin Login
+1. yourwebsite.com/admin/login
+2. your_email_here.com
+3. your_password_here
+
 
 ## Troubleshooting
 mysql configuration file finder
@@ -117,7 +125,7 @@ nano /var/lib/mysql/server1.nctest.net.err
 
 mysql connection
 ```
-mysql -h 127.0.0.1 -P 3306 -u usmansaleem234_lyskills_root5 -p
+mysql -h 127.0.0.1 -P 3306 -u user_name -p
 ```
 clear user table for local development
 ```
@@ -190,22 +198,7 @@ How to fix 'The file failed to upload.' error using any validation for image upl
 1. Login to WHM > search ``` PHP INI editor``` > Choose php81 > update the setting according to cpanel ``` INI editor```
 
 
-### SSH access
-Read the public key from ```git bash```
-```
-cat ~/.ssh/id_rsa.pub
-```
-Create a ```config``` file in ```.ssh``` folder and add the following lines
-```
-Host 162.241.216.239
-   HostName 162.241.216.239
-   PreferredAuthentications publickey
-   IdentityFile ~/.ssh/id_rsa.pub
-```
-ssh access command
-```
-ssh thesunr8@162.241.216.239
-```
+
 
 ### apache server
 1. apache status
