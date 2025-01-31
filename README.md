@@ -83,6 +83,10 @@ git clone https://github.com/NoumanAhmad448/harbourislandcommonage_com
 ```
 thesunr8_harbourislandcommonage_com
 ```
+7. Visit this file database\migrations/2024_06_13_113402_add_super_admin.php and replace your
+```your_email_here.com``` and
+```your_password_here``` for super admin login
+
 7. [Visit this file](/database/seeders/DatabaseSeeder.php) and uncomment everything inside ```run``` method
 8. Get dump from someone else and upload
 9. Visit ```bootstrap/cache``` and delete every file
@@ -95,6 +99,11 @@ thesunr8_harbourislandcommonage_com
 ```
 php artisan serve --port=8080
 ```
+### Super Admin Login
+1. yourwebsite.com/admin/login
+2. your_email_here.com
+3. your_password_here
+
 
 ## Troubleshooting
 mysql configuration file finder
