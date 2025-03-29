@@ -238,7 +238,7 @@ nano /opt/cpanel/ea-php80/root/etc/php.ini
 6. Add ```extension_dir = "ext"```
 7. restart apache server and make sure all settings are updated in ```http://localhost/dashboard/phpinfo.php```
 8. Update php version in ```composer.json```
-9. Run ```composer update```
+9. Delete composer.lock and run ```composer install``` otherwise following may help ```composer update --lock``` and then atleast once try ```composer install``` otherwise Run ```composer update```
 10. restart ```artisan serve```
 
 
