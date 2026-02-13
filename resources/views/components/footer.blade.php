@@ -2,6 +2,7 @@
 
 <div class="container">
     @if(config("setting.en_articleadvices"))
+    <p class="text-center">Powered By <a class="text-white border-bottom border-black" href="https://sites.google.com/view/noumanwebsitebuilder/home"> Nouman Website Builder </a></p>
 
     <div class="pt-20">
         <h2 class="section-title text-4xl text-center pb-8 langBN">{{ __('Article & Advices') }}</h2>
@@ -33,7 +34,7 @@
         </p>
     </div>
     @endif
-
+    
     @if(config("setting.en_footer"))
     <div class="md:flex pb-12 text-center md:text-left" id="footer">
         <div class="lg:w-1/4 pr-6 flex justify-center items-center
@@ -54,6 +55,7 @@
         </div>
     </div>
     @endif
+                    <p class="text-center">Powered By <a class="text-white border-bottom border-black" href="https://sites.google.com/view/noumanwebsitebuilder/home"> Nouman Website Builder </a></p>
 
 </div>
 @endif
