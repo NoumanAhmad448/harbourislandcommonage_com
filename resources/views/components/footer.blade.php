@@ -2,7 +2,7 @@
 
 <div class="container">
     @if(config("setting.en_articleadvices"))
-    <p class="text-center">Powered By <a class="text-white border-bottom border-black" href="https://sites.google.com/view/noumanwebsitebuilder/home"> Nouman Website Builder </a></p>
+    <p class="text-center">Powered By <a class="my-4 border-bottom border-black" href="https://sites.google.com/view/noumanwebsitebuilder/home"> Nouman Website Builder </a></p>
 
     <div class="pt-20">
         <h2 class="section-title text-4xl text-center pb-8 langBN">{{ __('Article & Advices') }}</h2>
@@ -55,7 +55,7 @@
         </div>
     </div>
     @endif
-                    <p class="text-center">Powered By <a class="text-white border-bottom border-black" href="https://sites.google.com/view/noumanwebsitebuilder/home"> Nouman Website Builder </a></p>
+                    <p class="text-center">Powered By <a class="my-3 border-bottom border-black" href="https://sites.google.com/view/noumanwebsitebuilder/home"> Nouman Website Builder </a></p>
 
 </div>
 @endif
